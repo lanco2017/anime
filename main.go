@@ -18,7 +18,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"regexp"
+	//"regexp"
 	//"strings"
 
 	"github.com/line/line-bot-sdk-go/linebot"
