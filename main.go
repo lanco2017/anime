@@ -18,6 +18,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"regexp"
+	"strings"
 
 	"github.com/line/line-bot-sdk-go/linebot"
 )
@@ -52,7 +54,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			case *linebot.TextMessage:
  				//message.ID
 				//message.Text
-				bot_msg := "你是說 " + message.Text + " 嗎？"
+				bot_msg := "你是說 " + message.Text + " \n嗎？"
 				switch message.Text {
 				case "0":
 					bot_msg = "1"
