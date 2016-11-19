@@ -89,25 +89,25 @@ func anime(text string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6298" + "\n\n等等！這是最後一話！？"
 			default:
 			}
-		case "歌之☆王子殿下♪ 真愛 LEGEND STAR","歌王子","uta","":
+		case "歌之☆王子殿下♪ 真愛","歌王子","uta","歌之":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$3") {
 			case "1":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6436"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6436" + "\n\n這是第四部的最近的喔！"
 			case "2":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6470"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6470" + "\n\n這是第四部的最近的喔！"
 			case "3":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6496"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6496" + "\n\n這是第四部的最近的喔！"
 			case "4":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6497"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6497" + "\n\n這是第四部的最近的喔！"
 			case "5":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6498"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6498" + "\n\n這是第四部的最近的喔！"
 			case "6":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6499"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6499" + "\n\n這是第四部的最近的喔！"
 			case "7":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6724"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6724" + "\n\n這是第四部的最近的喔！"
 			case "8":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6782"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6782" + "\n\n這是第四部的最近的喔！"
 			case "9":
 				print_string = anime_say + "不對，我搞錯了這下週才有吧！"
 			case "10":
@@ -119,10 +119,10 @@ func anime(text string) string {
 			default:
 			}
 		default:
-			print_string = "對不起，我找不到這部動畫，我還沒學呢...\n我目前知道的動畫還很少，因為我考試不及格QAQ"
+			print_string = "對不起，我找不到這部動畫，我還沒學呢...\n我目前知道的動畫還很少，因為我考試不及格QAQ\n\n（其實是因為開發者純手動輸入，沒用資料庫跟爬蟲。才會增加比較慢XD）"
 		}
 	default:
-		print_string = "HI~ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\nＰＳ：目前功能還很少XD"
+		print_string = "HI~ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用半形空白隔開喔！\n不然我會看不懂>A<\n\nPS：目前這隻喵只提供查詢動畫的功能"
 	}
 	return print_string
 }
