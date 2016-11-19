@@ -93,7 +93,10 @@ func anime(text string) string {
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$3") {
 			case "1":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6436" + "\n\n這是第四部的最近的喔！"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6436" + "\n\n這是第四部的最近的喔！" +
+				"\n\n第三部\n\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2068\n\n" +
+				"\n\n第二部\n\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2055\n\n" +
+				"\n\n第一部\n\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2042\n\n"
 			case "2":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6470" + "\n\n這是第四部的最近的喔！"
 			case "3":
