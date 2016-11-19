@@ -92,7 +92,7 @@ func anime(text string) string {
 		default:
 		}
 	default:
-		print_string = "對不起，我找不到這部動畫，我還沒學呢...\n\n什麼？不是？\n抱歉，主人說我最近要多多幫人推廣動畫瘋。\n其他問題我都不知道。"
+		print_string = "對不起，我找不到這部動畫，我還沒學呢...\n\n什麼？不是？\n抱歉，主人說我最近要多多幫人推廣巴哈姆特動畫瘋。\n其他問題我都不知道。\n\n你要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：動畫美術社12\nアニメ美術社大有問題12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以"
 	}
 	return print_string
 }
