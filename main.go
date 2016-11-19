@@ -89,25 +89,25 @@ func anime(text string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6298" + "\n\n等等！這是最後一話！？"
 			default:
 			}
-		case "歌之☆王子殿下♪ 真愛","歌王子","uta","歌之":
+		case "歌之☆王子殿下♪ 真愛","歌王子","uta","":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$3") {
 			case "1":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6436" + "\n\n這是第四部的最近的喔！" + "\n\n第三部\n\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2068\n\n" + "\n\n第二部\n\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2055\n\n" + "\n\n第一部\n\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2042\n\n"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6436"
 			case "2":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6470" + "\n\n這是第四部的最近的喔！"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6470"
 			case "3":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6496" + "\n\n這是第四部的最近的喔！"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6496"
 			case "4":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6497" + "\n\n這是第四部的最近的喔！"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6497"
 			case "5":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6498" + "\n\n這是第四部的最近的喔！"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6498"
 			case "6":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6499" + "\n\n這是第四部的最近的喔！"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6499"
 			case "7":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6724" + "\n\n這是第四部的最近的喔！"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6724
 			case "8":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6782" + "\n\n這是第四部的最近的喔！"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6782"
 			case "9":
 				print_string = anime_say + "不對，我搞錯了這下週才有吧！"
 			case "10":
