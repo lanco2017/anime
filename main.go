@@ -52,7 +52,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			case *linebot.TextMessage:
  				//message.ID
 				//message.Text
-				bot_msg := "你是說 " + message.Text " 嗎？"
+				bot_msg := "你是說 " + message.Text + " 嗎？"
+				switch message.Text {
+				case 0:
+					bot_msg = 1
+				case 1:
+					bot_msg = 1
+				case 2:
+					bot_msg = 1
+				case 3:
+					bot_msg = 1
+				case 4:
+					bot_msg = 1
+				case 5:
+					bot_msg = 1
+				default:
+				}
 //				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 					log.Print(err)
