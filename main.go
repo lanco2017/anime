@@ -86,12 +86,13 @@ func anime(text string) string {
 			case "11":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6297"
 			case "12":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6298" + "等等！這是最後一話！？"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6298" + "\n\n等等！這是最後一話！？"
 			default:
 			}
 		default:
 		}
 	default:
+		print_string = "對不起，我找不到這部動畫，我還沒學呢...\n\n什麼？不是？\n抱歉，主人說我最近要多多幫人推廣動畫瘋。\n其他問題我都不知道。"
 	}
 	return print_string
 }
