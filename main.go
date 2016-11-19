@@ -18,8 +18,8 @@ import (
 	"log"
 	"net/http"
 	"os"
-	//"regexp"
-	//"strings"
+	"regexp"
+	"strings"
 
 	"github.com/line/line-bot-sdk-go/linebot"
 )
@@ -34,6 +34,66 @@ func main() {
 	port := os.Getenv("PORT")
 	addr := fmt.Sprintf(":%s", port)
 	http.ListenAndServe(addr, nil)
+}
+
+func real_num(text string) string {
+	text = strings.Replace(text, "１", "1", -1)
+	text = strings.Replace(text, "２", "2", -1)
+	text = strings.Replace(text, "３", "3", -1)
+	text = strings.Replace(text, "４", "4", -1)
+	text = strings.Replace(text, "５", "5", -1)
+	text = strings.Replace(text, "６", "6", -1)
+	text = strings.Replace(text, "７", "7", -1)
+	text = strings.Replace(text, "８", "8", -1)
+	text = strings.Replace(text, "９", "9", -1)
+	text = strings.Replace(text, "０", "0", -1)
+	return text
+}
+
+func anime(text string) string {
+	print_string := text
+	text = real_num(text)
+	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
+
+	switch reg.ReplaceAllString(text, "$1"){
+	case "動畫", "動畫瘋", "巴哈姆特", "anime", "アニメ":
+		print_string = text + "？\n好像有這個動畫耶，但我找不太到詳細的QQ\n你要手動去「巴哈姆特動畫瘋」找找嗎？\n\nhttps://ani.gamer.com.tw"
+		anime_say := "有喔！有喔！你在找這個對吧！？\n"
+		switch reg.ReplaceAllString(text, "$2") {
+		case "美術社":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$3") {
+			case "1":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=5871"
+			case "2":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5918"
+			case "3":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5919"
+			case "4":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6038"
+			case "5":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6039"
+			case "6":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6040"
+			case "7":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6207"
+			case "8":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6208"
+			case "9":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6295"
+			case "10":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6296"
+			case "11":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6297"
+			case "12":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6298" + "等等！這是最後一話！？"
+			default:
+			}
+		default:
+		}
+	default:
+	}
+	return print_string
 }
 
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
@@ -54,7 +114,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			case *linebot.TextMessage:
  				//message.ID
 				//message.Text
-				bot_msg := "你是說 " + message.Text + " \n嗎？"
+				bot_msg := "你是說 " + message.Text + " 嗎？"
+
+				//這裡開始增
+				//switch 測試
 				switch message.Text {
 				case "0":
 					bot_msg = "1"
@@ -70,6 +133,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					bot_msg = "6"
 				default:
 				}
+				
+				//anime
+				bot_msg = anime(text)
+				
+				//增加到這
+				
 //				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 					log.Print(err)
