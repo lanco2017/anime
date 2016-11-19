@@ -54,18 +54,18 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//message.Text
 				bot_msg := "你是說 " + message.Text + " 嗎？"
 				switch message.Text {
-				case 0:
-					bot_msg = 1
-				case 1:
-					bot_msg = 1
-				case 2:
-					bot_msg = 1
-				case 3:
-					bot_msg = 1
-				case 4:
-					bot_msg = 1
-				case 5:
-					bot_msg = 1
+				case "0":
+					bot_msg = "1"
+				case "1":
+					bot_msg = "2"
+				case "2":
+					bot_msg = "3"
+				case "3":
+					bot_msg = "4"
+				case "4":
+					bot_msg = "5"
+				case "5":
+					bot_msg = "6"
 				default:
 				}
 //				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
