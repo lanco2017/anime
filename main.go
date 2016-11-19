@@ -105,7 +105,7 @@ func anime(text string) string {
 			case "6":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6499"
 			case "7":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6724
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6724"
 			case "8":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6782"
 			case "9":
