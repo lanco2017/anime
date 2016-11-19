@@ -135,7 +135,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}
 				
 				//anime
-				bot_msg = anime(text)
+				bot_msg = anime(bot_msg)
 				
 				//增加到這
 				
