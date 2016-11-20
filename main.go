@@ -148,9 +148,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
  				//message.ID
 				//message.Text
 				bot_msg := "你是說 " + message.Text + " 嗎？\n\n我看看喔...等我一下..."
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
-					log.Print(err)
-				}
+				// if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+				// 	log.Print(err)
+				// }
 
 				//這裡開始增
 				//switch 測試
