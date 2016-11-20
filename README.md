@@ -82,3 +82,29 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
+----
+
+###動畫查詢的部分是我自己亂加的
+
+- 沒有自動化，只能半自動化自己拿去增加 case。
+- 因為我不想用資料庫，但也還不會 Golang 跨站存取的方法
+- 我用以下 JavaScript 達成半自動化更新的目的
+
+```Javascript
+function get_anime(){
+	var output_string = "		case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n			\/\/reg.ReplaceAllString(text, \"$2\")\n			switch reg.ReplaceAllString(text, \"$4\") {\n";
+	var num = 1;
+	for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
+	    if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
+	        output_string += "			case \"" + num + "\":\n" + "				print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n"
+
+	        num++;
+	    }
+	}
+	output_string += "			default:\n			}";
+	console.log(output_string)
+	//return output_string;
+}
+
+get_anime();
+```
