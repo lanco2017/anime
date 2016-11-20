@@ -54,7 +54,7 @@ func anime(text string,user_msgid string) string {
 	print_string := text
 	text = real_num(text)
 //	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
-	reg := regexp.MustCompile("^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ)(\\s|　|:|;|：|；)([\u4e00-\u9fa5_a-zA-Z0-9]*)\\D*(\\d{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
+	reg := regexp.MustCompile("^.*(動畫|動畫瘋|巴哈姆特|anime|Anime|アニメ)(\\s|　|:|;|：|；)([\u4e00-\u9fa5_a-zA-Z0-9]*)\\D*(\\d{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	switch reg.ReplaceAllString(text, "$1"){
 	case "目錄","動畫清單","清單","索引","index","Index":
 		print_string = "你可以問我下面這些動畫，我會帶你去看！\n\n" +
@@ -73,7 +73,8 @@ func anime(text string,user_msgid string) string {
 		"無畏魔女\n" +
 		"伯納德小姐說\n" +
 		"漂流武士\n" +
-		"JOJO 的奇妙冒險 不滅鑽石：JOJO"
+		"JOJO 的奇妙冒險 不滅鑽石：JOJO\n\n" +
+		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n例如：動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者":
 		print_string = "你找我主人？OK！\n我跟你講我的夥伴喵在哪，你去加他。\n他跟主人很親近的，跟他說的話主人都會看到。\nhttps://line.me/R/ti/p/%40uwk0684z\n\n\n你也可以從下面這個連結直接跟他線上對話。\n\n如果他不在線上一樣可以留言給他，\n他會收到的！\n這有跟手機連線會自動同步。" +
 		"\n\nhttp://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + user_msgid +
