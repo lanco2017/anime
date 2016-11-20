@@ -56,6 +56,8 @@ func anime(text string) string {
 //	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	reg := regexp.MustCompile("^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ)(\\s|　|:|;|：|；)([\u4e00-\u9fa5_a-zA-Z0-9]*)\\D*(\\d{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	switch reg.ReplaceAllString(text, "$1"){
+	case "開發者":
+		print_string = "開發者資訊如下："
 	case "動畫", "動畫瘋", "巴哈姆特", "anime", "アニメ":
 		print_string = text + "？\n好像有這個動畫耶，但我找不太到詳細的QQ\n你要手動去「巴哈姆特動畫瘋」找找嗎？\n\nhttps://ani.gamer.com.tw"
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
@@ -145,7 +147,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			case *linebot.TextMessage:
  				//message.ID
 				//message.Text
-				bot_msg := "你是說 " + message.Text + " 嗎？"
+				bot_msg := "你是說 " + message.Text + " 嗎？\n\n我看看喔...等我一下..."
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+					log.Print(err)
+				}
 
 				//這裡開始增
 				//switch 測試
