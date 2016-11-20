@@ -56,7 +56,7 @@ func anime(text string,user_msgid string) string {
 //	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	reg := regexp.MustCompile("^.*(動畫|動畫瘋|巴哈姆特|anime|Anime|アニメ)(\\s|　|:|;|：|；)([\u4e00-\u9fa5_a-zA-Z0-9]*)\\D*(\\d{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	switch reg.ReplaceAllString(text, "$1"){
-	case "新番"
+	case "新番":
 		print_string = "最近一期是日本 2016 十月開播的動畫：\n" + 
 		"歌之☆王子殿下♪ 真愛 LEGEND STAR\n" +
 		"伯納德小姐說。\n" +
