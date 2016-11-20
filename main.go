@@ -53,7 +53,8 @@ func real_num(text string) string {
 func anime(text string) string {
 	print_string := text
 	text = real_num(text)
-	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
+	//reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
+	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ)\s([\W]*)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 
 	switch reg.ReplaceAllString(text, "$1"){
 	case "動畫", "動畫瘋", "巴哈姆特", "anime", "アニメ":
@@ -90,9 +91,10 @@ func anime(text string) string {
 			default:
 			}
 		default:
+			print_string = "你要找好像是 " +  reg.ReplaceAllString(text, "$2") + " 對吧？\n可能我還沒看過，所以還找不到 ＞Q＜\nn（實際上是因為開發者沒用爬蟲跟資料庫，純手動建檔所以很慢XD）"
 		}
 	default:
-		print_string = "對不起，我找不到這部動畫，我還沒學呢...\n\n什麼？不是？\n抱歉，主人說我最近要多多幫人推廣巴哈姆特動畫瘋。\n其他問題我都不知道。\n\n你要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：動畫美術社12\nアニメ美術社大有問題12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以"
+		print_string = "最近我很喜歡在巴哈姆特動畫瘋看動畫呢！\nhttp://ani.gamer.com.tw\n\n推薦給喜歡看動畫的朋友！\n\n你要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：動畫美術社12\nアニメ美術社大有問題12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以"
 	}
 	return print_string
 }
