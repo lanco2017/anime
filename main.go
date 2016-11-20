@@ -64,6 +64,25 @@ func anime(text string,user_msgid string) string {
 		print_string = text + "？\n好像有這個動畫耶，但我找不太到詳細的QQ\n你要手動去「巴哈姆特動畫瘋」找找嗎？\n\nhttps://ani.gamer.com.tw"
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		switch reg.ReplaceAllString(text, "$3") {
+		case "我太受歡迎了該怎麼辦","我太受歡迎","受歡迎":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$4") {
+			case "1":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6413"
+			case "2":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6414"
+			case "3":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6415"
+			case "4":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6416"
+			case "5":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6417"
+			case "6":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6418"
+			case "7":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6865"
+			default:
+			}
 		case "3月","3月的獅子","三月的獅子":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
