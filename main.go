@@ -53,15 +53,14 @@ func real_num(text string) string {
 func anime(text string) string {
 	print_string := text
 	text = real_num(text)
-	//reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
-	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ)\s([\W]*)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
-
+	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
+//	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ)\s([\W]*)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	switch reg.ReplaceAllString(text, "$1"){
 	case "動畫", "動畫瘋", "巴哈姆特", "anime", "アニメ":
 		print_string = text + "？\n好像有這個動畫耶，但我找不太到詳細的QQ\n你要手動去「巴哈姆特動畫瘋」找找嗎？\n\nhttps://ani.gamer.com.tw"
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		switch reg.ReplaceAllString(text, "$2") {
-		case "美術社":
+		case "美術社","這個美術社大有問題":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$3") {
 			case "1":
@@ -90,11 +89,40 @@ func anime(text string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6298" + "\n\n等等！這是最後一話！？"
 			default:
 			}
+		case "歌之☆王子殿下♪ 真愛","歌王子","uta","":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$3") {
+			case "1":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6436"
+			case "2":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6470"
+			case "3":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6496"
+			case "4":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6497"
+			case "5":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6498"
+			case "6":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6499"
+			case "7":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6724"
+			case "8":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6782"
+			case "9":
+				print_string = anime_say + "不對，我搞錯了這下週才有吧！"
+			case "10":
+				print_string = anime_say + "不對，我搞錯了這集根本還沒播XD"
+			case "11":
+				print_string = anime_say + "不對，我搞錯了這集根本還沒播XD"
+			case "12":
+				print_string = anime_say + "不對，我搞錯了這集根本還沒播XD"
+			default:
+			}
 		default:
-			print_string = "你要找好像是 " +  reg.ReplaceAllString(text, "$2") + " 對吧？\n可能我還沒看過，所以還找不到 ＞Q＜\nn（實際上是因為開發者沒用爬蟲跟資料庫，純手動建檔所以很慢XD）"
+			print_string = "你是要找 " +  reg.ReplaceAllString(text, "$2") + " 對嗎？\n對不起，我找不到這部動畫，我還沒學呢...\n我目前知道的動畫還很少，因為我考試不及格QAQ\n\n（其實是因為開發者純手動輸入，沒用資料庫跟爬蟲。才會增加比較慢XD）"
 		}
 	default:
-		print_string = "最近我很喜歡在巴哈姆特動畫瘋看動畫呢！\nhttp://ani.gamer.com.tw\n\n推薦給喜歡看動畫的朋友！\n\n你要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：動畫美術社12\nアニメ美術社大有問題12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以"
+		print_string = "HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用半形空白隔開喔！\n不然我會看不懂＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能"
 	}
 	return print_string
 }
@@ -150,7 +178,3 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 }
-
-
-
-
