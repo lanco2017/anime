@@ -53,8 +53,8 @@ func real_num(text string) string {
 func anime(text string) string {
 	print_string := text
 	text = real_num(text)
-	//reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
-	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ)\s([\W]*)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
+	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
+
 	switch reg.ReplaceAllString(text, "$1"){
 	case "動畫", "動畫瘋", "巴哈姆特", "anime", "アニメ":
 		print_string = text + "？\n好像有這個動畫耶，但我找不太到詳細的QQ\n你要手動去「巴哈姆特動畫瘋」找找嗎？\n\nhttps://ani.gamer.com.tw"
@@ -86,12 +86,13 @@ func anime(text string) string {
 			case "11":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6297"
 			case "12":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6298" + "等等！這是最後一話！？"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6298" + "\n\n等等！這是最後一話！？"
 			default:
 			}
 		default:
 		}
 	default:
+		print_string = "對不起，我找不到這部動畫，我還沒學呢...\n\n什麼？不是？\n抱歉，主人說我最近要多多幫人推廣巴哈姆特動畫瘋。\n其他問題我都不知道。\n\n你要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：動畫美術社12\nアニメ美術社大有問題12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以"
 	}
 	return print_string
 }
@@ -147,3 +148,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 }
+
+
+
+
