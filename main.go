@@ -96,32 +96,82 @@ func anime(text string) string {
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6436" +
-				"\n\n這是第四部！日本 2016 年十月才開播。\n\n" +
-				"第三部：\nhttp://\n\n" + 
-				"第二部：\nhttp://\n\n" + 
-				"第一部：\nhttp://\n\n"
+				"\n\n上面查到的這是第四部！日本 2016 年十月才開播。\n還是你要看其他的呢？\n\n" +
+				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2068\n\n" + 
+				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2055\n\n" + 
+				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2042"
 			case "2":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6470"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6470" +
+				"\n\n上面查到的這是第四部！日本 2016 年十月才開播。\n還是你要看其他的呢？\n\n" +
+				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2069\n\n" + 
+				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2056\n\n" + 
+				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2043"
 			case "3":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6496"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6496" +
+				"\n\n上面查到的這是第四部！日本 2016 年十月才開播。\n還是你要看其他的呢？\n\n" +
+				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2070\n\n" + 
+				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2057\n\n" + 
+				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2044"
 			case "4":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6497"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6497" +
+				"\n\n上面查到的這是第四部！日本 2016 年十月才開播。\n還是你要看其他的呢？\n\n" +
+				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2071\n\n" + 
+				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2058\n\n" + 
+				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2045"
 			case "5":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6498"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6498" +
+				"\n\n上面查到的這是第四部！日本 2016 年十月才開播。\n還是你要看其他的呢？\n\n" +
+				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2072\n\n" + 
+				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2059\n\n" + 
+				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2046"
 			case "6":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6499"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6499" +
+				"\n\n上面查到的這是第四部！日本 2016 年十月才開播。\n還是你要看其他的呢？\n\n" +
+				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2073\n\n" + 
+				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2060\n\n" + 
+				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2047"
 			case "7":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6724"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6724" +
+				"\n\n上面查到的這是第四部！日本 2016 年十月才開播。\n還是你要看其他的呢？\n\n" +
+				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2074\n\n" + 
+				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2061\n\n" + 
+				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2048"
 			case "8":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6782"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6782" +
+				"\n\n上面查到的這是第四部！日本 2016 年十月才開播。\n還是你要看其他的呢？\n\n" +
+				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2075\n\n" + 
+				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2062\n\n" + 
+				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2049"
 			case "9":
-				print_string = anime_say + "不對，我搞錯了這下週才有吧！"
+				print_string = anime_say + "不對，我搞錯了這下週才有吧！" + 
+				"\n\n上面查的這是第四部！日本 2016 年十月才開播。\n雖然還沒播，但有還有前作可以看喔！\n\n" +
+				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2076\n\n" + 
+				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2063\n\n" + 
+				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2050"
 			case "10":
-				print_string = anime_say + "不對，我搞錯了這集根本還沒播XD"
+				print_string = anime_say + "不對，我搞錯了這集根本還沒播XD" + 
+				"\n\n上面查的這是第四部！日本 2016 年十月才開播。\n雖然還沒播，但有還有前作可以看喔！\n\n" +
+				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2070\n\n" + 
+				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2064\n\n" + 
+				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2051"
 			case "11":
-				print_string = anime_say + "不對，我搞錯了這集根本還沒播XD"
+				print_string = anime_say + "不對，我搞錯了這集根本還沒播XD" + 
+				"\n\n上面查的這是第四部！日本 2016 年十月才開播。\n雖然還沒播，但有還有前作可以看喔！\n\n" +
+				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2078\n\n" + 
+				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2065\n\n" + 
+				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2052"
 			case "12":
-				print_string = anime_say + "不對，我搞錯了這集根本還沒播XD"
+				print_string = anime_say + "不對，我搞錯了這集根本還沒播XD" + 
+				"\n\n上面查的這是第四部！日本 2016 年十月才開播。\n雖然還沒播，但有還有前作可以看喔！\n\n" +
+				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2079\n\n" + 
+				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2066\n\n" + 
+				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2053"
+			case "13":
+				print_string = anime_say + "不對，我搞錯了這集根本還沒播XD" + 
+				"\n\n上面查的這是第四部！日本 2016 年十月才開播。\n雖然還沒播，但有還有前作可以看喔！\n\n" +
+				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2080\n\n" + 
+				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2067\n\n" + 
+				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2054"
 			default:
 			}
 		default:
