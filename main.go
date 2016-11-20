@@ -50,14 +50,16 @@ func real_num(text string) string {
 	return text
 }
 
-func anime(text string) string {
+func anime(text string,user_msgid string) string {
 	print_string := text
 	text = real_num(text)
 //	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	reg := regexp.MustCompile("^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ)(\\s|　|:|;|：|；)([\u4e00-\u9fa5_a-zA-Z0-9]*)\\D*(\\d{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	switch reg.ReplaceAllString(text, "$1"){
 	case "開發者":
-		print_string = "開發者資訊如下："
+		print_string = "你找我主人？\nOK，你可以從下面這個連結直接跟他線上對話。\n\n如果他不在線上一樣可以留言給他，\n他會收到的！(blush)\n這有跟手機連線會自動同步。" +
+		"http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + user_msgid +
+		"&group=&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"
 	case "動畫", "動畫瘋", "巴哈姆特", "anime", "アニメ":
 		print_string = text + "？\n好像有這個動畫耶，但我找不太到詳細的QQ\n你要手動去「巴哈姆特動畫瘋」找找嗎？\n\nhttps://ani.gamer.com.tw"
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
@@ -225,7 +227,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}
 				
 				//anime
-				bot_msg = anime(message.Text)
+				bot_msg = anime(message.Text,message.ID)
 				
 				//增加到這
 //				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
