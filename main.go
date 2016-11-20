@@ -84,6 +84,10 @@ func anime(text string,user_msgid string) string {
 		"伯納德小姐說\n" +
 		"漂流武士\n" +
 		"JOJO 的奇妙冒險 不滅鑽石：JOJO\n\n" +
+		"影子籃球員\n" +
+		"星夢手記\n" +
+		"文豪野犬 第二季\n" +
+		"機動戰士鋼彈 鐵血孤兒 第二季\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n例如：\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者":
 		print_string = "你找我主人？OK！\n我跟你講我的夥伴喵在哪，你去加他。\n他跟主人很親近的，跟他說的話主人都會看到。\nhttps://line.me/R/ti/p/%40uwk0684z\n\n\n你也可以從下面這個連結直接跟他線上對話。\n\n如果他不在線上一樣可以留言給他，\n他會收到的！\n這有跟手機連線會自動同步。" +
@@ -93,6 +97,118 @@ func anime(text string,user_msgid string) string {
 		print_string = text + "？\n好像有這個動畫耶，但我找不太到詳細的QQ\n你要手動去「巴哈姆特動畫瘋」找找嗎？\n\nhttps://ani.gamer.com.tw"
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		switch reg.ReplaceAllString(text, "$3") {
+		case "影子籃球員":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$4") {
+			case "1":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3896"
+			case "2":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3897"
+			case "3":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3898"
+			case "4":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3899"
+			case "5":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3900"
+			case "6":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3901"
+			case "7":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3902"
+			case "8":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3903"
+			case "9":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3904"
+			case "10":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3905"
+			case "11":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3906"
+			case "12":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3907"
+			case "13":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3908"
+			case "14":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3909"
+			case "15":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3910"
+			case "16":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3911"
+			case "17":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3912"
+			case "18":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3913"
+			case "19":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3914"
+			case "20":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3915"
+			case "21":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3916"
+			case "22":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3917"
+			case "23":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3918"
+			case "24":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3919"
+			case "25":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3920"
+			default:
+			}
+		case "文豪野犬 第二季","文豪野犬":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$4") {
+			case "1":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6471"
+			case "2":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6492"
+			case "3":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6550"
+			case "4":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6493"
+			case "5":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6494"
+			case "6":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6495"
+			case "7":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6775"
+			default:
+			}
+		case "機動戰士鋼彈 鐵血孤兒 第二季","機動戰士鋼彈 鐵血孤兒","機動戰士鋼彈","鐵血孤兒":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$4") {
+			case "1":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6400"
+			case "2":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6401"
+			case "3":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6402"
+			case "4":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6403"
+			case "5":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6404"
+			case "6":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6405"
+			case "7":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6779"
+			default:
+			}
+		case "星夢手記":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$4") {
+			case "1":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6769"
+			case "2":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6770"
+			case "3":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6771"
+			case "4":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6772"
+			case "5":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6773"
+			case "6":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6774"
+			case "7":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6784"
+			default:
+			}	
 		case "少年阿貝GO！GO！小芝麻","少年阿貝","阿貝","小芝麻","芝麻","GO！":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
