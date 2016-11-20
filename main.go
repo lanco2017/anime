@@ -54,15 +54,15 @@ func anime(text string) string {
 	print_string := text
 	text = real_num(text)
 //	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
-	reg := regexp.MustCompile("^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ)\\s([\u4e00-\u9fa5_a-zA-Z0-9]*)\\D*(\\d{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
+	reg := regexp.MustCompile("^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ)(\\s|　)([\u4e00-\u9fa5_a-zA-Z0-9]*)\\D*(\\d{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	switch reg.ReplaceAllString(text, "$1"){
 	case "動畫", "動畫瘋", "巴哈姆特", "anime", "アニメ":
 		print_string = text + "？\n好像有這個動畫耶，但我找不太到詳細的QQ\n你要手動去「巴哈姆特動畫瘋」找找嗎？\n\nhttps://ani.gamer.com.tw"
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
-		switch reg.ReplaceAllString(text, "$2") {
+		switch reg.ReplaceAllString(text, "$3") {
 		case "美術社","這個美術社大有問題":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$3") {
+			switch reg.ReplaceAllString(text, "$4") {
 			case "1":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=5871"
 			case "2":
@@ -91,7 +91,7 @@ func anime(text string) string {
 			}
 		case "歌之☆王子殿下♪ 真愛","歌王子","uta":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$3") {
+			switch reg.ReplaceAllString(text, "$4") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6436"
 			case "2":
@@ -119,7 +119,7 @@ func anime(text string) string {
 			default:
 			}
 		default:
-			print_string = "你是要找 " +  reg.ReplaceAllString(text, "$2") + " 對嗎？\n對不起，我找不到這部動畫，我還沒學呢...\n我目前知道的動畫還很少，因為我考試不及格QAQ\n\n（其實是因為開發者純手動輸入，沒用資料庫跟爬蟲。才會增加比較慢XD）"
+			print_string = "你是要找 " +  reg.ReplaceAllString(text, "$3") + " 對嗎？\n對不起，我找不到這部動畫，我還沒學呢...\n我目前知道的動畫還很少，因為我考試不及格QAQ\n\n（其實是因為開發者純手動輸入，沒用資料庫跟爬蟲。才會增加比較慢XD）"
 		}
 	default:
 		print_string = "HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用半形空白隔開喔！\n不然我會看不懂＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能"
