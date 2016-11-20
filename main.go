@@ -56,8 +56,18 @@ func anime(text string,user_msgid string) string {
 //	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	reg := regexp.MustCompile("^.*(動畫|動畫瘋|巴哈姆特|anime|Anime|アニメ)(\\s|　|:|;|：|；)([\u4e00-\u9fa5_a-zA-Z0-9]*)\\D*(\\d{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	switch reg.ReplaceAllString(text, "$1"){
+	case "新番"
+		print_string = "最近一期是日本 2016 十月開播的動畫：\n" + 
+		"歌之☆王子殿下♪ 真愛 LEGEND STAR\n" +
+		"伯納德小姐說。\n" +
+		"長騎美眉\n" +
+		"3 月的獅子\n" +
+		"黑白來看守所\n" +
+		"我太受歡迎了該怎麼辦\n" +
+		"無畏魔女"
 	case "目錄","動畫清單","清單","索引","index","Index":
 		print_string = "你可以問我下面這些動畫，我會帶你去看！\n\n" +
+		"※ 想知道最近期的新動畫可以輸入「新番」查詢\n"
 		"※ 以下是目前能夠查詢的動畫\n，冒號後面是短搜法，全名也可以。\n\n" +
 		"這個美術社大有問題：美術社\n" +
 		"歌之☆王子殿下♪ 系列：歌王子\n" +
@@ -577,7 +587,7 @@ func anime(text string,user_msgid string) string {
 			default:
 			}
 		default:
-			print_string = "你是要找 " +  reg.ReplaceAllString(text, "$3") + " 對嗎？\n對不起，我找不到這部動畫，我還沒學呢...（目前只會歌王子跟美術社）\n我目前知道的動畫還很少，因為我考試不及格QAQ\n\n（其實是因為開發者純手動輸入，沒用資料庫跟爬蟲。才會增加比較慢XD）"
+			print_string = "你是要找 " +  reg.ReplaceAllString(text, "$3") + " 對嗎？\n對不起，我找不到這部動畫，我還沒學呢...（可輸入「目錄」查看支援的作品）\n我目前知道的動畫還很少，因為我考試不及格QAQ\n\n（其實是因為開發者半手動輸入更新，沒用自動化爬蟲跟資料庫。才會增加比較慢XD）"
 		}
 	default:
 		print_string = "HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能"
