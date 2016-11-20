@@ -56,6 +56,24 @@ func anime(text string,user_msgid string) string {
 //	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	reg := regexp.MustCompile("^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ)(\\s|　|:|;|：|；)([\u4e00-\u9fa5_a-zA-Z0-9]*)\\D*(\\d{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	switch reg.ReplaceAllString(text, "$1"){
+	case "目錄","動畫清單","清單","索引","index","Index":
+		print_string = "你可以問我下面這些動畫，我會帶你去看！\n\n" +
+		"※ 以下是目前能夠查詢的動畫\n，冒號後面是短搜法，全名也可以。\n\n" +
+		"這個美術社大有問題：美術社\n" +
+		"歌之☆王子殿下♪ 系列：歌王子\n" +
+		"三月的獅子：3月\n" +
+		"我太受歡迎了該怎麼辦：我太受歡迎\n" +
+		"長騎美眉：長騎\n" +
+		"少年阿貝GO！GO！小芝麻\n" +
+		"神裝少女小纏\n" +
+		"夏目友人帳 伍\n" +
+		"黑白來看守所\n" +
+		"喵阿愣！\n" +
+		"雙星之陰陽師\n" +
+		"無畏魔女\n" +
+		"伯納德小姐說\n" +
+		"漂流武士\n" +
+		"JOJO 的奇妙冒險 不滅鑽石：JOJO"
 	case "開發者":
 		print_string = "你找我主人？OK！\n我跟你講我的夥伴喵在哪，你去加他。\n他跟主人很親近的，跟他說的話主人都會看到。\nhttps://line.me/R/ti/p/%40uwk0684z\n\n\n你也可以從下面這個連結直接跟他線上對話。\n\n如果他不在線上一樣可以留言給他，\n他會收到的！\n這有跟手機連線會自動同步。" +
 		"\n\nhttp://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + user_msgid +
