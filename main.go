@@ -179,8 +179,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					log.Print(err)
 				}
 				//https://devdocs.line.me/en/?go#send-message-object
-				linebot.NewTextMessage(bot_msg)).Do();
-				linebot.NewTextMessage(bot_msg)).Do();
+				linebot.NewTextMessage(bot_msg).Do();
+				linebot.NewTextMessage(bot_msg).Do();
 			}
 		}
 	}
