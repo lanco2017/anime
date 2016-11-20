@@ -149,7 +149,7 @@ func anime(text string,user_msgid string) string {
 			case "24":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3919"
 			case "25":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3920"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3920" + "\n\n等等！這是最後一話！？"
 			default:
 			}
 		case "文豪野犬 第二季","文豪野犬":
