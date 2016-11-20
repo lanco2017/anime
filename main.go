@@ -172,6 +172,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				
 				//anime
 				bot_msg = anime(message.Text)
+
+				bot_msg = {
+				    "type": "location",
+				    "title": "my location",
+				    "address": "〒150-0002 東京都渋谷区渋谷２丁目２１−１",
+				    "latitude": 35.65910807942215,
+				    "longitude": 139.70372892916203
+				}
 				
 				//增加到這
 //				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
@@ -179,8 +187,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					log.Print(err)
 				}
 				//https://devdocs.line.me/en/?go#send-message-object
-				linebot.NewTextMessage(bot_msg).Do();
-				linebot.NewTextMessage(bot_msg).Do();
 			}
 		}
 	}
