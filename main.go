@@ -174,17 +174,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				bot_msg = anime(message.Text)
 				
 				//增加到這
-				
 //				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 					log.Print(err)
 				}
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
-					log.Print(err)
-				}
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
-					log.Print(err)
-				}
+				//https://devdocs.line.me/en/?go#send-message-object
+				linebot.NewTextMessage(bot_msg)).Do();
+				linebot.NewTextMessage(bot_msg)).Do();
 			}
 		}
 	}
