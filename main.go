@@ -74,7 +74,7 @@ func anime(text string,user_msgid string) string {
 		"伯納德小姐說\n" +
 		"漂流武士\n" +
 		"JOJO 的奇妙冒險 不滅鑽石：JOJO\n\n" +
-		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n例如：動畫 雙星 1\nanime：黑白來：5\n\n都可以"
+		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n例如：\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者":
 		print_string = "你找我主人？OK！\n我跟你講我的夥伴喵在哪，你去加他。\n他跟主人很親近的，跟他說的話主人都會看到。\nhttps://line.me/R/ti/p/%40uwk0684z\n\n\n你也可以從下面這個連結直接跟他線上對話。\n\n如果他不在線上一樣可以留言給他，\n他會收到的！\n這有跟手機連線會自動同步。" +
 		"\n\nhttp://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + user_msgid +
