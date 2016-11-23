@@ -733,25 +733,23 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		//The LINE Messaging API defines 7 types of event - EventTypeMessage, EventTypeFollow, EventTypeUnfollow, EventTypeJoin, EventTypeLeave, EventTypePostback, EventTypeBeacon. You can check the event type by using event.Type
 		//http://jessicaheoflearn.blogspot.tw/2016/09/golang-line-delicious-herokuline-bot.html
 		// https://github.com/Jessicahe/lineproject/blob/master/main.go
-		// content := event.Content()
-		// if content != nil && content.IsOperation && content.OpType == 4 {
-		// 	//add new friend
-		// 	_, err := bot.SendText([]string{event.RawContent.Params[0]}, "Hi~\n歡迎加入 Delicious!\n\n想查詢附近或各地美食都可以LINE我呦！\n\n請問你想吃什麼?\nex:義大利麵\n\n想不到吃什麼，也可以直接'傳送目前位置訊息'")
-		// 	var img = "http://imageshack.com/a/img921/318/DC21al.png"
-		// 	_, err = bot.SendImage([]string{content.From}, img, img)
-		// 	if err != nil {
-		// 		log.Println(err)
-		// 	}
-		// }
-		//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
-		if event.Type == linebot.EventTypeJoin {
-			switch message := event.Message.(type) {
-			case *linebot.TextMessage:
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("歡迎光臨")).Do(); err != nil {
-					log.Print(err)
-				}
+		content := event.Content()
+		if content != nil && content.IsOperation && content.OpType == 4 {
+			//add new friend
+			_, err := bot.SendText([]string{event.RawContent.Params[0]}, "Hi~\n歡迎加入 Delicious!\n\n想查詢附近或各地美食都可以LINE我呦！\n\n請問你想吃什麼?\nex:義大利麵\n\n想不到吃什麼，也可以直接'傳送目前位置訊息'")
+			var img = "http://imageshack.com/a/img921/318/DC21al.png"
+			_, err = bot.SendImage([]string{content.From}, img, img)
+			if err != nil {
+				log.Println(err)
 			}
 		}
+		//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
+// 		if event.Type == linebot.EventTypeJoin {
+
+// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("歡迎光臨")).Do(); err != nil {
+// 					log.Print(err)
+
+// 		}
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
