@@ -728,6 +728,30 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	for _, event := range events {
+		// https://devdocs.line.me/en/#send-message-object
+		//https://github.com/line/line-bot-sdk-go
+		//The LINE Messaging API defines 7 types of event - EventTypeMessage, EventTypeFollow, EventTypeUnfollow, EventTypeJoin, EventTypeLeave, EventTypePostback, EventTypeBeacon. You can check the event type by using event.Type
+		//http://jessicaheoflearn.blogspot.tw/2016/09/golang-line-delicious-herokuline-bot.html
+		// https://github.com/Jessicahe/lineproject/blob/master/main.go
+		// content := event.Content()
+		// if content != nil && content.IsOperation && content.OpType == 4 {
+		// 	//add new friend
+		// 	_, err := bot.SendText([]string{event.RawContent.Params[0]}, "Hi~\n歡迎加入 Delicious!\n\n想查詢附近或各地美食都可以LINE我呦！\n\n請問你想吃什麼?\nex:義大利麵\n\n想不到吃什麼，也可以直接'傳送目前位置訊息'")
+		// 	var img = "http://imageshack.com/a/img921/318/DC21al.png"
+		// 	_, err = bot.SendImage([]string{content.From}, img, img)
+		// 	if err != nil {
+		// 		log.Println(err)
+		// 	}
+		// }
+		//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
+		if event.Type == linebot.EventTypeJoin {
+			switch message := event.Message.(type) {
+			case *linebot.TextMessage:
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("歡迎光臨")).Do(); err != nil {
+					log.Print(err)
+				}
+			}
+		}
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
@@ -740,31 +764,39 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 				//這裡開始增
 				//switch 測試
-				switch message.Text {
-				case "0":
-					bot_msg = "1"
-				case "1":
-					bot_msg = "2"
-				case "2":
-					bot_msg = "3"
-				case "3":
-					bot_msg = "4"
-				case "4":
-					bot_msg = "5"
-				case "5":
-					bot_msg = "6"
-				default:
-				}
+					// switch message.Text {
+					// case "0":
+					// 	bot_msg = "1"
+					// case "1":
+					// 	bot_msg = "2"
+					// case "2":
+					// 	bot_msg = "3"
+					// case "3":
+					// 	bot_msg = "4"
+					// case "4":
+					// 	bot_msg = "5"
+					// case "5":
+					// 	bot_msg = "6"
+					// default:
+					// }
 				
 				//anime
 				bot_msg = anime(message.Text,message.ID)
-				bot_msg = `{"type": "image","originalContentUrl": "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96","previewImageUrl": "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"}`
+					// bot_msg = `{"type": "image","originalContentUrl": "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96","previewImageUrl": "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"}`
 				//增加到這
-//				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
+					// if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 					log.Print(err)
 				}
 				//https://devdocs.line.me/en/?go#send-message-object
+
+				// if err != nil {
+				// 	log.Println(err)
+				// 	_, err = bot.SendText([]string{content.From}, "查無資料！：")
+				// 	var img = "http://imageshack.com/a/img921/318/DC21al.png"
+				// 	_, err = bot.SendImage([]string{content.From}, img, img)
+				// }
+
 			}
 		}
 	}
