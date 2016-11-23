@@ -758,7 +758,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				
 				//anime
 				bot_msg = anime(message.Text,message.ID)
-				
+				bot_msg = `{"type": "image","originalContentUrl": "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96","previewImageUrl": "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"}`
 				//增加到這
 //				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
