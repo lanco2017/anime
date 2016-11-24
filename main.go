@@ -730,6 +730,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	for _, event := range events {
+		content := result.Content()
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
@@ -743,6 +744,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				
 				//anime
 				bot_msg = anime(message.Text,message.ID)
+				log.Print("我方回應內容(anime)"：bot_msg)
 				
 				//增加到這
 //				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
@@ -754,25 +756,31 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					log.Print(err)
 				}				
 			case *linebot.ImageMessage:
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟圖")).Do(); err != nil {
-					log.Print(err)
+				_, err := bot.SendText([]string{result.RawContent.Params[0]}, "Hi~\n歡迎加入 Delicious!\n\n想查詢附近或各地美食都可以LINE我呦！\n\n請問你想吃什麼?\nex:義大利麵\n\n想不到吃什麼，也可以直接'傳送目前位置訊息'")
+				var img = "http://imageshack.com/a/img921/318/DC21al.png"
+				_, err = bot.SendImage([]string{content.From}, img, img)
+				if err != nil {
+					log.Println(err)
 				}
+// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟圖")).Do(); err != nil {
+// 					log.Print(err)
+// 				}
 			case *linebot.VideoMessage:
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟影片")).Do(); err != nil {
-					log.Print(err)
-				}
+// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟影片")).Do(); err != nil {
+// 					log.Print(err)
+// 				}
 			case *linebot.AudioMessage:
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟聲音")).Do(); err != nil {
-					log.Print(err)
-				}
+// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟聲音")).Do(); err != nil {
+// 					log.Print(err)
+// 				}
 			case *linebot.LocationMessage:
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟定位")).Do(); err != nil {
-					log.Print(err)
-				}
+// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟定位")).Do(); err != nil {
+// 					log.Print(err)
+// 				}
 			case *linebot.StickerMessage:
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟貼圖")).Do(); err != nil {
-					log.Print(err)
-				}
+// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟貼圖")).Do(); err != nil {
+// 					log.Print(err)
+// 				}
 			}
 		}
 	}
