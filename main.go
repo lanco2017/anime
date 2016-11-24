@@ -755,12 +755,17 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					log.Print(err)
 				}				
 			case *linebot.ImageMessage:
-				_, err := bot.SendText([]string{event.RawContent.Params[0]}, "Hi~\n歡迎加入 Delicious!\n\n想查詢附近或各地美食都可以LINE我呦！\n\n請問你想吃什麼?\nex:義大利麵\n\n想不到吃什麼，也可以直接'傳送目前位置訊息'")
-				var img = "http://imageshack.com/a/img921/318/DC21al.png"
-				_, err = bot.SendImage([]string{content.From}, img, img)
-				if err != nil {
-					log.Println(err)
+// 				_, err := bot.SendText([]string{event.RawContent.Params[0]}, "Hi~\n歡迎加入 Delicious!\n\n想查詢附近或各地美食都可以LINE我呦！\n\n請問你想吃什麼?\nex:義大利麵\n\n想不到吃什麼，也可以直接'傳送目前位置訊息'")
+// 				var img = "http://imageshack.com/a/img921/318/DC21al.png"
+// 				_, err = bot.SendImage([]string{content.From}, img, img)
+// 				if err != nil {
+// 					log.Println(err)
+// 				}
+				
+				if err := bot.handleImage(message, event.ReplyToken); err != nil {
+					log.Print(err)
 				}
+				
 // 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟圖")).Do(); err != nil {
 // 					log.Print(err)
 // 				}
