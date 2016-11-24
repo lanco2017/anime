@@ -814,7 +814,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				log.Print(source.UserID)
 				username := ""
 				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
-					username = "懶懶" + userID + groupID + RoomID
+					username = "懶懶\n" + userID + "群組 ID = " + groupID + "\n房間ID = "  +  RoomID
 				}
 				if source.UserID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
 					username = "包包"
