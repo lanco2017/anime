@@ -736,7 +736,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	
 	for _, event := range events {
-		if event.Type == EventTypeJoin {
+		if event.Type == linebot.EventTypeJoin {
 			if err := bot.replyText(event.ReplyToken, "Joined "+string(event.Source.Type)); err != nil {
 				log.Print(err)
 			}	
