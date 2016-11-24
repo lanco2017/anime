@@ -53,7 +53,7 @@ func real_num(text string) string {
 func anime(text string,user_msgid string) string {
 	print_string := text
 	text = real_num(text)
-//	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
+	//	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	reg := regexp.MustCompile("^.*(動畫|動畫瘋|巴哈姆特|anime|Anime|ａｎｉｍｅ|Ａｎｉｍｅ|アニメ)(\\s|　|:|;|：|；)([\u4e00-\u9fa5_a-zA-Z0-9]*)\\D*(\\d{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	
 	log.Print("--抓取分析觀察--")
@@ -754,12 +754,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				bot_msg = anime(message.Text,message.ID)
 				log.Print("我方回應內容(text-anime)：" + bot_msg)
 				
-				//增加到這
-//				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
-// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
-// 					log.Print(err)
-// 				}
-				//https://devdocs.line.me/en/?go#send-message-object
+								//增加到這
+					//				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
+					// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+					// 					log.Print(err)
+					// 				}
+								//https://devdocs.line.me/en/?go#send-message-object
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 					log.Print(err)
 				}
@@ -768,21 +768,32 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 				    }
 			case *linebot.ImageMessage:
-// 				_, err := bot.SendText([]string{event.RawContent.Params[0]}, "Hi~\n歡迎加入 Delicious!\n\n想查詢附近或各地美食都可以LINE我呦！\n\n請問你想吃什麼?\nex:義大利麵\n\n想不到吃什麼，也可以直接'傳送目前位置訊息'")
-// 				var img = "http://imageshack.com/a/img921/318/DC21al.png"
-// 				_, err = bot.SendImage([]string{content.From}, img, img)
-// 				if err != nil {
-// 					log.Println(err)
-// 				}
-				
-// 				if err := bot.handleImage(message, event.ReplyToken); err != nil {
-// 					log.Print(err)
-// 				}
-				//https://devdocs.line.me/en/#webhook-event-object
+						  // 				_, err := bot.SendText([]string{event.RawContent.Params[0]}, "Hi~\n歡迎加入 Delicious!\n\n想查詢附近或各地美食都可以LINE我呦！\n\n請問你想吃什麼?\nex:義大利麵\n\n想不到吃什麼，也可以直接'傳送目前位置訊息'")
+					 	 // 				var img = "http://imageshack.com/a/img921/318/DC21al.png"
+						// 				_, err = bot.SendImage([]string{content.From}, img, img)
+						// 				if err != nil {
+						// 					log.Println(err)
+						// 				}
+									
+						// 				if err := bot.handleImage(message, event.ReplyToken); err != nil {
+						// 					log.Print(err)
+						// 				}
+									//https://devdocs.line.me/en/#webhook-event-object
 				log.Print(message.ID)
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？")).Do(); err != nil {
-					log.Print(err)
-				}
+				// if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？")).Do(); err != nil {
+				// 	log.Print(err)
+				// }
+					bot2, err2 := linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
+					if err2 != nil {
+					    ...
+					}
+					res, err2 := bot.GetUserProfile(message.ID).Do();
+					if err != nil {
+					    ...
+					}
+					println(res.Displayname)
+					println(res.PicutureURL)
+					println(res.StatusMessage)
 			case *linebot.VideoMessage:
  				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這影片是？")).Do(); err != nil {
  					log.Print(err)
