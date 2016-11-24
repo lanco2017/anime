@@ -737,7 +737,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	
 	for _, event := range events {
 		if event.Type == linebot.EventTypeJoin {
-			if err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("Joined "+event.Source.Type)); err != nil {
+			if err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("Joined "+string(event.Source.Type))); err != nil {
 				log.Print(err)
 			}	
 // 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
