@@ -782,7 +782,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					push_string = "唉呦，你是包包吼"
 				}
 					if source.Type == linebot.EventSourceTypeUser {
-						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(source.UserID)).Do(); err != nil {
+						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(push_string)).Do(); err != nil {
 							log.Print(err)
 						}
 					}
