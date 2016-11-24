@@ -806,6 +806,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									//https://devdocs.line.me/en/#webhook-event-object
 				log.Print("message.ID = " + message.ID)
 				source := event.Source
+
+				userID := event.Source.UserID
+				groupID := event.Source.GroupID
+				RoomID := event.Source.RoomID
+				
 				log.Print(source.UserID)
 				username := ""
 				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
