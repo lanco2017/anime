@@ -796,8 +796,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					log.Print(err)
 				}
 			case *linebot.StickerMessage:
-				log.Print(packageId)
-				log.Print(stickerId)
+				log.Print(message.packageId)
+				log.Print(message.stickerId)
  				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("^w^")).Do(); err != nil {
  					log.Print(err)
  				}
