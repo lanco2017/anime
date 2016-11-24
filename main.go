@@ -96,6 +96,7 @@ func anime(text string,user_msgid string) string {
 	case "動畫", "動畫瘋","巴哈姆特", "anime", "アニメ","Anime":
 		print_string = text + "？\n好像有這個動畫耶，但我找不太到詳細的QQ\n你要手動去「巴哈姆特動畫瘋」找找嗎？\n\nhttps://ani.gamer.com.tw"
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
+		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
 		case "影子籃球員":
 			//reg.ReplaceAllString(text, "$2")
