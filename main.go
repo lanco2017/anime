@@ -720,6 +720,10 @@ func anime(text string,user_msgid string) string {
 	return print_string
 }
 
+//http://qiita.com/koki_cheese/items/66980888d7e8755d01ec
+// func handleTask(w http.ResponseWriter, r *http.Request) {
+// }
+
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
 
@@ -759,7 +763,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//https://devdocs.line.me/en/?go#send-message-object
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 					log.Print(err)
-				}				
+				}
+				m := linebot.NewTextMessage("ok")
+				    if _, err = bot.ReplyMessage(event.ReplyToken, m).Do(); err != nil {
+
+				    }
 			case *linebot.ImageMessage:
 // 				_, err := bot.SendText([]string{event.RawContent.Params[0]}, "Hi~\n歡迎加入 Delicious!\n\n想查詢附近或各地美食都可以LINE我呦！\n\n請問你想吃什麼?\nex:義大利麵\n\n想不到吃什麼，也可以直接'傳送目前位置訊息'")
 // 				var img = "http://imageshack.com/a/img921/318/DC21al.png"
