@@ -760,9 +760,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					// 					log.Print(err)
 					// 				}
 								//https://devdocs.line.me/en/?go#send-message-object
-// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
-// 					log.Print(err)
-// 				}
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+					log.Print(err)
+				}
 // 				m := linebot.NewTextMessage("ok")
 // 				    if _, err = bot.ReplyMessage(event.ReplyToken, m).Do(); err != nil {
 
