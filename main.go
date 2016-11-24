@@ -744,7 +744,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				
 				//anime
 				bot_msg = anime(message.Text,message.ID)
-				log.Print("我方回應內容(anime)"：bot_msg)
+				log.Print("我方回應內容(anime)：" + bot_msg)
 				
 				//增加到這
 //				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
