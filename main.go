@@ -746,11 +746,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if source.UserID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
 					push_string = "唉呦，你是包包吼"
 				}
-					if source.Type == linebot.EventSourceTypeUser {
+
 						if _, err = bot.PushMessage(source.GroupID, linebot.NewTextMessage(push_string)).Do(); err != nil {
 							log.Print(err)
 						}
-					}
+						if _, err = bot.PushMessage("Ca78bf89fa33b777e54b4c13695818f81", linebot.NewTextMessage("這裡純測試對嗎")).Do(); err != nil {
+							log.Print(err)
+						}
+
 			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("想知道我的功能，請說:簡介")).Do(); err != nil {
 					log.Print(err)
 				}
