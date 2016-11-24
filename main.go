@@ -780,29 +780,27 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 // 				}
 				//https://devdocs.line.me/en/#webhook-event-object
 				log.Print(message.ID)
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟圖")).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？")).Do(); err != nil {
 					log.Print(err)
 				}
 			case *linebot.VideoMessage:
-// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟影片")).Do(); err != nil {
-// 					log.Print(err)
-// 				}
+ 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這影片是？")).Do(); err != nil {
+ 					log.Print(err)
+ 				}
 			case *linebot.AudioMessage:
-// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟聲音")).Do(); err != nil {
-// 					log.Print(err)
-// 				}
+ 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這是什麼聲音？")).Do(); err != nil {
+ 					log.Print(err)
+ 				}
 			case *linebot.LocationMessage:
-				log.Print(message.title)
-				log.Print(message.address)
-				log.Print(message.latitude)
-				log.Print(message.longitude)
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟定位")).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你在這裡？")).Do(); err != nil {
 					log.Print(err)
 				}
 			case *linebot.StickerMessage:
-// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟貼圖")).Do(); err != nil {
-// 					log.Print(err)
-// 				}
+				log.Print(packageId)
+				log.Print(stickerId)
+ 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("^w^")).Do(); err != nil {
+ 					log.Print(err)
+ 				}
 			}
 		}
 	}
