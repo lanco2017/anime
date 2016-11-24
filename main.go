@@ -591,7 +591,7 @@ func anime(text string,user_msgid string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6889"
 			default:
 			}
-		case "美術社","這個美術社大有問題":
+		case "美術社","美術社大有問題","這個美術社大有問題":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1":
