@@ -779,13 +779,19 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						// 					log.Print(err)
 						// 				}
 									//https://devdocs.line.me/en/#webhook-event-object
-				log.Print(message.ID)
-				 if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(`{
-    "type": "text",
-    "text": "Hello, world"
-}`)).Do(); err != nil {
-				 	log.Print(err)
-				 }
+				log.Print("message.ID = " + message.ID)
+				//http://muzigram.muzigen.net/2016/09/linebot-golang-linebot-heroku.html
+				//https://github.com/mogeta/lbot/blob/master/main.go
+				source := event.Source
+				log.Print("source = " + source)
+					if source.Type == linebot.EventSourceTypeUser {
+						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(message.Text)).Do(); err != nil {
+							log.Print(err)
+						}
+					}
+				 // if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？")).Do(); err != nil {
+				 // 	log.Print(err)
+				 // }
 			case *linebot.VideoMessage:
  				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這影片是？")).Do(); err != nil {
  					log.Print(err)
