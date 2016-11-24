@@ -770,9 +770,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//http://muzigram.muzigen.net/2016/09/linebot-golang-linebot-heroku.html
 				//https://github.com/mogeta/lbot/blob/master/main.go
 				source := event.Source
-				log.Print(source.Room)
-				log.Print(source.User)	
-				log.Print(source.Group)
+				log.Print(source.Roomid)
+				log.Print(source.UserID)	
+				log.Print(source.groupId)
 					if source.Type == linebot.EventSourceTypeUser {
 						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(source.UserID)).Do(); err != nil {
 							log.Print(err)
