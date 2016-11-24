@@ -733,8 +733,15 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
+				//http://www.netadmin.com.tw/images/news/NP161004000316100411441903.png
  				//message.ID
 				//message.Text
+				log.Print(message.ID)
+				log.Print(message.Text)
+				log.Print(message.contentType)
+				log.Print(message.from)
+				log.Print(message.location)
+				log.Print(message.createdTime)
 				bot_msg := "你是說 " + message.Text + " 嗎？\n\n我看看喔...等我一下..."
 				// if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 				// 	log.Print(err)
@@ -762,13 +769,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 // 					log.Println(err)
 // 				}
 				
-				if err := bot.handleImage(message, event.ReplyToken); err != nil {
-					log.Print(err)
-				}
-				
-// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟圖")).Do(); err != nil {
+// 				if err := bot.handleImage(message, event.ReplyToken); err != nil {
 // 					log.Print(err)
 // 				}
+				
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟圖")).Do(); err != nil {
+					log.Print(err)
+				}
 			case *linebot.VideoMessage:
 // 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟影片")).Do(); err != nil {
 // 					log.Print(err)
