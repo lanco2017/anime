@@ -55,11 +55,14 @@ func anime(text string,user_msgid string) string {
 	text = real_num(text)
 //	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	reg := regexp.MustCompile("^.*(動畫|動畫瘋|巴哈姆特|anime|Anime|ａｎｉｍｅ|Ａｎｉｍｅ|アニメ)(\\s|　|:|;|：|；)([\u4e00-\u9fa5_a-zA-Z0-9]*)\\D*(\\d{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
+	
+	log.Print("--抓取分析觀察--")
 	log.Print(reg.ReplaceAllString(text, "$1"))
 	log.Print(reg.ReplaceAllString(text, "$2"))
 	log.Print(reg.ReplaceAllString(text, "$3"))
 	log.Print(reg.ReplaceAllString(text, "$4"))
-	log.Print(reg.ReplaceAllString(text, "----"))
+	log.Print(reg.ReplaceAllString(text, "--抓取分析結束--"))
+	
 	switch reg.ReplaceAllString(text, "$1"){
 	case "新番":
 		print_string = "最近一期是日本 2016 十月開播的動畫：\n" + 
