@@ -736,6 +736,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	
 	for _, event := range events {
+		if event.Type == EventTypeJoin {
+			if err := bot.replyText(event.ReplyToken, "Joined "+string(event.Source.Type)); err != nil {
+				log.Print(err)
+			}	
+// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+// 					log.Print(err)
+// 				}
+		}
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
@@ -768,7 +776,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 // 				    }
 				
-				//---------------------這段可以跟 ReplyMessage 同時有效，但是只會在 1 對 1 有效。群組無效。---------
+				//----------PushMessage-----------這段可以跟 ReplyMessage 同時有效，但是只會在 1 對 1 有效。群組無效。---------
+				//------開發者測試方案有效(好友最多50人/訊息無上限)，免費版(好友不限人數/訊息限制1000)、入門版無效，旗艦版、專業版有效。
 				
 				//http://muzigram.muzigen.net/2016/09/linebot-golang-linebot-heroku.html
 				//https://github.com/mogeta/lbot/blob/master/main.go
