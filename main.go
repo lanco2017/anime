@@ -723,45 +723,6 @@ func anime(text string,user_msgid string) string {
 //http://qiita.com/koki_cheese/items/66980888d7e8755d01ec
 // func handleTask(w http.ResponseWriter, r *http.Request) {
 // }
-
-func handleTask(w http.ResponseWriter, r *http.Request) {
-    c := newContext(r)
-    data := r.FormValue("data")
-    if data == "" {
-        errorf(c, "No data")
-        return
-    }
-
-    j, err := base64.StdEncoding.DecodeString(data)
-    if err != nil {
-        errorf(c, "base64 DecodeString: %v", err)
-        return
-    }
-
-    e := new(linebot.Event)
-    err = json.Unmarshal(j, e)
-    if err != nil {
-        errorf(c, "json.Unmarshal: %v", err)
-        return
-    }
-
-    bot, err := newLINEBot(c)
-    if err != nil {
-        errorf(c, "newLINEBot: %v", err)
-        return
-    }
-
-    logf(c, "EventType: %s\nMessage: %#v", e.Type, e.Message)
-
-    m := linebot.NewTextMessage("ok")
-    if _, err = bot.ReplyMessage(e.ReplyToken, m).WithContext(c).Do(); err != nil {
-        errorf(c, "ReplayMessage: %v", err)
-        return
-    }
-
-    w.WriteHeader(200)
-}
-
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
 
