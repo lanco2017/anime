@@ -783,17 +783,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？")).Do(); err != nil {
 				// 	log.Print(err)
 				// }
-					bot2, err2 := linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
-					if err2 != nil {
-						log.Print(err2)
-					}
-					res, err2 := bot.GetUserProfile("123").Do();
-					if err2 != nil {
-						log.Print(err2)
-					}
-					println(res.Displayname)
-					println(res.PicutureURL)
-					println(res.StatusMessage)
 			case *linebot.VideoMessage:
  				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這影片是？")).Do(); err != nil {
  					log.Print(err)
