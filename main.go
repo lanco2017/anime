@@ -738,8 +738,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	for _, event := range events {
 		if event.Type == linebot.EventTypeJoin {
 				source := event.Source
-				log.Print(source.UserID)
-				push_string := ""
+				log.Print("觸發加入事件" + source.UserID)
+				push_string := "12345678789"
 				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
 					push_string = "你好，主人。"
 				}
