@@ -738,6 +738,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	for _, event := range events {
 		if event.Type == linebot.EventTypeJoin {
 			
+			   leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")
+			    rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")
+
+			    template := linebot.NewConfirmTemplate("Hello World", leftBtn, rightBtn)
+
+			    messgage1 := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
 			
 				source := event.Source
 				log.Print("觸發加入群組聊天事件 = " + source.GroupID)
@@ -751,10 +757,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						if _, err = bot.PushMessage("Ca78bf89fa33b777e54b4c13695818f81", linebot.NewTextMessage("這裡純測試對嗎")).Do(); err != nil {
 							log.Print(err)
 						}
-
-			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("大家好哇～！\n我是懶懶寫來測試的機器人！\n\n想知道我的嗜好，請說：簡介")).Do(); err != nil {
+			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(messgage1)).Do(); err != nil {
 					log.Print(err)
-				}
+			}
+			
+// 			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("大家好哇～！\n我是懶懶寫來測試的機器人！\n\n想知道我的嗜好，請說：簡介")).Do(); err != nil {
+// 					log.Print(err)
+// 			}
 		}
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
