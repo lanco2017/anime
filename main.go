@@ -775,10 +775,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				source := event.Source
 				log.Print(source.UserID)
 				push_string := ""
-				if source.UserID = "U6f738a70b63c5900aa2c0cbbe0af91c4"{
+				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
 					push_string = "你好，主人。"
 				}
-				if source.UserID = "Uf150a9f2763f5c6e18ce4d706681af7f"{
+				if source.UserID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
 					push_string = "唉呦，你是包包吼"
 				}
 					if source.Type == linebot.EventSourceTypeUser {
