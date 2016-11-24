@@ -778,8 +778,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 // 				if err := bot.handleImage(message, event.ReplyToken); err != nil {
 // 					log.Print(err)
 // 				}
+				//https://devdocs.line.me/en/#webhook-event-object
 				log.Print(message.ID)
-				log.Print(message.Text)				
+				log.Print(message.image)				
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟圖")).Do(); err != nil {
 					log.Print(err)
 				}
