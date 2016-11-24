@@ -734,33 +734,39 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// 	log.Print(err)
 				// }
 
-				//這裡開始增
-				//switch 測試
-				switch message.Text {
-				case "0":
-					bot_msg = "1"
-				case "1":
-					bot_msg = "2"
-				case "2":
-					bot_msg = "3"
-				case "3":
-					bot_msg = "4"
-				case "4":
-					bot_msg = "5"
-				case "5":
-					bot_msg = "6"
-				default:
-				}
 				
 				//anime
 				bot_msg = anime(message.Text,message.ID)
 				
 				//增加到這
 //				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
+// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+// 					log.Print(err)
+// 				}
+				//https://devdocs.line.me/en/?go#send-message-object
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 					log.Print(err)
+				}				
+			case *linebot.ImageMessage:
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟圖")).Do(); err != nil {
+					log.Print(err)
 				}
-				//https://devdocs.line.me/en/?go#send-message-object
+			case *linebot.VideoMessage:
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟影片")).Do(); err != nil {
+					log.Print(err)
+				}
+			case *linebot.AudioMessage:
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟聲音")).Do(); err != nil {
+					log.Print(err)
+				}
+			case *linebot.LocationMessage:
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟定位")).Do(); err != nil {
+					log.Print(err)
+				}
+			case *linebot.StickerMessage:
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟貼圖")).Do(); err != nil {
+					log.Print(err)
+				}
 			}
 		}
 	}
