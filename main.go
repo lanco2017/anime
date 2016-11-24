@@ -767,15 +767,26 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 // 				    if _, err = bot.ReplyMessage(event.ReplyToken, m).Do(); err != nil {
 
 // 				    }
+				
+				//---------------------這段可以跟 ReplyMessage 同時有效，但是只會在 1 對 1 有效。群組無效。---------
+				
 				//http://muzigram.muzigen.net/2016/09/linebot-golang-linebot-heroku.html
 				//https://github.com/mogeta/lbot/blob/master/main.go
 				source := event.Source
-				log.Print(source.UserID)	
+				log.Print(source.UserID)
+				push_string := ""
+				if source.UserID = "U6f738a70b63c5900aa2c0cbbe0af91c4"{
+					push_string = "你好，主人。"
+				}
+				if source.UserID = "Uf150a9f2763f5c6e18ce4d706681af7f"{
+					push_string = "唉呦，你是包包吼"
+				}
 					if source.Type == linebot.EventSourceTypeUser {
 						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(source.UserID)).Do(); err != nil {
 							log.Print(err)
 						}
 					}
+				//---------------------這段可以跟 ReplyMessage 同時有效，但是只會在 1 對 1 有效。群組無效。---------
 			case *linebot.ImageMessage:
 						  // 				_, err := bot.SendText([]string{event.RawContent.Params[0]}, "Hi~\n歡迎加入 Delicious!\n\n想查詢附近或各地美食都可以LINE我呦！\n\n請問你想吃什麼?\nex:義大利麵\n\n想不到吃什麼，也可以直接'傳送目前位置訊息'")
 					 	 // 				var img = "http://imageshack.com/a/img921/318/DC21al.png"
@@ -789,6 +800,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						// 				}
 									//https://devdocs.line.me/en/#webhook-event-object
 				log.Print("message.ID = " + message.ID)
+				source := event.Source
+				log.Print(source.UserID)
 				 if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？")).Do(); err != nil {
 				 	log.Print(err)
 				 }
