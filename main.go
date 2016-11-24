@@ -780,7 +780,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 // 				}
 				//https://devdocs.line.me/en/#webhook-event-object
 				log.Print(message.ID)
-				log.Print(message.image)				
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟圖")).Do(); err != nil {
 					log.Print(err)
 				}
@@ -793,9 +792,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 // 					log.Print(err)
 // 				}
 			case *linebot.LocationMessage:
-// 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟定位")).Do(); err != nil {
-// 					log.Print(err)
-// 				}
+				log.Print(message.title)
+				log.Print(message.address)
+				log.Print(message.latitude)
+				log.Print(message.longitude)
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟定位")).Do(); err != nil {
+					log.Print(err)
+				}
 			case *linebot.StickerMessage:
 // 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你丟貼圖")).Do(); err != nil {
 // 					log.Print(err)
