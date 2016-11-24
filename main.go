@@ -738,10 +738,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//message.Text
 				log.Print(message.ID)
 				log.Print(message.Text)
-				log.Print(message.contentType)
-				log.Print(message.from)
-				log.Print(message.location)
-				log.Print(message.createdTime)
 				bot_msg := "你是說 " + message.Text + " 嗎？\n\n我看看喔...等我一下..."
 				// if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 				// 	log.Print(err)
