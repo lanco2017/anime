@@ -787,7 +787,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					if err2 != nil {
 						log.Print(err2)
 					}
-					res, err2 := bot.GetUserProfile(message.ID).Do();
+					res, err2 := bot.GetUserProfile("123").Do();
 					if err2 != nil {
 						log.Print(err2)
 					}
