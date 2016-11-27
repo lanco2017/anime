@@ -737,7 +737,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	
 	for _, event := range events {
 		if event.Type == linebot.EventTypeJoin {
-			
+
+// 			https://github.com/line/line-bot-sdk-go
+// 			https://github.com/dongri/line-bot-sdk-go/blob/master/examples/server.go
 // 			   leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")
 // 			    rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")
 
