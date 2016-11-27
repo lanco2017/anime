@@ -559,8 +559,11 @@ func anime(text string,user_msgid string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6411"
 			case "6":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6412"
+			case "7":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6884"
 			default:
 			}
+			
 		case "我太受歡迎了該怎麼辦","我太受歡迎","受歡迎":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
@@ -680,7 +683,7 @@ func anime(text string,user_msgid string) string {
 				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2062\n\n" + 
 				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2049"
 			case "9":
-				print_string = anime_say + "不對，我搞錯了這下週才有吧！" + 
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6783" + 
 				"\n\n上面查的這是第四部！日本 2016 年十月才開播。\n雖然還沒播，但有還有前作可以看喔！\n\n" +
 				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2076\n\n" + 
 				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2063\n\n" + 
