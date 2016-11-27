@@ -738,13 +738,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	for _, event := range events {
 		if event.Type == linebot.EventTypeJoin {
 			
-			   leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")
-			    rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")
+// 			   leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")
+// 			    rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")
 
-			    template := linebot.NewConfirmTemplate("Hello World", leftBtn, rightBtn)
+// 			    template := linebot.NewConfirmTemplate("Hello World", leftBtn, rightBtn)
 
-			    messgage1 := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
-			var messages []linebot.Message
+// 			    messgage1 := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
+// 			var messages []linebot.Message
 				source := event.Source
 				log.Print("觸發加入群組聊天事件 = " + source.GroupID)
 				push_string := "很高興你邀請我進來這裡聊天！\n你們的群組代號好像是：\n" + source.GroupID
