@@ -522,7 +522,7 @@ func anime(text string,user_msgid string) string {
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
 			default:
-				print_string = anime_say + "\n可能不受歡迎或其他原因，很遺憾這部已經下架，請幫QQ"
+				print_string = "可能不受歡迎或其他原因，\n很遺憾這部已經下架，請幫QQ"
 			}
 		case "漂流武士":
 			//reg.ReplaceAllString(text, "$2")
