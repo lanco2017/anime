@@ -178,25 +178,55 @@ func anime(text string,user_msgid string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6495"
 			case "7":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6775"
+			case "8":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6776"
+			case "9":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6777"
+			case "10":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6778"
+			case "11":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6877"
 			default:
 			}
 		case "機動戰士鋼彈 鐵血孤兒 第二季","機動戰士鋼彈 鐵血孤兒","機動戰士鋼彈","鐵血孤兒":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6400"
+			case "26":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6973"
 			case "2":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6401"
+			case "27":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6400"
 			case "3":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6402"
+			case "28":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6401"
 			case "4":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6403"
+			case "29":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6402"
 			case "5":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6404"
+			case "30":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6403"
 			case "6":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6405"
+			case "31":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6404"
 			case "7":
+			case "32":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6405"
+			case "8":
+			case "33":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6779"
+			case "9":
+			case "34":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6780"
+			case "10":
+			case "35":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6781"
+			case "11":
+			case "36":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6899"
+			case "12":
+			case "37":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6900"
 			default:
 			}
 		case "星夢手記":
