@@ -581,25 +581,39 @@ func anime(text string,user_msgid string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6418"
 			case "7":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6865"
+			case "8":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6866"
+			case "9":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6867"
+			case "10":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6868"
+			case "11":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6869"
 			default:
 			}
 		case "3月","3月的獅子","三月的獅子","三月":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6479"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6992"
 			case "2":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6480"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6479"
 			case "3":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6481"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6480"
 			case "4":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6482"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6481"
 			case "5":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6483"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6482"
 			case "6":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6484"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6483"
 			case "7":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6484"
+			case "8":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6889"
+			case "9":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6890"
+			case "10":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6891"
 			default:
 			}
 		case "美術社","美術社大有問題","這個美術社大有問題":
@@ -689,25 +703,25 @@ func anime(text string,user_msgid string) string {
 				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2063\n\n" + 
 				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2050"
 			case "10":
-				print_string = anime_say + "不對，我搞錯了這集根本還沒播XD" + 
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6895" + 
 				"\n\n上面查的這是第四部！日本 2016 年十月才開播。\n雖然還沒播，但有還有前作可以看喔！\n\n" +
 				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2070\n\n" + 
 				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2064\n\n" + 
 				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2051"
 			case "11":
-				print_string = anime_say + "不對，我搞錯了這集根本還沒播XD" + 
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6896" + 
 				"\n\n上面查的這是第四部！日本 2016 年十月才開播。\n雖然還沒播，但有還有前作可以看喔！\n\n" +
 				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2078\n\n" + 
 				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2065\n\n" + 
 				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2052"
 			case "12":
-				print_string = anime_say + "不對，我搞錯了這集根本還沒播XD" + 
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6897" + 
 				"\n\n上面查的這是第四部！日本 2016 年十月才開播。\n雖然還沒播，但有還有前作可以看喔！\n\n" +
 				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2079\n\n" + 
 				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2066\n\n" + 
 				"第一部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2053"
 			case "13":
-				print_string = anime_say + "不對，我搞錯了這集根本還沒播XD" + 
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6898" + 
 				"\n\n上面查的這是第四部！日本 2016 年十月才開播。\n雖然還沒播，但有還有前作可以看喔！\n\n" +
 				"第三部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2080\n\n" + 
 				"第二部：\nhttp://ani.gamer.com.tw/animeVideo.php?sn=2067\n\n" + 
