@@ -89,22 +89,28 @@ limitations under the License.
 - 沒有自動化，只能半自動化自己拿去增加 case。
 - 因為我不想用資料庫，但也還不會 Golang 跨站存取的方法
 - 我用以下 JavaScript 達成半自動化更新的目的
+- 2016.12.19 更新：
+  - 因為巴哈現在會增加廣告宣傳期他動畫的 URL。
+但他這功能跟我本來自動抓連接的寫法也吻合，所以會抓進去。
+  - 所以現在改成分有廣告的跟沒廣告的抓法。請肉眼判斷。
 
-```Javascript
-function get_anime(){
-	var output_string = "		case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n			\/\/reg.ReplaceAllString(text, \"$2\")\n			switch reg.ReplaceAllString(text, \"$4\") {\n";
-	var num = 1;
-	for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
-	    if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
-	        output_string += "			case \"" + num + "\":\n" + "				print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n"
-
-	        num++;
-	    }
-	}
-	output_string += "			default:\n			}";
-	console.log(output_string)
-	//return output_string;
+```javascript
+function get_anime(ad=''){
+    var output_string = "		case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n			\/\/reg.ReplaceAllString(text, \"$2\")\n			switch reg.ReplaceAllString(text, \"$4\") {\n";
+    var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
+    for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
+        if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
+            if(num>0){
+                        output_string += "			case \"" + num + "\":\n" + "				print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
+            }
+            num++;
+        }
+    }
+    output_string += "			default:\n			}";
+    console.log(output_string)
+    //return output_string;
 }
 
-get_anime();
+get_anime(0);//get_anime(); //沒廣告的時候
+get_anime(1); //有廣告的時候
 ```
