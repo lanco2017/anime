@@ -636,7 +636,7 @@ func anime(text string,user_msgid string) string {
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6948"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6987"
 			case "2":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6407"
 			case "3":
@@ -655,6 +655,8 @@ func anime(text string,user_msgid string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6885"
 			case "10":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6886"
+			case "11":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6887"
 			default:
 			}
 			
@@ -706,6 +708,8 @@ func anime(text string,user_msgid string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6890"
 			case "9":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6891"
+			case "10":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6892"
 			default:
 			}
 		case "美術社","美術社大有問題","這個美術社大有問題":
