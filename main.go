@@ -1027,16 +1027,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// 	log.Print(err)
 				// }
 
-				log.Print("event.Source.UserID = " + event.Source.UserID)
+// 				log.Print("event.Source.UserID = " + event.Source.UserID)
 				
-				source := event.Source
-				log.Print("source.UserID = " + source.UserID)
+// 				source := event.Source
+// 				log.Print("source.UserID = " + source.UserID)
 				
-				userID := event.Source.UserID
-				log.Print("userID := event.Source.UserID = " + userID)
+// 				userID := event.Source.UserID
+// 				log.Print("userID := event.Source.UserID = " + userID)
 				
 				//anime
-				bot_msg = anime(message.Text,source.UserID,"")//bot_msg = anime(message.Text,message.ID)
+				bot_msg = anime(message.Text,message.ID)
 				log.Print("我方回應內容(text-anime)：" + bot_msg)
 				
 								//增加到這
@@ -1060,8 +1060,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				
 				//http://muzigram.muzigen.net/2016/09/linebot-golang-linebot-heroku.html
 				//https://github.com/mogeta/lbot/blob/master/main.go
-// 				source := event.Source
-// 				log.Print(source.UserID)
+ 				source := event.Source
+ 				log.Print("source.UserID = " + source.UserID)
 				push_string := ""
 				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
 					push_string = "你好，主人。（PUSH_MESSAGE 才可以發）"
