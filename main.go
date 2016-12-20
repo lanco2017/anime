@@ -1030,6 +1030,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//2016.12.20+
 				//只有在 1 對 1 才能抓到 User ID
  				log.Print("event.Source.UserID = " + event.Source.UserID)
+				log.Print("event.Source.GroupID = " + event.Source.GroupID)
+				log.Print("event.Source.RoomID = " + event.Source.RoomID)
 				
 // 				source := event.Source
 // 				log.Print("source.UserID = " + source.UserID)
@@ -1038,7 +1040,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 // 				log.Print("userID := event.Source.UserID = " + userID)
 				target_user := ""
 				if event.Source.UserID == ""{
-					target_user = "nocode"
+					target_user = event.Source.GroupID
 				} else {
 					target_user = event.Source.UserID
 				}
