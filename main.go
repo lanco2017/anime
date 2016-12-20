@@ -1036,7 +1036,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 // 				log.Print("userID := event.Source.UserID = " + userID)
 				
 				//anime
-				bot_msg = anime(message.Text,message.ID)
+				bot_msg = anime(message.Text,message.ID,"")
 				log.Print("我方回應內容(text-anime)：" + bot_msg)
 				
 								//增加到這
