@@ -64,6 +64,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	log.Print(reg.ReplaceAllString(text, "--抓取分析結束--"))
 	
 	switch reg.ReplaceAllString(text, "$1"){
+	case "test":
+		print_string = "GOTEST"
 	case "新番":
 		print_string = "最近一期是日本 2016 十月開播的動畫：\n" + 
 		"歌之☆王子殿下♪ 真愛 LEGEND STAR\n" +
@@ -1056,9 +1058,23 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					// 					log.Print(err)
 					// 				}
 								//https://devdocs.line.me/en/?go#send-message-object
+				
+				//2016.12.20+
 				if bot_msg != ""{
-					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
-						log.Print(err)
+					if bot_msg == "GOTEST"{
+					    leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")
+					    rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")
+
+					    template := linebot.NewConfirmTemplate("Hello World", leftBtn, rightBtn)
+
+					    messgage := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
+						if _, err = bot.ReplyMessage(event.ReplyToken, messgage).Do(); err != nil {
+							log.Print(err)
+						}
+					} else {
+						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+							log.Print(err)
+						}
 					}
 				}
 // 				m := linebot.NewTextMessage("ok")
