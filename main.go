@@ -1095,13 +1095,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//https://github.com/mogeta/lbot/blob/master/main.go
  				source := event.Source
  				log.Print("source.UserID = " + source.UserID)
-				push_string := ""
-				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
-					push_string = "你好，主人。（PUSH_MESSAGE 才可以發）"
-				}
-				if source.UserID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
-					push_string = "唉呦，你是包包吼"
-				}
+				//2016.12.20+//push_string := ""
+// 				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
+// 					push_string = "你好，主人。（PUSH_MESSAGE 才可以發）"
+// 				}
+// 				if source.UserID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
+// 					push_string = "唉呦，你是包包吼"
+// 				}
 //2016.12.20+ close push
 // 					if source.Type == linebot.EventSourceTypeUser {
 // 						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(push_string)).Do(); err != nil {
