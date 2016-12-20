@@ -1030,7 +1030,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// }
 				
 				//2016.12.20+
-				//只有在 1 對 1 才能抓到 User ID
+				//只有在 1 對 1 才能抓到 User ID　在群組才能抓到 event.Source.GroupID
  				log.Print("event.Source.UserID = " + event.Source.UserID)
 				log.Print("event.Source.GroupID = " + event.Source.GroupID)
 				log.Print("event.Source.RoomID = " + event.Source.RoomID)
@@ -1059,18 +1059,24 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					// 				}
 								//https://devdocs.line.me/en/?go#send-message-object
 				
-				//2016.12.20+
+				//2016.12.20+ for test
 				if bot_msg != ""{
 					if bot_msg == "GOTEST"{
-					    leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")
-					    rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")
+						//
+
+
+					    leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")// 後面的參數 "left clicked" = 在使用者按下後，自動幫使用者發訊息
+					    rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")// 後面的參數 "right clicked" = 在使用者按下後，自動幫使用者發訊息
 
 					    template := linebot.NewConfirmTemplate("Hello World", leftBtn, rightBtn)
 
-					    messgage := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
+					    messgage := linebot.NewTemplateMessage("HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。", template)//messgage := linebot.NewTemplateMessage("請使用更新 APP 或使用手機 APP 才能看到這個功能。", template)
 						if _, err = bot.ReplyMessage(event.ReplyToken, messgage).Do(); err != nil {
 							log.Print(err)
 						}
+
+
+
 					} else {
 						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 							log.Print(err)
@@ -1096,16 +1102,17 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if source.UserID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
 					push_string = "唉呦，你是包包吼"
 				}
-					if source.Type == linebot.EventSourceTypeUser {
-						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(push_string)).Do(); err != nil {
-							log.Print(err)
-						}
-					}
-					if source.Type == linebot.EventSourceTypeUser {
-						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(push_string)).Do(); err != nil {
-							log.Print(err)
-						}
-					}
+//2016.12.20+ close push
+// 					if source.Type == linebot.EventSourceTypeUser {
+// 						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(push_string)).Do(); err != nil {
+// 							log.Print(err)
+// 						}
+// 					}
+// 					if source.Type == linebot.EventSourceTypeUser {
+// 						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(push_string)).Do(); err != nil {
+// 							log.Print(err)
+// 						}
+// 					}
 					//上面重覆兩段 push 用來證明 push 才可以連發訊息框，re 只能一個框
 				//---------------------這段可以跟 ReplyMessage 同時有效，但是只會在 1 對 1 有效。群組無效。---------
 			case *linebot.ImageMessage:
@@ -1128,15 +1135,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				userID := event.Source.UserID
 				groupID := event.Source.GroupID
 				RoomID := event.Source.RoomID
+				markID := userID + groupID + RoomID
 				
 				log.Print(source.UserID)
 				//----------------------------------------------------------------取得使用者資訊的寫法
 
 				username := ""
-				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
-					username = "懶懶 = " + userID + "\n群組 ID = " + groupID + "\n房間ID = "  +  RoomID
+				if markID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{//if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
+					username = "懶懶 = " + userID + groupID + RoomID //2016.12.20+
 				}
-				if source.UserID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
+				if markID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
 					username = "包包"
 				}
 				 if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD")).Do(); err != nil {
