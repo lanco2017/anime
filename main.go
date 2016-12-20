@@ -1077,11 +1077,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 // 							log.Print(err)
 // 						}
 
-						image_json:=`{"type": "image",
-    "originalContentUrl": "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96",
-    "previewImageUrl": "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
-}`
-						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(image_json)).Do(); err != nil {
+						//++ https://github.com/dongri/line-bot-sdk-go KEY:linebot.NewImageMessage
+						originalContentURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
+    						previewImageURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
+    						img_message := linebot.NewImageMessage(originalContentURL, previewImageURL)
+						
+						if _, err = bot.ReplyMessage(event.ReplyToken, img_message).Do(); err != nil {
 							log.Print(err)
 						}
 
