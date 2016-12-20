@@ -1026,17 +1026,26 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 				// 	log.Print(err)
 				// }
-
-// 				log.Print("event.Source.UserID = " + event.Source.UserID)
+				
+				//2016.12.20+
+				//只有在 1 對 1 才能抓到 User ID
+ 				log.Print("event.Source.UserID = " + event.Source.UserID)
 				
 // 				source := event.Source
 // 				log.Print("source.UserID = " + source.UserID)
 				
 // 				userID := event.Source.UserID
 // 				log.Print("userID := event.Source.UserID = " + userID)
+				target_user := ""
+				if event.Source.UserID == ""{
+					target_user = "nocode"
+				} else {
+					target_user = event.Source.UserID
+				}
+				
 				
 				//anime
-				bot_msg = anime(message.Text,message.ID,"")
+				bot_msg = anime(message.Text,target_user,"")//bot_msg = anime(message.Text,message.ID,"")
 				log.Print("我方回應內容(text-anime)：" + bot_msg)
 				
 								//增加到這
