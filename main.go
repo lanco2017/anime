@@ -1062,7 +1062,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//2016.12.20+ for test
 				if bot_msg != ""{
 					if bot_msg == "GOTEST"{
-						//
+						//https://github.com/line/line-bot-sdk-go Create message
 
 
 					    leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")// 後面的參數 "left clicked" = 在使用者按下後，自動幫使用者發訊息
