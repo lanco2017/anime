@@ -21,7 +21,7 @@ import (
 	"regexp"
 	"strings"
 
-	//"encoding/json" //https://golang.org/pkg/encoding/json/#example_Decoder
+	"encoding/json" //https://golang.org/pkg/encoding/json/#example_Decoder
 	
 	"github.com/line/line-bot-sdk-go/linebot"
 )
