@@ -991,9 +991,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 // 			    messgage1 := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
 // 			var messages []linebot.Message
 			//push 的寫法
-// 				source := event.Source
-// 				log.Print("觸發加入群組聊天事件 = " + source.GroupID)
-// 				push_string := "很高興你邀請我進來這裡聊天！\n你們的群組代號好像是：\n" + source.GroupID
+ 				source := event.Source
+ 				log.Print("觸發加入群組聊天事件 = " + source.GroupID)
+ 				push_string := "很高興你邀請我進來這裡聊天！\n你們的群組代號好像是：\n" + source.GroupID
 // 				if source.GroupID == "Ca78bf89fa33b777e54b4c13695818f81"{
 // 					push_string += "\n你好，主人。"
 // 				}
@@ -1004,7 +1004,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 // 					log.Print(err)
 // 				}
 			//reply 的寫法
-			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("群組聊天的各位大家好哇～！\n我是懶懶寫的懶的說！\n\n想知道我的嗜好，請說：簡介")).Do(); err != nil {
+			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("群組聊天的各位大家好哇～！\n" + push_string + "\n我是懶懶寫的懶的說！\n\n想知道我的嗜好，請說：簡介")).Do(); err != nil {
 					log.Print(err)
 			}
 		}
