@@ -21,7 +21,7 @@ import (
 	"regexp"
 	"strings"
 
-	"encoding/json" //https://golang.org/pkg/encoding/json/#example_Decoder
+	//"encoding/json" //https://golang.org/pkg/encoding/json/#example_Decoder
 	
 	"github.com/line/line-bot-sdk-go/linebot"
 )
@@ -1081,7 +1081,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
     "originalContentUrl": "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96",
     "previewImageUrl": "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
 }`
-						if _, err = bot.ReplyMessage(event.ReplyToken, image_json).Do(); err != nil {
+						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(image_json)).Do(); err != nil {
 							log.Print(err)
 						}
 
