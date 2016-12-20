@@ -50,7 +50,7 @@ func real_num(text string) string {
 	return text
 }
 
-func anime(text string,user_msgid string) string {
+func anime(text string,user_msgid string,reply_mode string) string {
 	print_string := text
 	text = real_num(text)
 	//	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
@@ -958,7 +958,11 @@ func anime(text string,user_msgid string) string {
 			print_string = "你是要找 " +  reg.ReplaceAllString(text, "$3") + " 對嗎？\n對不起，我找不到這部動畫，我還沒學呢...\n（可輸入「目錄」查看支援的作品）\n我目前知道的動畫還很少，因為我考試不及格QAQ\n\n（其實是因為開發者半手動輸入更新，沒用自動化爬蟲跟資料庫。才會增加比較慢XD）"
 		}
 	default:
-		print_string = "HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。"
+		if reply_mode!="" {
+			print_string = "HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。"
+		} else {
+                	print_string = "" //安靜模式
+		}
 	}
 	return print_string
 }
@@ -994,9 +998,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
  				source := event.Source
  				log.Print("觸發加入群組聊天事件 = " + source.GroupID)
  				push_string := "很高興你邀請我進來這裡聊天！\n你們的群組代號好像是：\n" + source.GroupID
-// 				if source.GroupID == "Ca78bf89fa33b777e54b4c13695818f81"{
-// 					push_string += "\n你好，主人。"
-// 				}
+				if source.GroupID == "Ca78bf89fa33b777e54b4c13695818f81"{
+					push_string += "\n你好，主人。"
+				}
 // 				if _, err = bot.PushMessage(source.GroupID, linebot.NewTextMessage(push_string)).Do(); err != nil {
 // 					log.Print(err)
 // 				}
@@ -1012,6 +1016,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
 				//http://www.netadmin.com.tw/images/news/NP161004000316100411441903.png
+				//userID := event.Source.UserID
+
  				//message.ID
 				//message.Text
 				log.Print(message.ID)
@@ -1023,7 +1029,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 				
 				//anime
-				bot_msg = anime(message.Text,message.ID)
+				bot_msg = anime(message.Text,event.Source.UserID,"")//bot_msg = anime(message.Text,message.ID)
 				log.Print("我方回應內容(text-anime)：" + bot_msg)
 				
 								//增加到這
@@ -1032,8 +1038,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					// 					log.Print(err)
 					// 				}
 								//https://devdocs.line.me/en/?go#send-message-object
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
-					log.Print(err)
+				if bot_msg != ""{
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+						log.Print(err)
+					}
 				}
 // 				m := linebot.NewTextMessage("ok")
 // 				    if _, err = bot.ReplyMessage(event.ReplyToken, m).Do(); err != nil {
@@ -1064,6 +1072,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							log.Print(err)
 						}
 					}
+					//上面重覆兩段 push 用來證明 push 才可以連發訊息框，re 只能一個框
 				//---------------------這段可以跟 ReplyMessage 同時有效，但是只會在 1 對 1 有效。群組無效。---------
 			case *linebot.ImageMessage:
 						  // 				_, err := bot.SendText([]string{event.RawContent.Params[0]}, "Hi~\n歡迎加入 Delicious!\n\n想查詢附近或各地美食都可以LINE我呦！\n\n請問你想吃什麼?\nex:義大利麵\n\n想不到吃什麼，也可以直接'傳送目前位置訊息'")
@@ -1078,6 +1087,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						// 				}
 									//https://devdocs.line.me/en/#webhook-event-object
 				log.Print("message.ID = " + message.ID)
+
+				//----------------------------------------------------------------取得使用者資訊的寫法
 				source := event.Source
 
 				userID := event.Source.UserID
@@ -1085,9 +1096,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				RoomID := event.Source.RoomID
 				
 				log.Print(source.UserID)
+				//----------------------------------------------------------------取得使用者資訊的寫法
+
 				username := ""
 				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
-					username = "懶懶\n" + userID + "群組 ID = " + groupID + "\n房間ID = "  +  RoomID
+					username = "懶懶 = " + userID + "\n群組 ID = " + groupID + "\n房間ID = "  +  RoomID
 				}
 				if source.UserID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
 					username = "包包"
