@@ -73,7 +73,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"黑白來看守所\n" +
 		"我太受歡迎了該怎麼辦\n" +
 		"無畏魔女"
-	case "目錄","動畫清單","清單","索引","ｉｎｄｅｘ","index","Index","介紹","動漫","動畫介紹","動漫介紹","info","Info","ｉｎｆｏ":
+	case "bot","機器人","目錄","動畫清單","清單","索引","ｉｎｄｅｘ","index","Index","介紹","動漫","動畫介紹","動漫介紹","info","Info","ｉｎｆｏ":
 		print_string = "你可以問我下面這些動畫，我會帶你去看！\n\n" +
 		"※ 想知道最近新出的動畫可以輸入：「新番」查詢 \n" +
 		"※ 以下是目前能夠查詢的動畫，\n冒號後面是簡短搜尋法。\n當然打跟巴哈姆特一樣的全名也可以。\n\n" +
@@ -1027,9 +1027,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// 	log.Print(err)
 				// }
 
+				log.Print("event.Source.UserID = " + event.Source.UserID)
+				
+				source := event.Source
+				log.Print("source.UserID = " + source.UserID)
+				
+				userID := event.Source.UserID
+				log.Print("userID := event.Source.UserID = " + userID)
 				
 				//anime
-				bot_msg = anime(message.Text,event.Source.UserID,"")//bot_msg = anime(message.Text,message.ID)
+				bot_msg = anime(message.Text,source.UserID,"")//bot_msg = anime(message.Text,message.ID)
 				log.Print("我方回應內容(text-anime)：" + bot_msg)
 				
 								//增加到這
@@ -1053,8 +1060,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				
 				//http://muzigram.muzigen.net/2016/09/linebot-golang-linebot-heroku.html
 				//https://github.com/mogeta/lbot/blob/master/main.go
-				source := event.Source
-				log.Print(source.UserID)
+// 				source := event.Source
+// 				log.Print(source.UserID)
 				push_string := ""
 				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
 					push_string = "你好，主人。（PUSH_MESSAGE 才可以發）"
