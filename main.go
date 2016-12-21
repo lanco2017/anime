@@ -1135,7 +1135,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								imageURL, "hoge", "fuga",
 								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
-								//linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 							),
 						)
 
