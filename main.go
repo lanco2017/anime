@@ -1187,7 +1187,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				
 				//http://muzigram.muzigen.net/2016/09/linebot-golang-linebot-heroku.html
 				//https://github.com/mogeta/lbot/blob/master/main.go
-// 				source := event.Source
+ 				source := event.Source
  				log.Print("source.UserID = " + source.UserID)
  				log.Print("target_user = " + target_user)
 				//2016.12.20+//push_string := ""
