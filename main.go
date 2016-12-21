@@ -1042,12 +1042,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				
 // 				userID := event.Source.UserID
 // 				log.Print("userID := event.Source.UserID = " + userID)
-				target_user := ""
-				if event.Source.UserID == ""{
-					target_user = event.Source.GroupID
-				} else {
-					target_user = event.Source.UserID
-				}
+
+				target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
+				// if event.Source.UserID == ""{
+				// 	target_user = event.Source.GroupID
+				// } else {
+				// 	target_user = event.Source.UserID
+				// }
 				
 				
 				//anime
@@ -1165,7 +1166,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
  					    //接收各種 message object
 						//if _, err = bot.ReplyMessage(event.ReplyToken, obj_message,obj_message,obj_message,obj_message,obj_message).Do(); err != nil { //五聯發
-						if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil { //五聯發
+						if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil { 
 						//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "19"),linebot.NewStickerMessage("2", "20"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
 							log.Print(err)
 						}
@@ -1187,6 +1188,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//https://github.com/mogeta/lbot/blob/master/main.go
  				source := event.Source
  				log.Print("source.UserID = " + source.UserID)
+ 				log.Print("target_user = " + target_user)
 				//2016.12.20+//push_string := ""
 // 				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
 // 					push_string = "你好，主人。（PUSH_MESSAGE 才可以發）"
