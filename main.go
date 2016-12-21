@@ -1168,7 +1168,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if markID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
 					username = "包包"
 				}
-				 if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD" + message)).Do(); err != nil {
+				 if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD" + linebot.EventSource)).Do(); err != nil {
 				 	log.Print(err)
 				 }
 			case *linebot.VideoMessage:
