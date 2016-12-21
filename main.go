@@ -1085,7 +1085,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
  					    //						第二參數可以讓她　ＰＯＳＴ指定內容（但還不會處理．．．）	第三參數類似於 .NewMessageTemplateAction 的效果
  					    imageURL := "https://images.gamme.com.tw/news2/2016/51/39/paCYoqCXkqSarqSZ.jpg"
 						template := linebot.NewButtonsTemplate(
-							imageURL, "你喜歡懶懶熊嗎？", "這只是一個測試樣板聽說可以五個並列",							//這前三個 分別是圖片(必須https)、標題、內文
+							imageURL, "你好歡迎光臨", "這只是一個測試樣板聽說可以五個並列",							//這前三個 分別是圖片(必須https)、標題、內文
 							linebot.NewURITemplateAction("來我的網站", "https://synr.github.io"),
 							linebot.NewPostbackTemplateAction("目錄查詢", "目錄", ""),
 							linebot.NewPostbackTemplateAction("開發者", "開發者", "開發者"),
