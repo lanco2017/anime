@@ -1107,49 +1107,41 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//3 carousel .NewCarouselTemplate  最多可以並排五個「.NewCarouselColumn」的樣板，
 						//「.NewCarouselColumn」裡面最多只能有三個動作按鈕，但並列的其他項目也要一致數量才能。2016.12.22+
 						//圖片可以是 PNG
-						// imageURL := "https://images.gamme.com.tw/news2/2016/51/39/paCYoqCXkqSarqSZ.jpg"
-						// template := linebot.NewCarouselTemplate(
-						// 	linebot.NewCarouselColumn(
-						// 		"https://p2.bahamut.com.tw/B/2KU/33/0001485933.PNG", "hoge", "fuga",
-						// 		linebot.NewURITemplateAction("測試看動畫", "http://ani.gamer.com.tw/animeVideo.php?sn=6878"),
-						// 		linebot.NewPostbackTemplateAction("Say hello1", "hello こんにちは", ""),
-						// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-						// 	),
-						// 	linebot.NewCarouselColumn(
-						// 		"https://p2.bahamut.com.tw/B/2KU/18/0001484818.PNG", "hoge", "fuga",
-						// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-						// 		linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
-						// 		linebot.NewMessageTemplateAction("Say message", "Rice=米"),
-						// 	),
-						// 	linebot.NewCarouselColumn(
-						// 		imageURL, "hoge", "fuga",
-						// 		linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
-						// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-						// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-						// 	),
-						// 	linebot.NewCarouselColumn(
-						// 		imageURL, "hoge", "fuga",
-						// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-						// 		linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
-						// 		linebot.NewMessageTemplateAction("Say message", "Rice=米"),
-						// 	),
-						// 	linebot.NewCarouselColumn(
-						// 		imageURL, "hoge", "fuga",
-						// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-						// 		linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
-						// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-						// 	),
-						// )
+						imageURL := "https://images.gamme.com.tw/news2/2016/51/39/paCYoqCXkqSarqSZ.jpg"
+						template := linebot.NewCarouselTemplate(
+							linebot.NewCarouselColumn(
+								"https://p2.bahamut.com.tw/B/2KU/33/0001485933.PNG", "hoge", "fuga",
+								linebot.NewURITemplateAction("測試看動畫", "http://ani.gamer.com.tw/animeVideo.php?sn=6878"),
+								linebot.NewPostbackTemplateAction("Say hello1", "hello こんにちは", ""),
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+							),
+							linebot.NewCarouselColumn(
+								"https://p2.bahamut.com.tw/B/2KU/18/0001484818.PNG", "hoge", "fuga",
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
+							),
+							linebot.NewCarouselColumn(
+								imageURL, "hoge", "fuga",
+								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+							),
+							linebot.NewCarouselColumn(
+								imageURL, "hoge", "fuga",
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
+							),
+							linebot.NewCarouselColumn(
+								imageURL, "hoge", "fuga",
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+							),
+						)
 						//所以有三種樣板，有三種動作按鈕。兩個樣板可以放圖片，一個單純只能兩個按鈕。
 
-		source := event.Source
-		if source.UserID != "" {
-			profile, err := bot.GetProfile(source.UserID).Do()
-			if err != nil {
-				log.Print("profile = " + profile)
-				log.Print("err = " + err)
-			}
-		}
 
  					    //obj_message := linebot.NewTemplateMessage("HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。", template)//messgage := linebot.NewTemplateMessage("請使用更新 APP 或使用手機 APP 才能看到這個功能。", template)
 						obj_message := linebot.NewTemplateMessage(bot_msg, template)
