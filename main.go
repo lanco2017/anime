@@ -1073,8 +1073,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//anime url get //2016.12.22+
 				anime_url := reg.ReplaceAllString(bot_msg, "$2")
 
-				//換一個正則規則
-				reg_http := regexp.MustCompile("^(http)s?.*") //判斷得到的 $2 是不是 http 開頭字串
+				//判斷得到的 $2 是不是 http 開頭字串
+				reg_http := regexp.MustCompile("^(http)s?.*") 
 
 				if reg_http.ReplaceAllString(anime_url,"$1") != "http"{
 					log.Print("anime_url = " + anime_url)
@@ -1210,7 +1210,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								imageURL, "動畫搜尋結果", "有喔！有喔！你在找這個對吧！？",							
 								linebot.NewURITemplateAction(message.Text, anime_url),
 								linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html"),
-								linebot.NewMessageTemplateAction("查看新進動畫", "新番"),
 								linebot.NewMessageTemplateAction("查詢其他動畫", "目錄"),
 								linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 							)
