@@ -1085,11 +1085,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
  					    //						第二參數可以讓她　ＰＯＳＴ指定內容（但還不會處理．．．）	第三參數類似於 .NewMessageTemplateAction 的效果
  					    imageURL := "https://images.gamme.com.tw/news2/2016/51/39/paCYoqCXkqSarqSZ.jpg"
 						template := linebot.NewButtonsTemplate(
-							imageURL, "你好歡迎光臨", "這只是一個測試樣板聽說可以五個並列",							//這前三個 分別是圖片(必須https)、標題、內文
+							imageURL, "你好歡迎光臨", "這是內文",							//這前三個 分別是圖片(必須https)、標題、內文
 							linebot.NewURITemplateAction("來我的網站", "https://synr.github.io"),
 							linebot.NewPostbackTemplateAction("目錄查詢", "目錄", "目錄"),
 							linebot.NewPostbackTemplateAction("開發者", "開發者", "開發者"),
 							linebot.NewMessageTemplateAction("Say message", "Rice=米"),
+							linebot.NewMessageTemplateAction("Say message2", "Rice=米"),
+							linebot.NewMessageTemplateAction("Say message3", "Rice=米"),
 						)
 
  					    obj_message := linebot.NewTemplateMessage("HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。", template)//messgage := linebot.NewTemplateMessage("請使用更新 APP 或使用手機 APP 才能看到這個功能。", template)
