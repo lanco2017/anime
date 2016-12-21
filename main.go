@@ -971,7 +971,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	return print_string
 }
 
-func template_button(url_text string, site_text string, imageURL string, title_text string, info_text string, no_template_msg string, bot, err) string {
+func template_button(url_text string, site_text string, imageURL string, title_text string, info_text string, no_template_msg string, bot object, err object) string {
 	template := linebot.NewButtonsTemplate(
 		imageURL, title_text, info_text,							//這前三個 分別是圖片(必須https)、標題、內文
 		linebot.NewURITemplateAction(site_text, url_text),
