@@ -975,12 +975,10 @@ func template_button(url_text string, site_text string, imageURL string, title_t
 	template := linebot.NewButtonsTemplate(
 		imageURL, title_text, info_text,							//這前三個 分別是圖片(必須https)、標題、內文
 		linebot.NewURITemplateAction(site_text, url_text),
-		//linebot.NewPostbackTemplateAction("目錄查詢", "目錄", "目錄"),
-		//linebot.NewPostbackTemplateAction("開發者", "開發者", "開發者"),
-		//linebot.NewMessageTemplateAction("Say message", "Rice=米"),
 	)
 	obj_message := linebot.NewTemplateMessage(no_template_msg, template)
 
+	events, err := bot.ParseRequest(r)
 	bot.ReplyMessage(event.ReplyToken, obj_message).Do();
 }
 
