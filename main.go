@@ -1103,13 +1103,26 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 						//linebot.NewTemplateMessage
 						//3 carousel .NewCarouselTemplate  最多可以並排五個「.NewCarouselColumn」的樣板，
-						//「.NewCarouselColumn」裡面最多只能有三個動作按鈕
+						//「.NewCarouselColumn」裡面最多只能有三個動作按鈕，但並列的其他項目也要一致數量才能。2016.12.22+
 						imageURL := "https://images.gamme.com.tw/news2/2016/51/39/paCYoqCXkqSarqSZ.jpg"
 						template := linebot.NewCarouselTemplate(
 							linebot.NewCarouselColumn(
-								imageURL, "hoge", "fuga",
+								"https://p2.bahamut.com.tw/B/2KU/33/0001485933.PNG", "hoge", "fuga",
 								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewPostbackTemplateAction("Say hello1", "hello こんにちは", ""),
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+							),
+							linebot.NewCarouselColumn(
+								"https://p2.bahamut.com.tw/B/2KU/18/0001484818.PNG", "hoge", "fuga",
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
+							),
+							linebot.NewCarouselColumn(
+								imageURL, "hoge", "fuga",
+								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 							),
 							linebot.NewCarouselColumn(
 								imageURL, "hoge", "fuga",
@@ -1119,18 +1132,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							),
 							linebot.NewCarouselColumn(
 								imageURL, "hoge", "fuga",
-								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
-							),
-							linebot.NewCarouselColumn(
-								imageURL, "hoge", "fuga",
 								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
-								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
-							),
-							linebot.NewCarouselColumn(
-								imageURL, "hoge", "fuga",
 								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
 							),
 						)
 
