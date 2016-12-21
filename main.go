@@ -1069,14 +1069,29 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//https://github.com/line/line-bot-sdk-go/blob/master/linebot/message.go
 
 						//模板成功  //官方範例 https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
- 					    leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")// 後面的參數 "left clicked" = 在使用者按下後，自動幫使用者發訊息
- 					    rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")// 後面的參數 "right clicked" = 在使用者按下後，自動幫使用者發訊息
+						// //1
+						// //.NewConfirmTemplate 模板
+						// //.NewMessageTemplateAction 發言動作
+ 					//     leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")// 後面的參數 "left clicked" = 在使用者按下後，自動幫使用者發訊息
+ 					//     rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")// 後面的參數 "right clicked" = 在使用者按下後，自動幫使用者發訊息
+					 //    //.NewMessageTemplateAction("字面按鈕", "設定讓使用者按下後發送內容") 會讓使用者發送那樣的內容給系統
+ 					//     template := linebot.NewConfirmTemplate("Hello World", leftBtn, rightBtn)
+ 					//     //.NewConfirmTemplate
 
- 					    //.NewMessageTemplateAction("字面按鈕", "設定讓使用者按下後發送內容") 會讓使用者發送那樣的內容給系統
+ 					    //2
+ 					    //.NewButtonsTemplate 模板
+ 					    //.NewURITemplateAction 開啟指定網址的動作
+ 					    //.NewPostbackTemplateAction ？？動作
+ 					    imageURL := "https://images.gamme.com.tw/news2/2016/51/39/paCYoqCXkqSarqSZ.jpg"
+						template := linebot.NewButtonsTemplate(
+							imageURL, "My button sample", "Hello, my button",
+							linebot.NewURITemplateAction("Go to line.me", "https://synr.github.io"),
+							linebot.NewPostbackTemplateAction("Say hello1", "hello こんにちは", ""),
+							linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+							linebot.NewMessageTemplateAction("Say message", "Rice=米"),
+						)
 
- 					    template := linebot.NewConfirmTemplate("Hello World", leftBtn, rightBtn)
-
- 					    obj_message := linebot.NewTemplateMessage("HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。", template)//messgage := linebot.NewTemplateMessage("請使用更新 APP 或使用手機 APP 才能看到這個功能。", template,template,template,template,template)
+ 					    obj_message := linebot.NewTemplateMessage("HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。", template)//messgage := linebot.NewTemplateMessage("請使用更新 APP 或使用手機 APP 才能看到這個功能。", template)
  					    //.NewTemplateMessage("無法支援按鈕模式時要發出的訊息",ConfirmTemplate 物件)
 
 // 						if _, err = bot.ReplyMessage(event.ReplyToken, message).Do(); err != nil {
