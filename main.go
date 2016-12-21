@@ -1109,25 +1109,30 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							linebot.NewCarouselColumn(
 								imageURL, "hoge", "fuga",
 								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewPostbackTemplateAction("Say hello1", "hello こんにちは", ""),
 							),
 							linebot.NewCarouselColumn(
 								imageURL, "hoge", "fuga",
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
 								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
 							),
 							linebot.NewCarouselColumn(
 								imageURL, "hoge", "fuga",
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
 								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
 							),
 							linebot.NewCarouselColumn(
 								imageURL, "hoge", "fuga",
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
 								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
 							),
 							linebot.NewCarouselColumn(
 								imageURL, "hoge", "fuga",
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
 								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
 							),
@@ -1158,7 +1163,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//obj_message := linebot.NewStickerMessage("1", "1") //https://devdocs.line.me/en/?go#send-message-object
 
  					    //接收各種 message object
-						 if _, err = bot.ReplyMessage(event.ReplyToken, obj_message,obj_message,obj_message,obj_message,obj_message).Do(); err != nil {
+						//if _, err = bot.ReplyMessage(event.ReplyToken, obj_message,obj_message,obj_message,obj_message,obj_message).Do(); err != nil { //五聯發
+						if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil { //五聯發
 						//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "19"),linebot.NewStickerMessage("2", "20"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
 							log.Print(err)
 						}
