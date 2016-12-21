@@ -1110,7 +1110,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						template := linebot.NewCarouselTemplate(
 							linebot.NewCarouselColumn(
 								"https://p2.bahamut.com.tw/B/2KU/33/0001485933.PNG", "hoge", "fuga",
-								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+								linebot.NewURITemplateAction("測試看動畫", "http://ani.gamer.com.tw/animeVideo.php?sn=6878"),
 								linebot.NewPostbackTemplateAction("Say hello1", "hello こんにちは", ""),
 								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 							),
