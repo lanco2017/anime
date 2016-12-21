@@ -1102,7 +1102,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						// )
 
 						//linebot.NewTemplateMessage
-						//3 carousel
+						//3 carousel 最多可以五個並排的樣板
 						imageURL := "https://images.gamme.com.tw/news2/2016/51/39/paCYoqCXkqSarqSZ.jpg"
 						template := linebot.NewCarouselTemplate(
 							linebot.NewCarouselColumn(
@@ -1112,6 +1112,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							),
 							linebot.NewCarouselColumn(
 								imageURL, "hoge", "fuga",
+								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
 								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
 								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
 							),
