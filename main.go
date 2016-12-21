@@ -1092,12 +1092,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 						//發貼貼圖成功						
 						//obj_message := linebot.NewStickerMessage("1", "1") //https://devdocs.line.me/en/?go#send-message-object
-
-						obj_message := [5] object{linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "1")}
-
-						if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+						// if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
 						//https://devdocs.line.me/files/sticker_list.pdf
-						//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "19"),linebot.NewStickerMessage("2", "20"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
+						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "19"),linebot.NewStickerMessage("2", "20"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
 							log.Print(err)
 						}
 					} else {
@@ -1151,6 +1148,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						// 				}
 									//https://devdocs.line.me/en/#webhook-event-object
 				log.Print("對方丟圖片 message.ID = " + message.ID)
+				log.Print("對方丟圖片 message.Text = " + message.Text)
 				//log.Print("對方丟圖片 linebot.EventSource = " + linebot.EventSource
 
 				//----------------------------------------------------------------取得使用者資訊的寫法
