@@ -1066,7 +1066,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					if bot_msg == "GOTEST"{
 						//Create message
 						//https://github.com/line/line-bot-sdk-go
-
+						//https://github.com/line/line-bot-sdk-go/blob/master/linebot/message.go
 
 						//模板成功
 // 					    leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")// 後面的參數 "left clicked" = 在使用者按下後，自動幫使用者發訊息
@@ -1097,7 +1097,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "19"),linebot.NewStickerMessage("2", "20"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
 							log.Print(err)
 						}
-
+						linebot.GetProfile("U0047556f2e40dba2456887320ba7c76d").Do()
 					} else {
 						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 							log.Print(err)
