@@ -1077,11 +1077,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 // 							log.Print(err)
 // 						}
 
+						//模板成功
 						//++ https://github.com/dongri/line-bot-sdk-go KEY:linebot.NewImageMessage
-						//originalContentURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
-    						//previewImageURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
-    						//obj_message := linebot.NewImageMessage(originalContentURL, previewImageURL)
-						obj_message := linebot.NewStickerMessage("1", "1") //https://devdocs.line.me/en/?go#send-message-object
+						// originalContentURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
+    		// 			previewImageURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
+    		// 			obj_message := linebot.NewImageMessage(originalContentURL, previewImageURL)
+
+						//發貼貼圖成功						
+						//obj_message := linebot.NewStickerMessage("1", "1") //https://devdocs.line.me/en/?go#send-message-object
+						obj_message := (linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "1")) //https://devdocs.line.me/en/?go#send-message-object
+
 						if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
 							log.Print(err)
 						}
