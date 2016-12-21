@@ -1062,12 +1062,24 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					// 				}
 								//https://devdocs.line.me/en/?go#send-message-object
 				
-					//沒辦法建立 function 直接在裡面操作， 只好先用加法，從下游進行正則分析處理 reg  //https://play.golang.org/p/cjO5La2cKR
-					reg := regexp.MustCompile("^.*(有喔！有喔！你在找這個對吧！？)\\n(https?.*)(\\n*.*)$")
-					log.Print("--抓取［" + bot_msg + "］分析觀察--")
-					log.Print("anime 後的 1 = " + reg.ReplaceAllString(bot_msg, "$1"))
-					log.Print("anime 後的 2 = " + reg.ReplaceAllString(bot_msg, "$2")) //URL
-					log.Print("完結篇廢話 = 3 = " + reg.ReplaceAllString(bot_msg, "$3")) //完結篇的廢話
+				//anime url get
+				//沒辦法建立 function 直接在裡面操作， 只好先用加法，從下游進行正則分析處理 reg  //https://play.golang.org/p/cjO5La2cKR
+				reg := regexp.MustCompile("^.*(有喔！有喔！你在找這個對吧！？)\\n(https?.*)(\\n*.*)$")
+				log.Print("--抓取［" + bot_msg + "］分析觀察--")
+				log.Print("anime 後的 1 = " + reg.ReplaceAllString(bot_msg, "$1"))
+				log.Print("anime 後的 2 = " + reg.ReplaceAllString(bot_msg, "$2")) //URL
+				log.Print("完結篇廢話 = 3 = " + reg.ReplaceAllString(bot_msg, "$3")) //完結篇的廢話
+
+				anime_url := reg.ReplaceAllString(bot_msg, "$2")
+
+				//換一個正則規則
+				reg = regexp.MustCompile("^(http)s?.*") //判斷得到的 $2 是不是 http 開頭字串
+				if (reg.ReplaceAllString(anime_url,"$1")!="http"){
+					log.Print("anime_url = " + anime_url)
+					anime_url = ""
+				}
+
+
 
 				//2016.12.20+ for test
 				if bot_msg != ""{
