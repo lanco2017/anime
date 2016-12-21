@@ -1085,7 +1085,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 						//發貼貼圖成功						
 						//obj_message := linebot.NewStickerMessage("1", "1") //https://devdocs.line.me/en/?go#send-message-object
-						obj_message := (linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "1")) //https://devdocs.line.me/en/?go#send-message-object
+						obj_message := (linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "1"),linebot.NewStickerMessage("2", "2"),linebot.NewStickerMessage("1", "3")) //https://devdocs.line.me/en/?go#send-message-object
 
 						if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
 							log.Print(err)
