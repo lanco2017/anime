@@ -971,7 +971,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	return print_string
 }
 
-func template_button(url_text string, site_text string, imageURL string, title_text string, info_text string, no_template_msg string, bot object, err object) string {
+func template_button(url_text string, site_text string, imageURL string, title_text string, info_text string, no_template_msg string, bot ) string {
 	template := linebot.NewButtonsTemplate(
 		imageURL, title_text, info_text,							//這前三個 分別是圖片(必須https)、標題、內文
 		linebot.NewURITemplateAction(site_text, url_text),
@@ -981,9 +981,7 @@ func template_button(url_text string, site_text string, imageURL string, title_t
 	)
 	obj_message := linebot.NewTemplateMessage(no_template_msg, template)
 
-	if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil { 
-		log.Print(err)
-	}
+	bot.ReplyMessage(event.ReplyToken, obj_message).Do();
 }
 
 //http://qiita.com/koki_cheese/items/66980888d7e8755d01ec
@@ -1081,7 +1079,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if bot_msg != ""{
 					if bot_msg == "GOTEST"{
 						bot_msg = "HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。"
-						template_button("http://ani.gamer.com.tw/animeVideo.php?sn=6878", "第？話", "https://p2.bahamut.com.tw/B/2KU/33/0001485933.PNG", "查詢結果", "動畫名稱 ", bot_msg, bot, err ) 
+						template_button("http://ani.gamer.com.tw/animeVideo.php?sn=6878", "第？話", "https://p2.bahamut.com.tw/B/2KU/33/0001485933.PNG", "查詢結果", "動畫名稱 ", bot_msg, bot ) 
 
 						//Create message
 						//https://github.com/line/line-bot-sdk-go
