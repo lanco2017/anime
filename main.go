@@ -1112,19 +1112,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewPostbackTemplateAction("Say hello1", "hello こんにちは", ""),
 								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 							),
 							linebot.NewCarouselColumn(
 								"https://p2.bahamut.com.tw/B/2KU/18/0001484818.PNG", "hoge", "fuga",
 								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
 								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
-								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 							),
 							linebot.NewCarouselColumn(
 								imageURL, "hoge", "fuga",
 								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
-								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 							),
@@ -1133,14 +1130,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
 								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
-								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 							),
 							linebot.NewCarouselColumn(
 								imageURL, "hoge", "fuga",
 								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
-								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+								//linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 							),
 						)
 
