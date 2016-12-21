@@ -1109,7 +1109,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							linebot.NewCarouselColumn(
 								imageURL, "hoge", "fuga",
 								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewPostbackTemplateAction("Say hello1", "hello こんにちは", ""),
 							),
 							linebot.NewCarouselColumn(
@@ -1120,9 +1119,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							),
 							linebot.NewCarouselColumn(
 								imageURL, "hoge", "fuga",
-								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
-								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
 							),
 							linebot.NewCarouselColumn(
 								imageURL, "hoge", "fuga",
@@ -1134,7 +1131,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								imageURL, "hoge", "fuga",
 								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
 								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
-								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
 							),
 						)
 
