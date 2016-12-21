@@ -1073,6 +1073,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						// //1 confirm 純是否類型的問法
 						// //.NewConfirmTemplate 模板，裡面最多只能有兩個動作，按鈕只能左右
 						// //.NewMessageTemplateAction 發言動作
+
+						// template := linebot.NewConfirmTemplate(
+						// 	"Do it?",
+						// 	linebot.NewMessageTemplateAction("Yes", "Yes!"),
+						// 	linebot.NewMessageTemplateAction("No", "No!"),
+						// )
+
  					//     leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")// 後面的參數 "left clicked" = 在使用者按下後，自動幫使用者發訊息
  					//     rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")// 後面的參數 "right clicked" = 在使用者按下後，自動幫使用者發訊息
 					 //    //.NewMessageTemplateAction("字面按鈕", "設定讓使用者按下後發送內容") 會讓使用者發送那樣的內容給系統
@@ -1096,10 +1103,33 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 						//linebot.NewTemplateMessage
 						//3 carousel
-						template := linebot.NewConfirmTemplate(
-							"Do it?",
-							linebot.NewMessageTemplateAction("Yes", "Yes!"),
-							linebot.NewMessageTemplateAction("No", "No!"),
+						imageURL := "https://images.gamme.com.tw/news2/2016/51/39/paCYoqCXkqSarqSZ.jpg"
+						template := linebot.NewCarouselTemplate(
+							linebot.NewCarouselColumn(
+								imageURL, "hoge", "fuga",
+								linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+								linebot.NewPostbackTemplateAction("Say hello1", "hello こんにちは", ""),
+							),
+							linebot.NewCarouselColumn(
+								imageURL, "hoge", "fuga",
+								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
+							),
+							linebot.NewCarouselColumn(
+								imageURL, "hoge", "fuga",
+								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
+							),
+							linebot.NewCarouselColumn(
+								imageURL, "hoge", "fuga",
+								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
+							),
+							linebot.NewCarouselColumn(
+								imageURL, "hoge", "fuga",
+								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
+							),
 						)
 
  					    obj_message := linebot.NewTemplateMessage("HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。", template)//messgage := linebot.NewTemplateMessage("請使用更新 APP 或使用手機 APP 才能看到這個功能。", template)
