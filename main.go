@@ -1149,7 +1149,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						// 				}
 									//https://devdocs.line.me/en/#webhook-event-object
 				log.Print("對方丟圖片 message.ID = " + message.ID)
-				log.Print("對方丟圖片 event.Message.(type) = " + event.Message.(type)
+				log.Print("對方丟圖片 event.Message.type = " + event.Message.type
 
 				//----------------------------------------------------------------取得使用者資訊的寫法
 				source := event.Source
