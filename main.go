@@ -1173,7 +1173,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}
 			case *linebot.StickerMessage:
 				//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
- 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("0.0"),linebot.NewTextMessage("．ω．"),linebot.NewTextMessage("．ω．")).Do(); err != nil {
+ 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("OU<"),linebot.NewTextMessage("0.0"),linebot.NewTextMessage("．ω．"),linebot.NewTextMessage("．ω．")).Do(); err != nil {
  					log.Print(err)
  				}
 			}
