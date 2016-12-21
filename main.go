@@ -1062,11 +1062,18 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					// 				}
 								//https://devdocs.line.me/en/?go#send-message-object
 				
+					//沒辦法建立 function 直接在裡面操作， 只好先用加法，從下游進行正則分析處理 reg  //https://play.golang.org/p/cjO5La2cKR
+					reg := regexp.MustCompile("^.*(有喔！有喔！你在找這個對吧！？)\\n(https?.*)(\\n*.*)$")
+					log.Print("--抓取［" + bot_msg + "］分析觀察--")
+					log.Print("anime 後的 1 = " + reg.ReplaceAllString(bot_msg, "$1"))
+					log.Print("anime 後的 2 = " + reg.ReplaceAllString(bot_msg, "$2")) //URL
+					log.Print("完結篇廢話 = 3 = " + reg.ReplaceAllString(bot_msg, "$3")) //完結篇的廢話
+
 				//2016.12.20+ for test
 				if bot_msg != ""{
 					if bot_msg == "GOTEST"{
 						//bot_msg = "HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。"
-						bot_msg = "有喔！有喔！你在找這個對吧！？\n" + "http://ani.gamer.com.tw/animeVideo.php?sn=5863" + "\n\n等等！這是最後一話！？"
+						bot_msg = "有喔！有喔！你在找這個對吧！？\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=5863" + "\n\n等等！這是最後一話！？"
 
 						// "http://ani.gamer.com.tw/animeVideo.php?sn=6878",
 						//  第？話",
@@ -1075,11 +1082,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//  "動畫名稱 ",
 						// bot_msg 
 
-						//沒辦法 function 只好用加法處理 reg
-						reg := regexp.MustCompile("^.*(有喔！有喔！你在找這個對吧！？\\n)(https+.*)\n{0,}") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
-						log.Print("--抓取" + bot_msg + "分析觀察--")
-						log.Print( "1 = " + reg.ReplaceAllString(bot_msg, "$1"))
-						log.Print( "2 = " + reg.ReplaceAllString(bot_msg, "$2")) //URL
+						log.Print("完結篇廢話 = 3 = " + reg.ReplaceAllString(bot_msg, "$3")) //完結篇的廢話
 
 						//Create message
 						//https://github.com/line/line-bot-sdk-go
