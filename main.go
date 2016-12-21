@@ -1062,7 +1062,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					// 				}
 								//https://devdocs.line.me/en/?go#send-message-object
 				
-				//anime url get
+
 				//沒辦法建立 function 直接在裡面操作， 只好先用加法，從下游進行正則分析處理 reg  //https://play.golang.org/p/cjO5La2cKR
 				reg := regexp.MustCompile("^.*(有喔！有喔！你在找這個對吧！？)\\n(https?.*)(\\n*.*)$")
 				log.Print("--抓取［" + bot_msg + "］分析觀察--")
@@ -1070,11 +1070,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				log.Print("anime 後的 2 = " + reg.ReplaceAllString(bot_msg, "$2")) //URL
 				log.Print("完結篇廢話 = 3 = " + reg.ReplaceAllString(bot_msg, "$3")) //完結篇的廢話
 
+				//anime url get //2016.12.22+
 				anime_url := reg.ReplaceAllString(bot_msg, "$2")
 
 				//換一個正則規則
-				reg = regexp.MustCompile("^(http)s?.*") //判斷得到的 $2 是不是 http 開頭字串
-				if (reg.ReplaceAllString(anime_url,"$1")!="http"){
+				reg_http := regexp.MustCompile("^(http)s?.*") //判斷得到的 $2 是不是 http 開頭字串
+
+				if reg_http.ReplaceAllString(anime_url,"$1") != "http"{
 					log.Print("anime_url = " + anime_url)
 					anime_url = ""
 				}
@@ -1094,7 +1096,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//  "動畫名稱 ",
 						// bot_msg 
 
-						log.Print("完結篇廢話 = 3 = " + reg.ReplaceAllString(bot_msg, "$3")) //完結篇的廢話
+						//log.Print("完結篇廢話 = 3 = " + reg.ReplaceAllString(bot_msg, "$3")) //完結篇的廢話
 
 						//Create message
 						//https://github.com/line/line-bot-sdk-go
@@ -1177,9 +1179,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//obj_message := linebot.NewTemplateMessage(bot_msg, template)
  					    //.NewTemplateMessage("無法支援按鈕模式時要發出的訊息",Template 物件)
 
-// 						if _, err = bot.ReplyMessage(event.ReplyToken, message).Do(); err != nil {
-// 							log.Print(err)
-// 						}
+	// 						if _, err = bot.ReplyMessage(event.ReplyToken, message).Do(); err != nil {
+	// 							log.Print(err)
+	// 						}
 
 
 						//https://devdocs.line.me/en/?go#send-message-object
@@ -1202,8 +1204,24 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//	log.Print(err)
 						//}
 					} else {
-						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
-							log.Print(err)
+						if anime_url!=""{
+	 					    imageURL := "https://i2.bahamut.com.tw/anime/crazy_logo.png"
+							template := linebot.NewButtonsTemplate(
+								imageURL, "動畫搜尋結果", "有喔！有喔！你在找這個對吧！？",							
+								linebot.NewURITemplateAction(message.Text, anime_url),
+								linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html"),
+								linebot.NewMessageTemplateAction("查看新進動畫", "新番"),
+								linebot.NewMessageTemplateAction("查詢其他動畫", "目錄"),
+								linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
+							)
+							obj_message := linebot.NewTemplateMessage(bot_msg, template)
+							if _, err = bot.ReplyMessage(event.ReplyToken,obj_message).Do(); err != nil {
+								log.Print(err)
+							}
+						}else{
+							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+								log.Print(err)
+							}
 						}
 					}
 				}
