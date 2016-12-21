@@ -1097,7 +1097,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "19"),linebot.NewStickerMessage("2", "20"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
 							log.Print(err)
 						}
-						linebot.GetProfile("U0047556f2e40dba2456887320ba7c76d").Do()
 					} else {
 						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 							log.Print(err)
@@ -1169,7 +1168,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if markID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
 					username = "包包"
 				}
-				 if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD" + message.Text)).Do(); err != nil {
+				 if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD" + message)).Do(); err != nil {
 				 	log.Print(err)
 				 }
 			case *linebot.VideoMessage:
