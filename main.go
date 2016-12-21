@@ -1064,9 +1064,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//2016.12.20+ for test
 				if bot_msg != ""{
 					if bot_msg == "GOTEST"{
-						//https://github.com/line/line-bot-sdk-go Create message
+						//Create message
+						//https://github.com/line/line-bot-sdk-go
 
 
+						//模板成功
 // 					    leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")// 後面的參數 "left clicked" = 在使用者按下後，自動幫使用者發訊息
 // 					    rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")// 後面的參數 "right clicked" = 在使用者按下後，自動幫使用者發訊息
 
@@ -1077,15 +1079,19 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 // 							log.Print(err)
 // 						}
 
-						//模板成功
+
+						//https://devdocs.line.me/en/?go#send-message-object
+
+
 						//++ https://github.com/dongri/line-bot-sdk-go KEY:linebot.NewImageMessage
-						// originalContentURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
-    		// 			previewImageURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
-    		// 			obj_message := linebot.NewImageMessage(originalContentURL, previewImageURL)
+
+						//發圖片成功
+						//originalContentURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
+    					//previewImageURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
+    					//obj_message := linebot.NewImageMessage(originalContentURL, previewImageURL)
 
 						//發貼貼圖成功						
 						//obj_message := linebot.NewStickerMessage("1", "1") //https://devdocs.line.me/en/?go#send-message-object
-						//obj_message := {} //https://devdocs.line.me/en/?go#send-message-object
 
 						//if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
 						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "1"),linebot.NewStickerMessage("2", "2"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
@@ -1162,7 +1168,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if markID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
 					username = "包包"
 				}
-				 if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD")).Do(); err != nil {
+				 if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD" + message.Text)).Do(); err != nil {
 				 	log.Print(err)
 				 }
 			case *linebot.VideoMessage:
