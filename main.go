@@ -1102,7 +1102,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						// )
 
 						//linebot.NewTemplateMessage
-						//3 carousel 最多可以五個並排的樣板
+						//3 carousel .NewCarouselTemplate  最多可以並排五個「.NewCarouselColumn」的樣板，
+						//「.NewCarouselColumn」裡面最多只能有三個動作按鈕
 						imageURL := "https://images.gamme.com.tw/news2/2016/51/39/paCYoqCXkqSarqSZ.jpg"
 						template := linebot.NewCarouselTemplate(
 							linebot.NewCarouselColumn(
@@ -1114,7 +1115,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								imageURL, "hoge", "fuga",
 								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
 								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
-								linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
 								linebot.NewMessageTemplateAction("Say message", "Rice=米"),
 							),
 							linebot.NewCarouselColumn(
