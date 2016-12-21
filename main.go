@@ -1094,7 +1094,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//obj_message := linebot.NewStickerMessage("1", "1") //https://devdocs.line.me/en/?go#send-message-object
 
 						//if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
-						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "1"),linebot.NewStickerMessage("2", "2"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
+						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "19"),linebot.NewStickerMessage("2", "20"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
 							log.Print(err)
 						}
 
@@ -1148,7 +1148,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						// 					log.Print(err)
 						// 				}
 									//https://devdocs.line.me/en/#webhook-event-object
-				log.Print("message.ID = " + message.ID)
+				log.Print("對方丟圖片 message.type = " + message.type)
+				log.Print("對方丟圖片 message.ID = " + message.ID)
+				log.Print("對方丟圖片 message.originalContentUrl = " + message.originalContentUrl)
+				log.Print("對方丟圖片 message.previewImageUrl = " + message.previewImageUrl)
 
 				//----------------------------------------------------------------取得使用者資訊的寫法
 				source := event.Source
