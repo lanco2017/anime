@@ -1362,7 +1362,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD")).Do(); err != nil {
 					log.Print(err)
 				}
+				log.Print("message.image = " + message.image)
 			case *linebot.VideoMessage:
+				log.Print("message.video = " + message.video)
 				//https://github.com/dongri/line-bot-sdk-go
 			    originalContentURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/video-original.mp4"
 			    previewImageURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/video-preview.png"
@@ -1371,6 +1373,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
  					log.Print(err)
  				}
 			case *linebot.AudioMessage:
+				log.Print("message.audio = " + message.audio)
 				originalContentURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/ok.m4a"
 				duration := 1000
 				obj_message := linebot.NewAudioMessage(originalContentURL, duration)
@@ -1385,7 +1388,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				log.Print("message.Longitude = ")
 				log.Print(message.Longitude)
 				//obj_message := linebot.NewLocationMessage(message.Title, message.Address, message.Latitude, message.Longitude)
-				obj_message := linebot.NewLocationMessage("歡迎光臨", "地球天堂門", 25.0224458, 121.5540933) //麵包店
+				obj_message := linebot.NewLocationMessage("歡迎光臨", "台北市信義區富陽街46號", 25.022441, 121.5540933) //麵包店
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你在這裡？"),obj_message).Do(); err != nil {
 					log.Print(err)
 				}
