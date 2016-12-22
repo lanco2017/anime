@@ -1245,9 +1245,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						// )
 
 						//Audio //https://github.com/dongri/line-bot-sdk-go
-					    originalContentURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/ok.m4a"
-					    duration := 1000
-					    obj_message := linebot.NewAudioMessage(originalContentURL, duration)
+					    // originalContentURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/ok.m4a"
+					    // duration := 1000
+					    // obj_message := linebot.NewAudioMessage(originalContentURL, duration)
 
  					    //接收各種 message object
 						//if _, err = bot.ReplyMessage(event.ReplyToken, obj_message,obj_message,obj_message,obj_message,obj_message).Do(); err != nil { //五聯發
@@ -1359,9 +1359,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if markID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
 					username = "包包"
 				}
-				 if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD")).Do(); err != nil {
-				 	log.Print(err)
-				 }
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD")).Do(); err != nil {
+					log.Print(err)
+				}
 			case *linebot.VideoMessage:
 				//https://github.com/dongri/line-bot-sdk-go
 			    originalContentURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/video-original.mp4"
@@ -1371,11 +1371,15 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
  					log.Print(err)
  				}
 			case *linebot.AudioMessage:
- 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這是什麼聲音？")).Do(); err != nil {
+				originalContentURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/ok.m4a"
+				duration := 1000
+				obj_message := linebot.NewAudioMessage(originalContentURL, duration)
+ 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這是什麼聲音？"),obj_message).Do(); err != nil {
  					log.Print(err)
  				}
 			case *linebot.LocationMessage:
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你在這裡？")).Do(); err != nil {
+				obj_message := linebot.NewLocationMessage(message.Title, message.Address, message.Latitude, message.Longitude)
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你在這裡？"),obj_message).Do(); err != nil {
 					log.Print(err)
 				}
 			case *linebot.StickerMessage:
