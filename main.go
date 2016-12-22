@@ -1206,7 +1206,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					} else {
 						if anime_url!=""{
 	 					    imageURL := "https://i2.bahamut.com.tw/anime/crazy_logo.png"
-	 					    chatURL := "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"
 							template := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
 									imageURL, "動畫搜尋結果", "有喔！有喔！你在找這個對吧！？",							
@@ -1217,7 +1216,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								linebot.NewCarouselColumn(
 									"https://p2.bahamut.com.tw/B/2KU/18/0001484818.PNG", "意見反饋 feedback", "你可以透過此功能跟開發者提出建議",
 									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
-									inebot.NewURITemplateAction("線上與開發者聊天", chatURL),
+									linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
 									linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
 								),
 							)
