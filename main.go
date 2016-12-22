@@ -1178,7 +1178,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//判斷是不是找不到
 				reg_nofind := regexp.MustCompile("^你是要找.*\\n.*\\n.*\\n.*\\n.*\\n.*(才會增加比較慢XD）)$") 
 
-				reg_loking_for_admin := regexp.MustCompile("^(你找我主人？OK！).*)$") 
+				//reg_loking_for_admin := regexp.MustCompile("^(你找我主人？OK！).*") 
+				reg_loking_for_admin := regexp.MustCompile("^(你找我主人？OK！).*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*") 
 
 
 
@@ -1377,7 +1378,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								}
 							}else{
 								//2016.12.22+ 利用正則分析字串結果，來設置觸發找開發者的時候要 + 的 UI
-								if reg_loking_for_admin.ReplaceAllString(bot_msg,"$1") == "你找我主人？OK！）"{
+								if reg_loking_for_admin.ReplaceAllString(bot_msg,"$1") == "你找我主人？OK！"{
 			 					    // imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
 									template := linebot.NewCarouselTemplate(
 										linebot.NewCarouselColumn(
