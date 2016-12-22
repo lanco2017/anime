@@ -1243,7 +1243,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	 					    imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
 							template := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "動畫搜尋結果", "有喔！有喔！你在找" + message.Text + "對吧！？\n建議可以直接在巴哈姆特動畫瘋 APP 裡面播放！",							
+									imageURL, "動畫搜尋結果", "在找" + message.Text + "對吧！？\n建議可以直接在巴哈姆特動畫瘋 APP 裡面播放！",							
 									linebot.NewURITemplateAction("點此播放找到的動畫", anime_url),
 									linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html"),
 									linebot.NewMessageTemplateAction("查詢其他動畫", "目錄"),
