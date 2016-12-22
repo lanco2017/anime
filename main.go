@@ -1122,7 +1122,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 				//判斷是不是找不到
 				reg_nofind := regexp.MustCompile("^你是要找.*\\n.*\\n.*\\n.*\\n.*\\n.*(才會增加比較慢XD）)$") 
-				no_find := ""
+
 
 
 
