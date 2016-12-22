@@ -998,6 +998,41 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		//觸發加入好友
 		if event.Type == linebot.EventTypeFollow {
 				log.Print("觸發與 " + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 加入好友")
+				target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
+			    imageURL := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png"
+				template := linebot.NewCarouselTemplate(
+					linebot.NewCarouselColumn(
+						imageURL, "查詢巴哈姆特動畫瘋的功能", "我很愛看巴哈姆特動畫瘋。\n問我動畫可以這樣問：動畫 動畫名稱 集數",
+						linebot.NewPostbackTemplateAction("動畫 美術社 12","動畫 美術社 12", "動畫 美術社 12"),
+						linebot.NewMessageTemplateAction("アニメ 美術社大有問題 12", "アニメ 美術社大有問題 12"),
+						linebot.NewMessageTemplateAction("anime：美術社：１", "anime：美術社：１"),
+					),
+					linebot.NewCarouselColumn(
+						imageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特",
+						linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
+						linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
+						linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
+					),
+					linebot.NewCarouselColumn(
+						imageURL, "其他功能", "新番、可查詢的動畫清單",
+						linebot.NewMessageTemplateAction("新番", "新番"),
+						linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
+						linebot.NewURITemplateAction("缺漏回報", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+					),
+					linebot.NewCarouselColumn(
+						imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
+						linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
+						linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+						linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
+					),
+				)
+				t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。"
+				obj_message := linebot.NewTemplateMessage(t_msg, template)
+			//reply 的寫法
+			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("群組聊天的各位大家好哇～！\n" + push_string + "\n\n想知道我的嗜好，請說：簡介"),obj_message).Do(); err != nil {
+					log.Print(err)
+			}
+
 		}
 		//觸發解除好友
 		if event.Type == linebot.EventTypeUnfollow {
