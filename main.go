@@ -466,7 +466,9 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6836"
 			case "11":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6837"
-			case "特別","OST":
+			case "12":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7025"
+			case "特別","OVA":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6469"
 			default:
 			}
@@ -493,6 +495,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6734"
 			case "10":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6838"
+			case "11":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6839"
 			case "特別","OST":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6732"
 			default:
@@ -1181,9 +1185,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//obj_message := linebot.NewTemplateMessage(bot_msg, template)
  					    //.NewTemplateMessage("無法支援按鈕模式時要發出的訊息",Template 物件)
 
-	// 						if _, err = bot.ReplyMessage(event.ReplyToken, message).Do(); err != nil {
-	// 							log.Print(err)
-	// 						}
+							// 						if _, err = bot.ReplyMessage(event.ReplyToken, message).Do(); err != nil {
+							// 							log.Print(err)
+							// 						}
 
 
 						//https://devdocs.line.me/en/?go#send-message-object
@@ -1223,7 +1227,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								),
 							)
 							obj_message := linebot.NewTemplateMessage(bot_msg, template)
-							if _, err = bot.ReplyMessage(event.ReplyToken,obj_message).Do(); err != nil {
+
+							originalContentURL_1 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/3eda1327d796be615542d041ce9d702c/94455.jpg"
+	    					previewImageURL_1 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/3eda1327d796be615542d041ce9d702c/94455.jpg"
+	    					obj_message_img_1 := linebot.NewImageMessage(originalContentURL_1, previewImageURL_1)
+
+							originalContentURL_2 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/f7e158cdc3f1e9640a5f5cf188c33b13/94454.jpg"
+	    					previewImageURL_2 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/f7e158cdc3f1e9640a5f5cf188c33b13/94454.jpg"
+	    					obj_message_img_2 := linebot.NewImageMessage(originalContentURL_1, previewImageURL_1)
+
+							if _, err = bot.ReplyMessage(event.ReplyToken,obj_message,linebot.NewTextMessage("可參考以下圖例操作讓搜尋到的影片，直接在巴哈姆特動畫瘋 APP 進行播放。"),obj_message_img_1,obj_message_img_2).Do(); err != nil {
 								log.Print(err)
 							}
 						}else{
