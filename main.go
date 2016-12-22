@@ -41,14 +41,16 @@ func main() {
 	http.ListenAndServe(addr, nil)
 }
 
-func HttpPost_JANDI(url, body, connectColor string) error {
+func HttpPost_JANDI(body, connectColor, title  string) error {
 	log.Print("已經進來POST")
+	url := "https://wh.jandi.com/connect-api/webhook/11691684/3b6e6071e481e436605261583eff0177"
 	jsonStr := `{
 		"body":"` + body + `",
 		"connectColor":"` + connectColor + `",
 		"connectInfo" : [{
-				"title" : "Topping",
-				"description" : "Pepperoni"
+				"title" : "` + title + `",
+				"description" : "這是經由 LINE BOT 轉來的同步消息"
+				"imageUrl": "https://line.me/R/ti/p/@pyv6283b"
 			}]
 		}`
 
@@ -1239,8 +1241,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if bot_msg != ""{
 					if bot_msg == "GOTEST"{
 						//bot_msg = "HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。"
-						bot_msg = "有喔！有喔！你在找這個對吧！？\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=5863" + "\n\n等等！這是最後一話！？"
-						HttpPost_JANDI("https://wh.jandi.com/connect-api/webhook/11691684/2b63518acd7a1b46c24ddfa620c1f064", "test", "pink")
+						//bot_msg = "有喔！有喔！你在找這個對吧！？\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=5863" + "\n\n等等！這是最後一話！？"
+
+						//2016.12.22+ free POST
+						//func HttpPost_JANDI(body, connectColor, title, url) error  
+						HttpPost_JANDI("test for LINE BOT", "#42602D" , "test")
+						
 						// "http://ani.gamer.com.tw/animeVideo.php?sn=6878",
 						//  第？話",
 						//  "https://p2.bahamut.com.tw/B/2KU/33/0001485933.PNG",
