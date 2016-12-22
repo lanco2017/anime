@@ -26,6 +26,7 @@ import (
 	"github.com/line/line-bot-sdk-go/linebot"
 
 	"bytes"
+	//"io/ioutil"
 )
 
 var bot *linebot.Client
