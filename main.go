@@ -41,20 +41,6 @@ func main() {
 	http.ListenAndServe(addr, nil)
 }
 
-func real_num(text string) string {
-	text = strings.Replace(text, "１", "1", -1)
-	text = strings.Replace(text, "２", "2", -1)
-	text = strings.Replace(text, "３", "3", -1)
-	text = strings.Replace(text, "４", "4", -1)
-	text = strings.Replace(text, "５", "5", -1)
-	text = strings.Replace(text, "６", "6", -1)
-	text = strings.Replace(text, "７", "7", -1)
-	text = strings.Replace(text, "８", "8", -1)
-	text = strings.Replace(text, "９", "9", -1)
-	text = strings.Replace(text, "０", "0", -1)
-	return text
-}
-
 func HttpPost_JANDI(url, body, connectColor string) error {
 	log.Print("已經進來POST")
 	jsonStr := `{
@@ -90,6 +76,20 @@ func HttpPost_JANDI(url, body, connectColor string) error {
 
 	log.Print(err)
 	return err
+}
+
+func real_num(text string) string {
+	text = strings.Replace(text, "１", "1", -1)
+	text = strings.Replace(text, "２", "2", -1)
+	text = strings.Replace(text, "３", "3", -1)
+	text = strings.Replace(text, "４", "4", -1)
+	text = strings.Replace(text, "５", "5", -1)
+	text = strings.Replace(text, "６", "6", -1)
+	text = strings.Replace(text, "７", "7", -1)
+	text = strings.Replace(text, "８", "8", -1)
+	text = strings.Replace(text, "９", "9", -1)
+	text = strings.Replace(text, "０", "0", -1)
+	return text
 }
 
 func anime(text string,user_msgid string,reply_mode string) string {
