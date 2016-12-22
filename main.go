@@ -1037,7 +1037,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					username = "包包"
 				}
 			//reply 的寫法
-			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你好哇～！\n" + username + "\n\n想知道我的嗜好，請說：簡介"),obj_message).Do(); err != nil {
+			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你好哇！" + username + "～！\n\n想知道我的嗜好，\n請說：簡介\nPS：手機上可以看到不一樣的內容喔！"),obj_message).Do(); err != nil {
 					log.Print(err)
 			}
 
