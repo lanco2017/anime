@@ -1204,6 +1204,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
 				HttpPost_JANDI(event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 說：" + message.Text, "yellow" , "LINE 對話同步")
+				HttpPost_IFTTT(event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 說：" + message.Text)
 				//http://www.netadmin.com.tw/images/news/NP161004000316100411441903.png
 				//userID := event.Source.UserID
 
