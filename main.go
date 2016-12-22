@@ -1391,6 +1391,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					log.Print(err)
 				}
 			case *linebot.StickerMessage:
+				log.Print("message.PackageID = " + message.PackageID)
+				log.Print("message.StickerID = " + message.StickerID)
 				//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go handleSticker
 				//message.PackageID, message.StickerID
 				obj_message_moto := linebot.NewStickerMessage(message.PackageID, message.StickerID)
