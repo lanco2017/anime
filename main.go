@@ -995,15 +995,15 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				log.Print("觸發 Postback 功能（不讓使用者察覺的程式利用）")
 				log.Print("event.Postback.Data = " + event.Postback.Data)
 		}
-		//加入好友
+		//觸發加入好友
 		if event.Type == linebot.EventTypeFollow {
-				log.Print("觸發加入好友")
+				log.Print("觸發與" + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + "加入好友")
 		}
-		//解除好友
+		//觸發解除好友
 		if event.Type == linebot.EventTypeUnfollow {
-				log.Print("觸發解除好友")
+				log.Print("觸發與" + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + "解除好友")
 		}
-		//加入群組聊天
+		//觸發加入群組聊天
 		if event.Type == linebot.EventTypeJoin {
 				log.Print("觸發加入群組對話")
  				source := event.Source
@@ -1055,10 +1055,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					log.Print(err)
 			}
 		}
-		//離開群組聊天
+		//觸發離開群組聊天
 		if event.Type == linebot.EventTypeLeave {
-				log.Print("觸發離開群組")
+				log.Print("觸發離開" + event.Source.UserID + event.Source.GroupID + event.Source.RoomID +  "群組")
 		}
+		if event.Type == linebot.EventTypeBeacon {
+				log.Print("觸發 Beacon（啥鬼）")
+		}
+		//觸發收到訊息
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
