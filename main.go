@@ -1037,7 +1037,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 				log.Print("觸發 Postback 功能（不讓使用者察覺的程式利用）")
 				log.Print("event.Postback.Data = " + event.Postback.Data)
-				HttpPost_JANDI("有人觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "blown" , "LINE 程式觀察")
+				HttpPost_JANDI("有人觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "brown" , "LINE 程式觀察")
 				// if event.Postback.Data == "開發者"{
 				// 	//.NewImageMessage 發圖片成功
 				// 	originalContentURL := "https://synr.github.io/uwk0684z.jpg"
@@ -1098,12 +1098,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發解除好友
 		if event.Type == linebot.EventTypeUnfollow {
-				HttpPost_JANDI("與"  + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + "解除好友", "gray" , "LINE 被解除好友")
+				HttpPost_JANDI("與 "  + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 解除好友", "gray" , "LINE 被解除好友")
 				log.Print("觸發與 " + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 解除好友")
 		}
 		//觸發加入群組聊天
 		if event.Type == linebot.EventTypeJoin {
-				HttpPost_JANDI("加入了"  + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + "群組對話", "blue" , "LINE 已加入群組")
+				HttpPost_JANDI("加入了 "  + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 群組對話", "blue" , "LINE 已加入群組")
 				log.Print("觸發加入群組對話")
  				source := event.Source
  				log.Print("觸發加入群組聊天事件 = " + source.GroupID)
@@ -1156,7 +1156,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發離開群組聊天
 		if event.Type == linebot.EventTypeLeave {
-				HttpPost_JANDI("離開"  + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + "群組對話", "gray" , "LINE 離開群組")
+				HttpPost_JANDI("離開 "  + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 群組對話", "gray" , "LINE 離開群組")
 				log.Print("觸發離開 " + event.Source.UserID + event.Source.GroupID + event.Source.RoomID +  " 群組")
 		}
 		if event.Type == linebot.EventTypeBeacon {
