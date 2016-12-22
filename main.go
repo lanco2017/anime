@@ -1361,7 +1361,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
 				//2016.12.20+ 多次框框的方式成功！（最多可以五個）
 				//.NewStickerMessage 發貼貼圖成功	 //https://devdocs.line.me/files/sticker_list.pdf			
-				obj_message := linebot.NewStickerMessage("2", "19") //https://devdocs.line.me/en/?go#send-message-object
+				obj_message := linebot.NewStickerMessage("2", "514") //https://devdocs.line.me/en/?go#send-message-object
  				//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("OU<"),linebot.NewTextMessage("0.0"),linebot.NewTextMessage("．ω．"),linebot.NewTextMessage("．ω．")).Do(); err != nil {
  				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("．ω．"),obj_message).Do(); err != nil {
  					log.Print(err)
