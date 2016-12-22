@@ -71,7 +71,6 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	case "新番":
 		print_string = "最近一期是日本 2016 十月開播的動畫：\n" + 
 		"歌之☆王子殿下♪ 真愛 LEGEND STAR\n" +
-		"伯納德小姐說。\n" +
 		"長騎美眉\n" +
 		"3 月的獅子\n" +
 		"黑白來看守所\n" +
