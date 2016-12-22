@@ -1037,7 +1037,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					username = "包包"
 				}
 			//reply 的寫法
-			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你好啊！" + username + "～\n想知道我的嗜好，可以說：簡介\nPS：手機上可以看到不一樣的內容喔！"),obj_message).Do(); err != nil {
+			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你好啊！" + username + "～\n想知道我的嗜好，可以說：簡介\n\nPS：手機上可以看到不一樣的內容喔！"),obj_message).Do(); err != nil {
 					log.Print(err)
 			}
 
@@ -1045,9 +1045,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		//觸發解除好友
 		if event.Type == linebot.EventTypeUnfollow {
 				log.Print("觸發與 " + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 解除好友")
-				if _, err = bot.ReplyMessage(event.Source.UserID + event.Source.GroupID + event.Source.RoomID, linebot.NewTextMessage("那我走囉！\n哪天還想用用看歡迎隨時加我！\n\nhttps://line.me/R/ti/p/@pyv6283b\n或用 LINE ID 搜尋 @pyv6283b")).Do(); err != nil {
-						log.Print(err)
-				}
 		}
 		//觸發加入群組聊天
 		if event.Type == linebot.EventTypeJoin {
@@ -1180,6 +1177,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 				//判斷是不是找不到
 				reg_nofind := regexp.MustCompile("^你是要找.*\\n.*\\n.*\\n.*\\n.*\\n.*(才會增加比較慢XD）)$") 
+
+				reg_loking_for_admin := regexp.MustCompile("^(你找我主人？OK！).*)$") 
 
 
 
@@ -1377,8 +1376,25 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									log.Print(err)
 								}
 							}else{
-								if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
-									log.Print(err)
+								//2016.12.22+ 利用正則分析字串結果，來設置觸發找開發者的時候要 + 的 UI
+								if reg_loking_for_admin.ReplaceAllString(bot_msg,"$1") == "你找我主人？OK！）"{
+			 					    // imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
+									template := linebot.NewCarouselTemplate(
+										linebot.NewCarouselColumn(
+											"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
+											linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
+											linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+											linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
+										),
+									)
+									obj_message := linebot.NewTemplateMessage(bot_msg, template)
+									if _, err = bot.ReplyMessage(event.ReplyToken,obj_message).Do(); err != nil {
+										log.Print(err)
+									}	
+								}else{
+									if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+										log.Print(err)
+									}									
 								}
 							}
 						}
