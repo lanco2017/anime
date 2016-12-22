@@ -1246,8 +1246,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							)
 							obj_message := linebot.NewTemplateMessage(bot_msg, template)
 
-							originalContentURL_1 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/3eda1327d796be615542d041ce9d702c/94455.jpg"
-	    					previewImageURL_1 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/3eda1327d796be615542d041ce9d702c/94455.jpg"
+							originalContentURL_1 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/722268f159dc640ed1639ffd31b4dd0d/94455.jpg"
+	    					previewImageURL_1 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/722268f159dc640ed1639ffd31b4dd0d/94455.jpg"
 	    					obj_message_img_1 := linebot.NewImageMessage(originalContentURL_1, previewImageURL_1)
 
 							originalContentURL_2 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/f7e158cdc3f1e9640a5f5cf188c33b13/94454.jpg"
