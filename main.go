@@ -1234,7 +1234,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 							originalContentURL_2 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/f7e158cdc3f1e9640a5f5cf188c33b13/94454.jpg"
 	    					previewImageURL_2 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/f7e158cdc3f1e9640a5f5cf188c33b13/94454.jpg"
-	    					obj_message_img_2 := linebot.NewImageMessage(originalContentURL_1, previewImageURL_1)
+	    					obj_message_img_2 := linebot.NewImageMessage(originalContentURL_2, previewImageURL_2)
 
 							if _, err = bot.ReplyMessage(event.ReplyToken,obj_message,linebot.NewTextMessage("可參考以下圖例操作讓搜尋到的影片，直接在巴哈姆特動畫瘋 APP 進行播放。"),obj_message_img_1,obj_message_img_2).Do(); err != nil {
 								log.Print(err)
