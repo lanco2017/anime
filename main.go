@@ -1295,6 +1295,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								log.Print(err)
 							}
 						}else{
+							//2016.12.22+ 利用正則分析字串結果，來設置觸發找不到的時候要 + 的 UI
 							if reg_nofind.ReplaceAllString(bot_msg,"$1") == "才會增加比較慢XD）"{
 								//找不到的時候
 		 					    imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
@@ -1302,7 +1303,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									linebot.NewCarouselColumn(
 										imageURL, "找不到耶", "有可能打錯字或這真的沒有收錄，才會找不到。",							
 										linebot.NewMessageTemplateAction("查看新番", "新番"),
-										linebot.NewMessageTemplateAction("查詢其他動畫", "目錄"),
+										linebot.NewMessageTemplateAction("可查詢的其他動畫目錄", "目錄"),
 										linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html"),
 									),
 									linebot.NewCarouselColumn(
@@ -1312,7 +1313,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 										linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 									),
 								)
-								obj_message := linebot.NewTemplateMessage(bot_msg, template)
+								obj_message := linebot.NewTemplateMessage("除了「目錄」以外，\n你也可以輸入「新番」查詢近期的動畫。", template)
 								if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
 									log.Print(err)
 								}
