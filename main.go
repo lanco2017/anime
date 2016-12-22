@@ -1007,7 +1007,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			//push 的寫法
  				source := event.Source
  				log.Print("觸發加入群組聊天事件 = " + source.GroupID)
- 				push_string := "很高興你邀請我進來這裡聊天！\n你們的群組代號好像是：\n" + source.GroupID
+ 				push_string := "很高興你邀請我進來這裡聊天！"
 				if source.GroupID == "Ca78bf89fa33b777e54b4c13695818f81"{
 					push_string += "\n你好，主人。"
 				}
@@ -1017,8 +1017,26 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 // 				if _, err = bot.PushMessage("Ca78bf89fa33b777e54b4c13695818f81", linebot.NewTextMessage("這裡純測試對嗎？\n只發於測試聊天室「test」")).Do(); err != nil {
 // 					log.Print(err)
 // 				}
+				target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
+			    //imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
+				template := linebot.NewCarouselTemplate(
+					linebot.NewCarouselColumn(
+						"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "意見反饋 feedback", "你可以透過此功能\n跟開發者提出建議",
+						linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
+						linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+						linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
+					),
+					linebot.NewCarouselColumn(
+						"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "意見反饋 feedback", "你可以透過此功能\n跟開發者提出建議",
+						linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
+						linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+						linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
+					),
+				)
+				obj_message := linebot.NewTemplateMessage("", template)
+
 			//reply 的寫法
-			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("群組聊天的各位大家好哇～！\n" + push_string + "\n我是懶懶寫的懶的說！\n\n想知道我的嗜好，請說：簡介")).Do(); err != nil {
+			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("群組聊天的各位大家好哇～！\n" + push_string + "\n我是懶懶寫的懶的說！\n\n想知道我的嗜好，請說：簡介"),obj_message).Do(); err != nil {
 					log.Print(err)
 			}
 		}
