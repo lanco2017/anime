@@ -1253,7 +1253,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//func HttpPost_JANDI(body, connectColor, title, --url--) error  
 						//http://nipponcolors.com/#matsuba
 						HttpPost_JANDI("test for LINE BOT", "#42602D" , "test")
-						HttpPost_LINE_notify("test")
+						//HttpPost_LINE_notify("test")
 						
 						// "http://ani.gamer.com.tw/animeVideo.php?sn=6878",
 						//  第？話",
