@@ -42,6 +42,7 @@ func main() {
 }
 
 func HttpPost_IFTTT(body string) error {
+	//https://internal-api.ifttt.com/maker
 	log.Print("已經進來 IFTTT POST")
 	url := "https://maker.ifttt.com/trigger/linebot/with/key/WJCRNxQhGJuzPd-sUDext"
 	jsonStr := `{
@@ -1289,7 +1290,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//func HttpPost_JANDI(body, connectColor, title, --url--) error  
 						//http://nipponcolors.com/#matsuba
 						// HttpPost_JANDI("test for LINE BOT", "#42602D" , "test")
-						HttpPost_IFTTT("test for line bot")
+						HttpPost_IFTTT("test for line bot") //2016.12.22+ 成功！！！
 						//HttpPost_LINE_notify("test")
 						
 						// "http://ani.gamer.com.tw/animeVideo.php?sn=6878",
