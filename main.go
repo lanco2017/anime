@@ -43,7 +43,7 @@ func main() {
 
 func HttpPost_JANDI(body, connectColor, title string) error {
 	log.Print("已經進來POST")
-	url := "https://wh.jandi.com/connect-api/webhook/11691684/3b6e6071e481e436605261583eff0177"
+	url := "https://wh.jandi.com/connect-api/webhook/11691684/46e7f45fd4f68a021afbd844aed66430"
 	jsonStr := `{
 		"body":"` + body + `",
 		"connectColor":"` + connectColor + `",
