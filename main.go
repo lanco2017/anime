@@ -1045,7 +1045,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		//觸發解除好友
 		if event.Type == linebot.EventTypeUnfollow {
 				log.Print("觸發與 " + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 解除好友")
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("那我走囉！\n哪天還想用用看歡迎隨時加我！\n\nhttps://line.me/R/ti/p/@pyv6283b\n或用 LINE ID 搜尋 @pyv6283b")).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.Source.UserID + event.Source.GroupID + event.Source.RoomID, linebot.NewTextMessage("那我走囉！\n哪天還想用用看歡迎隨時加我！\n\nhttps://line.me/R/ti/p/@pyv6283b\n或用 LINE ID 搜尋 @pyv6283b")).Do(); err != nil {
 						log.Print(err)
 				}
 		}
