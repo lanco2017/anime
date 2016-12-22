@@ -1346,7 +1346,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				 	log.Print(err)
 				 }
 			case *linebot.VideoMessage:
- 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這影片是？")).Do(); err != nil {
+				//https://github.com/dongri/line-bot-sdk-go
+			    originalContentURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/video-original.mp4"
+			    previewImageURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/video-preview.png"
+			    obj_message := linebot.NewVideoMessage(originalContentURL, previewImageURL)
+ 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這影片是？\n我也給你影片吧！\n\n這只是測試功能"),obj_message).Do(); err != nil {
  					log.Print(err)
  				}
 			case *linebot.AudioMessage:
