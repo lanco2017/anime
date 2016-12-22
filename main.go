@@ -24,6 +24,9 @@ import (
 	//"encoding/json" //https://golang.org/pkg/encoding/json/#example_Decoder
 	
 	"github.com/line/line-bot-sdk-go/linebot"
+
+	"net/http"
+	"bytes"
 )
 
 var bot *linebot.Client
@@ -50,6 +53,32 @@ func real_num(text string) string {
 	text = strings.Replace(text, "９", "9", -1)
 	text = strings.Replace(text, "０", "0", -1)
 	return text
+}
+
+func HttpPost(url, body, connectColor string) error {
+	jsonStr := `{"body":"` + body + `","connectColor":"` + connectColor + `"}`
+
+	req, err := http.NewRequest(
+		"POST",
+		url,
+		bytes.NewBuffer([]byte(jsonStr)),
+	)
+	if err != nil {
+		return err
+	}
+
+	// Content-Type 設定
+	req.Header.Set("Accept", "application/vnd.tosslab.jandi-v2+json")
+	req.Header.Set("Content-Type", "application/json")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	return err
 }
 
 func anime(text string,user_msgid string,reply_mode string) string {
@@ -1200,7 +1229,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					if bot_msg == "GOTEST"{
 						//bot_msg = "HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。"
 						bot_msg = "有喔！有喔！你在找這個對吧！？\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=5863" + "\n\n等等！這是最後一話！？"
-
+						HttpPost("https://wh.jandi.com/connect-api/webhook/11691684/2b63518acd7a1b46c24ddfa620c1f064", "test", "#000")
 						// "http://ani.gamer.com.tw/animeVideo.php?sn=6878",
 						//  第？話",
 						//  "https://p2.bahamut.com.tw/B/2KU/33/0001485933.PNG",
