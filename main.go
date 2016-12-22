@@ -1234,16 +1234,20 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 						//https://devdocs.line.me/en/?go#imagemap-message
 						//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
-						obj_message := linebot.NewImagemapMessage(
-							"https://synr.github.io/img/index.jpg",
-							"Imagemap alt text",
-							linebot.ImagemapBaseSize{1040, 1040},
-							linebot.NewURIImagemapAction("https://store.line.me/family/manga/en", linebot.ImagemapArea{0, 0, 520, 520}),
-							linebot.NewURIImagemapAction("https://store.line.me/family/music/en", linebot.ImagemapArea{520, 0, 520, 520}),
-							linebot.NewURIImagemapAction("https://store.line.me/family/play/en", linebot.ImagemapArea{0, 520, 520, 520}),
-							linebot.NewMessageImagemapAction("URANAI!", linebot.ImagemapArea{520, 520, 520, 520}),
-						)
+						// obj_message := linebot.NewImagemapMessage(
+						// 	"https://synr.github.io/img/index.jpg",
+						// 	"Imagemap alt text",
+						// 	linebot.ImagemapBaseSize{1040, 1040},
+						// 	linebot.NewURIImagemapAction("https://store.line.me/family/manga/en", linebot.ImagemapArea{0, 0, 520, 520}),
+						// 	linebot.NewURIImagemapAction("https://store.line.me/family/music/en", linebot.ImagemapArea{520, 0, 520, 520}),
+						// 	linebot.NewURIImagemapAction("https://store.line.me/family/play/en", linebot.ImagemapArea{0, 520, 520, 520}),
+						// 	linebot.NewMessageImagemapAction("URANAI!", linebot.ImagemapArea{520, 520, 520, 520}),
+						// )
 
+						//Audio //https://github.com/dongri/line-bot-sdk-go
+					    originalContentURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/ok.m4a"
+					    duration := 1000
+					    obj_message := linebot.NewAudioMessage(originalContentURL, duration)
 
  					    //接收各種 message object
 						//if _, err = bot.ReplyMessage(event.ReplyToken, obj_message,obj_message,obj_message,obj_message,obj_message).Do(); err != nil { //五聯發
