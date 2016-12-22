@@ -1235,7 +1235,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//https://devdocs.line.me/en/?go#imagemap-message
 						//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
 						obj_message := linebot.NewImagemapMessage(
-							"https://synr.github.io/img",
+							"https://synr.github.io/img/index.jpg",
 							"Imagemap alt text",
 							linebot.ImagemapBaseSize{1040, 1040},
 							linebot.NewURIImagemapAction("https://store.line.me/family/manga/en", linebot.ImagemapArea{0, 0, 520, 520}),
