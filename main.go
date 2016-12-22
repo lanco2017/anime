@@ -41,39 +41,6 @@ func main() {
 	http.ListenAndServe(addr, nil)
 }
 
-func HttpPost_LINE_notify(body string) error {
-	log.Print("已經進來POST")
-	url := "https://notify-api.line.me/api/notify"
-	jsonStr := `{
-		"message":"` + body + `"
-	}`
-
-	req, err := http.NewRequest(
-		"POST",
-		url,
-		bytes.NewBuffer([]byte(jsonStr)),
-	)
-	if err != nil {
-		log.Print(err)
-		return err
-	}
-
-	// Content-Type 設定
-	req.Header.Set("Authorization", "Bearer f2SwpAKzAZMg4pree4KcYadSnsh59VtDVaME0pV7DoG")
-	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-
-	client := &http.Client{}
-	resp, err := client.Do(req)
-	if err != nil {
-		log.Print(err)		
-		return err
-	}
-	defer resp.Body.Close()
-
-	log.Print(err)
-	return err
-}
-
 func HttpPost_JANDI(body, connectColor, title string) error {
 	log.Print("已經進來POST")
 	url := "https://wh.jandi.com/connect-api/webhook/11691684/3b6e6071e481e436605261583eff0177"
@@ -1199,6 +1166,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
+				HttpPost_JANDI(event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 說：" + message.Text, "yellow" , "LINE 對話同步")
 				//http://www.netadmin.com.tw/images/news/NP161004000316100411441903.png
 				//userID := event.Source.UserID
 
