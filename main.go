@@ -1362,9 +1362,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD")).Do(); err != nil {
 					log.Print(err)
 				}
-				log.Print("message.image = " + message.image)
+				log.Print("message.image = " + bot.GetMessageContent(messageID).Do())
 			case *linebot.VideoMessage:
-				log.Print("message.video = " + message.video)
 				//https://github.com/dongri/line-bot-sdk-go
 			    originalContentURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/video-original.mp4"
 			    previewImageURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/video-preview.png"
@@ -1373,7 +1372,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
  					log.Print(err)
  				}
 			case *linebot.AudioMessage:
-				log.Print("message.audio = " + message.audio)
 				originalContentURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/ok.m4a"
 				duration := 1000
 				obj_message := linebot.NewAudioMessage(originalContentURL, duration)
