@@ -41,9 +41,9 @@ func main() {
 	http.ListenAndServe(addr, nil)
 }
 
-func HttpPost_JANDI(body, connectColor, title, url string) error {
+func HttpPost_JANDI(body, connectColor, title string) error {
 	log.Print("已經進來POST")
-	//url := "https://wh.jandi.com/connect-api/webhook/11691684/3b6e6071e481e436605261583eff0177"
+	url := "https://wh.jandi.com/connect-api/webhook/11691684/3b6e6071e481e436605261583eff0177"
 	jsonStr := `{
 		"body":"` + body + `",
 		"connectColor":"` + connectColor + `",
@@ -1037,6 +1037,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 				log.Print("觸發 Postback 功能（不讓使用者察覺的程式利用）")
 				log.Print("event.Postback.Data = " + event.Postback.Data)
+				HttpPost_JANDI("有人觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "blown" , "LINE 程式觀察")
 				// if event.Postback.Data == "開發者"{
 				// 	//.NewImageMessage 發圖片成功
 				// 	originalContentURL := "https://synr.github.io/uwk0684z.jpg"
@@ -1049,6 +1050,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發加入好友
 		if event.Type == linebot.EventTypeFollow {
+				HttpPost_JANDI("有新的好朋友："  + event.Source.UserID + event.Source.GroupID + event.Source.RoomID, "blue" , "LINE 新好友")
 				target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
 				log.Print("觸發與 " + target_user + " 加入好友")
 			    imageURL := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png"
@@ -1096,10 +1098,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發解除好友
 		if event.Type == linebot.EventTypeUnfollow {
+				HttpPost_JANDI("與"  + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + "解除好友", "gray" , "LINE 被解除好友")
 				log.Print("觸發與 " + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 解除好友")
 		}
 		//觸發加入群組聊天
 		if event.Type == linebot.EventTypeJoin {
+				HttpPost_JANDI("加入了"  + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + "群組對話", "blue" , "LINE 已加入群組")
 				log.Print("觸發加入群組對話")
  				source := event.Source
  				log.Print("觸發加入群組聊天事件 = " + source.GroupID)
@@ -1152,6 +1156,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發離開群組聊天
 		if event.Type == linebot.EventTypeLeave {
+				HttpPost_JANDI("離開"  + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + "群組對話", "gray" , "LINE 離開群組")
 				log.Print("觸發離開 " + event.Source.UserID + event.Source.GroupID + event.Source.RoomID +  " 群組")
 		}
 		if event.Type == linebot.EventTypeBeacon {
@@ -1245,7 +1250,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 						//2016.12.22+ free POST
 						//func HttpPost_JANDI(body, connectColor, title, --url--) error  
-						HttpPost_JANDI("test for LINE BOT", "#42602D" , "test", "https://wh.jandi.com/connect-api/webhook/11691684/3b6e6071e481e436605261583eff0177")
+						HttpPost_JANDI("test for LINE BOT", "#42602D" , "test")
 						
 						// "http://ani.gamer.com.tw/animeVideo.php?sn=6878",
 						//  第？話",
