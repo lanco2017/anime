@@ -996,8 +996,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				log.Print("event.Postback.Data = " + event.Postback.Data)
 				if event.Postback.Data == "開發者"{
 					//.NewImageMessage 發圖片成功
-					originalContentURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
-    				previewImageURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
+					originalContentURL := "https://synr.github.io/uwk0684z.jpg"
+    				previewImageURL := "https://synr.github.io/uwk0684z.jpg"
     				obj_message := linebot.NewImageMessage(originalContentURL, previewImageURL)
 					if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
 							log.Print(err)
