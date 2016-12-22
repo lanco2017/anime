@@ -1216,7 +1216,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								linebot.NewCarouselColumn(
 									"https://p2.bahamut.com.tw/B/2KU/18/0001484818.PNG", "意見反饋 feedback", "你可以透過此功能跟開發者提出建議",
 									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
-									inebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user +	"&lang=tw&pageTitle=LINEBOT"),
+									inebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user +	"&lang=tw&pageTitle=LINEBOT_anime"),
 									linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
 								),
 							)
