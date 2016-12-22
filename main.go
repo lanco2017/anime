@@ -1033,7 +1033,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 					),
 				)
-				obj_message := linebot.NewTemplateMessage("", template)
+				obj_message := linebot.NewTemplateMessage("你也可以說 介紹 或 info 來總覽可查詢的動畫。", template)
 
 			//reply 的寫法
 			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("群組聊天的各位大家好哇～！\n" + push_string + "\n我是懶懶寫的懶的說！\n\n想知道我的嗜好，請說：簡介"),obj_message).Do(); err != nil {
