@@ -41,9 +41,9 @@ func main() {
 	http.ListenAndServe(addr, nil)
 }
 
-func HttpPost_JANDI(body, connectColor, title  string) error {
+func HttpPost_JANDI(body, connectColor, title, url string) error {
 	log.Print("已經進來POST")
-	url := "https://wh.jandi.com/connect-api/webhook/11691684/3b6e6071e481e436605261583eff0177"
+	//url := "https://wh.jandi.com/connect-api/webhook/11691684/3b6e6071e481e436605261583eff0177"
 	jsonStr := `{
 		"body":"` + body + `",
 		"connectColor":"` + connectColor + `",
@@ -1244,8 +1244,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//bot_msg = "有喔！有喔！你在找這個對吧！？\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=5863" + "\n\n等等！這是最後一話！？"
 
 						//2016.12.22+ free POST
-						//func HttpPost_JANDI(body, connectColor, title, url) error  
-						HttpPost_JANDI("test for LINE BOT", "#42602D" , "test")
+						//func HttpPost_JANDI(body, connectColor, title, --url--) error  
+						HttpPost_JANDI("test for LINE BOT", "#42602D" , "test", "https://wh.jandi.com/connect-api/webhook/11691684/3b6e6071e481e436605261583eff0177")
 						
 						// "http://ani.gamer.com.tw/animeVideo.php?sn=6878",
 						//  第？話",
