@@ -991,30 +991,34 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	
 	for _, event := range events {
+		if event.Type == linebot.EventTypePostback {
+				log.Print("觸發 Postback 功能（不讓使用者察覺的程式利用）")
+				log.Print("event.Postback.Data = " + event.Postback.Data)
+		}
+		//加入好友
+		if event.Type == linebot.EventTypeFollow {
+				log.Print("觸發加入好友")
+		}
+		//解除好友
+		if event.Type == linebot.EventTypeUnfollow {
+				log.Print("觸發解除好友")
+		}
+		//加入群組聊天
 		if event.Type == linebot.EventTypeJoin {
-
-// 			https://github.com/line/line-bot-sdk-go
-// 			https://github.com/dongri/line-bot-sdk-go/blob/master/examples/server.go
-// 			   leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")
-// 			    rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")
-
-// 			    template := linebot.NewConfirmTemplate("Hello World", leftBtn, rightBtn)
-
-// 			    messgage1 := linebot.NewTemplateMessage("Sorry :(, please update your app.", template)
-// 			var messages []linebot.Message
-			//push 的寫法
+				log.Print("觸發加入群組對話")
  				source := event.Source
  				log.Print("觸發加入群組聊天事件 = " + source.GroupID)
  				push_string := "很高興你邀請我進來這裡聊天！"
 				if source.GroupID == "Ca78bf89fa33b777e54b4c13695818f81"{
 					push_string += "\n你好，主人。"
 				}
-// 				if _, err = bot.PushMessage(source.GroupID, linebot.NewTextMessage(push_string)).Do(); err != nil {
-// 					log.Print(err)
-// 				}
-// 				if _, err = bot.PushMessage("Ca78bf89fa33b777e54b4c13695818f81", linebot.NewTextMessage("這裡純測試對嗎？\n只發於測試聊天室「test」")).Do(); err != nil {
-// 					log.Print(err)
-// 				}
+				//push 的寫法
+				// 				if _, err = bot.PushMessage(source.GroupID, linebot.NewTextMessage(push_string)).Do(); err != nil {
+				// 					log.Print(err)
+				// 				}
+				// 				if _, err = bot.PushMessage("Ca78bf89fa33b777e54b4c13695818f81", linebot.NewTextMessage("這裡純測試對嗎？\n只發於測試聊天室「test」")).Do(); err != nil {
+				// 					log.Print(err)
+				// 				}
 				target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
 			    imageURL := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png"
 				template := linebot.NewCarouselTemplate(
@@ -1050,6 +1054,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("群組聊天的各位大家好哇～！\n" + push_string + "\n\n想知道我的嗜好，請說：簡介"),obj_message).Do(); err != nil {
 					log.Print(err)
 			}
+		}
+		//離開群組聊天
+		if event.Type == linebot.EventTypeLeave {
+				log.Print("觸發離開群組")
 		}
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
@@ -1301,7 +1309,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		 					    imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
 								template := linebot.NewCarouselTemplate(
 									linebot.NewCarouselColumn(
-										imageURL, "找不到耶", "有可能打錯字或這真的沒有收錄，才會找不到。",							
+										imageURL, "找不到"  +  message.Text   +   "耶", "有可能打錯字或這真的沒有收錄，\n才會找不到。",							
 										linebot.NewMessageTemplateAction("查看新番", "新番"),
 										linebot.NewMessageTemplateAction("可查詢的其他動畫目錄", "目錄"),
 										linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html"),
