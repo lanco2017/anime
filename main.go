@@ -1021,13 +1021,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			    imageURL := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png"
 				template := linebot.NewCarouselTemplate(
 					linebot.NewCarouselColumn(
-						imageURL, "查詢巴哈姆特動畫瘋的功能", "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n以下是舉例：",
+						imageURL, "查詢巴哈姆特動畫瘋的功能", "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數",
 						linebot.NewMessageTemplateAction("動畫 美術社 12", "動畫 美術社 12"),
 						linebot.NewMessageTemplateAction("アニメ 美術社大有問題 12", "アニメ 美術社大有問題 12"),
 						linebot.NewMessageTemplateAction("anime：美術社：１", "anime：美術社：１"),
 					),
 					linebot.NewCarouselColumn(
-						imageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特，\n之後用分隔符 + 動畫名稱 再用分隔符 打上數字 就可以。\n分隔符可以是空白、冒號或分號。",
+						imageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特",
 						linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
 						linebot.NewMessageTemplateAction("Ａｎｉｍｅ　美術社　５", "Ａｎｉｍｅ　美術社　５"),
 						linebot.NewMessageTemplateAction("anime：美術社：7", "anime：美術社：7"),
