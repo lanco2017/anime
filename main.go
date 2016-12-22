@@ -1380,14 +1380,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								//2016.12.22+ 利用正則分析字串結果，來設置觸發找開發者的時候要 + 的 UI
 								if reg_loking_for_admin.ReplaceAllString(bot_msg,"$1") == "你找我主人？OK！"{
 									log.Print("觸發找主人")
-			 					    imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
 									template := linebot.NewCarouselTemplate(
-										linebot.NewCarouselColumn(
-											imageURL, "找不到 "  +  message.Text   +   " 耶", "有可能打錯字或這真的沒有收錄，\n才會找不到。",							
-											linebot.NewMessageTemplateAction("查看新番", "新番"),
-											linebot.NewMessageTemplateAction("可查詢的其他動畫目錄", "目錄"),
-											linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html"),
-										),
 										linebot.NewCarouselColumn(
 											"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
 											linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
@@ -1395,7 +1388,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 											linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 										),
 									)
-									obj_message := linebot.NewTemplateMessage("除了「目錄」以外，\n你也可以輸入「新番」查詢近期的動畫。", template)
+									obj_message := linebot.NewTemplateMessage("上面這些都是聯絡開發者的相關方法。", template)
 									if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
 										log.Print(err)
 									}
