@@ -1232,12 +1232,25 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//.NewStickerMessage 發貼貼圖成功	 //https://devdocs.line.me/files/sticker_list.pdf					
 						//obj_message := linebot.NewStickerMessage("1", "1") //https://devdocs.line.me/en/?go#send-message-object
 
+						//https://devdocs.line.me/en/?go#imagemap-message
+						//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
+						obj_message := linebot.NewImagemapMessage(
+							"https://synr.github.io/img",
+							"Imagemap alt text",
+							linebot.ImagemapBaseSize{1040, 1040},
+							linebot.NewURIImagemapAction("https://store.line.me/family/manga/en", linebot.ImagemapArea{0, 0, 520, 520}),
+							linebot.NewURIImagemapAction("https://store.line.me/family/music/en", linebot.ImagemapArea{520, 0, 520, 520}),
+							linebot.NewURIImagemapAction("https://store.line.me/family/play/en", linebot.ImagemapArea{0, 520, 520, 520}),
+							linebot.NewMessageImagemapAction("URANAI!", linebot.ImagemapArea{520, 520, 520, 520}),
+						)
+
+
  					    //接收各種 message object
 						//if _, err = bot.ReplyMessage(event.ReplyToken, obj_message,obj_message,obj_message,obj_message,obj_message).Do(); err != nil { //五聯發
-						//if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil { 
+						if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil { 
 						//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "19"),linebot.NewStickerMessage("2", "20"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
-						//	log.Print(err)
-						//}
+							log.Print(err)
+						}
 					} else {
 						if anime_url!=""{
 	 					    imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
