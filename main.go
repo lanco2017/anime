@@ -1378,6 +1378,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
  					log.Print(err)
  				}
 			case *linebot.LocationMessage:
+				log.Print(message.Title)
+				log.Print(message.Address)
+				log.Print(message.Latitude)
+				log.Print(message.Longitude)
 				obj_message := linebot.NewLocationMessage(message.Title, message.Address, message.Latitude, message.Longitude)
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你在這裡？"),obj_message).Do(); err != nil {
 					log.Print(err)
