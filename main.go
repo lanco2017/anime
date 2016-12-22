@@ -49,7 +49,7 @@ func HttpPost_JANDI(body, connectColor, title string) error {
 		"connectColor":"` + connectColor + `",
 		"connectInfo" : [{
 				"title" : "` + title + `",
-				"description" : "這是經由 LINE BOT 轉來的同步消息",
+				"description" : "這是來自 LINE BOT 的通風報信",
 				"imageUrl": "https://line.me/R/ti/p/@pyv6283b"
 		}]
 	}`
