@@ -1037,7 +1037,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					username = "包包"
 				}
 			//reply 的寫法
-			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你好啊！" + username + "～！\n想知道我的嗜好，可以說：簡介\nPS：手機上可以看到不一樣的內容喔！"),obj_message).Do(); err != nil {
+			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你好啊！" + username + "～\n想知道我的嗜好，可以說：簡介\nPS：手機上可以看到不一樣的內容喔！"),obj_message).Do(); err != nil {
 					log.Print(err)
 			}
 
@@ -1357,7 +1357,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		 					    imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
 								template := linebot.NewCarouselTemplate(
 									linebot.NewCarouselColumn(
-										imageURL, "找不到"  +  message.Text   +   "耶", "有可能打錯字或這真的沒有收錄，\n才會找不到。",							
+										imageURL, "找不到 "  +  message.Text   +   " 耶", "有可能打錯字或這真的沒有收錄，\n才會找不到。",							
 										linebot.NewMessageTemplateAction("查看新番", "新番"),
 										linebot.NewMessageTemplateAction("可查詢的其他動畫目錄", "目錄"),
 										linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html"),
