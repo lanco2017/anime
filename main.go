@@ -64,6 +64,7 @@ func HttpPost(url, body, connectColor string) error {
 		bytes.NewBuffer([]byte(jsonStr)),
 	)
 	if err != nil {
+		log.Print(err)
 		return err
 	}
 
@@ -74,10 +75,12 @@ func HttpPost(url, body, connectColor string) error {
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
+		log.Print(err)		
 		return err
 	}
 	defer resp.Body.Close()
-
+	
+	log.Print(err)
 	return err
 }
 
