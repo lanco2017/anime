@@ -25,7 +25,6 @@ import (
 	
 	"github.com/line/line-bot-sdk-go/linebot"
 
-	"net/http"
 	"bytes"
 )
 
@@ -79,7 +78,7 @@ func HttpPost(url, body, connectColor string) error {
 		return err
 	}
 	defer resp.Body.Close()
-	
+
 	log.Print(err)
 	return err
 }
