@@ -41,6 +41,39 @@ func main() {
 	http.ListenAndServe(addr, nil)
 }
 
+func HttpPost_LINE_notify(body string) error {
+	log.Print("已經進來POST")
+	url := "https://notify-api.line.me/api/notify"
+	jsonStr := `{
+		"message":"` + body + `"
+	}`
+
+	req, err := http.NewRequest(
+		"POST",
+		url,
+		bytes.NewBuffer([]byte(jsonStr)),
+	)
+	if err != nil {
+		log.Print(err)
+		return err
+	}
+
+	// Content-Type 設定
+	req.Header.Set("Authorization", "Bearer f2SwpAKzAZMg4pree4KcYadSnsh59VtDVaME0pV7DoG")
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		log.Print(err)		
+		return err
+	}
+	defer resp.Body.Close()
+
+	log.Print(err)
+	return err
+}
+
 func HttpPost_JANDI(body, connectColor, title string) error {
 	log.Print("已經進來POST")
 	url := "https://wh.jandi.com/connect-api/webhook/11691684/3b6e6071e481e436605261583eff0177"
@@ -51,8 +84,8 @@ func HttpPost_JANDI(body, connectColor, title string) error {
 				"title" : "` + title + `",
 				"description" : "這是經由 LINE BOT 轉來的同步消息",
 				"imageUrl": "https://line.me/R/ti/p/@pyv6283b"
-			}]
-		}`
+		}]
+	}`
 
 	req, err := http.NewRequest(
 		"POST",
@@ -1250,7 +1283,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 						//2016.12.22+ free POST
 						//func HttpPost_JANDI(body, connectColor, title, --url--) error  
+						//http://nipponcolors.com/#matsuba
 						HttpPost_JANDI("test for LINE BOT", "#42602D" , "test")
+						HttpPost_LINE_notify("test")
 						
 						// "http://ani.gamer.com.tw/animeVideo.php?sn=6878",
 						//  第？話",
