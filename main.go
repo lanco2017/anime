@@ -1027,8 +1027,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					linebot.NewCarouselColumn(
 						imageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特",
 						linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
-						linebot.NewMessageTemplateAction("Ａｎｉｍｅ　黑白來　５", "Ａｎｉｍｅ　黑白來　５"),
-						linebot.NewMessageTemplateAction("anime：美術社：7", "anime：美術社：7"),
+						linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
+						linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
 					),
 					linebot.NewCarouselColumn(
 						imageURL, "其他功能", "新番、可查詢的動畫清單",
