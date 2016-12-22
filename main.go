@@ -992,17 +992,18 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	
 	for _, event := range events {
 		if event.Type == linebot.EventTypePostback {
+				//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 				log.Print("觸發 Postback 功能（不讓使用者察覺的程式利用）")
 				log.Print("event.Postback.Data = " + event.Postback.Data)
-				if event.Postback.Data == "開發者"{
-					//.NewImageMessage 發圖片成功
-					originalContentURL := "https://synr.github.io/uwk0684z.jpg"
-    				previewImageURL := "https://synr.github.io/uwk0684z.jpg"
-    				obj_message := linebot.NewImageMessage(originalContentURL, previewImageURL)
-					if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
-							log.Print(err)
-					}
-				}
+				// if event.Postback.Data == "開發者"{
+				// 	//.NewImageMessage 發圖片成功
+				// 	originalContentURL := "https://synr.github.io/uwk0684z.jpg"
+    			//	previewImageURL := "https://synr.github.io/uwk0684z.jpg"
+    			//	obj_message := linebot.NewImageMessage(originalContentURL, previewImageURL)
+				// 	if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+				// 			log.Print(err)
+				// 	}
+				// }
 		}
 		//觸發加入好友
 		if event.Type == linebot.EventTypeFollow {
