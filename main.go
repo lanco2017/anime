@@ -56,6 +56,7 @@ func real_num(text string) string {
 }
 
 func HttpPost(url, body, connectColor string) error {
+	log.Print("已經進來POST")
 	jsonStr := `{"body":"` + body + `","connectColor":"` + connectColor + `"}`
 
 	req, err := http.NewRequest(
