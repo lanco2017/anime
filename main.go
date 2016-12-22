@@ -997,8 +997,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發加入好友
 		if event.Type == linebot.EventTypeFollow {
-				log.Print("觸發與 " + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 加入好友")
 				target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
+				log.Print("觸發與 " + target_user + " 加入好友")
 			    imageURL := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png"
 				template := linebot.NewCarouselTemplate(
 					linebot.NewCarouselColumn(
@@ -1028,8 +1028,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				)
 				t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。"
 				obj_message := linebot.NewTemplateMessage(t_msg, template)
+
+				username := ""
+				if target_user == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
+					username = "懶懶"
+				}
+				if target_user == "Uf150a9f2763f5c6e18ce4d706681af7f"{
+					username = "包包"
+				}
 			//reply 的寫法
-			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你好哇～！\n" + push_string + "\n\n想知道我的嗜好，請說：簡介"),obj_message).Do(); err != nil {
+			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你好哇～！\n" + username + "\n\n想知道我的嗜好，請說：簡介"),obj_message).Do(); err != nil {
 					log.Print(err)
 			}
 
