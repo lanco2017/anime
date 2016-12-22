@@ -77,7 +77,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"黑白來看守所\n" +
 		"我太受歡迎了該怎麼辦\n" +
 		"無畏魔女"
-	case "bot","機器人","目錄","動畫清單","清單","索引","ｉｎｄｅｘ","index","Index","介紹","動漫","動畫介紹","動漫介紹","info","Info","ｉｎｆｏ":
+	case "bot","機器人","目錄","動畫清單","清單","索引","ｉｎｄｅｘ","index","Index","簡介","介紹","動漫","動畫介紹","動漫介紹","info","Info","ｉｎｆｏ":
 		print_string = "你可以問我下面這些動畫，我會帶你去看！\n\n" +
 		"※ 想知道最近新出的動畫可以輸入：「新番」查詢 \n" +
 		"※ 以下是目前能夠查詢的動畫，\n冒號後面是簡短搜尋法。\n當然打跟巴哈姆特一樣的全名也可以。\n\n" +
@@ -1018,25 +1018,32 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 // 					log.Print(err)
 // 				}
 				target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
-			    //imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
+			    imageURL := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png"
 				template := linebot.NewCarouselTemplate(
 					linebot.NewCarouselColumn(
-						"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "意見反饋 feedback", "你可以透過此功能\n跟開發者提出建議",
-						linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-						linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
-						linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
+						imageURL, "查詢巴哈姆特動畫瘋的功能", "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n以下是舉例：",
+						linebot.NewMessageTemplateAction("動畫 美術社 12", "動畫 美術社 12"),
+						linebot.NewMessageTemplateAction("アニメ 美術社大有問題 12", "アニメ 美術社大有問題 12"),
+						linebot.NewMessageTemplateAction("anime：美術社：１", "anime：美術社：１"),
 					),
 					linebot.NewCarouselColumn(
-						"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "意見反饋 feedback", "你可以透過此功能\n跟開發者提出建議",
+						imageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特，\n之後用分隔符 + 動畫名稱 再用分隔符 打上數字 就可以。\n分隔符可以是空白、冒號或分號。",
+						linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
+						linebot.NewMessageTemplateAction("Ａｎｉｍｅ　美術社　５", "Ａｎｉｍｅ　美術社　５"),
+						linebot.NewMessageTemplateAction("anime：美術社：7", "anime：美術社：7"),
+					),
+					linebot.NewCarouselColumn(
+						imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
 						linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
 						linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
 						linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 					),
 				)
-				obj_message := linebot.NewTemplateMessage("你也可以說 介紹 或 info 來總覽可查詢的動畫。", template)
+				t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。"
+				obj_message := linebot.NewTemplateMessage(t_msg, template)
 
 			//reply 的寫法
-			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("群組聊天的各位大家好哇～！\n" + push_string + "\n我是懶懶寫的懶的說！\n\n想知道我的嗜好，請說：簡介"),obj_message).Do(); err != nil {
+			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("群組聊天的各位大家好哇～！\n" + push_string + "\n\n想知道我的嗜好，請說：簡介"),obj_message).Do(); err != nil {
 					log.Print(err)
 			}
 		}
@@ -1238,7 +1245,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									linebot.NewMessageTemplateAction("查詢其他動畫", "目錄"),
 								),
 								linebot.NewCarouselColumn(
-									"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "意見反饋 feedback", "你可以透過此功能\n跟開發者提出建議",
+									"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
 									linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
 									linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
 									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
