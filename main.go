@@ -1052,13 +1052,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 		if event.Type == linebot.EventTypeMessage {
-			res, err := bot.GetUserProfile(event.Source.UserID + event.Source.GroupID + event.Source.RoomID).Do();
-			if err != nil {
-			    log.Print(err)
-			}
-			log.Print(res.Displayname)
-			log.Print(res.PicutureURL)
-			log.Print(res.StatusMessage)
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
 				//http://www.netadmin.com.tw/images/news/NP161004000316100411441903.png
