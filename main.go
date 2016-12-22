@@ -1251,10 +1251,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
  					    //接收各種 message object
 						//if _, err = bot.ReplyMessage(event.ReplyToken, obj_message,obj_message,obj_message,obj_message,obj_message).Do(); err != nil { //五聯發
-						if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil { 
+						// if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil { 
 						//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "19"),linebot.NewStickerMessage("2", "20"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
-							log.Print(err)
-						}
+						// 	log.Print(err)
+						// }
 					} else {
 						if anime_url!=""{
 	 					    imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
