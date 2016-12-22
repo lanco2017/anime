@@ -1384,10 +1384,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				log.Print(message.Latitude)
 				log.Print("message.Longitude = ")
 				log.Print(message.Longitude)
-				//obj_message := linebot.NewLocationMessage(message.Title, message.Address, message.Latitude, message.Longitude)
-				obj_message := linebot.NewLocationMessage("歡迎光臨", "地球", 25.022413, 121.556427) //麵包店 台北市信義區富陽街46號
+				obj_message := linebot.NewLocationMessage(message.Title, message.Address, message.Latitude, message.Longitude)
+				obj_message_1 := linebot.NewLocationMessage("歡迎光臨", "地球", 25.022413, 121.556427) //麵包店 台北市信義區富陽街46號
 				obj_message_2 := linebot.NewLocationMessage("歡迎光臨", "哪個近", 25.022463, 121.556454) //麵包店 台北市信義區富陽街46號
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你在這裡？"),obj_message,obj_message_2).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你在這裡？"),obj_message,obj_message_1,obj_message_2).Do(); err != nil {
 					log.Print(err)
 				}
 			case *linebot.StickerMessage:
