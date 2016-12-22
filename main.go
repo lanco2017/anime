@@ -997,11 +997,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發加入好友
 		if event.Type == linebot.EventTypeFollow {
-				log.Print("觸發與" + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + "加入好友")
+				log.Print("觸發與 " + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 加入好友")
 		}
 		//觸發解除好友
 		if event.Type == linebot.EventTypeUnfollow {
-				log.Print("觸發與" + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + "解除好友")
+				log.Print("觸發與 " + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 解除好友")
 		}
 		//觸發加入群組聊天
 		if event.Type == linebot.EventTypeJoin {
@@ -1024,7 +1024,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				template := linebot.NewCarouselTemplate(
 					linebot.NewCarouselColumn(
 						imageURL, "查詢巴哈姆特動畫瘋的功能", "我很愛看巴哈姆特動畫瘋。\n問我動畫可以這樣問：動畫 動畫名稱 集數",
-						linebot.NewMessageTemplateAction("動畫 美術社 12", "動畫 美術社 12"),
+						linebot.NewPostbackTemplateAction("動畫 美術社 12","動畫 美術社 12", "動畫 美術社 12"),
 						linebot.NewMessageTemplateAction("アニメ 美術社大有問題 12", "アニメ 美術社大有問題 12"),
 						linebot.NewMessageTemplateAction("anime：美術社：１", "anime：美術社：１"),
 					),
@@ -1057,7 +1057,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發離開群組聊天
 		if event.Type == linebot.EventTypeLeave {
-				log.Print("觸發離開" + event.Source.UserID + event.Source.GroupID + event.Source.RoomID +  "群組")
+				log.Print("觸發離開 " + event.Source.UserID + event.Source.GroupID + event.Source.RoomID +  " 群組")
 		}
 		if event.Type == linebot.EventTypeBeacon {
 				log.Print("觸發 Beacon（啥鬼）")
@@ -1278,6 +1278,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						// }
 					} else {
 						if anime_url!=""{
+							//找到的時候的 UI
 	 					    imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
 							template := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
