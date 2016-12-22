@@ -41,8 +41,44 @@ func main() {
 	http.ListenAndServe(addr, nil)
 }
 
+func HttpPost_IFTTT(body string) error {
+	log.Print("已經進來 IFTTT POST")
+	url := "https://maker.ifttt.com/trigger/linebot/with/key/WJCRNxQhGJuzPd-sUDext"
+	jsonStr := `{
+		"value1":"` + body + `",
+		"value2":"這是 LINE BOT 的同步通知",
+		"value3": "由 Heroku 的 GO 語言寫成"
+	}`
+
+	req, err := http.NewRequest(
+		"POST",
+		url,
+		bytes.NewBuffer([]byte(jsonStr)),
+	)
+	if err != nil {
+		log.Print(err)
+		return err
+	}
+
+	// Content-Type 設定
+	req.Header.Set("Accept", "application/vnd.tosslab.jandi-v2+json")
+	req.Header.Set("Content-Type", "application/json")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		log.Print(err)		
+		return err
+	}
+	defer resp.Body.Close()
+
+	log.Print(err)
+	return err
+}
+
+
 func HttpPost_JANDI(body, connectColor, title string) error {
-	log.Print("已經進來POST")
+	log.Print("已經進來 JANDI POST")
 	url := "https://wh.jandi.com/connect-api/webhook/11691684/46e7f45fd4f68a021afbd844aed66430"
 	jsonStr := `{
 		"body":"` + body + `",
@@ -1252,7 +1288,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//2016.12.22+ free POST
 						//func HttpPost_JANDI(body, connectColor, title, --url--) error  
 						//http://nipponcolors.com/#matsuba
-						HttpPost_JANDI("test for LINE BOT", "#42602D" , "test")
+						// HttpPost_JANDI("test for LINE BOT", "#42602D" , "test")
+						HttpPost_IFTTT("test for line bot")
 						//HttpPost_LINE_notify("test")
 						
 						// "http://ani.gamer.com.tw/animeVideo.php?sn=6878",
