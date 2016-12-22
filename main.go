@@ -92,7 +92,6 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"喵阿愣！\n" +
 		"雙星之陰陽師\n" +
 		"無畏魔女\n" +
-		"伯納德小姐說\n" +
 		"漂流武士\n" +
 		"JOJO 的奇妙冒險 不滅鑽石：JOJO\n" +
 		"影子籃球員\n" +
@@ -1028,8 +1027,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					linebot.NewCarouselColumn(
 						imageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特",
 						linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
-						linebot.NewMessageTemplateAction("Ａｎｉｍｅ　美術社　５", "Ａｎｉｍｅ　美術社　５"),
+						linebot.NewMessageTemplateAction("Ａｎｉｍｅ　黑白來　５", "Ａｎｉｍｅ　黑白來　５"),
 						linebot.NewMessageTemplateAction("anime：美術社：7", "anime：美術社：7"),
+					),
+					linebot.NewCarouselColumn(
+						imageURL, "其他功能", "新番、可查詢的動畫清單",
+						linebot.NewMessageTemplateAction("新番", "新番"),
+						linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
+						linebot.NewURITemplateAction("缺漏回報", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
 					),
 					linebot.NewCarouselColumn(
 						imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
