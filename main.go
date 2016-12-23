@@ -771,7 +771,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6875"
 			default:
 			}
-		case "JOJO 的奇妙冒險 不滅鑽石","JOJO","JOJO的奇妙冒險","奇妙冒險":
+		case "JOJO 的奇妙冒險 不滅鑽石","Jojo","JOJO","JOJO的奇妙冒險","奇妙冒險":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1":
