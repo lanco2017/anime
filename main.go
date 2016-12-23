@@ -154,7 +154,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"3 月的獅子\n" +
 		"黑白來看守所\n" +
 		"我太受歡迎了該怎麼辦\n" +
-		"無畏魔女"
+		"無畏魔女\n" + 
+		"殺老師 Q"
 	case "bot","機器人","目錄","動畫清單","清單","索引","ｉｎｄｅｘ","index","Index","簡介","介紹","動漫","動畫介紹","動漫介紹","info","Info","ｉｎｆｏ":
 		print_string = "你可以問我下面這些動畫，我會帶你去看！\n\n" +
 		"※ 想知道最近新出的動畫可以輸入：「新番」查詢 \n" +
@@ -179,6 +180,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"機動戰士鋼彈 鐵血孤兒 第二季\n" +
 		"路人超能 100\n" +
 		"釣球\n\n" +
+		"殺老師 Q\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者","admin","Admin","ａｄｍｉｎ":
 		print_string = "你找我主人？OK！\n我跟你講我的夥伴喵在哪，你去加他。\n他跟主人很親近的，跟他說的話主人都會看到。\nhttps://line.me/R/ti/p/%40uwk0684z\n\n\n你也可以從下面這個連結直接去找主人線上對話。\n\n如果他不在線上一樣可以留言給他，\n他會收到的！\n這跟手機、電腦桌面軟體都有同步連線。" +
@@ -189,6 +191,13 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+		case "殺老師","殺老師 Q","殺老師Q":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$4") {
+			case "1":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7057"
+			default:
+			}
 		case "路人超能 100","路人","靈能":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
@@ -769,7 +778,10 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6874"
 			case "11":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6875"
+			case "12":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6876" + "\n\n等等！這是最後一話！？"
 			default:
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6485"
 			}
 		case "JOJO 的奇妙冒險 不滅鑽石","Jojo","JOJO","JOJO的奇妙冒險","奇妙冒險":
 			//reg.ReplaceAllString(text, "$2")
@@ -904,6 +916,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6868"
 			case "11":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6869"
+			case "12":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6870"
 			default:
 			}
 		case "3月","3月的獅子","三月的獅子","三月":
