@@ -720,6 +720,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6846"
 			case "36":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6847"
+			case "37":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7023"
 			default:
 			}
 		case "無畏魔女":
@@ -745,6 +747,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6848"
 			case "10":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6849"
+			case "11":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7021"
 			default:
 			}
 		case "伯納德小姐說","小姐說","伯納德","伯納":
