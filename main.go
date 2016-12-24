@@ -41,7 +41,7 @@ func main() {
 	http.ListenAndServe(addr, nil)
 }
 
-func HttpPost_IFTTT(body , title_text string) error {
+func HttpPost_IFTTT(body , title_text, this_id string) error {
 	//https://internal-api.ifttt.com/maker
 	log.Print("已經進來 IFTTT POST")
 	log.Print("body =" + body)
@@ -51,7 +51,7 @@ func HttpPost_IFTTT(body , title_text string) error {
 	jsonStr := `{
 		"value1":"` + body + `",
 		"value2": "` + title_text + `",
-		"value3": "這是由 Heroku 的 GO 語言寫成的 LINE BOT 同步通知"
+		"value3": "` + this_id + `"
 	}`
 
 	req, err := http.NewRequest(
@@ -1141,12 +1141,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 
 
-
+		//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 		if event.Type == linebot.EventTypePostback {
-				//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 				log.Print("觸發 Postback 功能（不讓使用者察覺的程式利用）")
 				log.Print("event.Postback.Data = " + event.Postback.Data)
 				HttpPost_JANDI(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "brown" , "LINE 程式觀察")
+				HttpPost_IFTTT(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data , "LINE 程式觀察" ,target_user)
 				// if event.Postback.Data == "開發者"{
 				// 	//.NewImageMessage 發圖片成功
 				// 	originalContentURL := "https://synr.github.io/uwk0684z.jpg"
@@ -1160,6 +1160,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		//觸發加入好友
 		if event.Type == linebot.EventTypeFollow {
 				HttpPost_JANDI("有新的好朋友："  + user_talk , "blue" , "LINE 新好友")
+				HttpPost_IFTTT("有新的好朋友："  + user_talk , "LINE 新好友" ,target_user)
 				//target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
 				log.Print("觸發與 " + user_talk + " 加入好友")
 
@@ -1208,11 +1209,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		//觸發解除好友
 		if event.Type == linebot.EventTypeUnfollow {
 				HttpPost_JANDI("與 "  + user_talk + " 解除好友", "gray" , "LINE 被解除好友")
+				HttpPost_IFTTT("與 "  + user_talk + " 解除好友" , "LINE 被解除好友" ,target_user)
 				log.Print("觸發與 " + user_talk + " 解除好友")
 		}
 		//觸發加入群組聊天
 		if event.Type == linebot.EventTypeJoin {
 				HttpPost_JANDI("加入了 "  + user_talk , "blue" , "LINE 已加入群組")
+				HttpPost_IFTTT("加入了 "  + user_talk , "LINE 已加入群組" ,target_user)
 				log.Print("觸發加入" + user_talk)
  				//source := event.Source
  				//log.Print("觸發加入群組聊天事件 = " + source.GroupID)
@@ -1268,13 +1271,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		//觸發離開群組聊天
 		if event.Type == linebot.EventTypeLeave {
 				HttpPost_JANDI("離開 "  + user_talk , "gray" , "LINE 離開群組")
-				HttpPost_IFTTT("離開 "  + user_talk , "LINE 離開群組")
+				HttpPost_IFTTT("離開 "  + user_talk , "LINE 離開群組",target_user)
 				log.Print("觸發離開 " + user_talk +  " 群組")
 		}
 		//？？？？？
 		if event.Type == linebot.EventTypeBeacon {
 			HttpPost_JANDI(user_talk + " 觸發 Beacon（啥鬼）", "yellow" , "LINE 對話同步")
-			HttpPost_IFTTT(user_talk + " 觸發 Beacon（啥鬼）", "LINE 對話同步")
+			HttpPost_IFTTT(user_talk + " 觸發 Beacon（啥鬼）", "LINE 對話同步",target_user)
 			log.Print(user_talk + " 觸發 Beacon（啥鬼）")
 		}
 		//觸發收到訊息
@@ -1284,12 +1287,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
 
 				//測試群組跳過
-				if target_user == "Ca78bf89fa33b777e54b4c13695818f81" {
+				// if target_user == "Ca78bf89fa33b777e54b4c13695818f81" {
 
-				}else{
-					HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 對話同步")
-					HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 對話同步")
-				}
+				// }else{
+				// 	HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 對話同步")
+				// 	HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 對話同步",target_user)
+				// }
 
 				//http://www.netadmin.com.tw/images/news/NP161004000316100411441903.png
 				//userID := event.Source.UserID
@@ -1378,7 +1381,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//func HttpPost_JANDI(body, connectColor, title, --url--) error  
 						//http://nipponcolors.com/#matsuba
 						// HttpPost_JANDI("test for LINE BOT", "#42602D" , "test")
-						HttpPost_IFTTT("test for line bot", "純測試") //2016.12.22+ 成功！！！
+						//HttpPost_IFTTT("test for line bot", "純測試",target_user) //2016.12.22+ 成功！！！
 						//HttpPost_LINE_notify("test")
 						
 						// "http://ani.gamer.com.tw/animeVideo.php?sn=6878",
@@ -1543,6 +1546,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							if _, err = bot.ReplyMessage(event.ReplyToken,linebot.NewTextMessage("可參考以下圖例操作讓搜尋到的影片，直接在巴哈姆特動畫瘋 APP 進行播放。"),obj_message_img_1,obj_message_img_2,obj_message).Do(); err != nil {
 								log.Print(err)
 							}
+							HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：查詢成功")
+							HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢成功",target_user)
 						}else{
 							//2016.12.22+ 利用正則分析字串結果，來設置觸發找不到的時候要 + 的 UI
 							if reg_nofind.ReplaceAllString(bot_msg,"$1") == "才會增加比較慢XD）"{
@@ -1566,6 +1571,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
 									log.Print(err)
 								}
+								HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：搜尋失敗")
+								HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：搜尋失敗",target_user)
 							}else{
 								//2016.12.22+ 利用正則分析字串結果，來設置觸發找開發者的時候要 + 的 UI
 								if reg_loking_for_admin.ReplaceAllString(bot_msg,"$1") == "你找我主人？OK！"{
@@ -1582,6 +1589,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
 										log.Print(err)
 									}
+									HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：執行找開發者")
+									HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：執行找開發者",target_user)
 								}else{
 									if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 										log.Print(err)
