@@ -41,14 +41,17 @@ func main() {
 	http.ListenAndServe(addr, nil)
 }
 
-func HttpPost_IFTTT(body string) error {
+func HttpPost_IFTTT(body , title_text string) error {
 	//https://internal-api.ifttt.com/maker
 	log.Print("已經進來 IFTTT POST")
+	log.Print("body =" + body)
+	log.Print("title_text = " + title_text)
+
 	url := "https://maker.ifttt.com/trigger/linebot/with/key/WJCRNxQhGJuzPd-sUDext"
 	jsonStr := `{
 		"value1":"` + body + `",
-		"value2":"這是 LINE BOT 的同步通知",
-		"value3": "由 Heroku 的 GO 語言寫成"
+		"value2": "` + title_text + `",
+		"value3": "這是由 Heroku 的 GO 語言寫成的 LINE BOT 同步通知"
 	}`
 
 	req, err := http.NewRequest(
@@ -116,6 +119,8 @@ func HttpPost_JANDI(body, connectColor, title string) error {
 	log.Print(err)
 	return err
 }
+
+
 
 func real_num(text string) string {
 	text = strings.Replace(text, "１", "1", -1)
@@ -787,7 +792,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			default:
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6485"
 			}
-		case "JOJO 的奇妙冒險 不滅鑽石","Jojo","JOJO","JOJO的奇妙冒險","奇妙冒險":
+		case "JOJO 的奇妙冒險 不滅鑽石","Jojo","jojo","JOJO","JOJO的奇妙冒險","奇妙冒險":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1":
@@ -1090,11 +1095,48 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	
 	for _, event := range events {
+
+		target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
+ 		log.Print("event.Source.UserID = " + event.Source.UserID)
+		log.Print("event.Source.GroupID = " + event.Source.GroupID)
+		log.Print("event.Source.RoomID = " + event.Source.RoomID)
+		log.Print("target_user = " + target_user)
+		target_item := ""
+		if event.Source.UserID!="" {
+			target_item == "好友"
+		}
+		if event.Source.GroupID!="" {
+			target_item == "群組對話"
+		}
+		if event.Source.RoomID!="" {
+			target_item == "房間"
+		}
+		log.Print("target_item = " + target_item)
+
+		username := ""
+		switch target_user　{
+			case "U6f738a70b63c5900aa2c0cbbe0af91c4":
+				username = "懶懶"
+			case "Uf150a9f2763f5c6e18ce4d706681af7f":
+				username = "包包"
+			case "Ca78bf89fa33b777e54b4c13695818f81":
+				username = "測試用全開群組"
+		}
+		log.Print("username = " + username)
+
+		user_talk := ""
+		if username == ""{
+			user_talk = "【" + target_item + "】 " + target_user
+		}else{
+			user_talk = username
+		}
+		log.Print("※ user_talk = " + ser_talk)
+
 		if event.Type == linebot.EventTypePostback {
 				//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 				log.Print("觸發 Postback 功能（不讓使用者察覺的程式利用）")
 				log.Print("event.Postback.Data = " + event.Postback.Data)
-				HttpPost_JANDI("有人觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "brown" , "LINE 程式觀察")
+				HttpPost_JANDI(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "brown" , "LINE 程式觀察")
 				// if event.Postback.Data == "開發者"{
 				// 	//.NewImageMessage 發圖片成功
 				// 	originalContentURL := "https://synr.github.io/uwk0684z.jpg"
@@ -1107,9 +1149,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發加入好友
 		if event.Type == linebot.EventTypeFollow {
-				HttpPost_JANDI("有新的好朋友："  + event.Source.UserID + event.Source.GroupID + event.Source.RoomID, "blue" , "LINE 新好友")
-				target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
-				log.Print("觸發與 " + target_user + " 加入好友")
+				HttpPost_JANDI("有新的好朋友："  + user_talk , "blue" , "LINE 新好友")
+				//target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
+				log.Print("觸發與 " + user_talk + " 加入好友")
+
 			    imageURL := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png"
 				template := linebot.NewCarouselTemplate(
 					linebot.NewCarouselColumn(
@@ -1140,33 +1183,34 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。"
 				obj_message := linebot.NewTemplateMessage(t_msg, template)
 
-				username := ""
-				if target_user == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
-					username = "懶懶"
+				// username := ""
+				// if target_user == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
+				// 	username = "懶懶"
+				// }
+				// if target_user == "Uf150a9f2763f5c6e18ce4d706681af7f"{
+				// 	username = "包包"
+				// }
+				//reply 的寫法
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你好啊！" + username + "～\n想知道我的嗜好，可以說：簡介\n\nPS：手機上可以看到不一樣的內容喔！"),obj_message).Do(); err != nil {
+						log.Print(err)
 				}
-				if target_user == "Uf150a9f2763f5c6e18ce4d706681af7f"{
-					username = "包包"
-				}
-			//reply 的寫法
-			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你好啊！" + username + "～\n想知道我的嗜好，可以說：簡介\n\nPS：手機上可以看到不一樣的內容喔！"),obj_message).Do(); err != nil {
-					log.Print(err)
-			}
-
 		}
 		//觸發解除好友
 		if event.Type == linebot.EventTypeUnfollow {
-				HttpPost_JANDI("與 "  + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 解除好友", "gray" , "LINE 被解除好友")
-				log.Print("觸發與 " + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 解除好友")
+				HttpPost_JANDI("與 "  + user_talk + " 解除好友", "gray" , "LINE 被解除好友")
+				log.Print("觸發與 " + user_talk + " 解除好友")
 		}
 		//觸發加入群組聊天
 		if event.Type == linebot.EventTypeJoin {
-				HttpPost_JANDI("加入了 "  + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 群組對話", "blue" , "LINE 已加入群組")
-				log.Print("觸發加入群組對話")
+				HttpPost_JANDI("加入了 "  + user_talk + " 群組對話", "blue" , "LINE 已加入群組")
+				log.Print("觸發加入" + user_talk + "群組對話")
  				source := event.Source
- 				log.Print("觸發加入群組聊天事件 = " + source.GroupID)
+ 				//log.Print("觸發加入群組聊天事件 = " + source.GroupID)
  				push_string := "很高興你邀請我進來這裡聊天！"
-				if source.GroupID == "Ca78bf89fa33b777e54b4c13695818f81"{
-					push_string += "\n你好，主人。"
+
+				//if source.GroupID == "Ca78bf89fa33b777e54b4c13695818f81"{
+				if target_user == "Ca78bf89fa33b777e54b4c13695818f81"{
+					push_string += "\n你好，" + user_talk + "。"
 				}
 				//push 的寫法
 				// 				if _, err = bot.PushMessage(source.GroupID, linebot.NewTextMessage(push_string)).Do(); err != nil {
@@ -1175,7 +1219,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// 				if _, err = bot.PushMessage("Ca78bf89fa33b777e54b4c13695818f81", linebot.NewTextMessage("這裡純測試對嗎？\n只發於測試聊天室「test」")).Do(); err != nil {
 				// 					log.Print(err)
 				// 				}
-				target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
+				//target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
 			    imageURL := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png"
 				template := linebot.NewCarouselTemplate(
 					linebot.NewCarouselColumn(
@@ -1207,24 +1251,36 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				obj_message := linebot.NewTemplateMessage(t_msg, template)
 
 				//reply 的寫法
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("群組聊天的各位大家好哇～！\n" + push_string + "\n\n想知道我的嗜好，請說：簡介"),obj_message).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("群組聊天的各位大家好哇～！" + push_string + "\n\n想知道我的嗜好，請說：簡介"),obj_message).Do(); err != nil {
 						log.Print(err)
 				}
 		}
 		//觸發離開群組聊天
 		if event.Type == linebot.EventTypeLeave {
-				HttpPost_JANDI("離開 "  + event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 群組對話", "gray" , "LINE 離開群組")
-				log.Print("觸發離開 " + event.Source.UserID + event.Source.GroupID + event.Source.RoomID +  " 群組")
+				HttpPost_JANDI("離開 "  + user_talk + " 群組對話", "gray" , "LINE 離開群組")
+				HttpPost_IFTTT("離開 "  + user_talk + " 群組對話", "LINE 離開群組")
+				log.Print("觸發離開 " + user_talk +  " 群組")
 		}
+		//？？？？？
 		if event.Type == linebot.EventTypeBeacon {
-				log.Print("觸發 Beacon（啥鬼）")
+			HttpPost_JANDI(user_talk + " 觸發 Beacon（啥鬼）", "yellow" , "LINE 對話同步")
+			HttpPost_IFTTT(user_talk + " 觸發 Beacon（啥鬼）", "LINE 對話同步")
+			log.Print(user_talk + " 觸發 Beacon（啥鬼）")
 		}
 		//觸發收到訊息
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
-				HttpPost_JANDI(event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 說：" + message.Text, "yellow" , "LINE 對話同步")
-				HttpPost_IFTTT(event.Source.UserID + event.Source.GroupID + event.Source.RoomID + " 說：" + message.Text)
+				//target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
+
+				//測試群組跳過
+				if target_user == "Ca78bf89fa33b777e54b4c13695818f81" {
+
+				}else{
+					HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 對話同步")
+					HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 對話同步")
+				}
+
 				//http://www.netadmin.com.tw/images/news/NP161004000316100411441903.png
 				//userID := event.Source.UserID
 
@@ -1239,17 +1295,18 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				
 				//2016.12.20+
 				//只有在 1 對 1 才能抓到 User ID　在群組才能抓到 event.Source.GroupID
- 				log.Print("event.Source.UserID = " + event.Source.UserID)
-				log.Print("event.Source.GroupID = " + event.Source.GroupID)
-				log.Print("event.Source.RoomID = " + event.Source.RoomID)
-				
-// 				source := event.Source
-// 				log.Print("source.UserID = " + source.UserID)
-				
-// 				userID := event.Source.UserID
-// 				log.Print("userID := event.Source.UserID = " + userID)
 
-				target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
+ 				// log.Print("event.Source.UserID = " + event.Source.UserID)
+				// log.Print("event.Source.GroupID = " + event.Source.GroupID)
+				// log.Print("event.Source.RoomID = " + event.Source.RoomID)
+				
+				// 				source := event.Source
+				// 				log.Print("source.UserID = " + source.UserID)
+								
+				// 				userID := event.Source.UserID
+				// 				log.Print("userID := event.Source.UserID = " + userID)
+
+				// target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
 				// if event.Source.UserID == ""{
 				// 	target_user = event.Source.GroupID
 				// } else {
@@ -1311,7 +1368,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//func HttpPost_JANDI(body, connectColor, title, --url--) error  
 						//http://nipponcolors.com/#matsuba
 						// HttpPost_JANDI("test for LINE BOT", "#42602D" , "test")
-						HttpPost_IFTTT("test for line bot") //2016.12.22+ 成功！！！
+						HttpPost_IFTTT("test for line bot", "純測試") //2016.12.22+ 成功！！！
 						//HttpPost_LINE_notify("test")
 						
 						// "http://ani.gamer.com.tw/animeVideo.php?sn=6878",
@@ -1524,37 +1581,37 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				}
-// 				m := linebot.NewTextMessage("ok")
-// 				    if _, err = bot.ReplyMessage(event.ReplyToken, m).Do(); err != nil {
+				// 				m := linebot.NewTextMessage("ok")
+				// 				    if _, err = bot.ReplyMessage(event.ReplyToken, m).Do(); err != nil {
 
-// 				    }
-				
-				//----------PushMessage-----------這段可以跟 ReplyMessage 同時有效，但是只會在 1 對 1 有效。群組無效。---------
-				//------開發者測試方案有效(好友最多50人/訊息無上限)，免費版(好友不限人數/訊息限制1000)、入門版無效，旗艦版、專業版有效。
-				
-				//http://muzigram.muzigen.net/2016/09/linebot-golang-linebot-heroku.html
-				//https://github.com/mogeta/lbot/blob/master/main.go
- 				source := event.Source
- 				log.Print("source.UserID = " + source.UserID)
- 				log.Print("target_user = " + target_user)
-				//2016.12.20+//push_string := ""
-// 				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
-// 					push_string = "你好，主人。（PUSH_MESSAGE 才可以發）"
-// 				}
-// 				if source.UserID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
-// 					push_string = "唉呦，你是包包吼"
-// 				}
-//2016.12.20+ close push
-// 					if source.Type == linebot.EventSourceTypeUser {
-// 						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(push_string)).Do(); err != nil {
-// 							log.Print(err)
-// 						}
-// 					}
-// 					if source.Type == linebot.EventSourceTypeUser {
-// 						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(push_string)).Do(); err != nil {
-// 							log.Print(err)
-// 						}
-// 					}
+				// 				    }
+								
+								//----------PushMessage-----------這段可以跟 ReplyMessage 同時有效，但是只會在 1 對 1 有效。群組無效。---------
+								//------開發者測試方案有效(好友最多50人/訊息無上限)，免費版(好友不限人數/訊息限制1000)、入門版無效，旗艦版、專業版有效。
+								
+								//http://muzigram.muzigen.net/2016/09/linebot-golang-linebot-heroku.html
+								//https://github.com/mogeta/lbot/blob/master/main.go
+				 				source := event.Source
+				 				log.Print("source.UserID = " + source.UserID)
+				 				log.Print("target_user = " + target_user)
+								//2016.12.20+//push_string := ""
+				// 				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
+				// 					push_string = "你好，主人。（PUSH_MESSAGE 才可以發）"
+				// 				}
+				// 				if source.UserID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
+				// 					push_string = "唉呦，你是包包吼"
+				// 				}
+				//2016.12.20+ close push
+				// 					if source.Type == linebot.EventSourceTypeUser {
+				// 						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(push_string)).Do(); err != nil {
+				// 							log.Print(err)
+				// 						}
+				// 					}
+				// 					if source.Type == linebot.EventSourceTypeUser {
+				// 						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(push_string)).Do(); err != nil {
+				// 							log.Print(err)
+				// 						}
+				// 					}
 					//上面重覆兩段 push 用來證明 push 才可以連發訊息框，re 只能一個框
 				//---------------------這段可以跟 ReplyMessage 同時有效，但是只會在 1 對 1 有效。群組無效。---------
 			case *linebot.ImageMessage:
