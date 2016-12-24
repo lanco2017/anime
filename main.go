@@ -1114,7 +1114,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		log.Print("target_item = " + target_item)
 
 		username := ""
-		switch target_user　{
+		switch event.Source.UserID + event.Source.GroupID + event.Source.RoomID　{
 			case "U6f738a70b63c5900aa2c0cbbe0af91c4":
 				username = "懶懶"
 			case "Uf150a9f2763f5c6e18ce4d706681af7f":
