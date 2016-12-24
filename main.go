@@ -1164,6 +1164,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			username = profile.DisplayName
 			userStatus = profile.StatusMessage
 			userLogo_url = profile.PicutureURL
+
+			log.Print("username = " + username)
+			log.Print("userStatus = " + userStatus)
+			log.Print("userLogo_url = " +  userLogo_url)
 		}
 
 		//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
