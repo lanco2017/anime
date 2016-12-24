@@ -46,6 +46,7 @@ func HttpPost_IFTTT(body , title_text, this_id string) error {
 	log.Print("已經進來 IFTTT POST")
 	log.Print("body =" + body)
 	log.Print("title_text = " + title_text)
+	log.Print("this_id = " + this_id)
 
 	url := "https://maker.ifttt.com/trigger/linebot/with/key/WJCRNxQhGJuzPd-sUDext"
 	jsonStr := `{
@@ -83,6 +84,11 @@ func HttpPost_IFTTT(body , title_text, this_id string) error {
 
 func HttpPost_JANDI(body, connectColor, title, code string) error {
 	log.Print("已經進來 JANDI POST")
+	log.Print("body =" + body)
+	log.Print("connectColor = " + connectColor)
+	log.Print("title = " + title)
+	log.Print("code = " + code)
+
 	url := "https://wh.jandi.com/connect-api/webhook/11691684/46e7f45fd4f68a021afbd844aed66430"
 	jsonStr := `{
 		"body":"` + body + `",
