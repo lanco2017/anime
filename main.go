@@ -1096,43 +1096,43 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	
 	for _, event := range events {
 
+		target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID//target_user := ""
+ 		log.Print("event.Source.UserID = " + event.Source.UserID)
+		log.Print("event.Source.GroupID = " + event.Source.GroupID)
+		log.Print("event.Source.RoomID = " + event.Source.RoomID)
+		log.Print("target_user = " + target_user)
+		target_item := ""
+		if event.Source.UserID!="" {
+			target_item = "好友"
+		}
+		if event.Source.GroupID!="" {
+			target_item = "群組對話"
+		}
+		if event.Source.RoomID!="" {
+			target_item = "房間"
+		}
+		log.Print("target_item = " + target_item)
+
+		username := ""
+		switch target_user{
+			case "U6f738a70b63c5900aa2c0cbbe0af91c4":
+				username = "懶懶"
+			case "Uf150a9f2763f5c6e18ce4d706681af7f":
+				username = "包包"
+			case "Ca78bf89fa33b777e54b4c13695818f81":
+				username = "測試用全開群組"
+		}
+		log.Print("username = " + username)
+
+		user_talk := ""
+		if username == ""{
+			user_talk = "【" + target_item + "】 " + target_user
+		}else{
+			user_talk = username
+		}
+		log.Print("※ user_talk = " + user_talk)
+
 		if event.Type == linebot.EventTypePostback {
-			target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
-	 		log.Print("event.Source.UserID = " + event.Source.UserID)
-			log.Print("event.Source.GroupID = " + event.Source.GroupID)
-			log.Print("event.Source.RoomID = " + event.Source.RoomID)
-			log.Print("target_user = " + target_user)
-			target_item := ""
-			if event.Source.UserID!="" {
-				target_item = "好友"
-			}
-			if event.Source.GroupID!="" {
-				target_item = "群組對話"
-			}
-			if event.Source.RoomID!="" {
-				target_item = "房間"
-			}
-			log.Print("target_item = " + target_item)
-
-			username := ""
-			switch target_user　{
-				case "U6f738a70b63c5900aa2c0cbbe0af91c4":
-					username = "懶懶"
-				case "Uf150a9f2763f5c6e18ce4d706681af7f":
-					username = "包包"
-				case "Ca78bf89fa33b777e54b4c13695818f81":
-					username = "測試用全開群組"
-			}
-			log.Print("username = " + username)
-
-			user_talk := ""
-			if username == ""{
-				user_talk = "【" + target_item + "】 " + target_user
-			}else{
-				user_talk = username
-			}
-			log.Print("※ user_talk = " + user_talk)
-
 				//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 				log.Print("觸發 Postback 功能（不讓使用者察覺的程式利用）")
 				log.Print("event.Postback.Data = " + event.Postback.Data)
@@ -1149,41 +1149,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發加入好友
 		if event.Type == linebot.EventTypeFollow {
-			target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
-	 		log.Print("event.Source.UserID = " + event.Source.UserID)
-			log.Print("event.Source.GroupID = " + event.Source.GroupID)
-			log.Print("event.Source.RoomID = " + event.Source.RoomID)
-			log.Print("target_user = " + target_user)
-			target_item := ""
-			if event.Source.UserID!="" {
-				target_item = "好友"
-			}
-			if event.Source.GroupID!="" {
-				target_item = "群組對話"
-			}
-			if event.Source.RoomID!="" {
-				target_item = "房間"
-			}
-			log.Print("target_item = " + target_item)
-
-			username := ""
-			switch target_user　{
-				case "U6f738a70b63c5900aa2c0cbbe0af91c4":
-					username = "懶懶"
-				case "Uf150a9f2763f5c6e18ce4d706681af7f":
-					username = "包包"
-				case "Ca78bf89fa33b777e54b4c13695818f81":
-					username = "測試用全開群組"
-			}
-			log.Print("username = " + username)
-
-			user_talk := ""
-			if username == ""{
-				user_talk = "【" + target_item + "】 " + target_user
-			}else{
-				user_talk = username
-			}
-			log.Print("※ user_talk = " + user_talk)
 				HttpPost_JANDI("有新的好朋友："  + user_talk , "blue" , "LINE 新好友")
 				//target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
 				log.Print("觸發與 " + user_talk + " 加入好友")
@@ -1232,81 +1197,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發解除好友
 		if event.Type == linebot.EventTypeUnfollow {
-			target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
-	 		log.Print("event.Source.UserID = " + event.Source.UserID)
-			log.Print("event.Source.GroupID = " + event.Source.GroupID)
-			log.Print("event.Source.RoomID = " + event.Source.RoomID)
-			log.Print("target_user = " + target_user)
-			target_item := ""
-			if event.Source.UserID!="" {
-				target_item = "好友"
-			}
-			if event.Source.GroupID!="" {
-				target_item = "群組對話"
-			}
-			if event.Source.RoomID!="" {
-				target_item = "房間"
-			}
-			log.Print("target_item = " + target_item)
-
-			username := ""
-			switch target_user　{
-				case "U6f738a70b63c5900aa2c0cbbe0af91c4":
-					username = "懶懶"
-				case "Uf150a9f2763f5c6e18ce4d706681af7f":
-					username = "包包"
-				case "Ca78bf89fa33b777e54b4c13695818f81":
-					username = "測試用全開群組"
-			}
-			log.Print("username = " + username)
-
-			user_talk := ""
-			if username == ""{
-				user_talk = "【" + target_item + "】 " + target_user
-			}else{
-				user_talk = username
-			}
-			log.Print("※ user_talk = " + user_talk)
 				HttpPost_JANDI("與 "  + user_talk + " 解除好友", "gray" , "LINE 被解除好友")
 				log.Print("觸發與 " + user_talk + " 解除好友")
 		}
 		//觸發加入群組聊天
 		if event.Type == linebot.EventTypeJoin {
-			target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
-	 		log.Print("event.Source.UserID = " + event.Source.UserID)
-			log.Print("event.Source.GroupID = " + event.Source.GroupID)
-			log.Print("event.Source.RoomID = " + event.Source.RoomID)
-			log.Print("target_user = " + target_user)
-			target_item := ""
-			if event.Source.UserID!="" {
-				target_item = "好友"
-			}
-			if event.Source.GroupID!="" {
-				target_item = "群組對話"
-			}
-			if event.Source.RoomID!="" {
-				target_item = "房間"
-			}
-			log.Print("target_item = " + target_item)
-
-			username := ""
-			switch target_user　{
-				case "U6f738a70b63c5900aa2c0cbbe0af91c4":
-					username = "懶懶"
-				case "Uf150a9f2763f5c6e18ce4d706681af7f":
-					username = "包包"
-				case "Ca78bf89fa33b777e54b4c13695818f81":
-					username = "測試用全開群組"
-			}
-			log.Print("username = " + username)
-
-			user_talk := ""
-			if username == ""{
-				user_talk = "【" + target_item + "】 " + target_user
-			}else{
-				user_talk = username
-			}
-			log.Print("※ user_talk = " + user_talk)
 				HttpPost_JANDI("加入了 "  + user_talk + " 群組對話", "blue" , "LINE 已加入群組")
 				log.Print("觸發加入" + user_talk + "群組對話")
  				source := event.Source
@@ -1362,123 +1257,18 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發離開群組聊天
 		if event.Type == linebot.EventTypeLeave {
-			target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
-	 		log.Print("event.Source.UserID = " + event.Source.UserID)
-			log.Print("event.Source.GroupID = " + event.Source.GroupID)
-			log.Print("event.Source.RoomID = " + event.Source.RoomID)
-			log.Print("target_user = " + target_user)
-			target_item := ""
-			if event.Source.UserID!="" {
-				target_item = "好友"
-			}
-			if event.Source.GroupID!="" {
-				target_item = "群組對話"
-			}
-			if event.Source.RoomID!="" {
-				target_item = "房間"
-			}
-			log.Print("target_item = " + target_item)
-
-			username := ""
-			switch target_user　{
-				case "U6f738a70b63c5900aa2c0cbbe0af91c4":
-					username = "懶懶"
-				case "Uf150a9f2763f5c6e18ce4d706681af7f":
-					username = "包包"
-				case "Ca78bf89fa33b777e54b4c13695818f81":
-					username = "測試用全開群組"
-			}
-			log.Print("username = " + username)
-
-			user_talk := ""
-			if username == ""{
-				user_talk = "【" + target_item + "】 " + target_user
-			}else{
-				user_talk = username
-			}
-			log.Print("※ user_talk = " + user_talk)
 				HttpPost_JANDI("離開 "  + user_talk + " 群組對話", "gray" , "LINE 離開群組")
 				HttpPost_IFTTT("離開 "  + user_talk + " 群組對話", "LINE 離開群組")
 				log.Print("觸發離開 " + user_talk +  " 群組")
 		}
 		//？？？？？
 		if event.Type == linebot.EventTypeBeacon {
-			target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
-	 		log.Print("event.Source.UserID = " + event.Source.UserID)
-			log.Print("event.Source.GroupID = " + event.Source.GroupID)
-			log.Print("event.Source.RoomID = " + event.Source.RoomID)
-			log.Print("target_user = " + target_user)
-			target_item := ""
-			if event.Source.UserID!="" {
-				target_item = "好友"
-			}
-			if event.Source.GroupID!="" {
-				target_item = "群組對話"
-			}
-			if event.Source.RoomID!="" {
-				target_item = "房間"
-			}
-			log.Print("target_item = " + target_item)
-
-			username := ""
-			switch target_user　{
-				case "U6f738a70b63c5900aa2c0cbbe0af91c4":
-					username = "懶懶"
-				case "Uf150a9f2763f5c6e18ce4d706681af7f":
-					username = "包包"
-				case "Ca78bf89fa33b777e54b4c13695818f81":
-					username = "測試用全開群組"
-			}
-			log.Print("username = " + username)
-
-			user_talk := ""
-			if username == ""{
-				user_talk = "【" + target_item + "】 " + target_user
-			}else{
-				user_talk = username
-			}
-			log.Print("※ user_talk = " + user_talk)
 			HttpPost_JANDI(user_talk + " 觸發 Beacon（啥鬼）", "yellow" , "LINE 對話同步")
 			HttpPost_IFTTT(user_talk + " 觸發 Beacon（啥鬼）", "LINE 對話同步")
 			log.Print(user_talk + " 觸發 Beacon（啥鬼）")
 		}
 		//觸發收到訊息
 		if event.Type == linebot.EventTypeMessage {
-			target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
-	 		log.Print("event.Source.UserID = " + event.Source.UserID)
-			log.Print("event.Source.GroupID = " + event.Source.GroupID)
-			log.Print("event.Source.RoomID = " + event.Source.RoomID)
-			log.Print("target_user = " + target_user)
-			target_item := ""
-			if event.Source.UserID!="" {
-				target_item = "好友"
-			}
-			if event.Source.GroupID!="" {
-				target_item = "群組對話"
-			}
-			if event.Source.RoomID!="" {
-				target_item = "房間"
-			}
-			log.Print("target_item = " + target_item)
-
-			username := ""
-			switch target_user　{
-				case "U6f738a70b63c5900aa2c0cbbe0af91c4":
-					username = "懶懶"
-				case "Uf150a9f2763f5c6e18ce4d706681af7f":
-					username = "包包"
-				case "Ca78bf89fa33b777e54b4c13695818f81":
-					username = "測試用全開群組"
-			}
-			log.Print("username = " + username)
-
-			user_talk := ""
-			if username == ""{
-				user_talk = "【" + target_item + "】 " + target_user
-			}else{
-				user_talk = username
-			}
-			log.Print("※ user_talk = " + user_talk)
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
 				//target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
