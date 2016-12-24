@@ -1108,11 +1108,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 		//2016.12.23+ 統一基本資訊集中
 
-		//2016.12.24+ 嘗試抓使用者資訊 https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
-		profile, err := bot.GetProfile(event.Source.UserID).Do()
-		log.Print("profile.DisplayName = " + profile.DisplayName)
-		log.Print("profile.StatusMessage " + profile.StatusMessage)
-
 		target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID//target_user := ""
  		log.Print("event.Source.UserID = " + event.Source.UserID)
 		log.Print("event.Source.GroupID = " + event.Source.GroupID)
@@ -1131,6 +1126,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		log.Print("target_item = " + target_item)
 
 		username := ""
+		userStatus := ""
 		switch target_user{
 			case "U6f738a70b63c5900aa2c0cbbe0af91c4":
 				username = "懶懶"
@@ -1153,7 +1149,19 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		log.Print("※ user_talk = " + user_talk)
 
-
+		if target_item == "好友"{
+			//2016.12.24+ 嘗試抓使用者資訊 https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
+			profile, err := bot.GetProfile(event.Source.UserID).Do()
+			log.Print("profile.DisplayName = " + profile.DisplayName)
+			log.Print("profile.StatusMessage " + profile.StatusMessage)
+			//如果是群組會出錯，只能 1 對 1的時候。
+			if username == ""{
+				//username = profile.DisplayName
+				// userStatus = profile.StatusMessage
+			}
+			username = profile.DisplayName
+			userStatus = profile.StatusMessage
+		}
 
 		//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 		if event.Type == linebot.EventTypePostback {
