@@ -81,7 +81,7 @@ func HttpPost_IFTTT(body , title_text, this_id string) error {
 }
 
 
-func HttpPost_JANDI(body, connectColor, title string) error {
+func HttpPost_JANDI(body, connectColor, title, code string) error {
 	log.Print("已經進來 JANDI POST")
 	url := "https://wh.jandi.com/connect-api/webhook/11691684/46e7f45fd4f68a021afbd844aed66430"
 	jsonStr := `{
@@ -91,6 +91,9 @@ func HttpPost_JANDI(body, connectColor, title string) error {
 				"title" : "` + title + `",
 				"description" : "這是來自 LINE BOT 的通風報信",
 				"imageUrl": "https://line.me/R/ti/p/@pyv6283b"
+		},{
+				"title" : "參考數據",
+				"description" : "` + code + `"
 		}]
 	}`
 
@@ -1145,7 +1148,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypePostback {
 				log.Print("觸發 Postback 功能（不讓使用者察覺的程式利用）")
 				log.Print("event.Postback.Data = " + event.Postback.Data)
-				HttpPost_JANDI(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "brown" , "LINE 程式觀察")
+				HttpPost_JANDI(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "brown" , "LINE 程式觀察",target_user)
 				HttpPost_IFTTT(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data , "LINE 程式觀察" ,target_user)
 				// if event.Postback.Data == "開發者"{
 				// 	//.NewImageMessage 發圖片成功
@@ -1159,7 +1162,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發加入好友
 		if event.Type == linebot.EventTypeFollow {
-				HttpPost_JANDI("有新的好朋友："  + user_talk , "blue" , "LINE 新好友")
+				HttpPost_JANDI("有新的好朋友："  + user_talk , "blue" , "LINE 新好友",target_user)
 				HttpPost_IFTTT("有新的好朋友："  + user_talk , "LINE 新好友" ,target_user)
 				//target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
 				log.Print("觸發與 " + user_talk + " 加入好友")
@@ -1208,7 +1211,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發解除好友
 		if event.Type == linebot.EventTypeUnfollow {
-				HttpPost_JANDI("與 "  + user_talk + " 解除好友", "gray" , "LINE 被解除好友")
+				HttpPost_JANDI("與 "  + user_talk + " 解除好友", "gray" , "LINE 被解除好友",target_user)
 				HttpPost_IFTTT("與 "  + user_talk + " 解除好友" , "LINE 被解除好友" ,target_user)
 				log.Print("觸發與 " + user_talk + " 解除好友")
 		}
@@ -1270,13 +1273,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發離開群組聊天
 		if event.Type == linebot.EventTypeLeave {
-				HttpPost_JANDI("離開 "  + user_talk , "gray" , "LINE 離開群組")
+				HttpPost_JANDI("離開 "  + user_talk , "gray" , "LINE 離開群組",target_user)
 				HttpPost_IFTTT("離開 "  + user_talk , "LINE 離開群組",target_user)
 				log.Print("觸發離開 " + user_talk +  " 群組")
 		}
 		//？？？？？
 		if event.Type == linebot.EventTypeBeacon {
-			HttpPost_JANDI(user_talk + " 觸發 Beacon（啥鬼）", "yellow" , "LINE 對話同步")
+			HttpPost_JANDI(user_talk + " 觸發 Beacon（啥鬼）", "yellow" , "LINE 對話同步",target_user)
 			HttpPost_IFTTT(user_talk + " 觸發 Beacon（啥鬼）", "LINE 對話同步",target_user)
 			log.Print(user_talk + " 觸發 Beacon（啥鬼）")
 		}
@@ -1546,7 +1549,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							if _, err = bot.ReplyMessage(event.ReplyToken,linebot.NewTextMessage("可參考以下圖例操作讓搜尋到的影片，直接在巴哈姆特動畫瘋 APP 進行播放。"),obj_message_img_1,obj_message_img_2,obj_message).Do(); err != nil {
 								log.Print(err)
 							}
-							HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：查詢成功")
+							HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：查詢成功",target_user)
 							HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢成功",target_user)
 						}else{
 							//2016.12.22+ 利用正則分析字串結果，來設置觸發找不到的時候要 + 的 UI
@@ -1571,8 +1574,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
 									log.Print(err)
 								}
-								HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：搜尋失敗")
-								HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：搜尋失敗",target_user)
+								HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：查詢失敗",target_user)
+								HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢失敗",target_user)
 							}else{
 								//2016.12.22+ 利用正則分析字串結果，來設置觸發找開發者的時候要 + 的 UI
 								if reg_loking_for_admin.ReplaceAllString(bot_msg,"$1") == "你找我主人？OK！"{
@@ -1589,7 +1592,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
 										log.Print(err)
 									}
-									HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：執行找開發者")
+									HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：執行找開發者",target_user)
 									HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：執行找開發者",target_user)
 								}else{
 									if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
