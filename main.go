@@ -1108,7 +1108,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 		//2016.12.23+ 統一基本資訊集中
 
-		profile, err := app.bot.GetProfile(source.UserID).Do()
+		profile, err := bot.GetProfile(source.UserID).Do()
 		log.Print("profile.DisplayName = " + profile.DisplayName)
 		log.Print("profile.StatusMessage " + profile.StatusMessage)
 
