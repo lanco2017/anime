@@ -1549,8 +1549,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							if _, err = bot.ReplyMessage(event.ReplyToken,linebot.NewTextMessage("可參考以下圖例操作讓搜尋到的影片，直接在巴哈姆特動畫瘋 APP 進行播放。"),obj_message_img_1,obj_message_img_2,obj_message).Do(); err != nil {
 								log.Print(err)
 							}
-							HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：查詢成功",target_user + "\n" + anime_url)
-							HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢成功\n" + anime_url,target_user)
+							HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：查詢成功",target_user + anime_url)
+							HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢成功",target_user + anime_url)
 						}else{
 							//2016.12.22+ 利用正則分析字串結果，來設置觸發找不到的時候要 + 的 UI
 							if reg_nofind.ReplaceAllString(bot_msg,"$1") == "才會增加比較慢XD）"{
