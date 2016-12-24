@@ -1096,6 +1096,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	
 	for _, event := range events {
 
+
+		//2016.12.23+ 統一基本資訊集中
+
 		target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID//target_user := ""
  		log.Print("event.Source.UserID = " + event.Source.UserID)
 		log.Print("event.Source.GroupID = " + event.Source.GroupID)
@@ -1131,6 +1134,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			user_talk = username
 		}
 		log.Print("※ user_talk = " + user_talk)
+
+
+
 
 		if event.Type == linebot.EventTypePostback {
 				//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
@@ -1202,8 +1208,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發加入群組聊天
 		if event.Type == linebot.EventTypeJoin {
-				HttpPost_JANDI("加入了 "  + user_talk + " 群組對話", "blue" , "LINE 已加入群組")
-				log.Print("觸發加入" + user_talk + "群組對話")
+				HttpPost_JANDI("加入了 "  + user_talk , "blue" , "LINE 已加入群組")
+				log.Print("觸發加入" + user_talk)
  				//source := event.Source
  				//log.Print("觸發加入群組聊天事件 = " + source.GroupID)
  				push_string := "很高興你邀請我進來這裡聊天！"
@@ -1257,8 +1263,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發離開群組聊天
 		if event.Type == linebot.EventTypeLeave {
-				HttpPost_JANDI("離開 "  + user_talk + " 群組對話", "gray" , "LINE 離開群組")
-				HttpPost_IFTTT("離開 "  + user_talk + " 群組對話", "LINE 離開群組")
+				HttpPost_JANDI("離開 "  + user_talk , "gray" , "LINE 離開群組")
+				HttpPost_IFTTT("離開 "  + user_talk , "LINE 離開群組")
 				log.Print("觸發離開 " + user_talk +  " 群組")
 		}
 		//？？？？？
