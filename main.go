@@ -1123,7 +1123,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			case "Uf150a9f2763f5c6e18ce4d706681af7f":
 				username = "包包"
 			case "Ca78bf89fa33b777e54b4c13695818f81":
-				username = "測試用全開群組"
+				username = "測試用全開群組 test"
+			case "C717159d4582434c603de3cad7e0b4373":
+				username = "跟ㄅㄅ測試的群組"
+			case "Cf9842427f0517899f9e3607f15be25c1":
+				username ="白白測試群組"
 		}
 		log.Print("username = " + username)
 
