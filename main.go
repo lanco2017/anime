@@ -1156,6 +1156,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			log.Print("profile.DisplayName = " + profile.DisplayName)
 			log.Print("profile.StatusMessage " + profile.StatusMessage)
 			log.Print("profile.PicutureURL " + profile.PicutureURL)
+
+			// println(res.Displayname)
+			// println(res.PicutureURL)
+			// println(res.StatusMessage)
+
 			//如果是群組會出錯，只能 1 對 1的時候。
 			if username == ""{
 				//username = profile.DisplayName
