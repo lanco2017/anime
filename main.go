@@ -1108,7 +1108,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 		//2016.12.23+ 統一基本資訊集中
 
-		profile, err := bot.GetProfile(source.UserID).Do()
+		//2016.12.24+ 嘗試抓使用者資訊 https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
+		profile, err := bot.GetProfile(event.Source.UserID).Do()
 		log.Print("profile.DisplayName = " + profile.DisplayName)
 		log.Print("profile.StatusMessage " + profile.StatusMessage)
 
