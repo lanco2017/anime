@@ -1108,11 +1108,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 		//2016.12.23+ 統一基本資訊集中
 
-		target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID//target_user := ""
+		target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID//target_id_code := ""
  		log.Print("event.Source.UserID = " + event.Source.UserID)
 		log.Print("event.Source.GroupID = " + event.Source.GroupID)
 		log.Print("event.Source.RoomID = " + event.Source.RoomID)
-		log.Print("target_user = " + target_user)
+		log.Print("target_id_code = " + target_id_code)
 		target_item := ""
 		if event.Source.UserID!="" {
 			target_item = "好友"
@@ -1127,7 +1127,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 		username := ""
 		userStatus := ""
-		switch target_user{
+		userLogo_url := ""
+		switch target_id_code{
 			case "U6f738a70b63c5900aa2c0cbbe0af91c4":
 				username = "懶懶"
 			case "Uf150a9f2763f5c6e18ce4d706681af7f":
@@ -1143,7 +1144,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 		user_talk := ""
 		if username == ""{
-			user_talk = "【" + target_item + "】 " + target_user
+			user_talk = "【" + target_item + "】 " + target_id_code
 		}else{
 			user_talk = username
 		}
@@ -1154,6 +1155,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			profile, err := bot.GetProfile(event.Source.UserID).Do()
 			log.Print("profile.DisplayName = " + profile.DisplayName)
 			log.Print("profile.StatusMessage " + profile.StatusMessage)
+			log.Print("profile.PicutureURL " + profile.PicutureURL)
 			//如果是群組會出錯，只能 1 對 1的時候。
 			if username == ""{
 				//username = profile.DisplayName
@@ -1161,14 +1163,15 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			}
 			username = profile.DisplayName
 			userStatus = profile.StatusMessage
+			userLogo_url = profile.PicutureURL
 		}
 
 		//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 		if event.Type == linebot.EventTypePostback {
 				log.Print("觸發 Postback 功能（不讓使用者察覺的程式利用）")
 				log.Print("event.Postback.Data = " + event.Postback.Data)
-				HttpPost_JANDI(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "brown" , "LINE 程式觀察",target_user)
-				HttpPost_IFTTT(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data , "LINE 程式觀察" ,target_user)
+				HttpPost_JANDI(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "brown" , "LINE 程式觀察",target_id_code)
+				HttpPost_IFTTT(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data , "LINE 程式觀察" ,target_id_code)
 				// if event.Postback.Data == "開發者"{
 				// 	//.NewImageMessage 發圖片成功
 				// 	originalContentURL := "https://synr.github.io/uwk0684z.jpg"
@@ -1178,12 +1181,19 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// 			log.Print(err)
 				// 	}
 				// }
+				if event.Postback.Data == "測試"{
+					if target_item != "好友" {
+						if _, err := bot.LeaveRoom(target_id_code).Do(); err != nil {
+						    log.Print(err)
+						}
+					}
+				}
 		}
 		//觸發加入好友
 		if event.Type == linebot.EventTypeFollow {
-				HttpPost_JANDI("有新的好朋友："  + user_talk , "blue" , "LINE 新好友",target_user)
-				HttpPost_IFTTT("有新的好朋友："  + user_talk , "LINE 新好友" ,target_user)
-				//target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
+				HttpPost_JANDI("有新的好朋友："  + user_talk , "blue" , "LINE 新好友",target_id_code)
+				HttpPost_IFTTT("有新的好朋友："  + user_talk , "LINE 新好友" ,target_id_code)
+				//target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
 				log.Print("觸發與 " + user_talk + " 加入好友")
 
 			    imageURL := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png"
@@ -1204,12 +1214,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						imageURL, "其他功能", "新番、可查詢的動畫清單",
 						linebot.NewMessageTemplateAction("新番", "新番"),
 						linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
-						linebot.NewURITemplateAction("缺漏回報", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+						linebot.NewURITemplateAction("缺漏回報", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
 					),
 					linebot.NewCarouselColumn(
 						imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
 						linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-						linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+						linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
 						linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 					),
 				)
@@ -1217,10 +1227,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				obj_message := linebot.NewTemplateMessage(t_msg, template)
 
 				// username := ""
-				// if target_user == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
+				// if target_id_code == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
 				// 	username = "懶懶"
 				// }
-				// if target_user == "Uf150a9f2763f5c6e18ce4d706681af7f"{
+				// if target_id_code == "Uf150a9f2763f5c6e18ce4d706681af7f"{
 				// 	username = "包包"
 				// }
 				//reply 的寫法
@@ -1230,21 +1240,21 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發解除好友
 		if event.Type == linebot.EventTypeUnfollow {
-				HttpPost_JANDI("與 "  + user_talk + " 解除好友", "gray" , "LINE 被解除好友",target_user)
-				HttpPost_IFTTT("與 "  + user_talk + " 解除好友" , "LINE 被解除好友" ,target_user)
+				HttpPost_JANDI("與 "  + user_talk + " 解除好友", "gray" , "LINE 被解除好友",target_id_code)
+				HttpPost_IFTTT("與 "  + user_talk + " 解除好友" , "LINE 被解除好友" ,target_id_code)
 				log.Print("觸發與 " + user_talk + " 解除好友")
 		}
 		//觸發加入群組聊天
 		if event.Type == linebot.EventTypeJoin {
-				HttpPost_JANDI("加入了 "  + user_talk , "blue" , "LINE 已加入群組",target_user)
-				HttpPost_IFTTT("加入了 "  + user_talk , "LINE 已加入群組" ,target_user)
+				HttpPost_JANDI("加入了 "  + user_talk , "blue" , "LINE 已加入群組",target_id_code)
+				HttpPost_IFTTT("加入了 "  + user_talk , "LINE 已加入群組" ,target_id_code)
 				log.Print("觸發加入" + user_talk)
  				//source := event.Source
  				//log.Print("觸發加入群組聊天事件 = " + source.GroupID)
  				push_string := "很高興你邀請我進來這裡聊天！"
 
 				//if source.GroupID == "Ca78bf89fa33b777e54b4c13695818f81"{
-				if target_user == "Ca78bf89fa33b777e54b4c13695818f81"{
+				if target_id_code == "Ca78bf89fa33b777e54b4c13695818f81"{
 					push_string += "\n你好，" + user_talk + "。"
 				}
 				//push 的寫法
@@ -1254,12 +1264,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// 				if _, err = bot.PushMessage("Ca78bf89fa33b777e54b4c13695818f81", linebot.NewTextMessage("這裡純測試對嗎？\n只發於測試聊天室「test」")).Do(); err != nil {
 				// 					log.Print(err)
 				// 				}
-				//target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
+				//target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
 			    imageURL := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png"
 				template := linebot.NewCarouselTemplate(
 					linebot.NewCarouselColumn(
 						imageURL, "查詢巴哈姆特動畫瘋的功能", "我很愛看巴哈姆特動畫瘋。\n問我動畫可以這樣問：動畫 動畫名稱 集數",
-						linebot.NewPostbackTemplateAction("動畫 美術社 12","動畫 美術社 12", "動畫 美術社 12"),
+						linebot.NewPostbackTemplateAction("動畫 美術社 12","測試", "動畫 美術社 12"),
 						linebot.NewMessageTemplateAction("アニメ 美術社大有問題 12", "アニメ 美術社大有問題 12"),
 						linebot.NewMessageTemplateAction("anime：美術社：１", "anime：美術社：１"),
 					),
@@ -1273,12 +1283,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						imageURL, "其他功能", "新番、可查詢的動畫清單",
 						linebot.NewMessageTemplateAction("新番", "新番"),
 						linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
-						linebot.NewURITemplateAction("缺漏回報", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+						linebot.NewURITemplateAction("缺漏回報", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
 					),
 					linebot.NewCarouselColumn(
 						imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
 						linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-						linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+						linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
 						linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 					),
 				)
@@ -1292,28 +1302,28 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發離開群組聊天
 		if event.Type == linebot.EventTypeLeave {
-				HttpPost_JANDI("離開 "  + user_talk , "gray" , "LINE 離開群組",target_user)
-				HttpPost_IFTTT("離開 "  + user_talk , "LINE 離開群組",target_user)
+				HttpPost_JANDI("離開 "  + user_talk , "gray" , "LINE 離開群組",target_id_code)
+				HttpPost_IFTTT("離開 "  + user_talk , "LINE 離開群組",target_id_code)
 				log.Print("觸發離開 " + user_talk +  " 群組")
 		}
 		//？？？？？
 		if event.Type == linebot.EventTypeBeacon {
-			HttpPost_JANDI(user_talk + " 觸發 Beacon（啥鬼）", "yellow" , "LINE 對話同步",target_user)
-			HttpPost_IFTTT(user_talk + " 觸發 Beacon（啥鬼）", "LINE 對話同步",target_user)
+			HttpPost_JANDI(user_talk + " 觸發 Beacon（啥鬼）", "yellow" , "LINE 對話同步",target_id_code)
+			HttpPost_IFTTT(user_talk + " 觸發 Beacon（啥鬼）", "LINE 對話同步",target_id_code)
 			log.Print(user_talk + " 觸發 Beacon（啥鬼）")
 		}
 		//觸發收到訊息
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
-				//target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
+				//target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
 
 				//測試群組跳過
-				// if target_user == "Ca78bf89fa33b777e54b4c13695818f81" {
+				// if target_id_code == "Ca78bf89fa33b777e54b4c13695818f81" {
 
 				// }else{
 				// 	HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 對話同步")
-				// 	HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 對話同步",target_user)
+				// 	HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 對話同步",target_id_code)
 				// }
 
 				//http://www.netadmin.com.tw/images/news/NP161004000316100411441903.png
@@ -1341,16 +1351,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// 				userID := event.Source.UserID
 				// 				log.Print("userID := event.Source.UserID = " + userID)
 
-				// target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_user := ""
+				// target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
 				// if event.Source.UserID == ""{
-				// 	target_user = event.Source.GroupID
+				// 	target_id_code = event.Source.GroupID
 				// } else {
-				// 	target_user = event.Source.UserID
+				// 	target_id_code = event.Source.UserID
 				// }
 				
 				
 				//anime
-				bot_msg = anime(message.Text,target_user,"")//bot_msg = anime(message.Text,message.ID,"")
+				bot_msg = anime(message.Text,target_id_code,"")//bot_msg = anime(message.Text,message.ID,"")
 				log.Print("根據 anime function 匹配到的回應內容：" + bot_msg)
 				
 								//增加到這
@@ -1403,7 +1413,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//func HttpPost_JANDI(body, connectColor, title, --url--) error  
 						//http://nipponcolors.com/#matsuba
 						// HttpPost_JANDI("test for LINE BOT", "#42602D" , "test")
-						//HttpPost_IFTTT("test for line bot", "純測試",target_user) //2016.12.22+ 成功！！！
+						//HttpPost_IFTTT("test for line bot", "純測試",target_id_code) //2016.12.22+ 成功！！！
 						//HttpPost_LINE_notify("test")
 						
 						// "http://ani.gamer.com.tw/animeVideo.php?sn=6878",
@@ -1551,7 +1561,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								linebot.NewCarouselColumn(
 									"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
 									linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-									linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+									linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
 									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 								),
 							)
@@ -1568,9 +1578,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							if _, err = bot.ReplyMessage(event.ReplyToken,linebot.NewTextMessage("可參考以下圖例操作讓搜尋到的影片，直接在巴哈姆特動畫瘋 APP 進行播放。"),obj_message_img_1,obj_message_img_2,obj_message).Do(); err != nil {
 								log.Print(err)
 							}
-							HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：查詢成功",target_user + `\n` + anime_url)
-							HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢成功",target_user + `\n` +anime_url)
-							log.Print("target_user +  anime_url = " + target_user + "\n" + anime_url)
+							HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
+							HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢成功",target_id_code + `\n` +anime_url)
+							log.Print("target_id_code +  anime_url = " + target_id_code + "\n" + anime_url)
 						}else{
 							//2016.12.22+ 利用正則分析字串結果，來設置觸發找不到的時候要 + 的 UI
 							if reg_nofind.ReplaceAllString(bot_msg,"$1") == "才會增加比較慢XD）"{
@@ -1586,7 +1596,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									linebot.NewCarouselColumn(
 										"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
 										linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-										linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+										linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
 										linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 									),
 								)
@@ -1594,8 +1604,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
 									log.Print(err)
 								}
-								HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "orange" , "LINE 同步：查詢失敗",target_user)
-								HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢失敗",target_user)
+								HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "orange" , "LINE 同步：查詢失敗",target_id_code)
+								HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢失敗",target_id_code)
 							}else{
 								//2016.12.22+ 利用正則分析字串結果，來設置觸發找開發者的時候要 + 的 UI
 								if reg_loking_for_admin.ReplaceAllString(bot_msg,"$1") == "你找我主人？OK！"{
@@ -1604,7 +1614,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 										linebot.NewCarouselColumn(
 											"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "開發者相關資訊", "你可以透過此功能\n聯絡 開發者",
 											linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-											linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_user + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+											linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
 											linebot.NewPostbackTemplateAction("聯絡 LINE 機器人開發者", "開發者", "開發者"),
 										),
 									)
@@ -1612,8 +1622,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
 										log.Print(err)
 									}
-									HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：執行找開發者",target_user)
-									HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：執行找開發者",target_user)
+									HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：執行找開發者",target_id_code)
+									HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：執行找開發者",target_id_code)
 								}else{
 									if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 										log.Print(err)
@@ -1635,7 +1645,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								//https://github.com/mogeta/lbot/blob/master/main.go
 				 				source := event.Source
 				 				log.Print("source.UserID = " + source.UserID)
-				 				log.Print("target_user = " + target_user)
+				 				log.Print("target_id_code = " + target_id_code)
 								//2016.12.20+//push_string := ""
 				// 				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
 				// 					push_string = "你好，主人。（PUSH_MESSAGE 才可以發）"
