@@ -1108,6 +1108,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 		//2016.12.23+ 統一基本資訊集中
 
+		profile, err := app.bot.GetProfile(source.UserID).Do()
+		log.Print("profile.DisplayName = " + profile.DisplayName)
+		log.Print("profile.StatusMessage " + profile.StatusMessage)
+
 		target_user := event.Source.UserID + event.Source.GroupID + event.Source.RoomID//target_user := ""
  		log.Print("event.Source.UserID = " + event.Source.UserID)
 		log.Print("event.Source.GroupID = " + event.Source.GroupID)
