@@ -1103,13 +1103,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		log.Print("target_user = " + target_user)
 		target_item := ""
 		if event.Source.UserID!="" {
-			target_item == "好友"
+			target_item = "好友"
 		}
 		if event.Source.GroupID!="" {
-			target_item == "群組對話"
+			target_item = "群組對話"
 		}
 		if event.Source.RoomID!="" {
-			target_item == "房間"
+			target_item = "房間"
 		}
 		log.Print("target_item = " + target_item)
 
