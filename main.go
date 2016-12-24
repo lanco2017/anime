@@ -1130,7 +1130,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}else{
 			user_talk = username
 		}
-		log.Print("※ user_talk = " + ser_talk)
+		log.Print("※ user_talk = " + user_talk)
 
 		if event.Type == linebot.EventTypePostback {
 				//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
