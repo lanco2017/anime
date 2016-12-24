@@ -1204,7 +1204,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeJoin {
 				HttpPost_JANDI("加入了 "  + user_talk + " 群組對話", "blue" , "LINE 已加入群組")
 				log.Print("觸發加入" + user_talk + "群組對話")
- 				source := event.Source
+ 				//source := event.Source
  				//log.Print("觸發加入群組聊天事件 = " + source.GroupID)
  				push_string := "很高興你邀請我進來這裡聊天！"
 
