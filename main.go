@@ -1141,14 +1141,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		log.Print("username = " + username)
 
-		user_talk := ""
-		if username == ""{
-			user_talk = "【" + target_item + "】 " + target_id_code
-		}else{
-			user_talk = username
-		}
-		log.Print("※ user_talk = " + user_talk)
-
 		//如果是群組會出錯，只能 1 對 1的時候。
 		//if target_item == "好友"{
 		if event.Source.UserID!="" {
@@ -1171,6 +1163,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			log.Print("userStatus = " + userStatus)
 
 		}
+
+		user_talk := ""
+		if username == ""{
+			user_talk = "【" + target_item + "】 " + target_id_code
+		}else{
+			user_talk = username
+		}
+		log.Print("※ user_talk = " + user_talk)
 
 		//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 		if event.Type == linebot.EventTypePostback {
