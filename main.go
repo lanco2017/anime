@@ -1189,7 +1189,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// }
 				if event.Postback.Data == "測試"{
 					if target_item != "好友" {
-						if _, err := bot.LeaveRoom(target_id_code).Do(); err != nil {
+						if _, err := bot.LeaveGroup(target_id_code).Do(); err != nil {
 						    log.Print(err)
 						}
 					}
