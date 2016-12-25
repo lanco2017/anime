@@ -1105,6 +1105,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	
 	for _, event := range events {
 
+		if source.UserID != "" {
+			profile, err := app.bot.GetProfile(source.UserID).Do()
+			if err != nil {
+				return app.replyText(replyToken, err.Error())
+			}
+			if _, err := app.bot.ReplyMessage(
+				replyToken,
+				linebot.NewTextMessage("Display name: "+profile.DisplayName),
+				linebot.NewTextMessage("Status message: "+profile.StatusMessage),
+			).Do(); err != nil {
+				return err
+			}
+		} else {
+			return app.replyText(replyToken, "Bot can't use profile API without user ID")
+		}
+
 
 		//2016.12.23+ 統一基本資訊集中
 
@@ -1175,7 +1191,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 			log.Print("username = " + username)
 			log.Print("userStatus = " + userStatus)
-			log.Print("userLogo_url = " +  userLogo_url)
+			//log.Print("userLogo_url = " +  userLogo_url)
 		}
 
 		//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
@@ -1326,7 +1342,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發收到訊息
 		if event.Type == linebot.EventTypeMessage {
-			log.Print("profile.PicutureURL " + profile.PicutureURL)
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
 				//target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
