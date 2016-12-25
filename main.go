@@ -1105,25 +1105,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	
 	for _, event := range events {
 
-		if source.UserID != "" {
-			profile, err := app.bot.GetProfile(source.UserID).Do()
-			if err != nil {
-				return app.replyText(replyToken, err.Error())
-			}
-			if _, err := app.bot.ReplyMessage(
-				replyToken,
-				linebot.NewTextMessage("Display name: "+profile.DisplayName),
-				linebot.NewTextMessage("Status message: "+profile.StatusMessage),
-			).Do(); err != nil {
-				return err
-			}
-		} else {
-			return app.replyText(replyToken, "Bot can't use profile API without user ID")
-		}
-
-
 		//2016.12.23+ 統一基本資訊集中
-
 		target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID//target_id_code := ""
  		log.Print("event.Source.UserID = " + event.Source.UserID)
 		log.Print("event.Source.GroupID = " + event.Source.GroupID)
@@ -1143,13 +1125,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 		username := ""
 		userStatus := ""
-		//userLogo_url := ""
+																				//userLogo_url := ""
 		switch target_id_code{
 			case "U6f738a70b63c5900aa2c0cbbe0af91c4":
 				username = "懶懶"
 			case "Uf150a9f2763f5c6e18ce4d706681af7f":
 				username = "包包"
-			case "Ca78bf89fa33b777e54b4c13695818f81":
+			case "Ca78bf89fa33b777e54b4c13695818f81xxxxxxxxx":
 				username = "測試用全開群組 test"
 			case "C717159d4582434c603de3cad7e0b4373":
 				username = "跟ㄅㄅ測試的群組"
@@ -1166,32 +1148,27 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		log.Print("※ user_talk = " + user_talk)
 
-		if target_item == "好友"{
+		//如果是群組會出錯，只能 1 對 1的時候。
+		//if target_item == "好友"{
+		if event.Source.UserID!="" {
 			//2016.12.24+ 嘗試抓使用者資訊 https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
 			profile, err := bot.GetProfile(event.Source.UserID).Do()
 			if err != nil {
 			    log.Print(err)
 			}
-			log.Print("profile.DisplayName = " + profile.DisplayName)
-			log.Print("profile.StatusMessage " + profile.StatusMessage)
-			//log.Print("profile.PicutureURL " + profile.PicutureURL)
-
-			// println(res.Displayname)
-			// println(res.PicutureURL)
-			// println(res.StatusMessage)
-
-			//如果是群組會出錯，只能 1 對 1的時候。
+			log.Print("profile.DisplayName = " + profile.DisplayName)			// println(res.Displayname)
+			log.Print("profile.StatusMessage " + profile.StatusMessage)			// println(res.StatusMessage)
+														// println(res.PicutureURL)	//出不來奇怪
+														// log.Print("userLogo_url = " +  userLogo_url)
+			//如果不是認識的 ID，就取得對方的名
 			if username == ""{
-				//username = profile.DisplayName
-				// userStatus = profile.StatusMessage
+				username = profile.DisplayName
 			}
-			username = profile.DisplayName
 			userStatus = profile.StatusMessage
-			//userLogo_url = profile.PicutureURL
 
 			log.Print("username = " + username)
 			log.Print("userStatus = " + userStatus)
-			//log.Print("userLogo_url = " +  userLogo_url)
+
 		}
 
 		//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
