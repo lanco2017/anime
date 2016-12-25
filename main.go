@@ -1106,6 +1106,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	for _, event := range events {
 
 		//2016.12.23+ 統一基本資訊集中
+		//2016.12.24+ 嘗試抓使用者資訊 https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
 		target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID//target_id_code := ""
  		log.Print("event.Source.UserID = " + event.Source.UserID)
 		log.Print("event.Source.GroupID = " + event.Source.GroupID)
@@ -1127,11 +1128,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		userStatus := ""
 																				//userLogo_url := ""
 		switch target_id_code{
-			case "U6f738a70b63c5900aa2c0cbbe0af91c4":
+			case "U6f738a70b63c5900aa2c0cbbe0af91c4xxxx":
 				username = "懶懶"
 			case "Uf150a9f2763f5c6e18ce4d706681af7f":
 				username = "包包"
-			case "Ca78bf89fa33b777e54b4c13695818f81xxxxxxxxx":
+			case "Ca78bf89fa33b777e54b4c13695818f81":
 				username = "測試用全開群組 test"
 			case "C717159d4582434c603de3cad7e0b4373":
 				username = "跟ㄅㄅ測試的群組"
