@@ -1127,7 +1127,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 		username := ""
 		userStatus := ""
-		userLogo_url := ""
+		//userLogo_url := ""
 		switch target_id_code{
 			case "U6f738a70b63c5900aa2c0cbbe0af91c4":
 				username = "懶懶"
@@ -1158,7 +1158,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			}
 			log.Print("profile.DisplayName = " + profile.DisplayName)
 			log.Print("profile.StatusMessage " + profile.StatusMessage)
-			log.Print("profile.PicutureURL " + profile.pictureUrl)
+			//log.Print("profile.PicutureURL " + profile.PicutureURL)
 
 			// println(res.Displayname)
 			// println(res.PicutureURL)
@@ -1171,7 +1171,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			}
 			username = profile.DisplayName
 			userStatus = profile.StatusMessage
-			userLogo_url = profile.PicutureURL
+			//userLogo_url = profile.PicutureURL
 
 			log.Print("username = " + username)
 			log.Print("userStatus = " + userStatus)
@@ -1326,6 +1326,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發收到訊息
 		if event.Type == linebot.EventTypeMessage {
+			log.Print("profile.PicutureURL " + profile.PicutureURL)
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
 				//target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
