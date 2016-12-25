@@ -159,6 +159,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	log.Print(reg.ReplaceAllString(text, "--抓取分析結束--"))
 	
 	switch reg.ReplaceAllString(text, "$1"){
+	case "動畫瘋88":
+		print_string = "動畫瘋88"
 	case "test":
 		print_string = "GOTEST"
 	case "新番":
@@ -1184,7 +1186,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if event.Postback.Data == "離開群組"{
-					if target_item != "好友" {
+					if target_item == "群組對話" {
 						if _, err := bot.LeaveGroup(target_id_code).Do(); err != nil {
 						    log.Print(err)
 						}
@@ -1202,7 +1204,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				template := linebot.NewCarouselTemplate(
 					linebot.NewCarouselColumn(
 						imageURL, "查詢巴哈姆特動畫瘋的功能", "我很愛看巴哈姆特動畫瘋。\n問我動畫可以這樣問：動畫 動畫名稱 集數",
-						linebot.NewMessageTemplateAction("動畫 美術社 12", "動畫 美術社 12"),
+						linebot.NewPostbackTemplateAction("動畫 美術社 12","測試 POST by 加入好友第一按鈕", "動畫 美術社 12"),
 						linebot.NewMessageTemplateAction("アニメ 美術社大有問題 12", "アニメ 美術社大有問題 12"),
 						linebot.NewMessageTemplateAction("anime：美術社：１", "anime：美術社：１"),
 					),
@@ -1363,7 +1365,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				
 				//anime
 				bot_msg = anime(message.Text,target_id_code,"")//bot_msg = anime(message.Text,message.ID,"")
-				log.Print("根據 anime function 匹配到的回應內容：" + bot_msg)
+					log.Print("根據 anime function 匹配到的回應內容：" + bot_msg)
 				
 								//增加到這
 					//				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.ID+":"+message.Text+" OK!")).Do(); err != nil {
@@ -1627,9 +1629,29 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：執行找開發者",target_id_code)
 									HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：執行找開發者",target_id_code)
 								}else{
-									if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
-										log.Print(err)
-									}									
+									if bot_msg == "動畫瘋88"{
+										if target_item == "群組對話" {
+											log.Print("觸發離開群組，APP 限定")
+											//post KEY = 離開群組
+											template := linebot.NewCarouselTemplate(
+												linebot.NewCarouselColumn(
+													"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "請機器人離開群組", "你確定要請我離開嗎QAQ？\n如果確定請按下方按鈕 QQ",
+													linebot.NewPostbackTemplateAction("請機器人離開群組","離開群組", "機器人已經自動離開。\n如要加回來請找 https://line.me/R/ti/p/@uwk0684z"),
+													linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
+													linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+													linebot.NewPostbackTemplateAction("聯絡 LINE 機器人開發者", "開發者", "開發者"),
+												),
+											)
+											obj_message := linebot.NewTemplateMessage("這是命令機器人自己離開群組的方法。\n請用 APP 端查看下一步。", template)
+											if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+												log.Print(err)
+											}
+										}
+									}else{
+										if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+											log.Print(err)
+										}	
+									}								
 								}
 							}
 						}
