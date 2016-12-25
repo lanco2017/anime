@@ -1153,9 +1153,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if target_item == "好友"{
 			//2016.12.24+ 嘗試抓使用者資訊 https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
 			profile, err := bot.GetProfile(event.Source.UserID).Do()
+			if err != nil {
+			    log.Print(err)
+			}
 			log.Print("profile.DisplayName = " + profile.DisplayName)
 			log.Print("profile.StatusMessage " + profile.StatusMessage)
-			log.Print("profile.PicutureURL " + profile.PicutureURL)
+			log.Print("profile.PicutureURL " + profile.pictureUrl)
 
 			// println(res.Displayname)
 			// println(res.PicutureURL)
