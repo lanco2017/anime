@@ -1178,16 +1178,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				log.Print("event.Postback.Data = " + event.Postback.Data)
 				HttpPost_JANDI(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "brown" , "LINE 程式觀察",target_id_code)
 				HttpPost_IFTTT(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data , "LINE 程式觀察" ,target_id_code)
-				// if event.Postback.Data == "開發者"{
-				// 	//.NewImageMessage 發圖片成功
-				// 	originalContentURL := "https://synr.github.io/uwk0684z.jpg"
-    			//	previewImageURL := "https://synr.github.io/uwk0684z.jpg"
-    			//	obj_message := linebot.NewImageMessage(originalContentURL, previewImageURL)
-				// 	if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
-				// 			log.Print(err)
-				// 	}
-				// }
+
 				if event.Postback.Data == "測試"{
+
+				}
+
+				if event.Postback.Data == "離開群組"{
 					if target_item != "好友" {
 						if _, err := bot.LeaveGroup(target_id_code).Do(); err != nil {
 						    log.Print(err)
