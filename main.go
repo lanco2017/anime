@@ -159,6 +159,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	log.Print(reg.ReplaceAllString(text, "--抓取分析結束--"))
 	
 	switch reg.ReplaceAllString(text, "$1"){
+	case "臉書","FB","ＦＢ","Fb","Ｆｂ","fb","ｆｂ","FACEBOOK","ＦＡＣＥＢＯＯＫ","Facebook","Ｆａｃｅｂｏｏｋ","facebook","ｆａｃｅｂｏｏｋ":
+		print_string = "臉書"		
 	case "主選單","選單","簡介","教學","help","Help","Ｈｅｌｐ","ｈｅｌｐ","ＨＥＬＰ","HELP":
 		print_string = "選單"
 	case "動畫瘋88":
@@ -1605,6 +1607,29 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "19"),linebot.NewStickerMessage("2", "20"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
 								// 	log.Print(err)
 								// }
+							return
+						case "臉書":
+						    imageURL := SystemImageURL
+							template := linebot.NewCarouselTemplate(
+								linebot.NewCarouselColumn(
+									imageURL, "巴哈姆特動畫瘋相關網站", "動畫瘋官網、APP 載點、Facbook",
+									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
+									linebot.NewURITemplateAction("APP 下載","https://prj.gamer.com.tw/app2u/animeapp.html"),
+									linebot.NewURITemplateAction("巴哈姆特動畫瘋 FB","https://www.facebook.com/animategamer"),
+								),
+								linebot.NewCarouselColumn(
+									imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
+									linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
+									linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
+								),
+							)
+							t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這只提供查詢動畫的功能。\n如有其他建議或想討論，請對我輸入「開發者」進行聯絡。"
+							obj_message := linebot.NewTemplateMessage(t_msg, template)
+							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+									log.Print(1630)
+									log.Print(err)
+							}
 							return
 						case "選單":
 						    imageURL := SystemImageURL
