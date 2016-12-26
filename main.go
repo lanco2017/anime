@@ -1582,6 +1582,23 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							// 	log.Print(err)
 							// }
 					}
+					if bot_msg == "動畫瘋88"{
+						if target_item == "群組對話" {
+								log.Print("觸發離開群組，APP 限定")
+								//post KEY = 離開群組
+								template := linebot.NewConfirmTemplate(
+									"你確定要請我離開嗎QAQ？",
+									//.NewPostbackTemplateAction(按鈕字面,post,替使用者發言)
+									linebot.NewPostbackTemplateAction("是","按下確定離開群組對話", "機器人已經自動離開。\n如要加回來請找：\nhttps://line.me/R/ti/p/@sjk2434l\n如要聯絡開發者請找：\nhttps://line.me/R/ti/p/@uwk0684z"),
+									linebot.NewPostbackTemplateAction("否", "取消離開群組",""),
+								)
+								obj_message := linebot.NewTemplateMessage("你確定要請我離開嗎QAQ？\n這功能只支援 APP 使用。\n請用 APP 端查看下一步。", template)
+								if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+									log.Print(err)
+								}
+						}
+					}
+					//因為 bot_msg==GOTEST 的時候，不可能會找到 anime_url。所以不用在 else 裡面。
 					if anime_url!=""{
 						//找到的時候的 UI
 					    imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
@@ -1659,26 +1676,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：執行找開發者",target_id_code)
 								HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：執行找開發者",target_id_code)
 							}else{
-								if bot_msg == "動畫瘋88"{
-									if target_item == "群組對話" {
-											log.Print("觸發離開群組，APP 限定")
-											//post KEY = 離開群組
-											template := linebot.NewConfirmTemplate(
-												"你確定要請我離開嗎QAQ？",
-												//.NewPostbackTemplateAction(按鈕字面,post,替使用者發言)
-												linebot.NewPostbackTemplateAction("是","按下確定離開群組對話", "機器人已經自動離開。\n如要加回來請找：\nhttps://line.me/R/ti/p/@sjk2434l\n如要聯絡開發者請找：\nhttps://line.me/R/ti/p/@uwk0684z"),
-												linebot.NewPostbackTemplateAction("否", "取消離開群組",""),
-											)
-											obj_message := linebot.NewTemplateMessage("你確定要請我離開嗎QAQ？\n這功能只支援 APP 使用。\n請用 APP 端查看下一步。", template)
-											if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
-												log.Print(err)
-											}
-									}
-								}else{
-									if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
-										log.Print(err)
-									}	
-								}								
+								if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+									log.Print(err)
+								}	
 							}
 						}
 					}
