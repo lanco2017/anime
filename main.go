@@ -160,7 +160,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	
 	switch reg.ReplaceAllString(text, "$1"){
 	case "今日動漫通","動畫瘋答案","今天答案","動畫瘋問題":
-		print_string = = "今日動漫通"
+		print_string = "今日動漫通"
 	case "臉書","FB","ＦＢ","Fb","Ｆｂ","fb","ｆｂ","FACEBOOK","ＦＡＣＥＢＯＯＫ","Facebook","Ｆａｃｅｂｏｏｋ","facebook","ｆａｃｅｂｏｏｋ":
 		print_string = "臉書"		
 	case "主選單","選單","簡介","教學","help","Help","Ｈｅｌｐ","ｈｅｌｐ","ＨＥＬＰ","HELP":
