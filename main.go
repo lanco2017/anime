@@ -31,18 +31,6 @@ import (
 
 var bot *linebot.Client
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer"
-							fb_q_msg := "12/27 動漫通\n" +
-								"關聯：Date・A・Live\n" +
-								"問題：請問炎魔是下列那個精靈的識別名?\n" +
-								"1.夜刀神十香\n" +
-								"2.四糸乃\n" +
-								"3.時崎狂三\n" +
-								"4.五河琴里\n" +
-								"小提示：紅髮雙馬尾\n" +
-								"出題者：k7365116" +
-								fb_msg
-
 func main() {
 	var err error
 	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
@@ -1260,6 +1248,17 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		log.Print("※ user_talk = " + user_talk)
 
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer"
+							fb_q_msg := "12/27 動漫通\n" +
+								"關聯：Date・A・Live\n" +
+								"問題：請問炎魔是下列那個精靈的識別名?\n" +
+								"1.夜刀神十香\n" +
+								"2.四糸乃\n" +
+								"3.時崎狂三\n" +
+								"4.五河琴里\n" +
+								"小提示：紅髮雙馬尾\n" +
+								"出題者：k7365116" +
+								fb_msg
 
 		//2016.12.27+
 		//共用模板
