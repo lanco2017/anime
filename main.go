@@ -1272,7 +1272,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						imageURL, "其他功能", "新番、可查詢的動畫清單",
 						linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
 						linebot.NewMessageTemplateAction("新番", "新番"),
-						linebot.NewMessageTemplateAction(("今日動漫通答案", "今日動漫通"),
+						linebot.NewMessageTemplateAction("今日動漫通答案", "今日動漫通"),
 					),
 					linebot.NewCarouselColumn(
 						imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
@@ -1342,7 +1342,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						imageURL, "其他功能", "新番、可查詢的動畫清單",
 						linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
 						linebot.NewMessageTemplateAction("新番", "新番"),
-						linebot.NewMessageTemplateAction(("今日動漫通答案", "今日動漫通"),
+						linebot.NewMessageTemplateAction("今日動漫通答案", "今日動漫通"),
 					),
 					linebot.NewCarouselColumn(
 						imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
@@ -1689,7 +1689,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									imageURL, "其他功能", "新番、可查詢的動畫清單",
 									linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
 									linebot.NewMessageTemplateAction("新番", "新番"),
-									linebot.NewMessageTemplateAction(("今日動漫通答案", "今日動漫通"),
+									linebot.NewMessageTemplateAction("今日動漫通答案", "今日動漫通"),
 								),
 								linebot.NewCarouselColumn(
 									imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
@@ -1775,7 +1775,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								SystemImageURL, "其他功能", "新番、可查詢的動畫清單",
 								linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
 								linebot.NewMessageTemplateAction("新番", "新番"),
-								linebot.NewMessageTemplateAction(("今日動漫通答案", "今日動漫通"),
+								linebot.NewMessageTemplateAction("今日動漫通答案", "今日動漫通"),
 							),
 						)
 						obj_message := linebot.NewTemplateMessage(bot_msg, template)
@@ -1823,7 +1823,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									SystemImageURL, "其他功能", "新番、可查詢的動畫清單",
 									linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
 									linebot.NewMessageTemplateAction("新番", "新番"),
-									linebot.NewMessageTemplateAction(("今日動漫通答案", "今日動漫通"),
+									linebot.NewMessageTemplateAction("今日動漫通答案", "今日動漫通"),
 								),
 							)
 							obj_message := linebot.NewTemplateMessage("除了「目錄」以外，\n你也可以輸入「新番」查詢近期的動畫。", template)
