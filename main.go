@@ -159,6 +159,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	log.Print(reg.ReplaceAllString(text, "--抓取分析結束--"))
 	
 	switch reg.ReplaceAllString(text, "$1"){
+	case "選單":
+		print_string = "選單"
 	case "動畫瘋88":
 		print_string = "動畫瘋88"
 	case "test":
@@ -1450,167 +1452,198 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//2016.12.26:這裡的 bot_msg 已經是下游，經過 anime() 處理過了，沒有匹配的發言內容都會被濾掉。
 				
 				if bot_msg != ""{
+
 					//2016.12.20+ for test	
-					if bot_msg == "GOTEST"{
-						//簡單說模板有三種（Y/N[1~2動]、Bottons[最多4個動作]、carousel[3個動作 && 並排最多五個(每個動作數量要一致)]），動作也有三種（操作使用者發言、POST兼使用者發言(使用者發言可為空)、URI 可連網址或 tel: 等協定）
-							//bot_msg = "HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。"
-							//bot_msg = "有喔！有喔！你在找這個對吧！？\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=5863" + "\n\n等等！這是最後一話！？"
+					switch bot_msg{
+						case "GOTEST":
+							//簡單說模板有三種（Y/N[1~2動]、Bottons[最多4個動作]、carousel[3個動作 && 並排最多五個(每個動作數量要一致)]），動作也有三種（操作使用者發言、POST兼使用者發言(使用者發言可為空)、URI 可連網址或 tel: 等協定）
+								//bot_msg = "HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。"
+								//bot_msg = "有喔！有喔！你在找這個對吧！？\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=5863" + "\n\n等等！這是最後一話！？"
 
-							//2016.12.22+ free POST
-							//func HttpPost_JANDI(body, connectColor, title, --url--) error  
-							//http://nipponcolors.com/#matsuba
-							// HttpPost_JANDI("test for LINE BOT", "#42602D" , "test")
-							//HttpPost_IFTTT("test for line bot", "純測試",target_id_code) //2016.12.22+ 成功！！！
-							//HttpPost_LINE_notify("test")
-							
-							// "http://ani.gamer.com.tw/animeVideo.php?sn=6878",
-							//  第？話",
-							//  "https://p2.bahamut.com.tw/B/2KU/33/0001485933.PNG",
-							//  "查詢結果",
-							//  "動畫名稱 ",
-							// bot_msg 
+								//2016.12.22+ free POST
+								//func HttpPost_JANDI(body, connectColor, title, --url--) error  
+								//http://nipponcolors.com/#matsuba
+								// HttpPost_JANDI("test for LINE BOT", "#42602D" , "test")
+								//HttpPost_IFTTT("test for line bot", "純測試",target_id_code) //2016.12.22+ 成功！！！
+								//HttpPost_LINE_notify("test")
+								
+								// "http://ani.gamer.com.tw/animeVideo.php?sn=6878",
+								//  第？話",
+								//  "https://p2.bahamut.com.tw/B/2KU/33/0001485933.PNG",
+								//  "查詢結果",
+								//  "動畫名稱 ",
+								// bot_msg 
 
-							//log.Print("完結篇廢話 = 3 = " + reg.ReplaceAllString(bot_msg, "$3")) //完結篇的廢話
+								//log.Print("完結篇廢話 = 3 = " + reg.ReplaceAllString(bot_msg, "$3")) //完結篇的廢話
 
-							//Create message
-							//https://github.com/line/line-bot-sdk-go
-							//https://github.com/line/line-bot-sdk-go/blob/master/linebot/message.go
+								//Create message
+								//https://github.com/line/line-bot-sdk-go
+								//https://github.com/line/line-bot-sdk-go/blob/master/linebot/message.go
 
-							//模板成功  //官方範例 https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
-								//linebot.NewTemplateMessage
-								// //1 confirm 純是否類型的問法
-								// //.NewConfirmTemplate 模板，裡面最多只能有兩個動作，按鈕只能左右
-								// //.NewMessageTemplateAction 發言動作
+								//模板成功  //官方範例 https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
+									//linebot.NewTemplateMessage
+									// //1 confirm 純是否類型的問法
+									// //.NewConfirmTemplate 模板，裡面最多只能有兩個動作，按鈕只能左右
+									// //.NewMessageTemplateAction 發言動作
 
-								// template := linebot.NewConfirmTemplate(
-								// 	"Do it?",
-								// 	linebot.NewMessageTemplateAction("Yes", "Yes!"),
-								// 	linebot.NewMessageTemplateAction("No", "No!"),
-								// )
+									// template := linebot.NewConfirmTemplate(
+									// 	"Do it?",
+									// 	linebot.NewMessageTemplateAction("Yes", "Yes!"),
+									// 	linebot.NewMessageTemplateAction("No", "No!"),
+									// )
 
-		 					//     leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")// 後面的參數 "left clicked" = 在使用者按下後，自動幫使用者發訊息
-		 					//     rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")// 後面的參數 "right clicked" = 在使用者按下後，自動幫使用者發訊息
-							 //    //.NewMessageTemplateAction("字面按鈕", "設定讓使用者按下後發送內容") 會讓使用者發送那樣的內容給系統
-		 					//     template := linebot.NewConfirmTemplate("Hello World", leftBtn, rightBtn)
-		 					//     //.NewConfirmTemplate
-
-							//linebot.NewTemplateMessage
-	 					    //2 buttons
-	 					    //.NewButtonsTemplate 模板，裡面最多只能有四個動作
-	 					    //.NewURITemplateAction 開啟指定網址的動作
-	 					    //.NewPostbackTemplateAction ？？動作
-	 					    //						第二參數可以讓她　ＰＯＳＴ指定內容（但還不會處理．．．）	第三參數類似於 .NewMessageTemplateAction 的效果
-		 					//     imageURL := "https://images.gamme.com.tw/news2/2016/51/39/paCYoqCXkqSarqSZ.jpg"
-								// template := linebot.NewButtonsTemplate(
-								// 	imageURL, "你好歡迎光臨", "這是內文",							//這前三個 分別是圖片(必須https)、標題、內文
-								// 	linebot.NewURITemplateAction("來我的網站", "https://synr.github.io"),
-								// 	linebot.NewPostbackTemplateAction("目錄查詢", "目錄", "目錄"),
-								// 	linebot.NewPostbackTemplateAction("開發者", "開發者", "開發者"),
-								// 	linebot.NewMessageTemplateAction("Say message", "Rice=米"),
-								// )
+			 					//     leftBtn := linebot.NewMessageTemplateAction("left", "left clicked")// 後面的參數 "left clicked" = 在使用者按下後，自動幫使用者發訊息
+			 					//     rightBtn := linebot.NewMessageTemplateAction("right", "right clicked")// 後面的參數 "right clicked" = 在使用者按下後，自動幫使用者發訊息
+								 //    //.NewMessageTemplateAction("字面按鈕", "設定讓使用者按下後發送內容") 會讓使用者發送那樣的內容給系統
+			 					//     template := linebot.NewConfirmTemplate("Hello World", leftBtn, rightBtn)
+			 					//     //.NewConfirmTemplate
 
 								//linebot.NewTemplateMessage
-								//3 carousel .NewCarouselTemplate  最多可以並排五個「.NewCarouselColumn」的樣板，
-								//「.NewCarouselColumn」裡面最多只能有三個動作按鈕，但並列的其他項目也要一致數量才能。2016.12.22+
-								//圖片可以是 PNG
-								// imageURL := "https://images.gamme.com.tw/news2/2016/51/39/paCYoqCXkqSarqSZ.jpg"
-								// template := linebot.NewCarouselTemplate(
-								// 	linebot.NewCarouselColumn(
-								// 		"https://p2.bahamut.com.tw/B/2KU/33/0001485933.PNG", "hoge", "fuga",
-								// 		linebot.NewURITemplateAction("測試看動畫", "http://ani.gamer.com.tw/animeVideo.php?sn=6878"),
-								// 		linebot.NewPostbackTemplateAction("Say hello1", "hello こんにちは", ""),
-								// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-								// 	),
-								// 	linebot.NewCarouselColumn(
-								// 		"https://p2.bahamut.com.tw/B/2KU/18/0001484818.PNG", "hoge", "fuga",
-								// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-								// 		linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
-								// 		linebot.NewMessageTemplateAction("Say message", "Rice=米"),
-								// 	),
-								// 	linebot.NewCarouselColumn(
-								// 		imageURL, "hoge", "fuga",
-								// 		linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
-								// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-								// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-								// 	),
-								// 	linebot.NewCarouselColumn(
-								// 		imageURL, "hoge", "fuga",
-								// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-								// 		linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
-								// 		linebot.NewMessageTemplateAction("Say message", "Rice=米"),
-								// 	),
-								// 	linebot.NewCarouselColumn(
-								// 		imageURL, "hoge", "fuga",
-								// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-								// 		linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
-								// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
-								// 	),
+		 					    //2 buttons
+		 					    //.NewButtonsTemplate 模板，裡面最多只能有四個動作
+		 					    //.NewURITemplateAction 開啟指定網址的動作
+		 					    //.NewPostbackTemplateAction ？？動作
+		 					    //						第二參數可以讓她　ＰＯＳＴ指定內容（但還不會處理．．．）	第三參數類似於 .NewMessageTemplateAction 的效果
+			 					//     imageURL := "https://images.gamme.com.tw/news2/2016/51/39/paCYoqCXkqSarqSZ.jpg"
+									// template := linebot.NewButtonsTemplate(
+									// 	imageURL, "你好歡迎光臨", "這是內文",							//這前三個 分別是圖片(必須https)、標題、內文
+									// 	linebot.NewURITemplateAction("來我的網站", "https://synr.github.io"),
+									// 	linebot.NewPostbackTemplateAction("目錄查詢", "目錄", "目錄"),
+									// 	linebot.NewPostbackTemplateAction("開發者", "開發者", "開發者"),
+									// 	linebot.NewMessageTemplateAction("Say message", "Rice=米"),
+									// )
+
+									//linebot.NewTemplateMessage
+									//3 carousel .NewCarouselTemplate  最多可以並排五個「.NewCarouselColumn」的樣板，
+									//「.NewCarouselColumn」裡面最多只能有三個動作按鈕，但並列的其他項目也要一致數量才能。2016.12.22+
+									//圖片可以是 PNG
+									// imageURL := "https://images.gamme.com.tw/news2/2016/51/39/paCYoqCXkqSarqSZ.jpg"
+									// template := linebot.NewCarouselTemplate(
+									// 	linebot.NewCarouselColumn(
+									// 		"https://p2.bahamut.com.tw/B/2KU/33/0001485933.PNG", "hoge", "fuga",
+									// 		linebot.NewURITemplateAction("測試看動畫", "http://ani.gamer.com.tw/animeVideo.php?sn=6878"),
+									// 		linebot.NewPostbackTemplateAction("Say hello1", "hello こんにちは", ""),
+									// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+									// 	),
+									// 	linebot.NewCarouselColumn(
+									// 		"https://p2.bahamut.com.tw/B/2KU/18/0001484818.PNG", "hoge", "fuga",
+									// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+									// 		linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+									// 		linebot.NewMessageTemplateAction("Say message", "Rice=米"),
+									// 	),
+									// 	linebot.NewCarouselColumn(
+									// 		imageURL, "hoge", "fuga",
+									// 		linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+									// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+									// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+									// 	),
+									// 	linebot.NewCarouselColumn(
+									// 		imageURL, "hoge", "fuga",
+									// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+									// 		linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+									// 		linebot.NewMessageTemplateAction("Say message", "Rice=米"),
+									// 	),
+									// 	linebot.NewCarouselColumn(
+									// 		imageURL, "hoge", "fuga",
+									// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+									// 		linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+									// 		linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+									// 	),
+									// )
+									//所以有三種樣板，有三種動作按鈕。兩個樣板可以放圖片，一個單純只能兩個按鈕。
+
+
+			 					    //obj_message := linebot.NewTemplateMessage("HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。", template)//messgage := linebot.NewTemplateMessage("請使用更新 APP 或使用手機 APP 才能看到這個功能。", template)
+									//obj_message := linebot.NewTemplateMessage(bot_msg, template)
+			 					    //.NewTemplateMessage("無法支援按鈕模式時要發出的訊息",Template 物件)
+
+										// 						if _, err = bot.ReplyMessage(event.ReplyToken, message).Do(); err != nil {
+										// 							log.Print(err)
+										// 						}
+
+
+									//https://devdocs.line.me/en/?go#send-message-object
+
+
+								//++ https://github.com/dongri/line-bot-sdk-go KEY:linebot.NewImageMessage
+
+								//.NewImageMessage 發圖片成功
+								//originalContentURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
+		    					//previewImageURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
+		    					//obj_message := linebot.NewImageMessage(originalContentURL, previewImageURL)
+
+								//.NewStickerMessage 發貼貼圖成功	 //https://devdocs.line.me/files/sticker_list.pdf					
+								//obj_message := linebot.NewStickerMessage("1", "1") //https://devdocs.line.me/en/?go#send-message-object
+
+								//這是個謎
+								//https://devdocs.line.me/en/?go#imagemap-message
+								//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
+								// obj_message := linebot.NewImagemapMessage(
+								// 	"https://synr.github.io/img/index.jpg",
+								// 	"Imagemap alt text",
+								// 	linebot.ImagemapBaseSize{1040, 1040},
+								// 	linebot.NewURIImagemapAction("https://store.line.me/family/manga/en", linebot.ImagemapArea{0, 0, 520, 520}),
+								// 	linebot.NewURIImagemapAction("https://store.line.me/family/music/en", linebot.ImagemapArea{520, 0, 520, 520}),
+								// 	linebot.NewURIImagemapAction("https://store.line.me/family/play/en", linebot.ImagemapArea{0, 520, 520, 520}),
+								// 	linebot.NewMessageImagemapAction("URANAI!", linebot.ImagemapArea{520, 520, 520, 520}),
 								// )
-								//所以有三種樣板，有三種動作按鈕。兩個樣板可以放圖片，一個單純只能兩個按鈕。
 
+								//Audio //https://github.com/dongri/line-bot-sdk-go
+							    // originalContentURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/ok.m4a"
+							    // duration := 1000
+							    // obj_message := linebot.NewAudioMessage(originalContentURL, duration)
 
-		 					    //obj_message := linebot.NewTemplateMessage("HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。", template)//messgage := linebot.NewTemplateMessage("請使用更新 APP 或使用手機 APP 才能看到這個功能。", template)
-								//obj_message := linebot.NewTemplateMessage(bot_msg, template)
-		 					    //.NewTemplateMessage("無法支援按鈕模式時要發出的訊息",Template 物件)
-
-									// 						if _, err = bot.ReplyMessage(event.ReplyToken, message).Do(); err != nil {
-									// 							log.Print(err)
-									// 						}
-
-
-								//https://devdocs.line.me/en/?go#send-message-object
-
-
-							//++ https://github.com/dongri/line-bot-sdk-go KEY:linebot.NewImageMessage
-
-							//.NewImageMessage 發圖片成功
-							//originalContentURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
-	    					//previewImageURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
-	    					//obj_message := linebot.NewImageMessage(originalContentURL, previewImageURL)
-
-							//.NewStickerMessage 發貼貼圖成功	 //https://devdocs.line.me/files/sticker_list.pdf					
-							//obj_message := linebot.NewStickerMessage("1", "1") //https://devdocs.line.me/en/?go#send-message-object
-
-							//這是個謎
-							//https://devdocs.line.me/en/?go#imagemap-message
-							//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
-							// obj_message := linebot.NewImagemapMessage(
-							// 	"https://synr.github.io/img/index.jpg",
-							// 	"Imagemap alt text",
-							// 	linebot.ImagemapBaseSize{1040, 1040},
-							// 	linebot.NewURIImagemapAction("https://store.line.me/family/manga/en", linebot.ImagemapArea{0, 0, 520, 520}),
-							// 	linebot.NewURIImagemapAction("https://store.line.me/family/music/en", linebot.ImagemapArea{520, 0, 520, 520}),
-							// 	linebot.NewURIImagemapAction("https://store.line.me/family/play/en", linebot.ImagemapArea{0, 520, 520, 520}),
-							// 	linebot.NewMessageImagemapAction("URANAI!", linebot.ImagemapArea{520, 520, 520, 520}),
-							// )
-
-							//Audio //https://github.com/dongri/line-bot-sdk-go
-						    // originalContentURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/ok.m4a"
-						    // duration := 1000
-						    // obj_message := linebot.NewAudioMessage(originalContentURL, duration)
-
-	 					    //接收各種 message object
-							//if _, err = bot.ReplyMessage(event.ReplyToken, obj_message,obj_message,obj_message,obj_message,obj_message).Do(); err != nil { //五聯發
-							// if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil { 
-							//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "19"),linebot.NewStickerMessage("2", "20"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
-							// 	log.Print(err)
-							// }
-					}
-					if bot_msg == "動畫瘋88"{
-						if target_item == "群組對話" {
-							log.Print("觸發離開群組，APP 限定")
-							//post KEY = 離開群組
-							template := linebot.NewConfirmTemplate(
-								"你確定要請我離開嗎QAQ？",
-								//.NewPostbackTemplateAction(按鈕字面,post,替使用者發言)
-								linebot.NewPostbackTemplateAction("是","按下確定離開群組對話", ""),
-								linebot.NewPostbackTemplateAction("否", "取消離開群組",""),
+		 					    //接收各種 message object
+								//if _, err = bot.ReplyMessage(event.ReplyToken, obj_message,obj_message,obj_message,obj_message,obj_message).Do(); err != nil { //五聯發
+								// if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil { 
+								//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "19"),linebot.NewStickerMessage("2", "20"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
+								// 	log.Print(err)
+								// }
+						case "選單":
+						    imageURL := SystemImageURL
+							template := linebot.NewCarouselTemplate(
+								linebot.NewCarouselColumn(
+									imageURL, "查詢巴哈姆特動畫瘋的功能", "我很愛看巴哈姆特動畫瘋。\n問我動畫可以這樣問：動畫 動畫名稱 集數",
+									linebot.NewPostbackTemplateAction("動畫 美術社 12","測試", "動畫 美術社 12"),
+									linebot.NewMessageTemplateAction("アニメ 美術社大有問題 12", "アニメ 美術社大有問題 12"),
+									linebot.NewMessageTemplateAction("anime：美術社：１", "anime：美術社：１"),
+								),
+								linebot.NewCarouselColumn(
+									imageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特",
+									linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
+									linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
+									linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
+								),
+								linebot.NewCarouselColumn(
+									imageURL, "其他功能", "新番、可查詢的動畫清單",
+									linebot.NewMessageTemplateAction("新番", "新番"),
+									linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
+									linebot.NewURITemplateAction("缺漏回報", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+								),
+								linebot.NewCarouselColumn(
+									imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
+									linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
+									linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
+								),
 							)
-							obj_message := linebot.NewTemplateMessage("你確定要請我離開嗎QAQ？\n這功能只支援 APP 使用。\n請用 APP 端查看下一步。", template)
-							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
-								log.Print(err)
+							t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。"
+							obj_message := linebot.NewTemplateMessage(t_msg, template)
+						case "動畫瘋88":
+							if target_item == "群組對話" {
+								log.Print("觸發離開群組，APP 限定")
+								//post KEY = 離開群組
+								template := linebot.NewConfirmTemplate(
+									"你確定要請我離開嗎QAQ？",
+									//.NewPostbackTemplateAction(按鈕字面,post,替使用者發言)
+									linebot.NewPostbackTemplateAction("是","按下確定離開群組對話", ""),
+									linebot.NewPostbackTemplateAction("否", "取消離開群組",""),
+								)
+								obj_message := linebot.NewTemplateMessage("你確定要請我離開嗎QAQ？\n這功能只支援 APP 使用。\n請用 APP 端查看下一步。", template)
+								if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+									log.Print(err)
+								}
 							}
-						}
 					}
 					//2016.12.22+ 利用正則分析字串結果，來設置觸發找開發者的時候要 + 的 UI  //不能用 bot_msg == 開發者，因為 bot_msg 早就被改寫成一串廢話。
 					if reg_loking_for_admin.ReplaceAllString(bot_msg,"$1") == "你找我主人？OK！"{
