@@ -1346,9 +1346,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發離開群組聊天
 		if event.Type == linebot.EventTypeLeave {
-				HttpPost_JANDI("離開 "  + user_talk , "gray" , "LINE 離開群組",target_id_code)
-				HttpPost_IFTTT("離開 "  + user_talk , "LINE 離開群組",target_id_code)
-				log.Print("觸發離開 " + user_talk +  " 群組")
+				HttpPost_JANDI("被請離開 "  + user_talk , "gray" , "LINE 離開群組",target_id_code)
+				HttpPost_IFTTT("被請離開 "  + user_talk , "LINE 離開群組",target_id_code)
+				log.Print("觸發被踢出 " + user_talk +  " 群組")
 		}
 		//？？？？？
 			//https://admin-official.line.me/beacon/register
@@ -1793,7 +1793,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				log.Print("message.Longitude = ")
 				log.Print(message.Longitude)
 				obj_message := linebot.NewLocationMessage(message.Title, message.Address, message.Latitude, message.Longitude)
-				obj_message_1 := linebot.NewLocationMessage("歡迎光臨", "地球", 25.022413, 121.556427) //麵包店 台北市信義區富陽街46號
+				obj_message_1 := linebot.NewLocationMessage("歡迎光臨", "地球", 25.022413, 121.556427) //台北市信義區富陽街46號
 				//obj_message_2 := linebot.NewLocationMessage("歡迎光臨", "哪個近", 25.022463, 121.556454) //這個遠
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你在這裡？"),obj_message,obj_message_1).Do(); err != nil {
 					log.Print(err)
