@@ -159,7 +159,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	log.Print(reg.ReplaceAllString(text, "--抓取分析結束--"))
 	
 	switch reg.ReplaceAllString(text, "$1"){
-	case "動漫通","今日動漫通","動畫瘋答案","今天答案","動畫瘋問題":
+	case "動漫通","今日動漫通","動畫瘋答案","今天答案","動畫瘋問題","巴哈答案":
 		log.Print("有走到動漫通")
 		print_string = "今日動漫通"
 		log.Print("print_string =" + print_string)
@@ -1249,6 +1249,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		log.Print("※ user_talk = " + user_talk)
 
 
+		//2016.12.27+
+		//共用模板
+				LineTemplate_chat := linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A")
+
 
 		//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 		if event.Type == linebot.EventTypePostback {
@@ -1280,7 +1284,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							linebot.NewPostbackTemplateAction("請機器人離開群組","離開群組", "機器人已經自動離開。\n如要加回來請找：\nhttps://line.me/R/ti/p/@sjk2434l\n如要聯絡開發者請找：\nhttps://line.me/R/ti/p/@uwk0684z"),
 							//linebot.NewPostbackTemplateAction("請機器人離開群組","離開群組", "機器人已經自動離開。\n如要加回來請找：\nhttps://line.me/R/ti/p/@sjk2434l\n如要聯絡開發者請找：\nhttps://line.me/R/ti/p/@uwk0684z"),
 							linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-							linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+							LineTemplate_chat,
 						),
 					)
 					obj_message := linebot.NewTemplateMessage("這是命令機器人自己離開群組的方法。\n這功能只支援 APP 使用。\n請用 APP 端查看下一步。", template)
@@ -1332,7 +1336,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					linebot.NewCarouselColumn(
 						imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
 						linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-						linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+						LineTemplate_chat,
 						linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 					),
 				)
@@ -1402,7 +1406,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					linebot.NewCarouselColumn(
 						imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
 						linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-						linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+						LineTemplate_chat,
 						linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 					),
 				)
@@ -1640,6 +1644,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		    					//previewImageURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
 		    					//obj_message := linebot.NewImageMessage(originalContentURL, previewImageURL)
 
+
 								//.NewStickerMessage 發貼貼圖成功	 //https://devdocs.line.me/files/sticker_list.pdf					
 								//obj_message := linebot.NewStickerMessage("1", "1") //https://devdocs.line.me/en/?go#send-message-object
 
@@ -1655,6 +1660,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								// 	linebot.NewURIImagemapAction("https://store.line.me/family/play/en", linebot.ImagemapArea{0, 520, 520, 520}),
 								// 	linebot.NewMessageImagemapAction("URANAI!", linebot.ImagemapArea{520, 520, 520, 520}),
 								// )
+								//func NewImagemapMessage
+								//https://github.com/line/line-bot-sdk-go/blob/master/linebot/message.go > Actions:  actions
+								//看起來好像可以有動作
 
 								//Audio //https://github.com/dongri/line-bot-sdk-go
 							    // originalContentURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/ok.m4a"
@@ -1673,7 +1681,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						    imageURL := SystemImageURL
 							template := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "今天的動漫通", "答案是「2.瓢蟲」",
+									imageURL, "12/27 動漫通", "答案是「4.五河琴里」",
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									linebot.NewURITemplateAction("APP 下載","https://prj.gamer.com.tw/app2u/animeapp.html"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 FB","https://www.facebook.com/animategamer"),
@@ -1681,21 +1689,21 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								linebot.NewCarouselColumn(
 									imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
 									linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-									linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+									LineTemplate_chat,
 									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 								),
 							)
-							t_msg := "12/26 動漫通\n" +
-								"關聯：JOJO的奇妙冒險\n" +
-								"問題：第五部主角 喬魯諾‧喬巴拿 的衣服胸前以什麼昆蟲造型做裝飾?\n" +
-								"1.金龜子\n" +
-								"2.瓢蟲\n" +
-								"3.獨角仙\n" +
-								"4.鍬形蟲\n" +
-								"小提示：圓圓的、顏色鮮豔、斑點\n" +
-								"出題者：leo26283458\n\n" +
-								"答案請上 FB 查詢大家意見。\n" +
-								"巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer"
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer"
+							t_msg := "12/27 動漫通\n" +
+								"關聯：Date・A・Live\n" +
+								"問題：請問炎魔是下列那個精靈的識別名?\n" +
+								"1.夜刀神十香\n" +
+								"2.四糸乃\n" +
+								"3.時崎狂三\n" +
+								"4.五河琴里\n" +
+								"小提示：紅髮雙馬尾\n" +
+								"出題者：k7365116" +
+								fb_msg
 							obj_message := linebot.NewTemplateMessage(t_msg, template)
 							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
 									log.Print(1630)
@@ -1714,7 +1722,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								linebot.NewCarouselColumn(
 									imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
 									linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-									linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+									LineTemplate_chat,
 									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 								),
 							)
@@ -1749,7 +1757,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								linebot.NewCarouselColumn(
 									imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
 									linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-									linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+									LineTemplate_chat,
 									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 								),
 							)
@@ -1785,7 +1793,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							linebot.NewCarouselColumn(
 								SystemImageURL, "開發者相關資訊", "你可以透過此功能\n聯絡 開發者",
 								linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-								linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+								LineTemplate_chat,
 								linebot.NewPostbackTemplateAction("聯絡 LINE 機器人開發者", "開發者", "開發者"),
 							),
 						)
@@ -1817,7 +1825,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							linebot.NewCarouselColumn(
 								SystemImageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
 								linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-								linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+								LineTemplate_chat,
 								linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 							),
 							linebot.NewCarouselColumn(
@@ -1865,7 +1873,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								linebot.NewCarouselColumn(
 									SystemImageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
 									linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-									linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+									LineTemplate_chat,
 									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 								),
 								linebot.NewCarouselColumn(
