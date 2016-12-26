@@ -1630,17 +1630,17 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 								),
 							)
-							t_msg := `12/26 動漫通\n
-								關聯：JOJO的奇妙冒險\n
-								問題：第五部主角 喬魯諾‧喬巴拿 的衣服胸前以什麼昆蟲造型做裝飾?\n
-								1.金龜子\n
-								2.瓢蟲\n
-								3.獨角仙\n
-								4.鍬形蟲\n
-								小提示：圓圓的、顏色鮮豔、斑點\n
-								出題者：leo26283458\n\n
-								答案請上 FB 查詢大家意見。\n
-								巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer`
+							t_msg := "12/26 動漫通\n" +
+								"關聯：JOJO的奇妙冒險\n" +
+								"問題：第五部主角 喬魯諾‧喬巴拿 的衣服胸前以什麼昆蟲造型做裝飾?\n" +
+								"1.金龜子\n" +
+								"2.瓢蟲\n" +
+								"3.獨角仙\n" +
+								"4.鍬形蟲\n" +
+								"小提示：圓圓的、顏色鮮豔、斑點\n" +
+								"出題者：leo26283458\n\n" +
+								"答案請上 FB 查詢大家意見。\n" +
+								"巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer"
 							obj_message := linebot.NewTemplateMessage(t_msg, template)
 							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
 									log.Print(1630)
