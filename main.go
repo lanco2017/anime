@@ -1581,7 +1581,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "19"),linebot.NewStickerMessage("2", "20"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
 							// 	log.Print(err)
 							// }
-					} else {
+					}
 						if anime_url!=""{
 							//找到的時候的 UI
 	 					    imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
@@ -1682,7 +1682,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						}
-					}
+					
 				}
 				// 				m := linebot.NewTextMessage("ok")
 				// 				    if _, err = bot.ReplyMessage(event.ReplyToken, m).Do(); err != nil {
