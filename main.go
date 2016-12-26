@@ -1708,9 +1708,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									
 									//http://muzigram.muzigen.net/2016/09/linebot-golang-linebot-heroku.html
 									//https://github.com/mogeta/lbot/blob/master/main.go
-					 				source := event.Source
-					 				log.Print("source.UserID = " + source.UserID)
-					 				log.Print("target_id_code = " + target_id_code)
+					 		// source := event.Source
+					 		// log.Print("source.UserID = " + source.UserID)
+					 		// log.Print("target_id_code = " + target_id_code)
 									//2016.12.20+//push_string := ""
 					// 				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
 					// 					push_string = "你好，主人。（PUSH_MESSAGE 才可以發）"
