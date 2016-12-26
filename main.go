@@ -159,6 +159,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	log.Print(reg.ReplaceAllString(text, "--抓取分析結束--"))
 	
 	switch reg.ReplaceAllString(text, "$1"){
+	case "今日動漫通","動畫瘋答案","今天答案":
+		print_string = = "今日動漫通"
 	case "臉書","FB","ＦＢ","Fb","Ｆｂ","fb","ｆｂ","FACEBOOK","ＦＡＣＥＢＯＯＫ","Facebook","Ｆａｃｅｂｏｏｋ","facebook","ｆａｃｅｂｏｏｋ":
 		print_string = "臉書"		
 	case "主選單","選單","簡介","教學","help","Help","Ｈｅｌｐ","ｈｅｌｐ","ＨＥＬＰ","HELP":
@@ -1462,7 +1464,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//2016.12.26:這裡的 bot_msg 已經是下游，經過 anime() 處理過了，沒有匹配的發言內容都會被濾掉。
 				
 				if bot_msg != ""{
-
 					//2016.12.20+ for test	
 					switch bot_msg{
 						case "GOTEST":
@@ -1609,6 +1610,39 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "19"),linebot.NewStickerMessage("2", "20"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
 								// 	log.Print(err)
 								// }
+							return
+						case "今日動漫通":
+						    imageURL := SystemImageURL
+							template := linebot.NewCarouselTemplate(
+								linebot.NewCarouselColumn(
+									imageURL, "今天的動漫通", "答案是「2.瓢蟲」",
+									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
+									linebot.NewURITemplateAction("APP 下載","https://prj.gamer.com.tw/app2u/animeapp.html"),
+									linebot.NewURITemplateAction("巴哈姆特動畫瘋 FB","https://www.facebook.com/animategamer"),
+								),
+								linebot.NewCarouselColumn(
+									imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
+									linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
+									linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
+								),
+							)
+							t_msg := `12/26 動漫通\n
+								關聯：JOJO的奇妙冒險\n
+								問題：第五部主角 喬魯諾‧喬巴拿 的衣服胸前以什麼昆蟲造型做裝飾?\n
+								1.金龜子\n
+								2.瓢蟲\n
+								3.獨角仙\n
+								4.鍬形蟲\n
+								小提示：圓圓的、顏色鮮豔、斑點\n
+								出題者：leo26283458\n\n
+								答案請上 FB 查詢大家意見。\n
+								巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer`
+							obj_message := linebot.NewTemplateMessage(t_msg, template)
+							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+									log.Print(1630)
+									log.Print(err)
+							}
 							return
 						case "臉書":
 						    imageURL := SystemImageURL
