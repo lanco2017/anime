@@ -1437,6 +1437,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 
 
+				//2016.12.26:這裡的 bot_msg 已經是下游，經過 anime() 處理過了，沒有匹配的發言內容都會被濾掉。
 				//2016.12.20+ for test
 				if bot_msg != ""{
 					if bot_msg == "GOTEST"{
@@ -1584,20 +1585,42 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					}
 					if bot_msg == "動畫瘋88"{
 						if target_item == "群組對話" {
-								log.Print("觸發離開群組，APP 限定")
-								//post KEY = 離開群組
-								template := linebot.NewConfirmTemplate(
-									"你確定要請我離開嗎QAQ？",
-									//.NewPostbackTemplateAction(按鈕字面,post,替使用者發言)
-									linebot.NewPostbackTemplateAction("是","按下確定離開群組對話", "機器人已經自動離開。\n如要加回來請找：\nhttps://line.me/R/ti/p/@sjk2434l\n如要聯絡開發者請找：\nhttps://line.me/R/ti/p/@uwk0684z"),
-									linebot.NewPostbackTemplateAction("否", "取消離開群組",""),
-								)
-								obj_message := linebot.NewTemplateMessage("你確定要請我離開嗎QAQ？\n這功能只支援 APP 使用。\n請用 APP 端查看下一步。", template)
-								if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
-									log.Print(err)
-								}
+							log.Print("觸發離開群組，APP 限定")
+							//post KEY = 離開群組
+							template := linebot.NewConfirmTemplate(
+								"你確定要請我離開嗎QAQ？",
+								//.NewPostbackTemplateAction(按鈕字面,post,替使用者發言)
+								linebot.NewPostbackTemplateAction("是","按下確定離開群組對話", "機器人已經自動離開。\n如要加回來請找：\nhttps://line.me/R/ti/p/@sjk2434l\n如要聯絡開發者請找：\nhttps://line.me/R/ti/p/@uwk0684z"),
+								linebot.NewPostbackTemplateAction("否", "取消離開群組",""),
+							)
+							obj_message := linebot.NewTemplateMessage("你確定要請我離開嗎QAQ？\n這功能只支援 APP 使用。\n請用 APP 端查看下一步。", template)
+							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+								log.Print(err)
+							}
 						}
 					}
+					if bot_msg == "開發者"{	//2016.12.22+ 利用正則分析字串結果，來設置觸發找開發者的時候要 + 的 UI  // if reg_loking_for_admin.ReplaceAllString(bot_msg,"$1") == "你找我主人？OK！"{
+						log.Print("觸發找主人")
+						template := linebot.NewCarouselTemplate(
+							linebot.NewCarouselColumn(
+								"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "開發者相關資訊", "你可以透過此功能\n聯絡 開發者",
+								linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
+								linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+								linebot.NewPostbackTemplateAction("聯絡 LINE 機器人開發者", "開發者", "開發者"),
+							),
+						)
+						obj_message := linebot.NewTemplateMessage("上面這些都是聯絡開發者的相關方法。", template)
+						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
+							log.Print(err)
+						}
+						HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：執行找開發者",target_id_code)
+						HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：執行找開發者",target_id_code)
+					}
+
+
+
+
+					
 					//因為 bot_msg==GOTEST 的時候，不可能會找到 anime_url。所以不用在 else 裡面。
 					if anime_url!=""{
 						//找到的時候的 UI
@@ -1658,27 +1681,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "orange" , "LINE 同步：查詢失敗",target_id_code)
 							HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢失敗",target_id_code)
 						}else{
-							//2016.12.22+ 利用正則分析字串結果，來設置觸發找開發者的時候要 + 的 UI
-							if reg_loking_for_admin.ReplaceAllString(bot_msg,"$1") == "你找我主人？OK！"{
-								log.Print("觸發找主人")
-								template := linebot.NewCarouselTemplate(
-									linebot.NewCarouselColumn(
-										"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "開發者相關資訊", "你可以透過此功能\n聯絡 開發者",
-										linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-										linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
-										linebot.NewPostbackTemplateAction("聯絡 LINE 機器人開發者", "開發者", "開發者"),
-									),
-								)
-								obj_message := linebot.NewTemplateMessage("上面這些都是聯絡開發者的相關方法。", template)
-								if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
-									log.Print(err)
-								}
-								HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：執行找開發者",target_id_code)
-								HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：執行找開發者",target_id_code)
-							}else{
-								if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
-									log.Print(err)
-								}	
+							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+								log.Print(err)
 							}
 						}
 					}
