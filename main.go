@@ -1750,23 +1750,23 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//log.Print("對方丟圖片 linebot.EventSource = " + linebot.EventSource
 
 				//----------------------------------------------------------------取得使用者資訊的寫法
-				source := event.Source
+				// source := event.Source
 
-				userID := event.Source.UserID
-				groupID := event.Source.GroupID
-				RoomID := event.Source.RoomID
-				markID := userID + groupID + RoomID
+				// userID := event.Source.UserID
+				// groupID := event.Source.GroupID
+				// RoomID := event.Source.RoomID
+				// markID := userID + groupID + RoomID
 				
-				log.Print(source.UserID)
+				// log.Print(source.UserID)
 				//----------------------------------------------------------------取得使用者資訊的寫法
 
-				username := ""
-				if markID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{//if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
-					username = "懶懶 = " + userID + groupID + RoomID //2016.12.20+
-				}
-				if markID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
-					username = "包包"
-				}
+				// username := ""
+				// if markID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{//if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
+				// 	username = "懶懶 = " + userID + groupID + RoomID //2016.12.20+
+				// }
+				// if markID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
+				// 	username = "包包"
+				// }
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD")).Do(); err != nil {
 					log.Print(err)
 				}
