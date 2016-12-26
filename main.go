@@ -1444,7 +1444,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				reg_nofind := regexp.MustCompile("^你是要找.*\\n.*\\n.*\\n.*\\n.*\\n.*(才會增加比較慢XD）)$") 
 
 				//這是從字串結果來判斷的方式，但發現有其他方式判斷（直接 bot_msg==開發者）所以這個暫時不用				
-				//reg_loking_for_admin := regexp.MustCompile("^(你找我主人？OK！).*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*") //reg_loking_for_admin := regexp.MustCompile("^(你找我主人？OK！).*") 
+				reg_loking_for_admin := regexp.MustCompile("^(你找我主人？OK！).*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*") 
+				//reg_loking_for_admin := regexp.MustCompile("^(你找我主人？OK！).*") 
 
 				//2016.12.26:這裡的 bot_msg 已經是下游，經過 anime() 處理過了，沒有匹配的發言內容都會被濾掉。
 				
@@ -1611,7 +1612,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							}
 						}
 					}
-					if bot_msg == "開發者"{	//2016.12.22+ 利用正則分析字串結果，來設置觸發找開發者的時候要 + 的 UI  // if reg_loking_for_admin.ReplaceAllString(bot_msg,"$1") == "你找我主人？OK！"{
+					//2016.12.22+ 利用正則分析字串結果，來設置觸發找開發者的時候要 + 的 UI  //不能用 bot_msg == 開發者，因為 bot_msg 早就被改寫成一串廢話。
+					if reg_loking_for_admin.ReplaceAllString(bot_msg,"$1") == "你找我主人？OK！"{
 						log.Print("觸發找主人")
 						template := linebot.NewCarouselTemplate(
 							linebot.NewCarouselColumn(
