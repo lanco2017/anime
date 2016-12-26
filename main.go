@@ -1626,7 +1626,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 								),
 							)
-							t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這只提供查詢動畫的功能。\n如有其他建議或想討論，請對我輸入「開發者」進行聯絡。"
+							t_msg := "這是 巴哈姆特動畫瘋 的 Facebook：\nhttps://www.facebook.com/animategamer"
 							obj_message := linebot.NewTemplateMessage(t_msg, template)
 							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
 									log.Print(1630)
