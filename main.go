@@ -1605,6 +1605,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("1", "1"),linebot.NewStickerMessage("1", "2"),linebot.NewStickerMessage("2", "19"),linebot.NewStickerMessage("2", "20"),linebot.NewStickerMessage("1", "3")).Do(); err != nil {
 								// 	log.Print(err)
 								// }
+							return
 						case "選單":
 						    imageURL := SystemImageURL
 							template := linebot.NewCarouselTemplate(
@@ -1639,6 +1640,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									log.Print(1639)
 									log.Print(err)
 							}
+							return
 						case "動畫瘋88":
 							if target_item == "群組對話" {
 								log.Print("觸發離開群組，APP 限定")
@@ -1655,6 +1657,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									log.Print(err)
 								}
 							}
+							return
 					}
 					//2016.12.22+ 利用正則分析字串結果，來設置觸發找開發者的時候要 + 的 UI  //不能用 bot_msg == 開發者，因為 bot_msg 早就被改寫成一串廢話。
 					if reg_loking_for_admin.ReplaceAllString(bot_msg,"$1") == "你找我主人？OK！"{
@@ -1674,6 +1677,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						}
 						HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：執行找開發者",target_id_code)
 						HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：執行找開發者",target_id_code)
+						return
 					}
 
 
