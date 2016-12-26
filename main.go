@@ -1582,15 +1582,50 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							// 	log.Print(err)
 							// }
 					}
-						if anime_url!=""{
-							//找到的時候的 UI
+					if anime_url!=""{
+						//找到的時候的 UI
+					    imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
+						template := linebot.NewCarouselTemplate(
+							linebot.NewCarouselColumn(
+								imageURL, "動畫搜尋結果", "在找" + message.Text + "對吧！？\n建議可以直接在巴哈姆特動畫瘋 APP 裡面播放！",							
+								linebot.NewURITemplateAction("點此播放找到的動畫", anime_url),
+								linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html"),
+								linebot.NewMessageTemplateAction("查詢其他動畫", "目錄"),
+							),
+							linebot.NewCarouselColumn(
+								"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
+								linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
+								linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
+								linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
+							),
+						)
+						obj_message := linebot.NewTemplateMessage(bot_msg, template)
+
+						originalContentURL_1 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/722268f159dc640ed1639ffd31b4dd0d/94455.jpg"
+	   					previewImageURL_1 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/722268f159dc640ed1639ffd31b4dd0d/94455.jpg"
+	   					obj_message_img_1 := linebot.NewImageMessage(originalContentURL_1, previewImageURL_1)
+
+						originalContentURL_2 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/f7e158cdc3f1e9640a5f5cf188c33b13/94454.jpg"
+	   					previewImageURL_2 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/f7e158cdc3f1e9640a5f5cf188c33b13/94454.jpg"
+	   					obj_message_img_2 := linebot.NewImageMessage(originalContentURL_2, previewImageURL_2)
+
+						if _, err = bot.ReplyMessage(event.ReplyToken,linebot.NewTextMessage("可參考以下圖例操作讓搜尋到的影片，直接在巴哈姆特動畫瘋 APP 進行播放。"),obj_message_img_1,obj_message_img_2,obj_message).Do(); err != nil {
+							log.Print(err)
+						}
+						HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
+						HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢成功",target_id_code + `\n` +anime_url)
+						log.Print("target_id_code +  anime_url = " + target_id_code + "\n" + anime_url)
+					}else{
+						//2016.12.22+ 利用正則分析字串結果，來設置觸發找不到的時候要 + 的 UI
+						if reg_nofind.ReplaceAllString(bot_msg,"$1") == "才會增加比較慢XD）"{
+							//找不到的時候
 	 					    imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
 							template := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "動畫搜尋結果", "在找" + message.Text + "對吧！？\n建議可以直接在巴哈姆特動畫瘋 APP 裡面播放！",							
-									linebot.NewURITemplateAction("點此播放找到的動畫", anime_url),
+									imageURL, "找不到 "  +  message.Text   +   " 耶", "有可能打錯字或這真的沒有收錄，\n才會找不到。",							
+									linebot.NewMessageTemplateAction("查看新番", "新番"),
+									linebot.NewMessageTemplateAction("可查詢的其他動畫目錄", "目錄"),
 									linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html"),
-									linebot.NewMessageTemplateAction("查詢其他動畫", "目錄"),
 								),
 								linebot.NewCarouselColumn(
 									"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
@@ -1599,68 +1634,33 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 								),
 							)
-							obj_message := linebot.NewTemplateMessage(bot_msg, template)
-
-							originalContentURL_1 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/722268f159dc640ed1639ffd31b4dd0d/94455.jpg"
-	    					previewImageURL_1 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/722268f159dc640ed1639ffd31b4dd0d/94455.jpg"
-	    					obj_message_img_1 := linebot.NewImageMessage(originalContentURL_1, previewImageURL_1)
-
-							originalContentURL_2 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/f7e158cdc3f1e9640a5f5cf188c33b13/94454.jpg"
-	    					previewImageURL_2 := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/f7e158cdc3f1e9640a5f5cf188c33b13/94454.jpg"
-	    					obj_message_img_2 := linebot.NewImageMessage(originalContentURL_2, previewImageURL_2)
-
-							if _, err = bot.ReplyMessage(event.ReplyToken,linebot.NewTextMessage("可參考以下圖例操作讓搜尋到的影片，直接在巴哈姆特動畫瘋 APP 進行播放。"),obj_message_img_1,obj_message_img_2,obj_message).Do(); err != nil {
+							obj_message := linebot.NewTemplateMessage("除了「目錄」以外，\n你也可以輸入「新番」查詢近期的動畫。", template)
+							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
 								log.Print(err)
 							}
-							HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
-							HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢成功",target_id_code + `\n` +anime_url)
-							log.Print("target_id_code +  anime_url = " + target_id_code + "\n" + anime_url)
+							HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "orange" , "LINE 同步：查詢失敗",target_id_code)
+							HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢失敗",target_id_code)
 						}else{
-							//2016.12.22+ 利用正則分析字串結果，來設置觸發找不到的時候要 + 的 UI
-							if reg_nofind.ReplaceAllString(bot_msg,"$1") == "才會增加比較慢XD）"{
-								//找不到的時候
-		 					    imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
+							//2016.12.22+ 利用正則分析字串結果，來設置觸發找開發者的時候要 + 的 UI
+							if reg_loking_for_admin.ReplaceAllString(bot_msg,"$1") == "你找我主人？OK！"{
+								log.Print("觸發找主人")
 								template := linebot.NewCarouselTemplate(
 									linebot.NewCarouselColumn(
-										imageURL, "找不到 "  +  message.Text   +   " 耶", "有可能打錯字或這真的沒有收錄，\n才會找不到。",							
-										linebot.NewMessageTemplateAction("查看新番", "新番"),
-										linebot.NewMessageTemplateAction("可查詢的其他動畫目錄", "目錄"),
-										linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html"),
-									),
-									linebot.NewCarouselColumn(
-										"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
+										"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "開發者相關資訊", "你可以透過此功能\n聯絡 開發者",
 										linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
 										linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
-										linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
+										linebot.NewPostbackTemplateAction("聯絡 LINE 機器人開發者", "開發者", "開發者"),
 									),
 								)
-								obj_message := linebot.NewTemplateMessage("除了「目錄」以外，\n你也可以輸入「新番」查詢近期的動畫。", template)
+								obj_message := linebot.NewTemplateMessage("上面這些都是聯絡開發者的相關方法。", template)
 								if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
 									log.Print(err)
 								}
-								HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "orange" , "LINE 同步：查詢失敗",target_id_code)
-								HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢失敗",target_id_code)
+								HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：執行找開發者",target_id_code)
+								HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：執行找開發者",target_id_code)
 							}else{
-								//2016.12.22+ 利用正則分析字串結果，來設置觸發找開發者的時候要 + 的 UI
-								if reg_loking_for_admin.ReplaceAllString(bot_msg,"$1") == "你找我主人？OK！"{
-									log.Print("觸發找主人")
-									template := linebot.NewCarouselTemplate(
-										linebot.NewCarouselColumn(
-											"https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png", "開發者相關資訊", "你可以透過此功能\n聯絡 開發者",
-											linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-											linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
-											linebot.NewPostbackTemplateAction("聯絡 LINE 機器人開發者", "開發者", "開發者"),
-										),
-									)
-									obj_message := linebot.NewTemplateMessage("上面這些都是聯絡開發者的相關方法。", template)
-									if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
-										log.Print(err)
-									}
-									HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：執行找開發者",target_id_code)
-									HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：執行找開發者",target_id_code)
-								}else{
-									if bot_msg == "動畫瘋88"{
-										if target_item == "群組對話" {
+								if bot_msg == "動畫瘋88"{
+									if target_item == "群組對話" {
 											log.Print("觸發離開群組，APP 限定")
 											//post KEY = 離開群組
 											template := linebot.NewConfirmTemplate(
@@ -1673,16 +1673,15 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 											if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
 												log.Print(err)
 											}
-										}
-									}else{
-										if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
-											log.Print(err)
-										}	
-									}								
-								}
+									}
+								}else{
+									if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+										log.Print(err)
+									}	
+								}								
 							}
 						}
-					
+					}
 				}
 				// 				m := linebot.NewTextMessage("ok")
 				// 				    if _, err = bot.ReplyMessage(event.ReplyToken, m).Do(); err != nil {
