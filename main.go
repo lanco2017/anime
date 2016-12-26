@@ -1271,6 +1271,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									LineTemplate_chat,
 									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
 								)
+		LineTemplate_download_app := linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html")
+		LineTemplate_other := linebot.NewCarouselColumn(
+						imageURL, "其他功能", "新番、可查詢的動畫清單",
+						linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
+						linebot.NewMessageTemplateAction("新番", "新番"),
+						linebot.NewMessageTemplateAction("今天動漫通答案", "今日動漫通"),
+					)
 
 		//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 		if event.Type == linebot.EventTypePostback {
@@ -1345,12 +1352,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
 						linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
 					),
-					linebot.NewCarouselColumn(
-						imageURL, "其他功能", "新番、可查詢的動畫清單",
-						linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
-						linebot.NewMessageTemplateAction("新番", "新番"),
-						linebot.NewMessageTemplateAction("今日動漫通答案", "今日動漫通"),
-					),
+					LineTemplate_other,
 					LineTemplate_feedback,
 				)
 				t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這只提供查詢動畫的功能。\n如有其他建議或想討論，請對我輸入「開發者」進行聯絡。"
@@ -1410,12 +1412,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
 						linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
 					),
-					linebot.NewCarouselColumn(
-						imageURL, "其他功能", "新番、可查詢的動畫清單",
-						linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
-						linebot.NewMessageTemplateAction("新番", "新番"),
-						linebot.NewMessageTemplateAction("今日動漫通答案", "今日動漫通"),
-					),
+					LineTemplate_other,
 					LineTemplate_feedback,
 				)
 				t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這只提供查詢動畫的功能。\n如有其他建議或想討論，請對我輸入「開發者」進行聯絡。"
@@ -1691,7 +1688,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								linebot.NewCarouselColumn(
 									imageURL, "12/27 動漫通", "答案是「4.五河琴里」",
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
-									linebot.NewURITemplateAction("APP 下載","https://prj.gamer.com.tw/app2u/animeapp.html"),
+									LineTemplate_download_app,
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 FB","https://www.facebook.com/animategamer"),
 								),
 								LineTemplate_feedback,
@@ -1708,7 +1705,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								linebot.NewCarouselColumn(
 									imageURL, "巴哈姆特動畫瘋相關網站", "動畫瘋官網、APP 載點、Facbook",
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
-									linebot.NewURITemplateAction("APP 下載","https://prj.gamer.com.tw/app2u/animeapp.html"),
+									LineTemplate_download_app,
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 FB","https://www.facebook.com/animategamer"),
 								),
 								LineTemplate_feedback,
@@ -1735,12 +1732,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
 									linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
 								),
-								linebot.NewCarouselColumn(
-									imageURL, "其他功能", "新番、可查詢的動畫清單",
-									linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
-									linebot.NewMessageTemplateAction("新番", "新番"),
-									linebot.NewMessageTemplateAction("今日動漫通答案", "今日動漫通"),
-								),
+								LineTemplate_other,
 								LineTemplate_feedback,
 							)
 							t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這只提供查詢動畫的功能。\n如有其他建議或想討論，請對我輸入「開發者」進行聯絡。"
@@ -1801,7 +1793,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							linebot.NewCarouselColumn(
 								imageURL, "動畫搜尋結果", "在找" + message.Text + "對吧！？\n建議可以直接在巴哈姆特動畫瘋 APP 裡面播放！",							
 								linebot.NewURITemplateAction("點此播放找到的動畫", anime_url),
-								linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html"),
+								LineTemplate_download_app,
 								linebot.NewMessageTemplateAction("查詢其他動畫", "目錄"),
 							),
 							LineTemplate_feedback,
@@ -1811,12 +1803,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
 								linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
 							),
-							linebot.NewCarouselColumn(
-								SystemImageURL, "其他功能", "新番、可查詢的動畫清單",
-								linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
-								linebot.NewMessageTemplateAction("新番", "新番"),
-								linebot.NewMessageTemplateAction("今日動漫通答案", "今日動漫通"),
-							),
+							LineTemplate_other,
 						)
 						obj_message := linebot.NewTemplateMessage(bot_msg, template)
 
@@ -1845,7 +1832,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									imageURL, "找不到 "  +  message.Text   +   " 耶", "有可能打錯字或這真的沒有收錄，\n才會找不到。",							
 									linebot.NewMessageTemplateAction("查看新番", "新番"),
 									linebot.NewMessageTemplateAction("可查詢的其他動畫目錄", "目錄"),
-									linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html"),
+									LineTemplate_download_app,
 								),
 								LineTemplate_feedback,
 								linebot.NewCarouselColumn(
@@ -1854,12 +1841,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
 									linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
 								),
-								linebot.NewCarouselColumn(
-									SystemImageURL, "其他功能", "新番、可查詢的動畫清單",
-									linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
-									linebot.NewMessageTemplateAction("新番", "新番"),
-									linebot.NewMessageTemplateAction("今日動漫通答案", "今日動漫通"),
-								),
+								LineTemplate_other,
 							)
 							obj_message := linebot.NewTemplateMessage("除了「目錄」以外，\n你也可以輸入「新番」查詢近期的動畫。", template)
 							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
