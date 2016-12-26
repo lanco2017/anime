@@ -159,8 +159,10 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	log.Print(reg.ReplaceAllString(text, "--抓取分析結束--"))
 	
 	switch reg.ReplaceAllString(text, "$1"){
-	case "今日動漫通","動畫瘋答案","今天答案","動畫瘋問題":
+	case "動漫通","今日動漫通","動畫瘋答案","今天答案","動畫瘋問題":
+		log.Print("有走到動漫通")
 		print_string = "今日動漫通"
+		log.Print("print_string =" + print_string)
 	case "臉書","FB","ＦＢ","Fb","Ｆｂ","fb","ｆｂ","FACEBOOK","ＦＡＣＥＢＯＯＫ","Facebook","Ｆａｃｅｂｏｏｋ","facebook","ｆａｃｅｂｏｏｋ":
 		print_string = "臉書"		
 	case "主選單","選單","簡介","教學","help","Help","Ｈｅｌｐ","ｈｅｌｐ","ＨＥＬＰ","HELP":
@@ -1612,6 +1614,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								// }
 							return
 						case "今日動漫通":
+							log.Print("今日動漫通")
 						    imageURL := SystemImageURL
 							template := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
