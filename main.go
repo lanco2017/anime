@@ -1093,6 +1093,12 @@ func anime(text string,user_msgid string,reply_mode string) string {
 //http://qiita.com/koki_cheese/items/66980888d7e8755d01ec
 // func handleTask(w http.ResponseWriter, r *http.Request) {
 // }
+
+	//修改時主要參考官方文件以及：
+	// https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
+		// KEY = handleText 等
+	// https://github.com/dongri/line-bot-sdk-go
+		// KEY = linebot.NewAudioMessage(originalContentURL, duration)
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
 
@@ -1106,6 +1112,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	
 	for _, event := range events {
+
+
 
 		//2016.12.23+ 統一基本資訊集中
 		//2016.12.24+ 嘗試抓使用者資訊 https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
@@ -1173,6 +1181,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			user_talk = username
 		}
 		log.Print("※ user_talk = " + user_talk)
+
+
 
 		//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 		if event.Type == linebot.EventTypePostback {
@@ -1291,14 +1301,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if target_id_code == "Ca78bf89fa33b777e54b4c13695818f81"{
 					push_string += "\n你好，" + user_talk + "。"
 				}
-				//push 的寫法
-				// 				if _, err = bot.PushMessage(source.GroupID, linebot.NewTextMessage(push_string)).Do(); err != nil {
-				// 					log.Print(err)
-				// 				}
-				// 				if _, err = bot.PushMessage("Ca78bf89fa33b777e54b4c13695818f81", linebot.NewTextMessage("這裡純測試對嗎？\n只發於測試聊天室「test」")).Do(); err != nil {
-				// 					log.Print(err)
-				// 				}
-				//target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
+					//push 的寫法
+					// 				if _, err = bot.PushMessage(source.GroupID, linebot.NewTextMessage(push_string)).Do(); err != nil {
+					// 					log.Print(err)
+					// 				}
+					// 				if _, err = bot.PushMessage("Ca78bf89fa33b777e54b4c13695818f81", linebot.NewTextMessage("這裡純測試對嗎？\n只發於測試聊天室「test」")).Do(); err != nil {
+					// 					log.Print(err)
+					// 				}
+					//target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
 			    imageURL := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png"
 				template := linebot.NewCarouselTemplate(
 					linebot.NewCarouselColumn(
@@ -1341,6 +1351,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				log.Print("觸發離開 " + user_talk +  " 群組")
 		}
 		//？？？？？
+			//https://admin-official.line.me/beacon/register
+			//https://devdocs.line.me/en/#line-beacon
+			//https://devdocs.line.me/ja/#line-beacon
 		if event.Type == linebot.EventTypeBeacon {
 			HttpPost_JANDI(user_talk + " 觸發 Beacon（啥鬼）", "yellow" , "LINE 對話同步",target_id_code)
 			HttpPost_IFTTT(user_talk + " 觸發 Beacon（啥鬼）", "LINE 對話同步",target_id_code)
@@ -1363,37 +1376,37 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//http://www.netadmin.com.tw/images/news/NP161004000316100411441903.png
 				//userID := event.Source.UserID
 
- 				//message.ID
+	 			//message.ID
 				//message.Text
 				log.Print(message.ID)
 				log.Print(message.Text)
 				bot_msg := "你是說 " + message.Text + " 嗎？\n\n我看看喔...等我一下..."
-				// if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
-				// 	log.Print(err)
-				// }
+					// if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+					// 	log.Print(err)
+					// }
 				
-				//2016.12.20+
-				//只有在 1 對 1 才能抓到 User ID　在群組才能抓到 event.Source.GroupID
+						//2016.12.20+
+						//只有在 1 對 1 才能抓到 User ID　在群組才能抓到 event.Source.GroupID
 
- 				// log.Print("event.Source.UserID = " + event.Source.UserID)
-				// log.Print("event.Source.GroupID = " + event.Source.GroupID)
-				// log.Print("event.Source.RoomID = " + event.Source.RoomID)
-				
-				// 				source := event.Source
-				// 				log.Print("source.UserID = " + source.UserID)
-								
-				// 				userID := event.Source.UserID
-				// 				log.Print("userID := event.Source.UserID = " + userID)
+		 				// log.Print("event.Source.UserID = " + event.Source.UserID)
+						// log.Print("event.Source.GroupID = " + event.Source.GroupID)
+						// log.Print("event.Source.RoomID = " + event.Source.RoomID)
+						
+						// 				source := event.Source
+						// 				log.Print("source.UserID = " + source.UserID)
+										
+						// 				userID := event.Source.UserID
+						// 				log.Print("userID := event.Source.UserID = " + userID)
 
-				// target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
-				// if event.Source.UserID == ""{
-				// 	target_id_code = event.Source.GroupID
-				// } else {
-				// 	target_id_code = event.Source.UserID
-				// }
-				
-				
-				//anime
+						// target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
+						// if event.Source.UserID == ""{
+						// 	target_id_code = event.Source.GroupID
+						// } else {
+						// 	target_id_code = event.Source.UserID
+						// }
+						//都提到最外面去了 for _, event := range events { 的下面
+
+				//anime()
 				bot_msg = anime(message.Text,target_id_code,"")//bot_msg = anime(message.Text,message.ID,"")
 					log.Print("根據 anime function 匹配到的回應內容：" + bot_msg)
 				
@@ -1405,7 +1418,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								//https://devdocs.line.me/en/?go#send-message-object
 				
 
-				//沒辦法建立 function 直接在裡面操作， 只好先用加法，從下游進行正則分析處理 reg  //https://play.golang.org/p/cjO5La2cKR
+				//沒辦法建立 anime function 直接在裡面操作（因為用途不一樣當然不能）。 只好先用加法，從下游進行正則分析處理 reg  //https://play.golang.org/p/cjO5La2cKR
+					//anime() 只是負責處理字串，理所當然裡面無法做任何的發言動作。（除非把可以發言的相關物件傳進去？）
 				reg := regexp.MustCompile("^.*(有喔！有喔！你在找這個對吧！？)\\n(https?.*)(\\n*.*)$")
 				log.Print("--抓取［" + bot_msg + "］分析觀察--")
 				log.Print("anime 後的 1 = " + reg.ReplaceAllString(bot_msg, "$1"))
@@ -1426,16 +1440,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					anime_url = ""
 				}
 
-
 				//判斷是不是找不到
 				reg_nofind := regexp.MustCompile("^你是要找.*\\n.*\\n.*\\n.*\\n.*\\n.*(才會增加比較慢XD）)$") 
 
 				//這是從字串結果來判斷的方式，但發現有其他方式判斷（直接 bot_msg==開發者）所以這個暫時不用				
 				//reg_loking_for_admin := regexp.MustCompile("^(你找我主人？OK！).*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*") //reg_loking_for_admin := regexp.MustCompile("^(你找我主人？OK！).*") 
-
-
-
-
 
 				//2016.12.26:這裡的 bot_msg 已經是下游，經過 anime() 處理過了，沒有匹配的發言內容都會被濾掉。
 				
@@ -1723,16 +1732,16 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//上面重覆兩段 push 用來證明 push 才可以連發訊息框，re 只能一個框
 					//---------------------這段可以跟 ReplyMessage 同時有效，但是只會在 1 對 1 有效。群組無效。---------
 			case *linebot.ImageMessage:
-						  // 				_, err := bot.SendText([]string{event.RawContent.Params[0]}, "Hi~\n歡迎加入 Delicious!\n\n想查詢附近或各地美食都可以LINE我呦！\n\n請問你想吃什麼?\nex:義大利麵\n\n想不到吃什麼，也可以直接'傳送目前位置訊息'")
-					 	 // 				var img = "http://imageshack.com/a/img921/318/DC21al.png"
-						// 				_, err = bot.SendImage([]string{content.From}, img, img)
-						// 				if err != nil {
-						// 					log.Println(err)
-						// 				}
+				// 				_, err := bot.SendText([]string{event.RawContent.Params[0]}, "Hi~\n歡迎加入 Delicious!\n\n想查詢附近或各地美食都可以LINE我呦！\n\n請問你想吃什麼?\nex:義大利麵\n\n想不到吃什麼，也可以直接'傳送目前位置訊息'")
+				// 				var img = "http://imageshack.com/a/img921/318/DC21al.png"
+				// 				_, err = bot.SendImage([]string{content.From}, img, img)
+				// 				if err != nil {
+				// 					log.Println(err)
+				// 				}
 									
-						// 				if err := bot.handleImage(message, event.ReplyToken); err != nil {
-						// 					log.Print(err)
-						// 				}
+				// 				if err := bot.handleImage(message, event.ReplyToken); err != nil {
+				// 					log.Print(err)
+				// 				}
 									//https://devdocs.line.me/en/#webhook-event-object
 				log.Print("對方丟圖片 message.ID = " + message.ID)
 
