@@ -31,6 +31,18 @@ import (
 
 var bot *linebot.Client
 
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer"
+							fb_q_msg := "12/27 動漫通\n" +
+								"關聯：Date・A・Live\n" +
+								"問題：請問炎魔是下列那個精靈的識別名?\n" +
+								"1.夜刀神十香\n" +
+								"2.四糸乃\n" +
+								"3.時崎狂三\n" +
+								"4.五河琴里\n" +
+								"小提示：紅髮雙馬尾\n" +
+								"出題者：k7365116" +
+								fb_msg
+
 func main() {
 	var err error
 	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
@@ -1251,8 +1263,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 		//2016.12.27+
 		//共用模板
-				LineTemplate_chat := linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A")
-
+		LineTemplate_chat := linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A")
+		LineTemplate_addme := linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z")
+		LineTemplate_feedback := linebot.NewCarouselColumn(
+									imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
+									LineTemplate_addme,
+									LineTemplate_chat,
+									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
+								)
 
 		//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 		if event.Type == linebot.EventTypePostback {
@@ -1283,7 +1301,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							SystemImageURL, "請機器人離開群組", "你確定要請我離開嗎QAQ？\n如果確定請按下方按鈕 QQ",
 							linebot.NewPostbackTemplateAction("請機器人離開群組","離開群組", "機器人已經自動離開。\n如要加回來請找：\nhttps://line.me/R/ti/p/@sjk2434l\n如要聯絡開發者請找：\nhttps://line.me/R/ti/p/@uwk0684z"),
 							//linebot.NewPostbackTemplateAction("請機器人離開群組","離開群組", "機器人已經自動離開。\n如要加回來請找：\nhttps://line.me/R/ti/p/@sjk2434l\n如要聯絡開發者請找：\nhttps://line.me/R/ti/p/@uwk0684z"),
-							linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
+							LineTemplate_addme,
 							LineTemplate_chat,
 						),
 					)
@@ -1333,12 +1351,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						linebot.NewMessageTemplateAction("新番", "新番"),
 						linebot.NewMessageTemplateAction("今日動漫通答案", "今日動漫通"),
 					),
-					linebot.NewCarouselColumn(
-						imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
-						linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-						LineTemplate_chat,
-						linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
-					),
+					LineTemplate_feedback,
 				)
 				t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這只提供查詢動畫的功能。\n如有其他建議或想討論，請對我輸入「開發者」進行聯絡。"
 				obj_message := linebot.NewTemplateMessage(t_msg, template)
@@ -1403,12 +1416,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						linebot.NewMessageTemplateAction("新番", "新番"),
 						linebot.NewMessageTemplateAction("今日動漫通答案", "今日動漫通"),
 					),
-					linebot.NewCarouselColumn(
-						imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
-						linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-						LineTemplate_chat,
-						linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
-					),
+					LineTemplate_feedback,
 				)
 				t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這只提供查詢動畫的功能。\n如有其他建議或想討論，請對我輸入「開發者」進行聯絡。"
 				obj_message := linebot.NewTemplateMessage(t_msg, template)
@@ -1686,25 +1694,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									linebot.NewURITemplateAction("APP 下載","https://prj.gamer.com.tw/app2u/animeapp.html"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 FB","https://www.facebook.com/animategamer"),
 								),
-								linebot.NewCarouselColumn(
-									imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
-									linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-									LineTemplate_chat,
-									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
-								),
+								LineTemplate_feedback,
 							)
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer"
-							t_msg := "12/27 動漫通\n" +
-								"關聯：Date・A・Live\n" +
-								"問題：請問炎魔是下列那個精靈的識別名?\n" +
-								"1.夜刀神十香\n" +
-								"2.四糸乃\n" +
-								"3.時崎狂三\n" +
-								"4.五河琴里\n" +
-								"小提示：紅髮雙馬尾\n" +
-								"出題者：k7365116" +
-								fb_msg
-							obj_message := linebot.NewTemplateMessage(t_msg, template)
+							obj_message := linebot.NewTemplateMessage(fb_q_msg, template)
 							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
 									log.Print(1630)
 									log.Print(err)
@@ -1719,12 +1711,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									linebot.NewURITemplateAction("APP 下載","https://prj.gamer.com.tw/app2u/animeapp.html"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 FB","https://www.facebook.com/animategamer"),
 								),
-								linebot.NewCarouselColumn(
-									imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
-									linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-									LineTemplate_chat,
-									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
-								),
+								LineTemplate_feedback,
 							)
 							t_msg := "這是 巴哈姆特動畫瘋 的 Facebook：\nhttps://www.facebook.com/animategamer"
 							obj_message := linebot.NewTemplateMessage(t_msg, template)
@@ -1754,12 +1741,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									linebot.NewMessageTemplateAction("新番", "新番"),
 									linebot.NewMessageTemplateAction("今日動漫通答案", "今日動漫通"),
 								),
-								linebot.NewCarouselColumn(
-									imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
-									linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-									LineTemplate_chat,
-									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
-								),
+								LineTemplate_feedback,
 							)
 							t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這只提供查詢動畫的功能。\n如有其他建議或想討論，請對我輸入「開發者」進行聯絡。"
 							obj_message := linebot.NewTemplateMessage(t_msg, template)
@@ -1792,7 +1774,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						template := linebot.NewCarouselTemplate(
 							linebot.NewCarouselColumn(
 								SystemImageURL, "開發者相關資訊", "你可以透過此功能\n聯絡 開發者",
-								linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
+								LineTemplate_addme,
 								LineTemplate_chat,
 								linebot.NewPostbackTemplateAction("聯絡 LINE 機器人開發者", "開發者", "開發者"),
 							),
@@ -1822,12 +1804,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html"),
 								linebot.NewMessageTemplateAction("查詢其他動畫", "目錄"),
 							),
-							linebot.NewCarouselColumn(
-								SystemImageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
-								linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-								LineTemplate_chat,
-								linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
-							),
+							LineTemplate_feedback,
 							linebot.NewCarouselColumn(
 								SystemImageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特",
 								linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
@@ -1870,12 +1847,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									linebot.NewMessageTemplateAction("可查詢的其他動畫目錄", "目錄"),
 									linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html"),
 								),
-								linebot.NewCarouselColumn(
-									SystemImageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
-									linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z"),
-									LineTemplate_chat,
-									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
-								),
+								LineTemplate_feedback,
 								linebot.NewCarouselColumn(
 									SystemImageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特",
 									linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
