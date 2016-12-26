@@ -1258,8 +1258,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					),
 					linebot.NewCarouselColumn(
 						imageURL, "其他功能", "新番、可查詢的動畫清單",
-						linebot.NewMessageTemplateAction("新番", "新番"),
 						linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
+						linebot.NewMessageTemplateAction("新番", "新番"),
 						linebot.NewURITemplateAction("缺漏回報", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
 					),
 					linebot.NewCarouselColumn(
@@ -1327,8 +1327,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					),
 					linebot.NewCarouselColumn(
 						imageURL, "其他功能", "新番、可查詢的動畫清單",
-						linebot.NewMessageTemplateAction("新番", "新番"),
 						linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
+						linebot.NewMessageTemplateAction("新番", "新番"),
 						linebot.NewURITemplateAction("缺漏回報", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
 					),
 					linebot.NewCarouselColumn(
@@ -1696,8 +1696,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							),
 							linebot.NewCarouselColumn(
 								SystemImageURL, "其他功能", "新番、可查詢的動畫清單",
-								linebot.NewMessageTemplateAction("新番", "新番"),
 								linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
+								linebot.NewMessageTemplateAction("新番", "新番"),
 								linebot.NewURITemplateAction("缺漏回報", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
 							),
 						)
@@ -1743,8 +1743,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								),
 								linebot.NewCarouselColumn(
 									SystemImageURL, "其他功能", "新番、可查詢的動畫清單",
-									linebot.NewMessageTemplateAction("新番", "新番"),
 									linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
+									linebot.NewMessageTemplateAction("新番", "新番"),
 									linebot.NewURITemplateAction("缺漏回報", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"),
 								),
 							)
