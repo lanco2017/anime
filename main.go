@@ -66,7 +66,7 @@ func HttpPost_IFTTT(body , title_text, this_id string) error {
 	}
 
 	// Content-Type 設定
-	req.Header.Set("Accept", "application/vnd.tosslab.jandi-v2+json")
+	//req.Header.Set("Accept", "application/vnd.tosslab.jandi-v2+json")
 	req.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{}
@@ -96,7 +96,7 @@ func HttpPost_JANDI(body, connectColor, title, code string) error {
 		"connectInfo" : [{
 				"title" : "` + title + `",
 				"description" : "這是來自 LINE BOT 的通風報信",
-				"imageUrl": "https://line.me/R/ti/p/@pyv6283b"
+				"imageUrl": "https://line.me/R/ti/p/@pyv6283b、@sjk2434l"
 		},{
 				"title" : "參考數據",
 				"description" : "` + code + `"
