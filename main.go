@@ -1159,6 +1159,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			//2016.12.24+ 嘗試抓使用者資訊 https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
 			profile, err := bot.GetProfile(event.Source.UserID).Do()
 			if err != nil {
+				log.Print(1162)
 			    log.Print(err)
 			}
 			log.Print("profile.DisplayName = " + profile.DisplayName)			// println(res.Displayname)
@@ -1203,6 +1204,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 				if event.Postback.Data == "取消離開群組"{
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你已經取消請我離開 :)")).Do(); err != nil {
+						log.Print(1207)
 						log.Print(err)
 					}
 				}
@@ -1220,6 +1222,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					)
 					obj_message := linebot.NewTemplateMessage("這是命令機器人自己離開群組的方法。\n這功能只支援 APP 使用。\n請用 APP 端查看下一步。", template)
 					if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+						log.Print(1225)
 						log.Print(err)
 					}
 				}
@@ -1227,6 +1230,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if event.Postback.Data == "離開群組"{
 					if target_item == "群組對話" {
 						if _, err := bot.LeaveGroup(target_id_code).Do(); err != nil {
+							log.Print(1233)
 						    log.Print(err)
 						}
 						HttpPost_JANDI("自動離開 "  + user_talk , "gray" , "LINE 離開群組",target_id_code)
@@ -1281,6 +1285,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// }
 				//reply 的寫法
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你好啊！" + username + "～\n想知道我的嗜好，可以說：簡介\n\nPS：手機上可以看到不一樣的內容喔！"),obj_message).Do(); err != nil {
+						log.Print(1288)
 						log.Print(err)
 				}
 		}
@@ -1343,6 +1348,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 				//reply 的寫法
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("群組聊天的各位大家好哇～！\n" + push_string + "\n\n想知道我的嗜好，請說：簡介"),obj_message).Do(); err != nil {
+						log.Print(1351)
 						log.Print(err)
 				}
 		}
@@ -1630,6 +1636,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這只提供查詢動畫的功能。\n如有其他建議或想討論，請對我輸入「開發者」進行聯絡。"
 							obj_message := linebot.NewTemplateMessage(t_msg, template)
 							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+									log.Print(1639)
 									log.Print(err)
 							}
 						case "動畫瘋88":
@@ -1644,6 +1651,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								)
 								obj_message := linebot.NewTemplateMessage("你確定要請我離開嗎QAQ？\n這功能只支援 APP 使用。\n請用 APP 端查看下一步。", template)
 								if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+									log.Print(1654)
 									log.Print(err)
 								}
 							}
@@ -1661,6 +1669,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						)
 						obj_message := linebot.NewTemplateMessage("上面這些都是聯絡開發者的相關方法。", template)
 						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
+							log.Print(1672)
 							log.Print(err)
 						}
 						HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：執行找開發者",target_id_code)
@@ -1712,6 +1721,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	   					obj_message_img_2 := linebot.NewImageMessage(originalContentURL_2, previewImageURL_2)
 
 						if _, err = bot.ReplyMessage(event.ReplyToken,linebot.NewTextMessage("可參考以下圖例操作讓搜尋到的影片，直接在巴哈姆特動畫瘋 APP 進行播放。"),obj_message_img_1,obj_message_img_2,obj_message).Do(); err != nil {
+							log.Print(1724)
 							log.Print(err)
 						}
 						HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
@@ -1750,6 +1760,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							)
 							obj_message := linebot.NewTemplateMessage("除了「目錄」以外，\n你也可以輸入「新番」查詢近期的動畫。", template)
 							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg),obj_message).Do(); err != nil {
+								log.Print(1763)
 								log.Print(err)
 							}
 							HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "orange" , "LINE 同步：查詢失敗",target_id_code)
@@ -1757,6 +1768,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						}else{
 							//這是最原始的動作部分，還沒改寫 UI 模式的時候就靠這裡直接回傳結果就好。至於要傳什麼內容已經在 anime() 裡面處理好了。
 							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
+								log.Print(1771)
 								log.Print(err)
 							}
 						}
@@ -1830,6 +1842,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// 	username = "包包"
 				// }
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD")).Do(); err != nil {
+					log.Print(1845)
 					log.Print(err)
 				}
 			case *linebot.VideoMessage:
@@ -1838,6 +1851,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			    previewImageURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/video-preview.png"
 			    obj_message := linebot.NewVideoMessage(originalContentURL, previewImageURL)
  				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這影片是？\n我也給你影片吧！\n\n這只是測試功能"),obj_message).Do(); err != nil {
+ 					log.Print(1854)
  					log.Print(err)
  				}
 			case *linebot.AudioMessage:
@@ -1845,6 +1859,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				duration := 1000
 				obj_message := linebot.NewAudioMessage(originalContentURL, duration)
  				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這是什麼聲音？"),obj_message).Do(); err != nil {
+ 					log.Print(1862)
  					log.Print(err)
  				}
 			case *linebot.LocationMessage:
@@ -1858,6 +1873,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				obj_message_1 := linebot.NewLocationMessage("歡迎光臨", "地球", 25.022413, 121.556427) //台北市信義區富陽街46號
 				//obj_message_2 := linebot.NewLocationMessage("歡迎光臨", "哪個近", 25.022463, 121.556454) //這個遠
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你在這裡？"),obj_message,obj_message_1).Do(); err != nil {
+					log.Print(1876)
 					log.Print(err)
 				}
 			case *linebot.StickerMessage:
@@ -1872,6 +1888,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				obj_message := linebot.NewStickerMessage("2", "514") //https://devdocs.line.me/en/?go#send-message-object
  				//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("OU<"),linebot.NewTextMessage("0.0"),linebot.NewTextMessage("．ω．"),linebot.NewTextMessage("．ω．")).Do(); err != nil {
  				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("．ω．"),obj_message_moto,obj_message).Do(); err != nil {
+ 					log.Print(1891)
  					log.Print(err)
  				}
 			}
