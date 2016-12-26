@@ -1430,8 +1430,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//判斷是不是找不到
 				reg_nofind := regexp.MustCompile("^你是要找.*\\n.*\\n.*\\n.*\\n.*\\n.*(才會增加比較慢XD）)$") 
 
-				//reg_loking_for_admin := regexp.MustCompile("^(你找我主人？OK！).*") 
-				reg_loking_for_admin := regexp.MustCompile("^(你找我主人？OK！).*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*") 
+				//這是從字串結果來判斷的方式，但發現有其他方式判斷（直接 bot_msg==開發者）所以這個暫時不用				
+				//reg_loking_for_admin := regexp.MustCompile("^(你找我主人？OK！).*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*\\n.*") //reg_loking_for_admin := regexp.MustCompile("^(你找我主人？OK！).*") 
 
 
 
