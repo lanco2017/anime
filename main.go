@@ -1176,6 +1176,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 		//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 		if event.Type == linebot.EventTypePostback {
+				//這裡用來設計按下某按鈕後要做什麼事情
 				log.Print("觸發 Postback 功能（不讓使用者察覺的程式利用）")
 				log.Print("event.Postback.Data = " + event.Postback.Data)
 				HttpPost_JANDI(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "brown" , "LINE 程式觀察",target_id_code)
@@ -1187,6 +1188,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if event.Postback.Data == "測試"{
 
 				}
+
 				//2016.12.26+
 				if event.Postback.Data == "按下確定離開群組對話"{
 											template := linebot.NewCarouselTemplate(
@@ -1209,6 +1211,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						if _, err := bot.LeaveGroup(target_id_code).Do(); err != nil {
 						    log.Print(err)
 						}
+						HttpPost_JANDI("自動離開 "  + user_talk , "gray" , "LINE 離開群組",target_id_code)
+						HttpPost_IFTTT("自動離開 "  + user_talk , "LINE 離開群組",target_id_code)
+						log.Print("觸發自動離開 " + user_talk +  " 群組")
 					}
 				}
 		}
