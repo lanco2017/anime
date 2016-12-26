@@ -1602,7 +1602,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							template := linebot.NewConfirmTemplate(
 								"你確定要請我離開嗎QAQ？",
 								//.NewPostbackTemplateAction(按鈕字面,post,替使用者發言)
-								linebot.NewPostbackTemplateAction("是","按下確定離開群組對話", "機器人已經自動離開。\n如要加回來請找：\nhttps://line.me/R/ti/p/@sjk2434l\n如要聯絡開發者請找：\nhttps://line.me/R/ti/p/@uwk0684z"),
+								linebot.NewPostbackTemplateAction("是","按下確定離開群組對話", ""),
 								linebot.NewPostbackTemplateAction("否", "取消離開群組",""),
 							)
 							obj_message := linebot.NewTemplateMessage("你確定要請我離開嗎QAQ？\n這功能只支援 APP 使用。\n請用 APP 端查看下一步。", template)
