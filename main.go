@@ -1438,8 +1438,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 
 				//2016.12.26:這裡的 bot_msg 已經是下游，經過 anime() 處理過了，沒有匹配的發言內容都會被濾掉。
-				//2016.12.20+ for test
+				
 				if bot_msg != ""{
+					//2016.12.20+ for test	
 					if bot_msg == "GOTEST"{
 						//bot_msg = "HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這隻喵只提供查詢動畫的功能。\n如有其他建議或想討論，請對這隻貓輸入「開發者」進行聯絡。"
 						//bot_msg = "有喔！有喔！你在找這個對吧！？\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=5863" + "\n\n等等！這是最後一話！？"
@@ -1620,7 +1621,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 
 
-					
+
 					//因為 bot_msg==GOTEST 的時候，不可能會找到 anime_url。所以不用在 else 裡面。
 					if anime_url!=""{
 						//找到的時候的 UI
@@ -1681,45 +1682,46 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "orange" , "LINE 同步：查詢失敗",target_id_code)
 							HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢失敗",target_id_code)
 						}else{
+							//這是最原始的動作部分，還沒改寫 UI 模式的時候就靠這裡直接回傳結果就好。至於要傳什麼內容已經在 anime() 裡面處理好了。
 							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
 								log.Print(err)
 							}
 						}
 					}
 				}
-				// 				m := linebot.NewTextMessage("ok")
-				// 				    if _, err = bot.ReplyMessage(event.ReplyToken, m).Do(); err != nil {
+					// 				m := linebot.NewTextMessage("ok")
+					// 				    if _, err = bot.ReplyMessage(event.ReplyToken, m).Do(); err != nil {
 
-				// 				    }
-								
-								//----------PushMessage-----------這段可以跟 ReplyMessage 同時有效，但是只會在 1 對 1 有效。群組無效。---------
-								//------開發者測試方案有效(好友最多50人/訊息無上限)，免費版(好友不限人數/訊息限制1000)、入門版無效，旗艦版、專業版有效。
-								
-								//http://muzigram.muzigen.net/2016/09/linebot-golang-linebot-heroku.html
-								//https://github.com/mogeta/lbot/blob/master/main.go
-				 				source := event.Source
-				 				log.Print("source.UserID = " + source.UserID)
-				 				log.Print("target_id_code = " + target_id_code)
-								//2016.12.20+//push_string := ""
-				// 				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
-				// 					push_string = "你好，主人。（PUSH_MESSAGE 才可以發）"
-				// 				}
-				// 				if source.UserID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
-				// 					push_string = "唉呦，你是包包吼"
-				// 				}
-				//2016.12.20+ close push
-				// 					if source.Type == linebot.EventSourceTypeUser {
-				// 						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(push_string)).Do(); err != nil {
-				// 							log.Print(err)
-				// 						}
-				// 					}
-				// 					if source.Type == linebot.EventSourceTypeUser {
-				// 						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(push_string)).Do(); err != nil {
-				// 							log.Print(err)
-				// 						}
-				// 					}
-					//上面重覆兩段 push 用來證明 push 才可以連發訊息框，re 只能一個框
-				//---------------------這段可以跟 ReplyMessage 同時有效，但是只會在 1 對 1 有效。群組無效。---------
+					// 				    }
+									
+									//----------PushMessage-----------這段可以跟 ReplyMessage 同時有效，但是只會在 1 對 1 有效。群組無效。---------
+									//------開發者測試方案有效(好友最多50人/訊息無上限)，免費版(好友不限人數/訊息限制1000)、入門版無效，旗艦版、專業版有效。
+									
+									//http://muzigram.muzigen.net/2016/09/linebot-golang-linebot-heroku.html
+									//https://github.com/mogeta/lbot/blob/master/main.go
+					 				source := event.Source
+					 				log.Print("source.UserID = " + source.UserID)
+					 				log.Print("target_id_code = " + target_id_code)
+									//2016.12.20+//push_string := ""
+					// 				if source.UserID == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
+					// 					push_string = "你好，主人。（PUSH_MESSAGE 才可以發）"
+					// 				}
+					// 				if source.UserID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
+					// 					push_string = "唉呦，你是包包吼"
+					// 				}
+					//2016.12.20+ close push
+					// 					if source.Type == linebot.EventSourceTypeUser {
+					// 						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(push_string)).Do(); err != nil {
+					// 							log.Print(err)
+					// 						}
+					// 					}
+					// 					if source.Type == linebot.EventSourceTypeUser {
+					// 						if _, err = bot.PushMessage(source.UserID, linebot.NewTextMessage(push_string)).Do(); err != nil {
+					// 							log.Print(err)
+					// 						}
+					// 					}
+						//上面重覆兩段 push 用來證明 push 才可以連發訊息框，re 只能一個框
+					//---------------------這段可以跟 ReplyMessage 同時有效，但是只會在 1 對 1 有效。群組無效。---------
 			case *linebot.ImageMessage:
 						  // 				_, err := bot.SendText([]string{event.RawContent.Params[0]}, "Hi~\n歡迎加入 Delicious!\n\n想查詢附近或各地美食都可以LINE我呦！\n\n請問你想吃什麼?\nex:義大利麵\n\n想不到吃什麼，也可以直接'傳送目前位置訊息'")
 					 	 // 				var img = "http://imageshack.com/a/img921/318/DC21al.png"
