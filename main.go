@@ -1800,7 +1800,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							log.Print(err)
 						}
 						HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text + `\n` + userStatus, "yellow" , "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
-						HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text + `\n` + userStatus, "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
+						HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userStatus, "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
 						log.Print("target_id_code +  anime_url = " + target_id_code + "\n" + anime_url)
 					}else{
 						//2016.12.22+ 利用正則分析字串結果，來設置觸發找不到的時候要 + 的 UI
