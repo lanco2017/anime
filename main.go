@@ -1551,31 +1551,29 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-
 							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer"
-							fb_q_msg := "12/27 動漫通\n" +
-								"關聯：Date・A・Live\n" +
-								"問題：請問炎魔是下列那個精靈的識別名?\n" +
-								"1.夜刀神十香\n" +
-								"2.四糸乃\n" +
-								"3.時崎狂三\n" +
-								"4.五河琴里\n" +
-								"小提示：紅髮雙馬尾\n" +
-								"出題者：k7365116" +
+							fb_q_msg := "12/28 動漫通\n" +
+								"關聯：吹響吧！上低音號～歡迎加入北宇治高中吹奏樂部～\n" +
+								"問題：主角(久美子)擔任的樂器是下列何者?\n" +
+								"1.長號(Trombone)\n" +
+								"2.低音號(Tuba)\n" +
+								"3.上低音號(Euphonium)\n" +
+								"4.小號(Trumpet)\n" +
+								"小提示：本作品名稱\n" +
+								"出題者：a60510bc\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "12/27 動漫通", "答案是「4.五河琴里」",
+									imageURL, "2016/12/28 動漫通", "答案請參考 FB 討論",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1281668641895504"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
-									linebot.NewURITemplateAction("巴哈姆特動畫瘋 FB","https://www.facebook.com/animategamer"),
 								),
 								LineTemplate_feedback,
 								LineTemplate_other,
 								LineTemplate_other_example,
 							)
-
 
 		//正題
 
