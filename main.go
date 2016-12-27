@@ -559,7 +559,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			default:
 			}
 		//還沒跟其他部合併
-		case "影子籃球員","影子籃":
+		case "影子籃球員","影子籃球","影子籃":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1":
