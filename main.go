@@ -1322,8 +1322,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//這裡用來設計按下某按鈕後要做什麼事情
 				log.Print("觸發 Postback 功能（不讓使用者察覺的程式利用）")
 				log.Print("event.Postback.Data = " + event.Postback.Data)
-				HttpPost_JANDI(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "brown" , "LINE 程式觀察",target_id_code)
-				HttpPost_IFTTT(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data , "LINE 程式觀察" ,target_id_code)
+				HttpPost_JANDI(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "brown" , "LINE 程式觀察",target_id_code + "\n" + userStatus)
+				HttpPost_IFTTT(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data , "LINE 程式觀察" ,target_id_code + "\n" + userStatus)
 				// if event.Postback.Data == "測試"{
 
 				// }
