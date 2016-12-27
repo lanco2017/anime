@@ -1458,6 +1458,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			}
 			log.Print("profile.DisplayName = " + profile.DisplayName)			// println(res.Displayname)
 			log.Print("profile.StatusMessage " + profile.StatusMessage)			// println(res.StatusMessage)
+			log.Print("profile.pictureUrl = " + profile.pictureUrl)
 														// println(res.PicutureURL)	//出不來奇怪
 														// log.Print("userLogo_url = " +  userLogo_url)
 			//如果不是認識的 ID，就取得對方的名
