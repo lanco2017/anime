@@ -27,6 +27,8 @@ import (
 
 	"bytes"
 	//"io/ioutil"
+
+	"google.golang.org/appengine" //https://github.com/sunbacon/sunbacon-line-bot/blob/master/bot.go
 )
 
 var bot *linebot.Client
