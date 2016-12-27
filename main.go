@@ -26,7 +26,7 @@ import (
 	"github.com/line/line-bot-sdk-go/linebot"
 
 	"bytes"
-	//"io/ioutil"
+	"io/ioutil"
 
 	"image/jpeg"
 	//"image/png"
@@ -1463,7 +1463,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			log.Print("profile.DisplayName = " + profile.DisplayName)			// println(res.Displayname)
 			log.Print("profile.StatusMessage " + profile.StatusMessage)			// println(res.StatusMessage)
 			log.Print("profile.PictureURL = " + profile.PictureURL)
-			
+
 														// log.Print("userLogo_url = " +  userLogo_url)
 			//如果不是認識的 ID，就取得對方的名
 			if username == ""{
@@ -2159,12 +2159,27 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//https://github.com/line/line-bot-sdk-go/blob/master/linebot/get_content_test.go
 				//ContentLength
 				//https://golang.org/pkg/image/jpeg/
+
+				//目標是把 content.Content 存起來
+
                 image, err := jpeg.Decode(content.Content)
                 if err != nil {
                     return
                 }
                 log.Printf("image %v", image.Bounds())
                 //https://webcache.googleusercontent.com/search?q=cache:cLTwZS5RNmMJ:https://libraries.io/go/github.com%252Fline%252Fline-bot-sdk-go%252Flinebot+&cd=6&hl=zh-TW&ct=clnk&gl=tw
+
+				file, err := ioutil.TempFile("/temp.jpg", "")
+				if err != nil {
+					return nil, err
+				}
+				defer file.Close()
+
+				_, err = io.Copy(file, content)
+				if err != nil {
+					return nil, err
+				}
+				log.Printf("Saved %s", file.Name())
 
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD")).Do(); err != nil {
 					log.Print(1845)
