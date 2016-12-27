@@ -2163,8 +2163,11 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				log.Print("message.Longitude = ")
 				log.Print(message.Longitude)
 				obj_message := linebot.NewLocationMessage(message.Title, message.Address, message.Latitude, message.Longitude)
-				obj_message_1 := linebot.NewLocationMessage("歡迎光臨", "地球", 25.022413, 121.556427) //台北市信義區富陽街46號
-				//obj_message_2 := linebot.NewLocationMessage("歡迎光臨", "哪個近", 25.022463, 121.556454) //這個遠
+
+				//case 1
+				//obj_message_1 := linebot.NewLocationMessage("歡迎光臨", "地球", 25.022413, 121.556427) //台北市信義區富陽街46號
+					//obj_message_2 := linebot.NewLocationMessage("歡迎光臨", "哪個近", 25.022463, 121.556454) //這個遠
+
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你在這裡？"),obj_message,obj_message_1).Do(); err != nil {
 					log.Print(1876)
 					log.Print(err)
@@ -2172,12 +2175,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			case *linebot.StickerMessage:
 				log.Print("message.PackageID = " + message.PackageID)
 				log.Print("message.StickerID = " + message.StickerID)
-				//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go handleSticker
-				//message.PackageID, message.StickerID
-				obj_message_moto := linebot.NewStickerMessage(message.PackageID, message.StickerID)
-				//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
-				//2016.12.20+ 多次框框的方式成功！（最多可以五個）
-				//.NewStickerMessage 發貼貼圖成功	 //https://devdocs.line.me/files/sticker_list.pdf			
+					//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go handleSticker
+					//message.PackageID, message.StickerID
+				//丟跟對方一樣的貼圖回他
+				//obj_message_moto := linebot.NewStickerMessage(message.PackageID, message.StickerID)
+					//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
+					//2016.12.20+ 多次框框的方式成功！（最多可以五個）
+					//.NewStickerMessage 發貼貼圖成功	 //https://devdocs.line.me/files/sticker_list.pdf			
 				obj_message := linebot.NewStickerMessage("2", "514") //https://devdocs.line.me/en/?go#send-message-object
  				//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("OU<"),linebot.NewTextMessage("0.0"),linebot.NewTextMessage("．ω．"),linebot.NewTextMessage("．ω．")).Do(); err != nil {
  				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("．ω．"),obj_message_moto,obj_message).Do(); err != nil {
