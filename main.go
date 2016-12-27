@@ -1589,6 +1589,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// }
 
 				if event.Postback.Data == "測試 POST"{
+
+
+					// https://devdocs.line.me/en/#imagemap-message
+					// "x": 0,
+     				//	"y": 0,
+		   			// "width": 520,
+		   			// "height": 1040
+
 					obj_message := linebot.NewImagemapMessage(
 							"https://synr.github.io/test",
 							"Imagemap alt text",
@@ -1599,12 +1607,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							linebot.NewMessageImagemapAction("URANAI!", linebot.ImagemapArea{520, 520, 520, 520}),
 					)
 
-								originalContentURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
-		    					//previewImageURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
-		    					obj_message2 := linebot.NewImageMessage(originalContentURL, originalContentURL,"https://disp.cc")
-
-
-					if _, err := bot.ReplyMessage(event.ReplyToken,obj_message,obj_message2).Do(); err != nil {
+					if _, err := bot.ReplyMessage(event.ReplyToken,obj_message).Do(); err != nil {
 						log.Print(1586)
 						log.Print(err)
 					}
