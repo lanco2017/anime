@@ -1463,6 +1463,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			log.Print("profile.DisplayName = " + profile.DisplayName)			// println(res.Displayname)
 			log.Print("profile.StatusMessage " + profile.StatusMessage)			// println(res.StatusMessage)
 			log.Print("profile.PictureURL = " + profile.PictureURL)
+			log.Print("profile.mid = " + profile.mid)	//https://developers.line.me/bot-api/api-reference#getting_user_profile_information
 														// log.Print("userLogo_url = " +  userLogo_url)
 			//如果不是認識的 ID，就取得對方的名
 			if username == ""{
@@ -2142,6 +2143,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// }
 
 				//https://devdocs.line.me/en/#get-content
+				//[GAE/GoでLineBotをつくったよ〜 - ベーコンの裏](http://sun-bacon.hatenablog.com/entry/2016/10/10/233520)
 				content, err := bot.GetMessageContent(message.ID).Do()
 				if err != nil {
 					log.Print(2141)
