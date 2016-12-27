@@ -1598,7 +1598,13 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							linebot.NewURIImagemapAction("https://store.line.me/family/play/en", linebot.ImagemapArea{0, 520, 520, 520}),
 							linebot.NewMessageImagemapAction("URANAI!", linebot.ImagemapArea{520, 520, 520, 520}),
 					)
-					if _, err := bot.ReplyMessage(event.ReplyToken,obj_message).Do(); err != nil {
+
+								originalContentURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
+		    					//previewImageURL := "https://avatars0.githubusercontent.com/u/5731891?v=3&s=96"
+		    					obj_message2 := linebot.NewImageMessage(originalContentURL, originalContentURL,"https://disp.cc")
+
+
+					if _, err := bot.ReplyMessage(event.ReplyToken,obj_message,obj_message2).Do(); err != nil {
 						log.Print(1586)
 						log.Print(err)
 					}
