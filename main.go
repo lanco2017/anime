@@ -2178,8 +2178,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					log.Print(err)
 				}
 				defer file.Close()
-
-				_, err = io.Copy(file, content.Content)
+				
+				_, err = ioutil.WriteFile("temp.jpg", content.Content, 0600)//io.Copy(file, content.Content)
 				if err != nil {
 					log.Print(2182)
 					log.Print(err)
