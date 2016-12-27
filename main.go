@@ -44,7 +44,7 @@ func main() {
 func HttpPost_IFTTT(body , title_text, this_id string) error {
 	//https://internal-api.ifttt.com/maker
 	log.Print("已經進來 IFTTT POST")
-	log.Print("body =" + body)
+	log.Print("body = " + body)
 	log.Print("title_text = " + title_text)
 	log.Print("this_id = " + this_id)
 
@@ -84,7 +84,7 @@ func HttpPost_IFTTT(body , title_text, this_id string) error {
 
 func HttpPost_JANDI(body, connectColor, title, code string) error {
 	log.Print("已經進來 JANDI POST")
-	log.Print("body =" + body)
+	log.Print("body = " + body)
 	log.Print("connectColor = " + connectColor)
 	log.Print("title = " + title)
 	log.Print("code = " + code)
