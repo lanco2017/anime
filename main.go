@@ -2134,6 +2134,18 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				// if markID == "Uf150a9f2763f5c6e18ce4d706681af7f"{
 				// 	username = "包包"
 				// }
+
+				//https://devdocs.line.me/en/#get-content
+				content, err := bot.GetMessageContent(message.ID).Do()
+				if err != nil {
+					log.Print(2141)
+					log.Print(err)
+				}
+				defer content.Content.Close()
+
+				log.Print("content.ContentType = " + content.ContentType)
+
+
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD")).Do(); err != nil {
 					log.Print(1845)
 					log.Print(err)
