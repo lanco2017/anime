@@ -2164,20 +2164,23 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
                 image, err := jpeg.Decode(content.Content)
                 if err != nil {
-                    return
+                	log.Print(2167)
+                    log.Print(err)
                 }
                 log.Printf("image %v", image.Bounds())
                 //https://webcache.googleusercontent.com/search?q=cache:cLTwZS5RNmMJ:https://libraries.io/go/github.com%252Fline%252Fline-bot-sdk-go%252Flinebot+&cd=6&hl=zh-TW&ct=clnk&gl=tw
 
 				file, err := ioutil.TempFile("/temp.jpg", "")
 				if err != nil {
-					return nil, err
+					log.Print(2175)
+					log.Print(err)
 				}
 				defer file.Close()
 
 				_, err = io.Copy(file, content)
 				if err != nil {
-					return nil, err
+					log.Print(2182)
+					log.Print(err)
 				}
 				log.Printf("Saved %s", file.Name())
 
