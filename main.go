@@ -2147,14 +2147,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				defer content.Content.Close()
 				log.Print("content.ContentType = " + content.ContentType)
 				log.Print("content.ContentLength = ")
-				log.Print(content.ContentLength)
+				log.Print(content.ContentLength) //檔案大小??
 				//https://github.com/line/line-bot-sdk-go/blob/master/linebot/get_content_test.go
 				//ContentLength
-                // image, err := jpeg.Decode(content.Content)
-                // if err != nil {
-                //     return
-                // }
-                // log.Printf("image %v", image.Bounds())
+                image, err := jpeg.Decode(content.Content)
+                if err != nil {
+                    return
+                }
+                log.Printf("image %v", image.Bounds())
                 //https://webcache.googleusercontent.com/search?q=cache:cLTwZS5RNmMJ:https://libraries.io/go/github.com%252Fline%252Fline-bot-sdk-go%252Flinebot+&cd=6&hl=zh-TW&ct=clnk&gl=tw
 
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD")).Do(); err != nil {
