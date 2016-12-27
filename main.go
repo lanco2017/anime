@@ -2146,6 +2146,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}
 				defer content.Content.Close()
 				log.Print("content.ContentType = " + content.ContentType)
+				log.Print("content.originalContentUrl = " + content.originalContentUrl)
+				//https://github.com/line/line-bot-sdk-go/blob/master/linebot/get_content_test.go
+				//ContentLength
 
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD")).Do(); err != nil {
 					log.Print(1845)
