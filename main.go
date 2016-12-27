@@ -1258,6 +1258,17 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								"出題者：k7365116" +
 								fb_msg
 
+							LineTemplate_today_q := linebot.NewCarouselTemplate(
+								linebot.NewCarouselColumn(
+									imageURL, "12/27 動漫通", "答案是「4.五河琴里」",
+									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
+									LineTemplate_download_app,
+									linebot.NewURITemplateAction("巴哈姆特動畫瘋 FB","https://www.facebook.com/animategamer"),
+								),
+								LineTemplate_other,
+								LineTemplate_feedback,
+							)
+
 		//2016.12.27+
 
 		SystemImageURL := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png"
@@ -1285,7 +1296,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		LineTemplate_firstinfo := linebot.NewCarouselTemplate(
 			linebot.NewCarouselColumn(
 				imageURL, "查詢巴哈姆特動畫瘋的功能", "我很愛看巴哈姆特動畫瘋。\n問我動畫可以這樣問：動畫 動畫名稱 集數",
-				linebot.NewPostbackTemplateAction("動畫 美術社 12","測試 POST by 加入好友第一按鈕", "動畫 美術社 12"),
+				linebot.NewPostbackTemplateAction("動畫 美術社 12","測試 POST", "動畫 美術社 12"),
 				linebot.NewMessageTemplateAction("アニメ 美術社大有問題 12", "アニメ 美術社大有問題 12"),
 				linebot.NewMessageTemplateAction("anime：美術社：１", "anime：美術社：１"),
 			),
@@ -1677,17 +1688,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						case "今日動漫通":
 							log.Print("今日動漫通")
 						    imageURL = SystemImageURL
-							template := linebot.NewCarouselTemplate(
-								linebot.NewCarouselColumn(
-									imageURL, "12/27 動漫通", "答案是「4.五河琴里」",
-									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
-									LineTemplate_download_app,
-									linebot.NewURITemplateAction("巴哈姆特動畫瘋 FB","https://www.facebook.com/animategamer"),
-								),
-								LineTemplate_other,
-								LineTemplate_feedback,
-							)
-							obj_message := linebot.NewTemplateMessage(fb_q_msg, template)
+							//template := LineTemplate_today_q
+							obj_message := linebot.NewTemplateMessage(fb_q_msg, LineTemplate_today_q)
 							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
 									log.Print(1630)
 									log.Print(err)
