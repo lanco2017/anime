@@ -206,6 +206,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"釣球\n" +
 		"進擊的巨人：巨人、進擊\n" +
 		"Re：從零開始的異世界生活：異世界生活、從零\n" +
+		"線上遊戲的老婆不可能是女生：不可能是女生\n" +
 		"殺老師 Q\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者","admin","Admin","ａｄｍｉｎ":
@@ -270,6 +271,35 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6318"
 			case "25":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6355" + "\n\n等等！這是最後一話！？"
+			default:
+			}
+		case "線上遊戲的老婆不可能是女生","線上遊戲的老婆不可能是女生？","老婆不可能","線上遊戲的老婆","不可能是女生":
+           //reg.ReplaceAllString(text, "$2")
+            switch reg.ReplaceAllString(text, "$4") {
+			case "1":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5012"
+			case "2":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5030"
+			case "3":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5031"
+			case "4":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5115"
+			case "5":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5116"
+			case "6":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5117"
+			case "7":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5199"
+			case "8":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5200"
+			case "9":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5201"
+			case "10":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5499"
+			case "11":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5500"
+			case "12":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5501" + "\n\n等等！這是最後一話！？"
 			default:
 			}
 		case "進擊的巨人","進擊","巨人":
