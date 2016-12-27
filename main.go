@@ -2146,7 +2146,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}
 				defer content.Content.Close()
 				log.Print("content.ContentType = " + content.ContentType)
-				log.Print("content.originalContentUrl = " + content.originalContentUrl)
+				log.Print("content.ContentLength = " + content.ContentLength)
 				//https://github.com/line/line-bot-sdk-go/blob/master/linebot/get_content_test.go
 				//ContentLength
 
