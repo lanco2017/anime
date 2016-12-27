@@ -2178,7 +2178,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go handleSticker
 					//message.PackageID, message.StickerID
 				//丟跟對方一樣的貼圖回他
-				//obj_message_moto := linebot.NewStickerMessage(message.PackageID, message.StickerID)
+				obj_message_moto := linebot.NewStickerMessage(message.PackageID, message.StickerID)
 					//https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
 					//2016.12.20+ 多次框框的方式成功！（最多可以五個）
 					//.NewStickerMessage 發貼貼圖成功	 //https://devdocs.line.me/files/sticker_list.pdf			
