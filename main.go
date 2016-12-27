@@ -218,7 +218,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"\n\nhttp://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + user_msgid +
 		"&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A"
 	case "動畫", "動畫瘋","巴哈","巴哈姆特", "anime", "アニメ","Anime","ａｎｉｍｅ","Ａｎｉｍｅ","懶":
-		print_string = text + "？\n好像有這個動畫耶，但我找不到詳細的QQ\n有可能是集數太多，給小一點的數字吧！\n或是你要手動去「巴哈姆特動畫瘋」找找嗎？\n\nhttps://ani.gamer.com.tw"
+		print_string = text + "？\n好像有這個動畫耶，但我找不到詳細的QQ\n有可能你查詢的集數超前，查小一點的數字吧！\n或是你要手動去「巴哈姆特動畫瘋」找找嗎？\n\nhttps://ani.gamer.com.tw"
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
