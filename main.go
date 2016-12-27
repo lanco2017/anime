@@ -2179,7 +2179,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}
 				defer file.Close()
 
-				_, err = io.Copy(file, content)
+				_, err = io.Copy(file, content.Content)
 				if err != nil {
 					log.Print(2182)
 					log.Print(err)
