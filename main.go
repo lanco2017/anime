@@ -57,8 +57,8 @@ func main() {
         }
     })
 
-    err := http.ListenAndServe(":9000", nil)
-    if err != nil {
+    err2 := http.ListenAndServe(":9000", nil)
+    if err2 != nil {
         fmt.Println("ListenAndServe failed: ", err)
     }
 }
