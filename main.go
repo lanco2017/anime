@@ -1266,19 +1266,42 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		//共用模板
 		LineTemplate_chat := linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A")
 		LineTemplate_addme := linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z")
+
 		LineTemplate_feedback := linebot.NewCarouselColumn(
-									imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
-									LineTemplate_addme,
-									LineTemplate_chat,
-									linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
-								)
+			imageURL, "意見反饋 feedback", "你可以透過此功能\n對 開發者 提出建議",
+			LineTemplate_addme,
+			LineTemplate_chat,
+			linebot.NewMessageTemplateAction("聯絡 LINE 機器人開發者", "開發者"),
+		)
+
 		LineTemplate_download_app := linebot.NewURITemplateAction("下載巴哈姆特動畫瘋 APP", "https://prj.gamer.com.tw/app2u/animeapp.html")
+
 		LineTemplate_other := linebot.NewCarouselColumn(
-						imageURL, "其他功能", "新番、可查詢的動畫清單",
-						linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
-						linebot.NewMessageTemplateAction("新番", "新番"),
-						linebot.NewMessageTemplateAction("今天動漫通答案", "今日動漫通"),
-					)
+			imageURL, "其他功能", "新番、可查詢的動畫清單",
+			linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
+			linebot.NewMessageTemplateAction("新番", "新番"),
+			linebot.NewMessageTemplateAction("今天動漫通答案", "今日動漫通"),
+		)
+		
+		LineTemplate_firstinfo := linebot.NewCarouselTemplate(
+			linebot.NewCarouselColumn(
+				imageURL, "查詢巴哈姆特動畫瘋的功能", "我很愛看巴哈姆特動畫瘋。\n問我動畫可以這樣問：動畫 動畫名稱 集數",
+				linebot.NewPostbackTemplateAction("動畫 美術社 12","測試 POST by 加入好友第一按鈕", "動畫 美術社 12"),
+				linebot.NewMessageTemplateAction("アニメ 美術社大有問題 12", "アニメ 美術社大有問題 12"),
+				linebot.NewMessageTemplateAction("anime：美術社：１", "anime：美術社：１"),
+			),
+			linebot.NewCarouselColumn(
+				imageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特",
+				linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
+				linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
+				linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
+			),
+			LineTemplate_other,
+			LineTemplate_feedback,
+		)
+
+
+		//正題
 
 		//只會抓到透過按鈕按下去的東西。方便做新的觸發點。(缺點是沒有 UI 介面的時候會無法使用)
 		if event.Type == linebot.EventTypePostback {
@@ -1340,24 +1363,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				log.Print("觸發與 " + user_talk + " 加入好友")
 
 			    imageURL = SystemImageURL
-				template := linebot.NewCarouselTemplate(
-					linebot.NewCarouselColumn(
-						imageURL, "查詢巴哈姆特動畫瘋的功能", "我很愛看巴哈姆特動畫瘋。\n問我動畫可以這樣問：動畫 動畫名稱 集數",
-						linebot.NewPostbackTemplateAction("動畫 美術社 12","測試 POST by 加入好友第一按鈕", "動畫 美術社 12"),
-						linebot.NewMessageTemplateAction("アニメ 美術社大有問題 12", "アニメ 美術社大有問題 12"),
-						linebot.NewMessageTemplateAction("anime：美術社：１", "anime：美術社：１"),
-					),
-					linebot.NewCarouselColumn(
-						imageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特",
-						linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
-						linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
-						linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
-					),
-					LineTemplate_other,
-					LineTemplate_feedback,
-				)
+				//template := LineTemplate_firstinfo
 				t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這只提供查詢動畫的功能。\n如有其他建議或想討論，請對我輸入「開發者」進行聯絡。"
-				obj_message := linebot.NewTemplateMessage(t_msg, template)
+				obj_message := linebot.NewTemplateMessage(t_msg, LineTemplate_firstinfo)
 
 				// username := ""
 				// if target_id_code == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
@@ -1400,24 +1408,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					// 				}
 					//target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
 			    imageURL = SystemImageURL
-				template := linebot.NewCarouselTemplate(
-					linebot.NewCarouselColumn(
-						imageURL, "查詢巴哈姆特動畫瘋的功能", "我很愛看巴哈姆特動畫瘋。\n問我動畫可以這樣問：動畫 動畫名稱 集數",
-						linebot.NewPostbackTemplateAction("動畫 美術社 12","測試", "動畫 美術社 12"),
-						linebot.NewMessageTemplateAction("アニメ 美術社大有問題 12", "アニメ 美術社大有問題 12"),
-						linebot.NewMessageTemplateAction("anime：美術社：１", "anime：美術社：１"),
-					),
-					linebot.NewCarouselColumn(
-						imageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特",
-						linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
-						linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
-						linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
-					),
-					LineTemplate_other,
-					LineTemplate_feedback,
-				)
+				//template := LineTemplate_firstinfo
 				t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這只提供查詢動畫的功能。\n如有其他建議或想討論，請對我輸入「開發者」進行聯絡。"
-				obj_message := linebot.NewTemplateMessage(t_msg, template)
+				obj_message := linebot.NewTemplateMessage(t_msg, LineTemplate_firstinfo)
 
 				//reply 的寫法
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("群組聊天的各位大家好哇～！\n" + push_string + "\n\n想知道我的嗜好，請說：簡介"),obj_message).Do(); err != nil {
@@ -1720,24 +1713,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							return
 						case "選單":
 						    imageURL = SystemImageURL
-							template := linebot.NewCarouselTemplate(
-								linebot.NewCarouselColumn(
-									imageURL, "查詢巴哈姆特動畫瘋的功能", "我很愛看巴哈姆特動畫瘋。\n問我動畫可以這樣問：動畫 動畫名稱 集數",
-									linebot.NewPostbackTemplateAction("動畫 美術社 12","測試 POST by 文字命令選單第一按鈕", "動畫 美術社 12"),
-									linebot.NewMessageTemplateAction("アニメ 美術社大有問題 12", "アニメ 美術社大有問題 12"),
-									linebot.NewMessageTemplateAction("anime：美術社：１", "anime：美術社：１"),
-								),
-								linebot.NewCarouselColumn(
-									imageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特",
-									linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
-									linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
-									linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
-								),
-								LineTemplate_other,
-								LineTemplate_feedback,
-							)
+							//template := LineTemplate_firstinfo
 							t_msg := "我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這只提供查詢動畫的功能。\n如有其他建議或想討論，請對我輸入「開發者」進行聯絡。"
-							obj_message := linebot.NewTemplateMessage(t_msg, template)
+							obj_message := linebot.NewTemplateMessage(t_msg, LineTemplate_firstinfo)
 							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
 									log.Print(1639)
 									log.Print(err)
