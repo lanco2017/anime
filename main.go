@@ -1322,8 +1322,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//這裡用來設計按下某按鈕後要做什麼事情
 				log.Print("觸發 Postback 功能（不讓使用者察覺的程式利用）")
 				log.Print("event.Postback.Data = " + event.Postback.Data)
-				HttpPost_JANDI(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "brown" , "LINE 程式觀察",target_id_code + "\n" + userStatus)
-				HttpPost_IFTTT(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data , "LINE 程式觀察" ,target_id_code + "\n" + userStatus)
+				HttpPost_JANDI(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data, "brown" , "LINE 程式觀察",target_id_code)
+				HttpPost_IFTTT(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data , "LINE 程式觀察" ,target_id_code)
 				// if event.Postback.Data == "測試"{
 
 				// }
@@ -1799,8 +1799,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							log.Print(1724)
 							log.Print(err)
 						}
-						HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text, "yellow" , "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
-						HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text, "LINE 同步：查詢成功",target_id_code + `\n` +anime_url)
+						HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text + `\n`, "yellow" , "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
+						HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text + "\n", "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
 						log.Print("target_id_code +  anime_url = " + target_id_code + "\n" + anime_url)
 					}else{
 						//2016.12.22+ 利用正則分析字串結果，來設置觸發找不到的時候要 + 的 UI
