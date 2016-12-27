@@ -1271,8 +1271,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									LineTemplate_download_app,
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 FB","https://www.facebook.com/animategamer"),
 								),
-								LineTemplate_other,
 								LineTemplate_feedback,
+								LineTemplate_other,
+								LineTemplate_other_example,
 							)
 
 
