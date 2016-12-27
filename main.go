@@ -28,7 +28,8 @@ import (
 	"bytes"
 	//"io/ioutil"
 
-	"image/jpeg" //"image/png"
+	"image/jpeg"
+	//"image/png"
 )
 
 var bot *linebot.Client
@@ -2150,7 +2151,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				log.Print("content.ContentType = " + content.ContentType)
 				log.Print("content.ContentLength = ")
 				log.Print(content.ContentLength) //檔案大小??
-				log.Print("content.Content = " + content.Content)
+				log.Print("content.Content = ")
+				log.Print(content.Content)
 
 				//https://github.com/line/line-bot-sdk-go/blob/master/linebot/get_content_test.go
 				//ContentLength
