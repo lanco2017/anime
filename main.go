@@ -1579,7 +1579,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							linebot.NewURIImagemapAction("https://store.line.me/family/music/en", linebot.ImagemapArea{520, 0, 520, 520}),
 							linebot.NewURIImagemapAction("https://store.line.me/family/play/en", linebot.ImagemapArea{0, 520, 520, 520}),
 							linebot.NewMessageImagemapAction("URANAI!", linebot.ImagemapArea{520, 520, 520, 520}),
-					),
+					)
 					if _, err := bot.ReplyMessage(event.ReplyToken,obj_message).Do(); err != nil {
 						log.Print(1586)
 						log.Print(err)
