@@ -1434,7 +1434,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		userStatus := ""
 																				//userLogo_url := ""
 		switch target_id_code{
-			case "U6f738a70b63c5900aa2c0cbbe0af91c4xxxxxx":
+			case "U6f738a70b63c5900aa2c0cbbe0af91c4":
 				username = "懶懶"
 			case "Uf150a9f2763f5c6e18ce4d706681af7f":
 				username = "包包"
