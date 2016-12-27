@@ -1588,7 +1588,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 				// }
 
-				if event.Postback.Data == "測試 POST"{
+				if event.Postback.Data == "測試"{
 
 
 					// https://devdocs.line.me/en/#imagemap-message
@@ -1604,7 +1604,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							linebot.NewURIImagemapAction("https://store.line.me/family/manga/en", linebot.ImagemapArea{0, 0, 520, 520}),
 							linebot.NewURIImagemapAction("https://store.line.me/family/music/en", linebot.ImagemapArea{520, 0, 520, 520}),
 							linebot.NewURIImagemapAction("https://store.line.me/family/play/en", linebot.ImagemapArea{0, 520, 520, 520}),
-							linebot.NewMessageImagemapAction("URANAI!", linebot.ImagemapArea{520, 520, 520, 520}),
+							linebot.NewMessageImagemapAction("URANAI!", linebot.ImagemapArea{520, 520, 520, 520}),	//上限 400 字
 					)
 
 					if _, err := bot.ReplyMessage(event.ReplyToken,obj_message).Do(); err != nil {
