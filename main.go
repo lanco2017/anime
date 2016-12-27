@@ -470,7 +470,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7003" + "\n\n等等！這是最後一話！？"
 			default:
 			}
-		case "影子籃球員":
+		//還沒跟其他部合併
+		case "影子籃球員","影子籃":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1":
@@ -525,7 +526,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3920" + "\n\n等等！這是最後一話！？"
 			default:
 			}
-		case "文豪野犬 第二季","文豪野犬":
+		case "文豪野犬 第二季","文豪野犬","文豪","野犬":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1":
@@ -741,6 +742,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6728"
 			case "25":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6834"
+			case "26":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6835"
 			default:
 			}
 		case "神裝少女小纏","小纏","神裝少女":
@@ -828,6 +831,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6840"
 			case "11":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6841"
+			case "12":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6842"
 			default:
 			}
 		case "喵阿愣！","喵阿愣","喵啊愣！","阿愣","啊愣":
@@ -1003,6 +1008,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			default:
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6485"
 			}
+		//還沒合其他部
 		case "JOJO 的奇妙冒險 不滅鑽石","Jojo","jojo","JOJO","JOJO的奇妙冒險","奇妙冒險":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
