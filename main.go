@@ -1289,10 +1289,17 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		LineTemplate_other := linebot.NewCarouselColumn(
 			imageURL, "其他功能", "新番、可查詢的動畫清單",
 			linebot.NewMessageTemplateAction("可查詢的動畫清單", "目錄"),
-			linebot.NewMessageTemplateAction("新番", "新番"),
+			linebot.NewMessageTemplateAction("新番、當季動畫", "新番"),
 			linebot.NewMessageTemplateAction("今天動漫通答案", "今日動漫通"),
 		)
 		
+		LineTemplate_other_example := linebot.NewCarouselColumn(
+			imageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特",
+			linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
+			linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
+			linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
+		)
+
 		LineTemplate_firstinfo := linebot.NewCarouselTemplate(
 			linebot.NewCarouselColumn(
 				imageURL, "查詢巴哈姆特動畫瘋的功能", "我很愛看巴哈姆特動畫瘋。\n問我動畫可以這樣問：動畫 動畫名稱 集數",
@@ -1300,12 +1307,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				linebot.NewMessageTemplateAction("アニメ 美術社大有問題 12", "アニメ 美術社大有問題 12"),
 				linebot.NewMessageTemplateAction("anime：美術社：１", "anime：美術社：１"),
 			),
-			linebot.NewCarouselColumn(
-				imageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特",
-				linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
-				linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
-				linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
-			),
+			LineTemplate_other_example,
 			LineTemplate_other,
 			LineTemplate_feedback,
 		)
@@ -1778,12 +1780,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								linebot.NewMessageTemplateAction("查詢其他動畫", "目錄"),
 							),
 							LineTemplate_feedback,
-							linebot.NewCarouselColumn(
-								SystemImageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特",
-								linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
-								linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
-								linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
-							),
+							LineTemplate_other_example,
 							LineTemplate_other,
 						)
 						obj_message := linebot.NewTemplateMessage(bot_msg, template)
@@ -1816,12 +1813,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									LineTemplate_download_app,
 								),
 								LineTemplate_feedback,
-								linebot.NewCarouselColumn(
-									SystemImageURL, "其他使用例", "開頭可以是 動畫 / anime / アニメ / 巴哈姆特",
-									linebot.NewMessageTemplateAction("巴哈姆特 三月 ３", "巴哈姆特 三月 ３"),
-									linebot.NewMessageTemplateAction("Ａｎｉｍｅ　喵阿愣　５", "Ａｎｉｍｅ　喵阿愣　５"),
-									linebot.NewMessageTemplateAction("anime：黑白來：7", "anime：黑白來：7"),
-								),
+								LineTemplate_other_example,
 								LineTemplate_other,
 							)
 							obj_message := linebot.NewTemplateMessage("除了「目錄」以外，\n你也可以輸入「新番」查詢近期的動畫。", template)
