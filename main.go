@@ -28,7 +28,7 @@ import (
 	"bytes"
 
 	// "io"
-	"io/ioutil"
+	//"io/ioutil"
 
 	"image/jpeg"
 	//"image/png"
@@ -2188,10 +2188,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									// }
 									// log.Printf("Saved %s", file.Name())
 
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD")).Do(); err != nil {
-					log.Print(1845)
-					log.Print(err)
-				}
+
+                //可以
+				// if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD")).Do(); err != nil {
+				// 	log.Print(1845)
+				// 	log.Print(err)
+				// }
 			case *linebot.VideoMessage:
 				//https://github.com/dongri/line-bot-sdk-go
 			    originalContentURL := "https://dl.dropboxusercontent.com/u/358152/linebot/resource/video-original.mp4"
