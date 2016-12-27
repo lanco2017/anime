@@ -2170,7 +2170,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
                 log.Printf("image %v", image.Bounds())
                 //https://webcache.googleusercontent.com/search?q=cache:cLTwZS5RNmMJ:https://libraries.io/go/github.com%252Fline%252Fline-bot-sdk-go%252Flinebot+&cd=6&hl=zh-TW&ct=clnk&gl=tw
 
-				file, err := ioutil.TempFile("/temp.jpg", "")
+				file, err := ioutil.TempFile("temp.jpg", "")
 				if err != nil {
 					log.Print(2175)
 					log.Print(err)
