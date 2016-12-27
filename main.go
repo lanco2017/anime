@@ -26,6 +26,8 @@ import (
 	"github.com/line/line-bot-sdk-go/linebot"
 
 	"bytes"
+
+	"io"
 	"io/ioutil"
 
 	"image/jpeg"
