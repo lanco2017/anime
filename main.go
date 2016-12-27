@@ -1178,8 +1178,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	
 	for _, event := range events {
 
-		SystemImageURL := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png"
-
 		//2016.12.23+ 統一基本資訊集中
 		//2016.12.24+ 嘗試抓使用者資訊 https://github.com/line/line-bot-sdk-go/blob/master/examples/kitchensink/server.go
 		target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID//target_id_code := ""
@@ -1261,6 +1259,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								fb_msg
 
 		//2016.12.27+
+
+		SystemImageURL := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png"
+		imageURL := SystemImageURL
+
 		//共用模板
 		LineTemplate_chat := linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A")
 		LineTemplate_addme := linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z")
@@ -1337,7 +1339,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
 				log.Print("觸發與 " + user_talk + " 加入好友")
 
-			    imageURL := SystemImageURL
+			    imageURL = SystemImageURL
 				template := linebot.NewCarouselTemplate(
 					linebot.NewCarouselColumn(
 						imageURL, "查詢巴哈姆特動畫瘋的功能", "我很愛看巴哈姆特動畫瘋。\n問我動畫可以這樣問：動畫 動畫名稱 集數",
@@ -1397,7 +1399,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					// 					log.Print(err)
 					// 				}
 					//target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
-			    imageURL := SystemImageURL
+			    imageURL = SystemImageURL
 				template := linebot.NewCarouselTemplate(
 					linebot.NewCarouselColumn(
 						imageURL, "查詢巴哈姆特動畫瘋的功能", "我很愛看巴哈姆特動畫瘋。\n問我動畫可以這樣問：動畫 動畫名稱 集數",
@@ -1682,7 +1684,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							return
 						case "今日動漫通":
 							log.Print("今日動漫通")
-						    imageURL := SystemImageURL
+						    imageURL = SystemImageURL
 							template := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
 									imageURL, "12/27 動漫通", "答案是「4.五河琴里」",
@@ -1699,7 +1701,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							}
 							return
 						case "臉書":
-						    imageURL := SystemImageURL
+						    imageURL = SystemImageURL
 							template := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
 									imageURL, "巴哈姆特動畫瘋相關網站", "動畫瘋官網、APP 載點、Facbook",
@@ -1717,7 +1719,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							}
 							return
 						case "選單":
-						    imageURL := SystemImageURL
+						    imageURL = SystemImageURL
 							template := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
 									imageURL, "查詢巴哈姆特動畫瘋的功能", "我很愛看巴哈姆特動畫瘋。\n問我動畫可以這樣問：動畫 動畫名稱 集數",
@@ -1787,7 +1789,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					//因為 bot_msg==GOTEST 的時候，不可能會找到 anime_url。所以不用在 else 裡面。
 					if anime_url!=""{
 						//找到的時候的 UI
-					    imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
+					    imageURL = "https://i2.bahamut.com.tw/anime/FB_anime.png"
 						template := linebot.NewCarouselTemplate(
 							linebot.NewCarouselColumn(
 								imageURL, "動畫搜尋結果", "在找" + message.Text + "對吧！？\n建議可以直接在巴哈姆特動畫瘋 APP 裡面播放！",							
@@ -1825,7 +1827,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						//2016.12.22+ 利用正則分析字串結果，來設置觸發找不到的時候要 + 的 UI
 						if reg_nofind.ReplaceAllString(bot_msg,"$1") == "才會增加比較慢XD）"{
 							//找不到的時候
-	 					    imageURL := "https://i2.bahamut.com.tw/anime/FB_anime.png"
+	 					    imageURL = "https://i2.bahamut.com.tw/anime/FB_anime.png"
 							template := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
 									imageURL, "找不到 "  +  message.Text   +   " 耶", "有可能打錯字或這真的沒有收錄，\n才會找不到。",							
