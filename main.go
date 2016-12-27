@@ -1399,7 +1399,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		// KEY = linebot.NewAudioMessage(originalContentURL, duration)
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
-	log.Print("events = " + events)
+	c := appengine.NewContext(r)
 
 	if err != nil {
 		if err == linebot.ErrInvalidSignature {
