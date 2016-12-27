@@ -27,8 +27,6 @@ import (
 
 	"bytes"
 	//"io/ioutil"
-
-	"google.golang.org/appengine" //https://github.com/sunbacon/sunbacon-line-bot/blob/master/bot.go
 )
 
 var bot *linebot.Client
@@ -1401,7 +1399,6 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		// KEY = linebot.NewAudioMessage(originalContentURL, duration)
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
-	c := appengine.NewContext(r)
 
 	if err != nil {
 		if err == linebot.ErrInvalidSignature {
@@ -2146,11 +2143,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}
 				defer content.Content.Close()
 				log.Print("content.ContentType = " + content.ContentType)
-
-				//http://sun-bacon.hatenablog.com/entry/2016/10/10/233520	//http://qiita.com/koki_cheese/items/6c55a7c6f090e87c7b3c
-				content_img, err := bot.GetMessageContent(message.ID).WithContext(c).Do()
-				log.Print("content_img = " + content_img)
-
 
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這圖片是？\n\n" + username + "你丟給我圖片幹嘛！\n我眼睛還沒長好看不懂XD")).Do(); err != nil {
 					log.Print(1845)
