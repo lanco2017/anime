@@ -27,7 +27,7 @@ import (
 
 	"bytes"
 
-	"io"
+	// "io"
 	"io/ioutil"
 
 	"image/jpeg"
