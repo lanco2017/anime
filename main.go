@@ -1251,32 +1251,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		SystemImageURL := "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/5831e5e304f9fac88ac50a23/c2704b19816673a30c76cdccf67bcf8f/2016_-_%E8%A4%87%E8%A3%BD.png"
 		imageURL := SystemImageURL
 
-
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer"
-							fb_q_msg := "12/27 動漫通\n" +
-								"關聯：Date・A・Live\n" +
-								"問題：請問炎魔是下列那個精靈的識別名?\n" +
-								"1.夜刀神十香\n" +
-								"2.四糸乃\n" +
-								"3.時崎狂三\n" +
-								"4.五河琴里\n" +
-								"小提示：紅髮雙馬尾\n" +
-								"出題者：k7365116" +
-								fb_msg
-
-							LineTemplate_today_q := linebot.NewCarouselTemplate(
-								linebot.NewCarouselColumn(
-									imageURL, "12/27 動漫通", "答案是「4.五河琴里」",
-									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
-									LineTemplate_download_app,
-									linebot.NewURITemplateAction("巴哈姆特動畫瘋 FB","https://www.facebook.com/animategamer"),
-								),
-								LineTemplate_feedback,
-								LineTemplate_other,
-								LineTemplate_other_example,
-							)
-
-
 		//共用模板
 		LineTemplate_chat := linebot.NewURITemplateAction("線上與開發者聊天", "http://www.smartsuppchat.com/widget?key=77b943aeaffa11a51bb483a816f552c70e322417&vid=" + target_id_code + "&lang=tw&pageTitle=%E9%80%99%E6%98%AF%E4%BE%86%E8%87%AA%20LINE%40%20%E9%80%B2%E4%BE%86%E7%9A%84%E5%8D%B3%E6%99%82%E9%80%9A%E8%A8%8A")
 		LineTemplate_addme := linebot.NewURITemplateAction("加開發者 LINE", "https://line.me/R/ti/p/@uwk0684z")
@@ -1314,6 +1288,31 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_other,
 			LineTemplate_feedback,
 		)
+
+
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer"
+							fb_q_msg := "12/27 動漫通\n" +
+								"關聯：Date・A・Live\n" +
+								"問題：請問炎魔是下列那個精靈的識別名?\n" +
+								"1.夜刀神十香\n" +
+								"2.四糸乃\n" +
+								"3.時崎狂三\n" +
+								"4.五河琴里\n" +
+								"小提示：紅髮雙馬尾\n" +
+								"出題者：k7365116" +
+								fb_msg
+
+							LineTemplate_today_q := linebot.NewCarouselTemplate(
+								linebot.NewCarouselColumn(
+									imageURL, "12/27 動漫通", "答案是「4.五河琴里」",
+									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
+									LineTemplate_download_app,
+									linebot.NewURITemplateAction("巴哈姆特動畫瘋 FB","https://www.facebook.com/animategamer"),
+								),
+								LineTemplate_feedback,
+								LineTemplate_other,
+								LineTemplate_other_example,
+							)
 
 
 		//正題
