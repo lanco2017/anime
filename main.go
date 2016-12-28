@@ -50,6 +50,9 @@ var bot *linebot.Client
 func main() {
 
 	//http://www.qetee.com/exp/golang/golang-get-file-path/
+ 	execFileRelativePath, _ := exec.LookPath(os.Args[0])
+    log.Println("执行程序与命令执行目录的相对路径　　　　:", execFileRelativePath)
+
 	execFileAbsPath, _ := filepath.Abs(execFileRelativePath)
     log.Println("执行程序的绝对路径　　　　　　　　　　　:", execFileAbsPath)
 
