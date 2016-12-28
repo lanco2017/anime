@@ -1617,22 +1617,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1281668641895504"
-							fb_q_msg := "12/28 動漫通\n" +
-								"關聯：吹響吧！上低音號～歡迎加入北宇治高中吹奏樂部～\n" +
-								"問題：主角(久美子)擔任的樂器是下列何者?\n" +
-								"1.長號(Trombone)\n" +
-								"2.低音號(Tuba)\n" +
-								"3.上低音號(Euphonium)\n" +
-								"4.小號(Trumpet)\n" +
-								"小提示：本作品名稱\n" +
-								"出題者：a60510bc\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1281678768561158"
+							fb_q_msg := "12/29 動漫通\n" +
+								"關聯：天降之物\n" +
+								"問題：請問伊卡洛斯的代號是？\n" +
+								"1.η\n" +
+								"2.Ζ\n" +
+								"3.β\n" +
+								"4.α\n" +
+								"小提示：讀音：Alpha\n" +
+								"出題者：a7342299\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2016/12/28 動漫通", "答案請參考 FB 討論，可能是 3？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1281668641895504"),
+									imageURL, "2016/12/29 動漫通", "答案請參考 FB 討論",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1281678768561158"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
