@@ -40,7 +40,6 @@ import (
 	//"github.com/alexcesaro/mail/gomail"
 
     "os/exec"
-    "path"
     "path/filepath"
 
 )
