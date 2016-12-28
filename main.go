@@ -46,7 +46,7 @@ func main() {
 	http.ListenAndServe(addr, nil)
 
 		// // http://cepave.com/http-restful-api-with-golang/
-	    http.HandleFunc("/test", func(w http.ResponseWriter, req *http.Request) {
+	    http.HandleFunc("/new", func(w http.ResponseWriter, req *http.Request) {
 	    	log.Print("進來了")
 	        req.ParseForm()
 	        if req.Method == "GET" || req.Method == "POST" {
@@ -166,6 +166,7 @@ func real_num(text string) string {
 }
 
 func anime(text string,user_msgid string,reply_mode string) string {
+	//https://gitter.im/kkdai/LineBotTemplate?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge：也可以透過 string.Contains("我要找的字", 原始字串) 來判斷
 	print_string := text
 	text = real_num(text)
 	//	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
