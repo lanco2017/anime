@@ -47,8 +47,10 @@ func main() {
 
 	// http://cepave.com/http-restful-api-with-golang/
     http.HandleFunc("/test", func(w http.ResponseWriter, req *http.Request) {
+    	log.Print('進來了')
         req.ParseForm()
         if req.Method == "GET" || req.Method == "POST" {
+        	log.Print('GP了')
             fmt.Println(req.ContentLength)
             firstname := req.FormValue("type")
             lastname := req.FormValue("text")
@@ -58,7 +60,7 @@ func main() {
         }
     })
 
-    err2 := http.ListenAndServe(":4869", nil)
+    err2 := http.ListenAndServe(":80", nil)
     if err2 != nil {
         fmt.Println("ListenAndServe failed: ", err)
     }
