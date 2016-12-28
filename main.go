@@ -283,6 +283,9 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+		case "鎖鏈戰記 赫克瑟塔斯之光","鎖鏈戰記","赫克瑟塔斯之光":
+			default:
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7027"
 		case "在那個夏天等待","那個夏天":
            //reg.ReplaceAllString(text, "$2")
             switch reg.ReplaceAllString(text, "$4") {
@@ -895,7 +898,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6835"
 			default:
 			}
-		case "神裝少女小纏","小纏","神裝少女":
+		case "神裝少女小纏","小纏","神裝少女","神裝":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1":
