@@ -45,23 +45,23 @@ func main() {
 	addr := fmt.Sprintf(":%s", port)
 	http.ListenAndServe(addr, nil)
 
-	//http://cepave.com/http-restful-api-with-golang/
-    // http.HandleFunc("/test", func(w http.ResponseWriter, req *http.Request) {
-    //     req.ParseForm()
-    //     if req.Method == "GET" || req.Method == "POST" {
-    //         fmt.Println(req.ContentLength)
-    //         firstname := req.FormValue("firstname")
-    //         lastname := req.FormValue("lastname")
-    //         w.Write([]byte(fmt.Sprintf("[%s] Hello, %s %s!", req.Method, firstname, lastname)))
-    //     } else {
-    //         http.Error(w, "The method is not allowed.", http.StatusMethodNotAllowed)
-    //     }
-    // })
+	// http://cepave.com/http-restful-api-with-golang/
+    http.HandleFunc("/test", func(w http.ResponseWriter, req *http.Request) {
+        req.ParseForm()
+        if req.Method == "GET" || req.Method == "POST" {
+            fmt.Println(req.ContentLength)
+            firstname := req.FormValue("type")
+            lastname := req.FormValue("text")
+            w.Write([]byte(fmt.Sprintf("[%s] Hello, %s %s!", req.Method, firstname, lastname)))
+        } else {
+            http.Error(w, "The method is not allowed.", http.StatusMethodNotAllowed)
+        }
+    })
 
-    // err2 := http.ListenAndServe(":80", nil)
-    // if err2 != nil {
-    //     fmt.Println("ListenAndServe failed: ", err)
-    // }
+    err2 := http.ListenAndServe(":80", nil)
+    if err2 != nil {
+        fmt.Println("ListenAndServe failed: ", err)
+    }
 }
 
 func HttpPost_IFTTT(body , title_text, this_id string) error {
