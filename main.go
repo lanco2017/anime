@@ -418,7 +418,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6472" + "\n\n等等！這是最後一話！？"
 			default:
 			}
-		case "Re：從零開始的異世界生活","從零","異世界生活":
+		case "Re：從零開始的異世界生活","從零","異世界生活","re","Re":
            //reg.ReplaceAllString(text, "$2")
             switch reg.ReplaceAllString(text, "$4") {
 			case "1":
