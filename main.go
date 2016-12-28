@@ -34,7 +34,7 @@ import (
 	//"image/png"
 
 	// https://github.com/go-martini/martini/blob/master/translations/README_zh_tw.md
-	"github.com/go-martini/martini"
+	// "github.com/go-martini/martini"
 )
 
 var bot *linebot.Client
@@ -69,16 +69,16 @@ func main() {
 	 //        }
 	 //    })
 
-	  m := martini.Classic()
-		m.Post("/", func() (int, string) {
-		  log.Print("POST")		//  return 418, "我是一個茶壺" // HTTP 418 : "我是一個茶壺"
-		})
+	 //  m := martini.Classic()
+		// m.Post("/", func() (int, string) {
+		//   log.Print("POST")		//  return 418, "我是一個茶壺" // HTTP 418 : "我是一個茶壺"
+		// })
 
-		m.NotFound(func() {
-		  log.Print("404")// handle 404
-		})
+		// m.NotFound(func() {
+		//   log.Print("404")// handle 404
+		// })
 
-	  m.Run()
+	 //  m.Run()
 
 }
 
