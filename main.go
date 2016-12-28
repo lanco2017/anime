@@ -1590,7 +1590,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer"
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1281668641895504"
 							fb_q_msg := "12/28 動漫通\n" +
 								"關聯：吹響吧！上低音號～歡迎加入北宇治高中吹奏樂部～\n" +
 								"問題：主角(久美子)擔任的樂器是下列何者?\n" +
