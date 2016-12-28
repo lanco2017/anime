@@ -1441,6 +1441,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 	//-----------------------------------------------
 
+	log.print("r")
+	log.print(r)
+
 	events, err := bot.ParseRequest(r)
 
 	if err != nil {
