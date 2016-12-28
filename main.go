@@ -1423,6 +1423,10 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	// https://github.com/dongri/line-bot-sdk-go
 		// KEY = linebot.NewAudioMessage(originalContentURL, duration)
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
+	// allow cross domain AJAX requests
+	// http://stackoverflow.com/questions/12830095/setting-http-headers-in-golang/
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
 	events, err := bot.ParseRequest(r)
 
 	if err != nil {
