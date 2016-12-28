@@ -1429,6 +1429,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set( "Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS" )
 	//http://qiita.com/futosu/items/b49f7d9e28101daaa99e
+	//https://play.golang.org/p/xHp44c_pJm
+	w.Header().Set("Access-Control-Allow-Headers","Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
 
 	events, err := bot.ParseRequest(r)
 
