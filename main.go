@@ -58,7 +58,7 @@ func main() {
         }
     })
 
-    err2 := http.ListenAndServe(":80", nil)
+    err2 := http.ListenAndServe(":4869", nil)
     if err2 != nil {
         fmt.Println("ListenAndServe failed: ", err)
     }
@@ -1431,6 +1431,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	//http://qiita.com/futosu/items/b49f7d9e28101daaa99e
 	//https://play.golang.org/p/xHp44c_pJm
 	w.Header().Set("Access-Control-Allow-Headers","Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+	// https://groups.google.com/forum/#!topic/golang-nuts/-Sh616lXNRE
+
+	//-----------------------------------------------
 
 	events, err := bot.ParseRequest(r)
 
