@@ -52,6 +52,7 @@ func main() {
 				//http://qiita.com/futosu/items/b49f7d9e28101daaa99e
 				//https://play.golang.org/p/xHp44c_pJm
 				w.Header().Set("Access-Control-Allow-Headers","Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+				log.Print(req)
 	    	log.Print("進來了")
 	        req.ParseForm()
 	        if req.Method == "GET" || req.Method == "POST" {
