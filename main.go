@@ -70,9 +70,9 @@ func main() {
 	 //    })
 
 	  m := martini.Classic()
-	  m.Get("/test", func() string {
-	    log.Print("Hello 世界!")
-	  })
+		m.Get("/", func() (int, string) {
+		  return 418, "我是一個茶壺" // HTTP 418 : "我是一個茶壺"
+		})
 	  m.Run()
 
 }
