@@ -52,25 +52,25 @@ func main() {
 	http.ListenAndServe(addr, nil)
 
 		// // // http://cepave.com/http-restful-api-with-golang/
-	 //    http.HandleFunc("/new", func(w http.ResponseWriter, req *http.Request) {
-		// 		w.Header().Set("Access-Control-Allow-Origin", "*")
-		// 		w.Header().Set( "Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS" )
-		// 		//http://qiita.com/futosu/items/b49f7d9e28101daaa99e
-		// 		//https://play.golang.org/p/xHp44c_pJm
-		// 		w.Header().Set("Access-Control-Allow-Headers","Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
-		// 		log.Print(req)
-	 //    	log.Print("進來了")
-	 //        req.ParseForm()
-	 //        if req.Method == "GET" || req.Method == "POST" {
-	 //        	log.Print("GP了")
-	 //            fmt.Println(req.ContentLength)
-	 //            //firstname := req.FormValue("type")
-	 //            //lastname := req.FormValue("text")
-	 //            //w.Write([]byte(fmt.Sprintf("[%s] Hello, %s %s!", req.Method, firstname, lastname)))
-	 //        } else {
-	 //            //http.Error(w, "The method is not allowed.", http.StatusMethodNotAllowed)
-	 //        }
-	 //    })
+	    http.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
+				w.Header().Set("Access-Control-Allow-Origin", "*")
+				w.Header().Set( "Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS" )
+				//http://qiita.com/futosu/items/b49f7d9e28101daaa99e
+				//https://play.golang.org/p/xHp44c_pJm
+				w.Header().Set("Access-Control-Allow-Headers","Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+				log.Print(req)
+	    	log.Print("進來了")
+	        req.ParseForm()
+	        if req.Method == "GET" || req.Method == "POST" {
+	        	log.Print("GP了")
+	            fmt.Println(req.ContentLength)
+	            //firstname := req.FormValue("type")
+	            //lastname := req.FormValue("text")
+	            //w.Write([]byte(fmt.Sprintf("[%s] Hello, %s %s!", req.Method, firstname, lastname)))
+	        } else {
+	            //http.Error(w, "The method is not allowed.", http.StatusMethodNotAllowed)
+	        }
+	    })
 
 	 //  m := martini.Classic()
 		// m.Post("/", func() (int, string) {
