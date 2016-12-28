@@ -1425,7 +1425,10 @@ func anime(text string,user_msgid string,reply_mode string) string {
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	// allow cross domain AJAX requests
 	// http://stackoverflow.com/questions/12830095/setting-http-headers-in-golang/
+	//	https://developer.mozilla.org/ja/docs/Web/HTTP/HTTP_access_control
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set( "Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS" )
+	//http://qiita.com/futosu/items/b49f7d9e28101daaa99e
 
 	events, err := bot.ParseRequest(r)
 
