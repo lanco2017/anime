@@ -35,6 +35,9 @@ import (
 
 	// https://github.com/go-martini/martini/blob/master/translations/README_zh_tw.md
 	// "github.com/go-martini/martini"
+
+	//http://ithelp.ithome.com.tw/articles/10159486
+	//"github.com/alexcesaro/mail/gomail"
 )
 
 var bot *linebot.Client
@@ -2245,6 +2248,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
                     log.Print(err)
                 }
                 log.Printf("image %v", image.Bounds())
+                //http://ithelp.ithome.com.tw/articles/10161612
                 //https://webcache.googleusercontent.com/search?q=cache:cLTwZS5RNmMJ:https://libraries.io/go/github.com%252Fline%252Fline-bot-sdk-go%252Flinebot+&cd=6&hl=zh-TW&ct=clnk&gl=tw
 
                 //暫時放棄 = =
