@@ -124,8 +124,10 @@ func HttpPost_IFTTT(body , title_text, this_id string) error {
 	log.Print(err)
 
 	//http://cepave.com/http-restful-api-with-golang/
-    log.Print("response Status = " + resp.Status)
-    log.Print("response Headers = " + resp.Header)
+    log.Print("response Status = ")
+    log.Print(resp.Status)
+    log.Print("response Headers = ")
+    log.Print(resp.Header)
     rebody, _ := ioutil.ReadAll(resp.Body)
     log.Print("response Body = " +string(rebody))
 	//http://cepave.com/http-restful-api-with-golang/
@@ -180,8 +182,10 @@ func HttpPost_JANDI(body, connectColor, title, code string) error {
 	log.Print(err)
 
 	//http://cepave.com/http-restful-api-with-golang/
-    log.Print("response Status = " + resp.Status)
-    log.Print("response Headers = " + resp.Header)
+    log.Print("response Status = ")
+    log.Print(resp.Status)
+    log.Print("response Headers = ")
+    log.Print(resp.Header)
     rebody, _ := ioutil.ReadAll(resp.Body)
     log.Print("response Body = " +string(rebody))
 	//http://cepave.com/http-restful-api-with-golang/
