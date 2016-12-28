@@ -28,7 +28,7 @@ import (
 	"bytes"
 
 	// "io"
-	//"io/ioutil"
+	"io/ioutil"
 
 	"image/jpeg"
 	//"image/png"
@@ -288,8 +288,10 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
 		case "鎖鏈戰記 赫克瑟塔斯之光","鎖鏈戰記","赫克瑟塔斯之光":
+			switch reg.ReplaceAllString(text, "$4") {
 			default:
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7027"
+			}
 		case "在那個夏天等待","那個夏天":
            //reg.ReplaceAllString(text, "$2")
             switch reg.ReplaceAllString(text, "$4") {
