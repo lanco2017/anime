@@ -1630,7 +1630,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		)
 
 							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1281678768561158"
-							fb_q_msg := "12/29 動漫通\n" +
+							fb_q_msg := "2016/12/29 動漫通\n" +
 								"關聯：天降之物\n" +
 								"問題：請問伊卡洛斯的代號是？\n" +
 								"1.η\n" +
