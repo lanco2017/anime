@@ -2219,7 +2219,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							log.Print(1724)
 							log.Print(err)
 						}
-						HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text + `\n` + userImageUrl + `\n` + userStatus, "yellow" , "LINE 同步：查詢成功" + `\n` + anime_url,target_id_code)
+						HttpPost_JANDI(target_item + " [" + user_talk + "](" + userImageUrl + ")：" + message.Text + `\n` + userStatus, "yellow" , "LINE 同步：查詢成功" + `\n` + anime_url,target_id_code)
 						HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：查詢成功" + `\n` + anime_url,target_id_code)
 						HttpPost_Zapier(target_item + " " + user_talk + "：" + message.Text + `\n` + userImageUrl + `\n` + userStatus, "LINE 同步：查詢成功" + `\n` + anime_url,target_id_code)
 						log.Print("target_id_code +  anime_url = " + target_id_code + "\n" + anime_url)
@@ -2244,7 +2244,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								log.Print(1763)
 								log.Print(err)
 							}
-							HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text + `\n` + userImageUrl + `\n` + userStatus, "orange" , "LINE 同步：查詢失敗",target_id_code)
+							HttpPost_JANDI(target_item + " [" + user_talk + "](" + userImageUrl + ")：" + message.Text + `\n` + userStatus, "orange" , "LINE 同步：查詢失敗",target_id_code)
 							HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：查詢失敗",target_id_code)
 							HttpPost_Zapier(target_item + " " + user_talk + "：" + message.Text + `\n` + userImageUrl + `\n` + userStatus, "LINE 同步：查詢失敗",target_id_code)
 						}else{
