@@ -2219,9 +2219,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							log.Print(1724)
 							log.Print(err)
 						}
-						HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text + `\n` + userImageUrl + `\n` + userStatus, "yellow" , "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
-						HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
-						HttpPost_Zapier(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
+						HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text + `\n` + userImageUrl + `\n` + userStatus, "yellow" , "LINE 同步：查詢成功" + `\n` + anime_url,target_id_code)
+						HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：查詢成功" + `\n` + anime_url,target_id_code)
+						HttpPost_Zapier(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：查詢成功" + `\n` + anime_url,target_id_code)
 						log.Print("target_id_code +  anime_url = " + target_id_code + "\n" + anime_url)
 					}else{
 						//2016.12.22+ 利用正則分析字串結果，來設置觸發找不到的時候要 + 的 UI
