@@ -100,6 +100,7 @@ func main() {
 
 }
 
+//https://gist.github.com/synr/d3d68d42b12204d981b39203a0b16762
 func GetMD5Hash(text string) string {
     hasher := md5.New()
     hasher.Write([]byte(text))
@@ -1729,7 +1730,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 				// }
 
-				if event.Postback.Data == "測試"{
+				if event.Postback.Data == "測試 POST"{
 
 
 					// https://devdocs.line.me/en/#imagemap-message
