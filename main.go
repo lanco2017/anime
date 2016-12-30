@@ -1682,7 +1682,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1281678768561158"
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1281688215226880"
 							fb_q_msg := "2016/12/30 動漫通\n" +
 								"關聯：少女與戰車 (女子高中生 & 重戰車)\n" +
 								"問題：鮟鱇隊成員，誰的身高最矮？\n" +
