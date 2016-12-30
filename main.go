@@ -47,8 +47,6 @@ import (
 
 )
 
-test_mem := ""
-
 var bot *linebot.Client
 
 func main() {
@@ -1884,7 +1882,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
-				log.Print("觀察 test_mem = " + test_mem)
 				//target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
 
 				//測試群組跳過
@@ -2304,7 +2301,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					// 					}
 						//上面重覆兩段 push 用來證明 push 才可以連發訊息框，re 只能一個框
 					//---------------------這段可以跟 ReplyMessage 同時有效，但是只會在 1 對 1 有效。群組無效。---------
-					test_mem = message.Text
 			case *linebot.ImageMessage:
 				// 				_, err := bot.SendText([]string{event.RawContent.Params[0]}, "Hi~\n歡迎加入 Delicious!\n\n想查詢附近或各地美食都可以LINE我呦！\n\n請問你想吃什麼?\nex:義大利麵\n\n想不到吃什麼，也可以直接'傳送目前位置訊息'")
 				// 				var img = "http://imageshack.com/a/img921/318/DC21al.png"
