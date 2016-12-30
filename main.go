@@ -580,6 +580,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7057"
+			case "2":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7141"
 			default:
 			}
 		case "路人超能 100","路人","靈能":
@@ -1146,6 +1148,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6849"
 			case "11":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7021"
+			case "12":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7022"
 			default:
 			}
 		case "伯納德小姐說","小姐說","伯納德","伯納":
@@ -1630,21 +1634,21 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		)
 
 							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1281678768561158"
-							fb_q_msg := "2016/12/29 動漫通\n" +
-								"關聯：天降之物\n" +
-								"問題：請問伊卡洛斯的代號是？\n" +
-								"1.η\n" +
-								"2.Ζ\n" +
-								"3.β\n" +
-								"4.α\n" +
-								"小提示：讀音：Alpha\n" +
-								"出題者：a7342299\n" +
+							fb_q_msg := "2016/12/30 動漫通\n" +
+								"關聯：少女與戰車 (女子高中生 & 重戰車)\n" +
+								"問題：鮟鱇隊成員，誰的身高最矮？\n" +
+								"1.西住美穗\n" +
+								"2.武部沙織\n" +
+								"3.五十鈴華\n" +
+								"4.冷泉麻子\n" +
+								"小提示：人類怎麼可能在早上6點鐘起床啊！\n" +
+								"出題者：alex02\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2016/12/29 動漫通", "答案請參考 FB 討論",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1281678768561158"),
+									imageURL, "2016/12/30 動漫通", "答案請參考 FB 討論，可能是 4？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1281688215226880"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
