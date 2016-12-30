@@ -1739,7 +1739,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		   			// "width": 520,
 		   			// "height": 1040
 
-		   			log.Print(GetMD5Hash(event.Postback.Data))
+		   			log.Print("MD5 = " + GetMD5Hash(event.Postback.Data))
 
 					obj_message := linebot.NewImagemapMessage(
 							"https://synr.github.io/test",
