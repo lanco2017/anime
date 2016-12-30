@@ -39,8 +39,11 @@ import (
 	//http://ithelp.ithome.com.tw/articles/10159486
 	//"github.com/alexcesaro/mail/gomail"
 
-    "os/exec"
-    "path/filepath"
+    // "os/exec"
+    // "path/filepath"
+
+    "crypto/md5"
+    "encoding/hex"
 
 )
 
@@ -49,11 +52,11 @@ var bot *linebot.Client
 func main() {
 
 	//http://www.qetee.com/exp/golang/golang-get-file-path/
- 	execFileRelativePath, _ := exec.LookPath(os.Args[0])
-    log.Println("执行程序与命令执行目录的相对路径　　　　:", execFileRelativePath)
+ // 	execFileRelativePath, _ := exec.LookPath(os.Args[0])
+ //    log.Println("执行程序与命令执行目录的相对路径　　　　:", execFileRelativePath)
 
-	execFileAbsPath, _ := filepath.Abs(execFileRelativePath)
-    log.Println("执行程序的绝对路径　　　　　　　　　　　:", execFileAbsPath)
+	// execFileAbsPath, _ := filepath.Abs(execFileRelativePath)
+ //    log.Println("执行程序的绝对路径　　　　　　　　　　　:", execFileAbsPath)
 
 	var err error
 	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
@@ -95,6 +98,12 @@ func main() {
 
 	 //  m.Run()
 
+}
+
+func GetMD5Hash(text string) string {
+    hasher := md5.New()
+    hasher.Write([]byte(text))
+    return hex.EncodeToString(hasher.Sum(nil))
 }
 
 func HttpPost_Zapier(body , title_text, this_id string) error {
@@ -1713,7 +1722,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//這裡用來設計按下某按鈕後要做什麼事情
 				log.Print("觸發 Postback 功能（不讓使用者察覺的程式利用）")
 				log.Print("event.Postback.Data = " + event.Postback.Data)
-				HttpPost_JANDI(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data + `\n` + userImageUrl + `\n` + userStatus, "brown" , "LINE 程式觀察",target_id_code)
+				HttpPost_JANDI("[" + user_talk + "](" + userImageUrl + ") 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data + `\n` + userStatus, "brown" , "LINE 程式觀察",target_id_code)
 				HttpPost_IFTTT(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data + `\n<br>` + userImageUrl + `\n<br>` + userStatus , "LINE 程式觀察" ,target_id_code)
 				HttpPost_Zapier(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data + `\n` + userImageUrl + `\n` + userStatus , "LINE 程式觀察" ,target_id_code)
 				// if event.Postback.Data == "測試"{
@@ -1728,6 +1737,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
      				//	"y": 0,
 		   			// "width": 520,
 		   			// "height": 1040
+
+		   			log.Print(GetMD5Hash(event.Postback.Data))
 
 					obj_message := linebot.NewImagemapMessage(
 							"https://synr.github.io/test",
@@ -1785,7 +1796,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發加入好友
 		if event.Type == linebot.EventTypeFollow {
-				HttpPost_JANDI("有新的好朋友："  + user_talk  + `\n` + userImageUrl + `\n` + userStatus, "blue" , "LINE 新好友",target_id_code)
+				HttpPost_JANDI("有新的好朋友：["  + user_talk + "](" + userImageUrl  + ")" + `\n` + userStatus, "blue" , "LINE 新好友",target_id_code)
 				HttpPost_IFTTT("有新的好朋友："  + user_talk  + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 新好友" ,target_id_code)
 				HttpPost_Zapier("有新的好朋友："  + user_talk  + `\n` + userImageUrl + `\n` + userStatus, "LINE 新好友" ,target_id_code)
 				//target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
@@ -1811,7 +1822,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//觸發解除好友
 		if event.Type == linebot.EventTypeUnfollow {
-				HttpPost_JANDI("與 "  + user_talk + " 解除好友" + `\n` + userImageUrl + `\n` + userStatus, "gray" , "LINE 被解除好友",target_id_code)
+				HttpPost_JANDI("與 ["  + user_talk + "](" + userImageUrl + ") 解除好友" + `\n` + userStatus, "gray" , "LINE 被解除好友",target_id_code)
 				HttpPost_IFTTT("與 "  + user_talk + " 解除好友" + `\n<br>` + userImageUrl + `\n<br>` + userStatus , "LINE 被解除好友" ,target_id_code)
 				HttpPost_Zapier("與 "  + user_talk + " 解除好友" + `\n` + userImageUrl + `\n` + userStatus , "LINE 被解除好友" ,target_id_code)
 				log.Print("觸發與 " + user_talk + " 解除好友")
@@ -1861,7 +1872,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			//https://devdocs.line.me/en/#line-beacon
 			//https://devdocs.line.me/ja/#line-beacon
 		if event.Type == linebot.EventTypeBeacon {
-			HttpPost_JANDI(user_talk + " 觸發 Beacon（啥鬼）" + `\n` + userImageUrl + `\n` + userStatus, "yellow" , "LINE 對話同步",target_id_code)
+			HttpPost_JANDI("[" + user_talk + "](" + userImageUrl + ") 觸發 Beacon（啥鬼）" + `\n` + userStatus, "yellow" , "LINE 對話同步",target_id_code)
 			HttpPost_IFTTT(user_talk + " 觸發 Beacon（啥鬼）" + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 對話同步",target_id_code)
 			HttpPost_Zapier(user_talk + " 觸發 Beacon（啥鬼）" + `\n` + userImageUrl + `\n` + userStatus, "LINE 對話同步",target_id_code)
 			log.Print(user_talk + " 觸發 Beacon（啥鬼）")
@@ -2180,7 +2191,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							log.Print(1672)
 							log.Print(err)
 						}
-						HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text + `\n` + userImageUrl + `\n` + userStatus, "yellow" , "LINE 同步：執行找開發者",target_id_code)
+						HttpPost_JANDI(target_item + " [" + user_talk + "](" + userImageUrl + ")：" + message.Text + `\n` + userStatus, "yellow" , "LINE 同步：執行找開發者",target_id_code)
 						HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：執行找開發者",target_id_code)
 						HttpPost_Zapier(target_item + " " + user_talk + "：" + message.Text + `\n` + userImageUrl + `\n` + userStatus, "LINE 同步：執行找開發者",target_id_code)
 						return
