@@ -97,6 +97,56 @@ func main() {
 
 }
 
+func HttpPost_Zapier(body , title_text, this_id string) error {
+	//https://internal-api.ifttt.com/maker
+	log.Print("已經進來 Zapier POST")
+	log.Print("body = " + body)
+	log.Print("title_text = " + title_text)
+	log.Print("this_id = " + this_id)
+
+	url := "https://hooks.zapier.com/hooks/catch/132196/t0j4oq/"
+	jsonStr := `{
+		"value1":"` + body + `",
+		"value2": "` + title_text + `",
+		"value3": "` + this_id + `"
+	}`
+
+	req, err := http.NewRequest(
+		"POST",
+		url,
+		bytes.NewBuffer([]byte(jsonStr)),
+	)
+	if err != nil {
+		log.Print(err)
+		return err
+	}
+
+	// Content-Type 設定
+	//req.Header.Set("Accept", "application/vnd.tosslab.jandi-v2+json")
+	req.Header.Set("Content-Type", "application/json")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		log.Print(err)		
+		return err
+	}
+	defer resp.Body.Close()
+
+	log.Print(err)
+
+	//http://cepave.com/http-restful-api-with-golang/
+    log.Print("response Status = ")
+    log.Print(resp.Status)
+    log.Print("response Headers = ")
+    log.Print(resp.Header)
+    rebody, _ := ioutil.ReadAll(resp.Body)
+    log.Print("response Body = " +string(rebody))
+	//http://cepave.com/http-restful-api-with-golang/
+
+	return err
+}
+
 func HttpPost_IFTTT(body , title_text, this_id string) error {
 	//https://internal-api.ifttt.com/maker
 	log.Print("已經進來 IFTTT POST")
@@ -146,7 +196,6 @@ func HttpPost_IFTTT(body , title_text, this_id string) error {
 
 	return err
 }
-
 
 func HttpPost_JANDI(body, connectColor, title, code string) error {
 	log.Print("已經進來 JANDI POST")
@@ -1666,6 +1715,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				log.Print("event.Postback.Data = " + event.Postback.Data)
 				HttpPost_JANDI(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data + `\n` + userImageUrl + `\n` + userStatus, "brown" , "LINE 程式觀察",target_id_code)
 				HttpPost_IFTTT(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data + `\n<br>` + userImageUrl + `\n<br>` + userStatus , "LINE 程式觀察" ,target_id_code)
+				HttpPost_Zapier(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data + `\n<br>` + userImageUrl + `\n<br>` + userStatus , "LINE 程式觀察" ,target_id_code)
 				// if event.Postback.Data == "測試"{
 
 				// }
@@ -1728,6 +1778,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						}
 						HttpPost_JANDI("自動離開 "  + user_talk , "gray" , "LINE 離開群組",target_id_code)
 						HttpPost_IFTTT("自動離開 "  + user_talk , "LINE 離開群組",target_id_code)
+						HttpPost_Zapier("自動離開 "  + user_talk , "LINE 離開群組",target_id_code)
 						log.Print("觸發自動離開 " + user_talk +  " 群組")
 					}
 				}
@@ -1736,6 +1787,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeFollow {
 				HttpPost_JANDI("有新的好朋友："  + user_talk  + `\n` + userImageUrl + `\n` + userStatus, "blue" , "LINE 新好友",target_id_code)
 				HttpPost_IFTTT("有新的好朋友："  + user_talk  + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 新好友" ,target_id_code)
+				HttpPost_Zapier("有新的好朋友："  + user_talk  + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 新好友" ,target_id_code)
 				//target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
 				log.Print("觸發與 " + user_talk + " 加入好友")
 
@@ -1761,12 +1813,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeUnfollow {
 				HttpPost_JANDI("與 "  + user_talk + " 解除好友" + `\n` + userImageUrl + `\n` + userStatus, "gray" , "LINE 被解除好友",target_id_code)
 				HttpPost_IFTTT("與 "  + user_talk + " 解除好友" + `\n<br>` + userImageUrl + `\n<br>` + userStatus , "LINE 被解除好友" ,target_id_code)
+				HttpPost_Zapier("與 "  + user_talk + " 解除好友" + `\n<br>` + userImageUrl + `\n<br>` + userStatus , "LINE 被解除好友" ,target_id_code)
 				log.Print("觸發與 " + user_talk + " 解除好友")
 		}
 		//觸發加入群組聊天
 		if event.Type == linebot.EventTypeJoin {
 				HttpPost_JANDI("加入了 "  + user_talk , "blue" , "LINE 已加入群組",target_id_code)
 				HttpPost_IFTTT("加入了 "  + user_talk , "LINE 已加入群組" ,target_id_code)
+				HttpPost_Zapier("加入了 "  + user_talk , "LINE 已加入群組" ,target_id_code)
 				log.Print("觸發加入" + user_talk)
  				//source := event.Source
  				//log.Print("觸發加入群組聊天事件 = " + source.GroupID)
@@ -1799,6 +1853,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeLeave {
 				HttpPost_JANDI("被請離開 "  + user_talk , "gray" , "LINE 離開群組",target_id_code)
 				HttpPost_IFTTT("被請離開 "  + user_talk , "LINE 離開群組",target_id_code)
+				HttpPost_Zapier("被請離開 "  + user_talk , "LINE 離開群組",target_id_code)
 				log.Print("觸發被踢出 " + user_talk +  " 群組")
 		}
 		//？？？？？
@@ -1808,6 +1863,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeBeacon {
 			HttpPost_JANDI(user_talk + " 觸發 Beacon（啥鬼）" + `\n` + userImageUrl + `\n` + userStatus, "yellow" , "LINE 對話同步",target_id_code)
 			HttpPost_IFTTT(user_talk + " 觸發 Beacon（啥鬼）" + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 對話同步",target_id_code)
+			HttpPost_Zapier(user_talk + " 觸發 Beacon（啥鬼）" + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 對話同步",target_id_code)
 			log.Print(user_talk + " 觸發 Beacon（啥鬼）")
 		}
 		//觸發收到訊息
@@ -2126,6 +2182,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						}
 						HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text + `\n` + userImageUrl + `\n` + userStatus, "yellow" , "LINE 同步：執行找開發者",target_id_code)
 						HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：執行找開發者",target_id_code)
+						HttpPost_Zapier(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：執行找開發者",target_id_code)
 						return
 					}
 
@@ -2164,6 +2221,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						}
 						HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text + `\n` + userImageUrl + `\n` + userStatus, "yellow" , "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
 						HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
+						HttpPost_Zapier(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：查詢成功",target_id_code + `\n` + anime_url)
 						log.Print("target_id_code +  anime_url = " + target_id_code + "\n" + anime_url)
 					}else{
 						//2016.12.22+ 利用正則分析字串結果，來設置觸發找不到的時候要 + 的 UI
@@ -2188,6 +2246,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							}
 							HttpPost_JANDI(target_item + " " + user_talk + "：" + message.Text + `\n` + userImageUrl + `\n` + userStatus, "orange" , "LINE 同步：查詢失敗",target_id_code)
 							HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：查詢失敗",target_id_code)
+							HttpPost_Zapier(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：查詢失敗",target_id_code)
 						}else{
 							//這是最原始的動作部分，還沒改寫 UI 模式的時候就靠這裡直接回傳結果就好。至於要傳什麼內容已經在 anime() 裡面處理好了。
 							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
