@@ -2392,7 +2392,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						}
 						HttpPost_JANDI(target_item + " [" + user_talk + "](" + userImageUrl + ")：" + message.Text + `\n` + userStatus, "yellow" , "LINE 同步：查詢成功" + `\n` + anime_url,target_id_code)
 						HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：查詢成功" + `\n` + anime_url,target_id_code)
-						HttpPost_Zapier(target_item + " " + user_talk + "：" + message.Text + `\n` + userImageUrl + `\n` + userStatus, "LINE 同步：查詢成功" + `\n` + anime_url,target_id_code,user_talk)
+						HttpPost_Zapier(target_item + " [" + user_talk + "](" + userImageUrl + ")：" + message.Text + `\n` + userStatus, "LINE 同步：查詢成功" + `\n` + anime_url,target_id_code,user_talk)
 						log.Print("target_id_code +  anime_url = " + target_id_code + "\n" + anime_url)
 					}else{
 						//2016.12.22+ 利用正則分析字串結果，來設置觸發找不到的時候要 + 的 UI
@@ -2417,7 +2417,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							}
 							HttpPost_JANDI(target_item + " [" + user_talk + "](" + userImageUrl + ")：" + message.Text + `\n` + userStatus, "orange" , "LINE 同步：查詢失敗",target_id_code)
 							HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：查詢失敗",target_id_code)
-							HttpPost_Zapier(target_item + " " + user_talk + "：" + message.Text + `\n` + userImageUrl + `\n` + userStatus, "LINE 同步：查詢失敗",target_id_code,user_talk)
+							HttpPost_Zapier(target_item + " [" + user_talk + "](" + userImageUrl + ")：" + message.Text + `\n` + userStatus, "LINE 同步：查詢失敗",target_id_code,user_talk)
 						}else{
 							//這是最原始的動作部分，還沒改寫 UI 模式的時候就靠這裡直接回傳結果就好。至於要傳什麼內容已經在 anime() 裡面處理好了。
 							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bot_msg)).Do(); err != nil {
