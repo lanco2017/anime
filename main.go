@@ -347,7 +347,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"來自風平浪靜的明日：風平浪靜\n" +
 		"在那個夏天等待：那個夏天\n" +
 		"羅馬浴場 THERMAE ROMAE：羅馬浴場、浴場\n" +
-		"殺老師 Q\n\n" +
+		"殺老師 Q\n" +
+		"乒乓\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者","admin","Admin","ａｄｍｉｎ":
 		print_string = "你找我主人？OK！\n我跟你講我的夥伴喵在哪，你去加他。\n他跟主人很親近的，跟他說的話主人都會看到。\nhttps://line.me/R/ti/p/%40uwk0684z\n\n\n你也可以從下面這個連結直接去找主人線上對話。\n\n如果他不在線上一樣可以留言給他，\n他會收到的！\n這跟手機、電腦桌面軟體都有同步連線。" +
@@ -358,6 +359,33 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+        case "乒乓":
+           //reg.ReplaceAllString(text, "$2")
+            switch reg.ReplaceAllString(text, "$4") {
+            case "1":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7058"
+            case "2":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7059"
+            case "3":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7060"
+            case "4":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7061"
+            case "5":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7062"
+            case "6":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7063"
+            case "7":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7064"
+            case "8":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7065"
+            case "9":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7066"
+            case "10":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7067"
+            case "11":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7068"
+            default:
+            }
 		case "鎖鏈戰記 赫克瑟塔斯之光","鎖鏈戰記","赫克瑟塔斯之光":
 			switch reg.ReplaceAllString(text, "$4") {
 			default:
@@ -1692,22 +1720,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1281688215226880"
-							fb_q_msg := "2016/12/30 動漫通\n" +
-								"關聯：少女與戰車 (女子高中生 & 重戰車)\n" +
-								"問題：鮟鱇隊成員，誰的身高最矮？\n" +
-								"1.西住美穗\n" +
-								"2.武部沙織\n" +
-								"3.五十鈴華\n" +
-								"4.冷泉麻子\n" +
-								"小提示：人類怎麼可能在早上6點鐘起床啊！\n" +
-								"出題者：alex02\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1281689228560112"
+							fb_q_msg := "2016/12/31 動漫通\n" +
+								"關聯：JOJO的奇妙冒險系列\n" +
+								"問題：請問會使用波紋亦同時擁有替身的是下列哪位？\n" +
+								"1.卡茲\n" +
+								"2.史特雷\n" +
+								"3.喬瑟夫·喬斯達\n" +
+								"4.史比特瓦根\n" +
+								"小提示：第二部主角\n" +
+								"出題者：yeller32\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2016/12/30 動漫通", "答案請參考 FB 討論，可能是 4？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1281688215226880"),
+									imageURL, "2016/12/31 動漫通", "答案請參考 FB 討論，可能是 3？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1281689228560112"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
