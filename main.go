@@ -389,7 +389,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
             case "11":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6325"
             case "12":
-                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6326"
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6326" + "\n\n等等！這是最後一話！？"
             default:
             }
         case "月歌。","月歌":
@@ -420,7 +420,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
             case "12":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6306"
             case "13":
-                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6399"
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6399" + "\n\n等等！這是最後一話！？"
             default:
             }
         case "男子啦啦隊","男子啦啦","男子拉拉隊","男子拉拉":
@@ -453,7 +453,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
             case "12":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6313"
             default:
-                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5888"
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5888" + "\n\n等等！這是最後一話！？"
             }
         case "發條精靈戰記 天鏡的極北之星","發條精靈","精靈戰記":
            //reg.ReplaceAllString(text, "$2")
@@ -483,7 +483,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
             case "12":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6346"
             case "13":
-                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6437"
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6437" + "\n\n等等！這是最後一話！？"
             default:
             }
         case "乒乓":
