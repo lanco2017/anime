@@ -348,6 +348,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"在那個夏天等待：那個夏天\n" +
 		"羅馬浴場 THERMAE ROMAE：羅馬浴場、浴場\n" +
 		"殺老師 Q\n" +
+		"發條精靈戰記 天鏡的極北之星：發條精靈\n" +
 		"乒乓\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者","admin","Admin","ａｄｍｉｎ":
@@ -359,6 +360,37 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+        case "發條精靈戰記 天鏡的極北之星","發條精靈","精靈戰記":
+           //reg.ReplaceAllString(text, "$2")
+            switch reg.ReplaceAllString(text, "$4") {
+            case "1":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5872"
+            case "2":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5910"
+            case "3":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5911"
+            case "4":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6034"
+            case "5":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6035"
+            case "6":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6036"
+            case "7":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6203"
+            case "8":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6204"
+            case "9":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6321"
+            case "10":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6322"
+            case "11":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6345"
+            case "12":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6346"
+            case "13":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6437"
+            default:
+            }
         case "乒乓":
            //reg.ReplaceAllString(text, "$2")
             switch reg.ReplaceAllString(text, "$4") {
