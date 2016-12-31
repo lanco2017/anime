@@ -1884,7 +1884,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				log.Print("event.Postback.Data = " + event.Postback.Data)
 				HttpPost_JANDI("[" + user_talk + "](" + userImageUrl + ") 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data + `\n` + userStatus, "brown" , "LINE 程式觀察",target_id_code)
 				HttpPost_IFTTT(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data + `\n<br>` + userImageUrl + `\n<br>` + userStatus , "LINE 程式觀察" ,target_id_code)
-				HttpPost_Zapier(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data + `\n` + userImageUrl + `\n` + userStatus , "LINE 程式觀察" ,target_id_code,user_talk)
+				HttpPost_Zapier("[" + user_talk + "](" + userImageUrl + ") 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data + `\n` + userStatus, "LINE 程式觀察" ,target_id_code,user_talk)
 				// if event.Postback.Data == "測試"{
 
 				// }
@@ -1958,7 +1958,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeFollow {
 				HttpPost_JANDI("有新的好朋友：["  + user_talk + "](" + userImageUrl  + ")" + `\n` + userStatus, "blue" , "LINE 新好友",target_id_code)
 				HttpPost_IFTTT("有新的好朋友："  + user_talk  + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 新好友" ,target_id_code)
-				HttpPost_Zapier("有新的好朋友："  + user_talk  + `\n` + userImageUrl + `\n` + userStatus, "LINE 新好友" ,target_id_code,user_talk)
+				HttpPost_Zapier("有新的好朋友：["  + user_talk + "](" + userImageUrl  + ")" + `\n` + userStatus, "LINE 新好友" ,target_id_code,user_talk)
 				//target_id_code := event.Source.UserID + event.Source.GroupID + event.Source.RoomID	//target_id_code := ""
 				log.Print("觸發與 " + user_talk + " 加入好友")
 
@@ -1984,7 +1984,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeUnfollow {
 				HttpPost_JANDI("與 ["  + user_talk + "](" + userImageUrl + ") 解除好友" + `\n` + userStatus, "gray" , "LINE 被解除好友",target_id_code)
 				HttpPost_IFTTT("與 "  + user_talk + " 解除好友" + `\n<br>` + userImageUrl + `\n<br>` + userStatus , "LINE 被解除好友" ,target_id_code)
-				HttpPost_Zapier("與 "  + user_talk + " 解除好友" + `\n` + userImageUrl + `\n` + userStatus , "LINE 被解除好友" ,target_id_code,user_talk)
+				HttpPost_Zapier("與 ["  + user_talk + "](" + userImageUrl + ") 解除好友" + `\n` + userStatus , "LINE 被解除好友" ,target_id_code,user_talk)
 				log.Print("觸發與 " + user_talk + " 解除好友")
 		}
 		//觸發加入群組聊天
@@ -2034,7 +2034,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeBeacon {
 			HttpPost_JANDI("[" + user_talk + "](" + userImageUrl + ") 觸發 Beacon（啥鬼）" + `\n` + userStatus, "yellow" , "LINE 對話同步",target_id_code)
 			HttpPost_IFTTT(user_talk + " 觸發 Beacon（啥鬼）" + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 對話同步",target_id_code)
-			HttpPost_Zapier(user_talk + " 觸發 Beacon（啥鬼）" + `\n` + userImageUrl + `\n` + userStatus, "LINE 對話同步",target_id_code,user_talk)
+			HttpPost_Zapier("[" + user_talk + "](" + userImageUrl + ") 觸發 Beacon（啥鬼）" + `\n` + userStatus, "LINE 對話同步",target_id_code,user_talk)
 			log.Print(user_talk + " 觸發 Beacon（啥鬼）")
 		}
 		//觸發收到訊息
@@ -2353,7 +2353,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						}
 						HttpPost_JANDI(target_item + " [" + user_talk + "](" + userImageUrl + ")：" + message.Text + `\n` + userStatus, "yellow" , "LINE 同步：執行找開發者",target_id_code)
 						HttpPost_IFTTT(target_item + " " + user_talk + "：" + message.Text + `\n<br>` + userImageUrl + `\n<br>` + userStatus, "LINE 同步：執行找開發者",target_id_code)
-						HttpPost_Zapier(target_item + " " + user_talk + "：" + message.Text + `\n` + userImageUrl + `\n` + userStatus, "LINE 同步：執行找開發者",target_id_code,user_talk)
+						HttpPost_Zapier(target_item + " [" + user_talk + "](" + userImageUrl + ")：" + message.Text + `\n` + userStatus, "LINE 同步：執行找開發者",target_id_code,user_talk)
 						return
 					}
 
