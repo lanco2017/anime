@@ -1851,22 +1851,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1281689228560112"
-							fb_q_msg := "2016/12/31 動漫通\n" +
-								"關聯：JOJO的奇妙冒險系列\n" +
-								"問題：請問會使用波紋亦同時擁有替身的是下列哪位？\n" +
-								"1.卡茲\n" +
-								"2.史特雷\n" +
-								"3.喬瑟夫·喬斯達\n" +
-								"4.史比特瓦根\n" +
-								"小提示：第二部主角\n" +
-								"出題者：yeller32\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1283142965081405"
+							fb_q_msg := "2017/01/01 動漫通\n" +
+								"關聯：鋼之鍊金術師\n" +
+								"問題：「讓全軍隊的女性穿上迷你裙」這句話是誰的經典名言\n" +
+								"1.金格‧布拉德雷\n" +
+								"2.羅伊‧馬斯坦古\n" +
+								"3.馬斯‧休斯\n" +
+								"4.海曼斯‧普雷達\n" +
+								"小提示：別稱：大佐\n" +
+								"出題者：z04shen\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2016/12/31 動漫通", "答案請參考 FB 討論，可能是 3？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1281689228560112"),
+									imageURL, "2016/12/31 動漫通", "答案請參考 FB 討論，可能是 2？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1283142965081405"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
