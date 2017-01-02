@@ -1889,7 +1889,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 				// }
 
-				if event.Postback.Data == "測試"{
+				if event.Postback.Data == "test"{
 
 
 					// https://devdocs.line.me/en/#imagemap-message
@@ -1898,8 +1898,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		   			// "width": 520,
 		   			// "height": 1040
 
-		   			log.Print("MD5 = " + GetMD5Hash(event.Postback.Data))
+		   			log.Print("test MD5 = " + GetMD5Hash(event.Postback.Data))
 
+		   			//測試圖片地圖
 					obj_message := linebot.NewImagemapMessage(
 							"https://synr.github.io/test",
 							"Imagemap alt text",
