@@ -1857,22 +1857,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1283150285080673"
-							fb_q_msg := "2017/01/02 動漫通\n" +
-								"關聯：影子籃球員\n" +
-								"問題：請問下列哪位不是『奇蹟世代』的人？\n" +
-								"1.火神大我\n" +
-								"2.黑子哲也\n" +
-								"3.黃瀨涼太\n" +
-								"4.青峰大輝\n" +
-								"小提示：怕狗、大前鋒、就讀誠凜高校\n" +
-								"出題者：reborn4190\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1283153581747010"
+							fb_q_msg := "2017/01/03 動漫通\n" +
+								"關聯：航海王 ONE PIECE 系列\n" +
+								"問題：下列哪首歌不是航海王的OP之一？\n" +
+								"1.Fight Together\n" +
+								"2.B-Bird\n" +
+								"3.Share The World\n" +
+								"4.風をさがして\n" +
+								"小提示：鋼彈UC ED4\n" +
+								"出題者：wrt10515\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/02 動漫通", "答案請參考 FB 討論，可能是 1？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1283150285080673"),
+									imageURL, "2017/01/03 動漫通", "答案請參考 FB 討論，可能是 1？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1283153581747010"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
