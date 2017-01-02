@@ -309,8 +309,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		print_string = "選單"
 	case "動畫瘋88":
 		print_string = "動畫瘋88"
-	case "test":
-		print_string = "GOTEST"
+	case "test","測試":
+		print_string = "測試"
 	case "新番":
 		print_string = "最近一期是日本 2016 十月開播的動畫：\n" + 
 		"歌之☆王子殿下♪ 真愛 LEGEND STAR\n" +
@@ -2130,6 +2130,24 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if bot_msg != ""{
 					//2016.12.20+ for test	
 					switch bot_msg{
+						case "測試":
+							LineTemplate_test := linebot.NewCarouselTemplate(
+								linebot.NewCarouselColumn(
+									imageURL, "test", "For test mode.",
+									linebot.NewPostbackTemplateAction("測試","test", ""),
+									linebot.NewMessageTemplateAction("アニメ 美術社大有問題 12", "アニメ 美術社大有問題 12"),
+									linebot.NewMessageTemplateAction("anime：美術社：１", "anime：美術社：１"),
+								),
+								LineTemplate_other_example,
+								LineTemplate_other,
+								LineTemplate_feedback,
+							)
+							no_temp_msg := "~"
+							obj_message := linebot.NewTemplateMessage(no_temp_msg, LineTemplate_test)
+							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+									log.Print(2148)
+									log.Print(err)
+							}
 						case "GOTEST":
 							//簡單說模板有三種（Y/N[1~2動]、Bottons[最多4個動作]、carousel[3個動作 && 並排最多五個(每個動作數量要一致)]），動作也有三種（操作使用者發言、POST兼使用者發言(使用者發言可為空)、URI 可連網址或 tel: 等協定）
 								//bot_msg = "HI～ 我最近很喜歡看巴哈姆特動畫瘋。\nhttp://ani.gamer.com.tw/\n\n你也可以問我動畫，我可以帶你去看！\n要問我動畫的話可以這樣問：\n動畫 動畫名稱 集數\n\n例如：\n動畫 美術社 12\nアニメ 美術社大有問題 12\nanime 美術社 １\n巴哈姆特 美術社 12\n以上這些都可以\n\n但中間要用空白或冒號、分號隔開喔！\n不然我會看不懂 ＞A＜\n\nPS：目前這只提供查詢動畫的功能。\n如有其他建議或想討論，請對我輸入「開發者」進行聯絡。"
