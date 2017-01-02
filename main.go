@@ -285,6 +285,12 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	//https://gitter.im/kkdai/LineBotTemplate?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge：也可以透過 string.Contains("我要找的字", 原始字串) 來判斷
 	print_string := text
 	text = real_num(text)
+
+	if GetMD5Hash(text) == "c38b3100b02ef42411a99b7975e4ff47" {
+		print_string = "c38b3100b02ef42411a99b7975e4ff47"
+		return print_string
+	}
+
 	//	reg := regexp.MustCompile(`^.*(動畫|動畫瘋|巴哈姆特|anime|アニメ).*(這個美術社大有問題|美術社)\D*(\d{1,})`) //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	//2016
 	//reg := regexp.MustCompile("^.*(動畫|動畫瘋|懶|巴哈|巴哈姆特|anime|Anime|ａｎｉｍｅ|Ａｎｉｍｅ|アニメ)(\\s|　|:|;|：|；)([\u4e00-\u9fa5_a-zA-Z0-9]*)\\D*(\\d{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
@@ -1889,6 +1895,26 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 				// }
 
+				if event.Postback.Data == "admin"{
+							LineTemplate_test := linebot.NewCarouselTemplate(
+								linebot.NewCarouselColumn(
+									imageURL, "管理模式", "For ADMIN mode.",
+									linebot.NewPostbackTemplateAction("請直接輸入「暗號」","Less", ""),
+									linebot.NewPostbackTemplateAction("管理模式","admin", ""),
+									linebot.NewPostbackTemplateAction("測試","test", ""),
+								),
+								// LineTemplate_other_example,
+								// LineTemplate_other,
+								LineTemplate_feedback,
+							)
+							no_temp_msg := "你已觸發管理模式，請更新最新版本的 LINE 查看內容 。"
+							obj_message := linebot.NewTemplateMessage(no_temp_msg, LineTemplate_test)
+							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+									log.Print(2148)
+									log.Print(err)
+							}
+				}
+
 				if event.Postback.Data == "test"{
 
 
@@ -2131,19 +2157,24 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if bot_msg != ""{
 					//2016.12.20+ for test	
 					switch bot_msg{
+						case "c38b3100b02ef42411a99b7975e4ff47":
+							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("登入成功！")).Do(); err != nil {
+								log.Print(2162)
+								log.Print(err)
+							}
 						case "測試":
 							LineTemplate_test := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
 									imageURL, "test", "For test mode.",
 									linebot.NewPostbackTemplateAction("測試","test", ""),
-									linebot.NewMessageTemplateAction("アニメ 美術社大有問題 12", "アニメ 美術社大有問題 12"),
-									linebot.NewMessageTemplateAction("anime：美術社：１", "anime：美術社：１"),
+									linebot.NewPostbackTemplateAction("管理模式","admin", ""),
+									linebot.NewPostbackTemplateAction("測試","test", ""),
 								),
 								LineTemplate_other_example,
 								LineTemplate_other,
 								LineTemplate_feedback,
 							)
-							no_temp_msg := "~"
+							no_temp_msg := "你已觸發測試模式，請更新最新版本的 LINE 查看內容 。"
 							obj_message := linebot.NewTemplateMessage(no_temp_msg, LineTemplate_test)
 							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
 									log.Print(2148)
