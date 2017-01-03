@@ -1925,14 +1925,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if event.Postback.Data == "line_to_me"{
-					switch username {
-						case "懶懶","測試用全開群組 test":
-							//"U6f738a70b63c5900aa2c0cbbe0af91c4"
+					switch target_id_code {
+						case "U6f738a70b63c5900aa2c0cbbe0af91c4":
+							//by uid 一定要 .PushMessage （ event.ReplyToken 隨時在變化不可能可以。）
 							log.Print("event.ReplyToken = " + event.ReplyToken)
-							if _, err = bot.PushMessage("U6f738a70b63c5900aa2c0cbbe0af91c4", linebot.NewTextMessage("event.ReplyToken = " + event.ReplyToken)).Do(); err != nil {
-									log.Print(1944)
-									log.Print(err)
-							}
+							// if _, err = bot.PushMessage("U6f738a70b63c5900aa2c0cbbe0af91c4", linebot.NewTextMessage("event.ReplyToken = " + event.ReplyToken)).Do(); err != nil {
+							// 		log.Print(1944)
+							// 		log.Print(err)
+							// }
 							// if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("發射成功")).Do(); err != nil {
 							// 		log.Print(1944)
 							// 		log.Print(err)
@@ -1942,8 +1942,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if event.Postback.Data == "開啟管理者選單"{
-					switch username {
-						case "懶懶","測試用全開群組 test":
+					switch target_id_code {
+						case "U6f738a70b63c5900aa2c0cbbe0af91c4":
 							LineTemplate_test := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
 									imageURL, "管理模式", "測試中",
@@ -1974,8 +1974,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 				//2017.01.03+
 				if event.Postback.Data == "admin"{
-					switch username {
-						case "懶懶","測試用全開群組 test":
+					switch target_id_code {
+						case "U6f738a70b63c5900aa2c0cbbe0af91c4":
 							LineTemplate_test := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
 									imageURL, "管理模式", "For ADMIN mode.",
@@ -2230,16 +2230,18 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							// 	}
 							// }
 							switch username{
-							case "懶懶","測試用全開群組 test":
-								template := linebot.NewConfirmTemplate(
-									"驗證成功！\n要現在進入管理介面嗎？",
-									linebot.NewPostbackTemplateAction("是","開啟管理者選單", ""),
-									linebot.NewPostbackTemplateAction("否","登出管理者", ""),
-								)
-								obj_message := linebot.NewTemplateMessage("這功能只支援最新版本 APP 使用。\n請用 APP 端查看下一步。", template)
-								if _, err = bot.ReplyMessage(event.ReplyToken,obj_message).Do(); err != nil {
-									log.Print(2162)
-									log.Print(err)
+							case "懶懶":
+								if target_id_code == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
+									template := linebot.NewConfirmTemplate(
+										"驗證成功！\n要現在進入管理介面嗎？",
+										linebot.NewPostbackTemplateAction("是","開啟管理者選單", ""),
+										linebot.NewPostbackTemplateAction("否","登出管理者", ""),
+									)
+									obj_message := linebot.NewTemplateMessage("這功能只支援最新版本 APP 使用。\n請用 APP 端查看下一步。", template)
+									if _, err = bot.ReplyMessage(event.ReplyToken,obj_message).Do(); err != nil {
+										log.Print(2162)
+										log.Print(err)
+									}
 								}
 							}
 							return
