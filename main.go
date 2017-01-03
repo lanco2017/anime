@@ -448,7 +448,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5886"
             case "5":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5887"
-            case "55":
+            case "5.5":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5888"
             case "6":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6181"
@@ -463,9 +463,9 @@ func anime(text string,user_msgid string,reply_mode string) string {
             case "11":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6312"
             case "12":
-                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6313"
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6313" + "\n\n等等！這是最後一話！？"
             default:
-                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5888" + "\n\n等等！這是最後一話！？"
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5888"
             }
         case "發條精靈戰記 天鏡的極北之星","發條精靈","精靈戰記":
            //reg.ReplaceAllString(text, "$2")
