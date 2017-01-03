@@ -322,6 +322,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	case "新番":
 		print_string = "最近一期是日本 2016 十月開播的動畫：\n" + 
 		"歌之☆王子殿下♪ 真愛 LEGEND STAR\n" +
+		"夏目友人帳 伍\n" +
 		"長騎美眉\n" +
 		"3 月的獅子\n" +
 		"黑白來看守所\n" +
@@ -1582,6 +1583,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			case "11.5":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7142"
 			default:
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7142"
 			}
 		case "美術社","美術社大有問題","這個美術社大有問題":
 			//reg.ReplaceAllString(text, "$2")
