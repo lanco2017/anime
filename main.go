@@ -2231,11 +2231,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							// }
 							switch username{
 							case "懶懶","測試用全開群組 test":
-								obj_message := linebot.NewConfirmTemplate(
+								template := linebot.NewConfirmTemplate(
 									"驗證成功！\n要現在進入管理介面嗎？",
 									linebot.NewPostbackTemplateAction("是","開啟管理者選單", ""),
 									linebot.NewPostbackTemplateAction("否","登出管理者", ""),
 								)
+								obj_message := linebot.NewTemplateMessage("這功能只支援最新版本 APP 使用。\n請用 APP 端查看下一步。", template)
 								if _, err = bot.ReplyMessage(event.ReplyToken,obj_message).Do(); err != nil {
 									log.Print(2162)
 									log.Print(err)
