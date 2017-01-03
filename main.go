@@ -1577,6 +1577,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6892"
 			case "11":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6893"
+			case "12":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7142"
 			default:
 			}
 		case "美術社","美術社大有問題","這個美術社大有問題":
