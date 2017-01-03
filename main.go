@@ -1905,7 +1905,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		   			// "width": 520,
 		   			// "height": 1040
 
-		   			log.Print("test MD5 = " + GetMD5Hash(event.Postback.Data))
+		   			//log.Print("test MD5 = " + GetMD5Hash(event.Postback.Data))
 
 		   			//測試圖片地圖
 					obj_message := linebot.NewImagemapMessage(
@@ -1924,6 +1924,47 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 
+				if event.Postback.Data == "line_to_me"{
+					switch username {
+						case "懶懶","測試用全開群組 test":
+							//"U6f738a70b63c5900aa2c0cbbe0af91c4"
+							log.Print("event.ReplyToken = " + event.ReplyToken)
+							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("event.ReplyToken = " + event.ReplyToken)).Do(); err != nil {
+									log.Print(1944)
+									log.Print(err)
+							}
+							// if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("發射成功")).Do(); err != nil {
+							// 		log.Print(1944)
+							// 		log.Print(err)
+							// }
+						default:
+					}
+				}
+
+				if event.Postback.Data == "開啟管理者選單"{
+					switch username {
+						case "懶懶","測試用全開群組 test":
+							LineTemplate_test := linebot.NewCarouselTemplate(
+								linebot.NewCarouselColumn(
+									imageURL, "管理模式", "測試中",
+									linebot.NewPostbackTemplateAction("指定對象發 LINE","line_to_me", ""),
+									linebot.NewPostbackTemplateAction("無效選項","admin", ""),
+									linebot.NewPostbackTemplateAction("登出","登出管理者", ""),
+								),
+								// LineTemplate_other_example,
+								// LineTemplate_other,
+								LineTemplate_feedback,
+							)
+							no_temp_msg := "請更新使用最新版本的 LINE APP 才能查看內容 。"
+							obj_message := linebot.NewTemplateMessage(no_temp_msg, LineTemplate_test)
+							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+									log.Print(2148)
+									log.Print(err)
+							}
+						default:
+					}
+				}
+
 				if event.Postback.Data == "passcheck"{
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("請輸入暗號驗證管理者身分")).Do(); err != nil {
 							log.Print(1929)
@@ -1931,8 +1972,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 
+				//2017.01.03+
 				if event.Postback.Data == "admin"{
-					if username == "懶懶" {
+					switch username {
+						case "懶懶","測試用全開群組 test":
 							LineTemplate_test := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
 									imageURL, "管理模式", "For ADMIN mode.",
@@ -1950,15 +1993,20 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									log.Print(2148)
 									log.Print(err)
 							}
-					}else{
-						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("您無法使用此功能")).Do(); err != nil {
-								log.Print(1955)
-								log.Print(err)
-						}
+						default:
+							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("您無法使用此功能。")).Do(); err != nil {
+									log.Print(1955)
+									log.Print(err)
+							}
 					}
 				}
 
-
+				if event.Postback.Data == "登出管理者"{
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你已登出管理模式")).Do(); err != nil {
+						log.Print(1965)
+						log.Print(err)
+					}
+				}
 
 				if event.Postback.Data == "取消離開群組"{
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你已經取消請我離開 :)")).Do(); err != nil {
@@ -2175,8 +2223,20 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					//2016.12.20+ for test	
 					switch bot_msg{
 						case "c38b3100b02ef42411a99b7975e4ff47":
-							if username == "懶懶" {
-								if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("登入成功！")).Do(); err != nil {
+							// if username == "懶懶" {
+							// 	if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("登入成功！")).Do(); err != nil {
+							// 		log.Print(2162)
+							// 		log.Print(err)
+							// 	}
+							// }
+							switch username{
+							case "懶懶","測試用全開群組 test":
+								obj_message := linebot.NewConfirmTemplate(
+									"驗證成功！\n要現在進入管理介面嗎？",
+									linebot.NewPostbackTemplateAction("是","開啟管理者選單", ""),
+									linebot.NewPostbackTemplateAction("否","登出管理者", ""),
+								)
+								if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("登入成功！"),obj_message).Do(); err != nil {
 									log.Print(2162)
 									log.Print(err)
 								}
