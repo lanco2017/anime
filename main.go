@@ -1173,7 +1173,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7025"
 			case "13":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7139"
-			case "特別","OVA":
+			case "特別","SP","OVA":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6469"
 			default:
 			}
@@ -1202,7 +1202,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6838"
 			case "11":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6839"
-			case "特別","OST":
+			case "特別","SP","OVA":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6732"
 			default:
 			}
@@ -1579,7 +1579,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6892"
 			case "11":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6893"
-			case "12":
+			case "11.5":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7142"
 			default:
 			}
