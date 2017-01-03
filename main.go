@@ -2252,22 +2252,24 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							}
 							return
 						case "測試":
-							LineTemplate_test := linebot.NewCarouselTemplate(
-								linebot.NewCarouselColumn(
-									imageURL, "test", "For test mode.",
-									linebot.NewPostbackTemplateAction("測試","test", ""),
-									linebot.NewPostbackTemplateAction("管理模式","admin", ""),
-									linebot.NewPostbackTemplateAction("申請使用管理者","開發者", "開發者"),
-								),
-								LineTemplate_other_example,
-								LineTemplate_other,
-								LineTemplate_feedback,
-							)
-							no_temp_msg := "你已觸發測試模式，請更新最新版本的 LINE 查看內容 。"
-							obj_message := linebot.NewTemplateMessage(no_temp_msg, LineTemplate_test)
-							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
-									log.Print(2148)
-									log.Print(err)
+							if target_id_code == "U6f738a70b63c5900aa2c0cbbe0af91c4"{
+								LineTemplate_test := linebot.NewCarouselTemplate(
+									linebot.NewCarouselColumn(
+										imageURL, "test", "For test mode.",
+										linebot.NewPostbackTemplateAction("測試","test", ""),
+										linebot.NewPostbackTemplateAction("管理模式","admin", ""),
+										linebot.NewPostbackTemplateAction("申請使用管理者","開發者", "開發者"),
+									),
+									LineTemplate_other_example,
+									LineTemplate_other,
+									LineTemplate_feedback,
+								)
+								no_temp_msg := "你已觸發測試模式，請更新最新版本的 LINE 查看內容 。"
+								obj_message := linebot.NewTemplateMessage(no_temp_msg, LineTemplate_test)
+								if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+										log.Print(2148)
+										log.Print(err)
+								}
 							}
 							return
 						case "GOTEST":
