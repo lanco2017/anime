@@ -2236,7 +2236,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									linebot.NewPostbackTemplateAction("是","開啟管理者選單", ""),
 									linebot.NewPostbackTemplateAction("否","登出管理者", ""),
 								)
-								if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("登入成功！"),obj_message).Do(); err != nil {
+								if _, err = bot.ReplyMessage(event.ReplyToken,obj_message).Do(); err != nil {
 									log.Print(2162)
 									log.Print(err)
 								}
