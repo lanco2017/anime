@@ -1863,22 +1863,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1283153581747010"
-							fb_q_msg := "2017/01/03 動漫通\n" +
-								"關聯：航海王 ONE PIECE 系列\n" +
-								"問題：下列哪首歌不是航海王的OP之一？\n" +
-								"1.Fight Together\n" +
-								"2.B-Bird\n" +
-								"3.Share The World\n" +
-								"4.風をさがして\n" +
-								"小提示：鋼彈UC ED4\n" +
-								"出題者：wrt10515\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1283158095079892"
+							fb_q_msg := "2017/01/04 動漫通\n" +
+								"關聯：航海王 ONE PIECE 系列	\n" +
+								"問題：請問第一次出現生命紙是在什麼地方?\n" +
+								"1.空島\n" +
+								"2.阿拉巴斯坦\n" +
+								"3.恐怖三桅帆船\n" +
+								"4.羅格鎮\n" +
+								"小提示：沙漠王國，位於偉大航路上的聖汀島\n" +
+								"出題者：richfood\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/03 動漫通", "答案請參考 FB 討論，可能是 2？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1283153581747010"),
+									imageURL, "2017/01/04 動漫通", "答案請參考 FB 討論，可能是 2？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1283158095079892"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
