@@ -1929,7 +1929,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						case "懶懶","測試用全開群組 test":
 							//"U6f738a70b63c5900aa2c0cbbe0af91c4"
 							log.Print("event.ReplyToken = " + event.ReplyToken)
-							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("event.ReplyToken = " + event.ReplyToken)).Do(); err != nil {
+							if _, err = bot.ReplyMessage("U6f738a70b63c5900aa2c0cbbe0af91c4", linebot.NewTextMessage("event.ReplyToken = " + event.ReplyToken)).Do(); err != nil {
 									log.Print(1944)
 									log.Print(err)
 							}
