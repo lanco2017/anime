@@ -1925,13 +1925,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if event.Postback.Data == "passcheck"{
-					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("請輸入暗號")).Do(); err != nil {
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("請輸入暗號驗證管理者身分")).Do(); err != nil {
 							log.Print(1929)
 							log.Print(err)
 					}
 				}
 
 				if event.Postback.Data == "admin"{
+					if username == "懶懶" {
 							LineTemplate_test := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
 									imageURL, "管理模式", "For ADMIN mode.",
@@ -1949,6 +1950,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									log.Print(2148)
 									log.Print(err)
 							}
+					}else{
+						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("您無法使用此功能")).Do(); err != nil {
+								log.Print(1955)
+								log.Print(err)
+						}
+					}
 				}
 
 
