@@ -1891,29 +1891,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				HttpPost_JANDI("[" + user_talk + "](" + userImageUrl + ") 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data + `\n` + userStatus, "brown" , "LINE 程式觀察",target_id_code)
 				HttpPost_IFTTT(user_talk + " 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data + `\n<br>` + userImageUrl + `\n<br>` + userStatus , "LINE 程式觀察" ,target_id_code)
 				HttpPost_Zapier("[" + user_talk + "](" + userImageUrl + ") 觸發了按鈕並呼了 event.Postback.Data = " + event.Postback.Data + `\n` + userStatus, "LINE 程式觀察" ,target_id_code,user_talk)
+
 				// if event.Postback.Data == "測試"{
 
 				// }
-
-				if event.Postback.Data == "admin"{
-							LineTemplate_test := linebot.NewCarouselTemplate(
-								linebot.NewCarouselColumn(
-									imageURL, "管理模式", "For ADMIN mode.",
-									linebot.NewPostbackTemplateAction("請直接輸入「暗號」","Less", ""),
-									linebot.NewPostbackTemplateAction("管理模式","admin", ""),
-									linebot.NewPostbackTemplateAction("測試","test", ""),
-								),
-								// LineTemplate_other_example,
-								// LineTemplate_other,
-								LineTemplate_feedback,
-							)
-							no_temp_msg := "你已觸發管理模式，請更新最新版本的 LINE 查看內容 。"
-							obj_message := linebot.NewTemplateMessage(no_temp_msg, LineTemplate_test)
-							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
-									log.Print(2148)
-									log.Print(err)
-							}
-				}
 
 				if event.Postback.Data == "test"{
 
@@ -1942,6 +1923,35 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						log.Print(err)
 					}
 				}
+
+				if event.Postback.Data == "passcheck"{
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("請輸入暗號")).Do(); err != nil {
+							log.Print(1929)
+							log.Print(err)
+					}
+				}
+
+				if event.Postback.Data == "admin"{
+							LineTemplate_test := linebot.NewCarouselTemplate(
+								linebot.NewCarouselColumn(
+									imageURL, "管理模式", "For ADMIN mode.",
+									linebot.NewPostbackTemplateAction("核對「暗號」","passcheck", ""),
+									linebot.NewPostbackTemplateAction("管理模式","admin", ""),
+									linebot.NewPostbackTemplateAction("測試","test", ""),
+								),
+								// LineTemplate_other_example,
+								// LineTemplate_other,
+								LineTemplate_feedback,
+							)
+							no_temp_msg := "請更新使用最新版本的 LINE APP 才能查看內容 。"
+							obj_message := linebot.NewTemplateMessage(no_temp_msg, LineTemplate_test)
+							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+									log.Print(2148)
+									log.Print(err)
+							}
+				}
+
+
 
 				if event.Postback.Data == "取消離開群組"{
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("你已經取消請我離開 :)")).Do(); err != nil {
@@ -2168,7 +2178,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									imageURL, "test", "For test mode.",
 									linebot.NewPostbackTemplateAction("測試","test", ""),
 									linebot.NewPostbackTemplateAction("管理模式","admin", ""),
-									linebot.NewPostbackTemplateAction("測試","test", ""),
+									linebot.NewPostbackTemplateAction("申請使用管理者","開發者", "開發者"),
 								),
 								LineTemplate_other_example,
 								LineTemplate_other,
