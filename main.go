@@ -1236,6 +1236,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6842"
 			case "13":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7055"
+			case "14":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7144"
 			default:
 			}
 		case "喵阿愣！","喵阿愣","喵啊愣！","阿愣","啊愣":
