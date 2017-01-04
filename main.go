@@ -297,7 +297,9 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	//2017
 	//reg := regexp.MustCompile("^(動畫|動畫瘋|懶|巴哈|巴哈姆特|anime|Anime|ａｎｉｍｅ|Ａｎｉｍｅ|アニメ)(\\s|　|:|;|：|；)([\u4e00-\u9fa5_a-zA-Z0-9]*)\\D*(\\d{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	//2017.01.03+
-	reg := regexp.MustCompile("^(動畫|動畫瘋|懶|巴哈|巴哈姆特|anime|Anime|ａｎｉｍｅ|Ａｎｉｍｅ|アニメ)(\\s|　|:|;|：|；)([\u4e00-\u9fa5_a-zA-Z0-9]*)\\D*([0-9.]{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
+	//reg := regexp.MustCompile("^(動畫|動畫瘋|懶|巴哈|巴哈姆特|anime|Anime|ａｎｉｍｅ|Ａｎｉｍｅ|アニメ)(\\s|　|:|;|：|；)([\u4e00-\u9fa5_a-zA-Z0-9]*)\\D*([0-9.]{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
+	//2017.01.05+ 日文（\u30a0-\u30ff\u3040-\u309f）   全形英文數字（\uff21-\uff3a\uff41-\uff5a\uff10-\uff19）
+	reg := regexp.MustCompile("^(動畫|動畫瘋|懶|巴哈|巴哈姆特|anime|Anime|ａｎｉｍｅ|Ａｎｉｍｅ|アニメ)(\\s|　|:|;|：|；)([\u30a0-\u30ff\u3040-\u309f\u4e00-\u9fd5_a-zA-Z0-9]*)\\D*([0-9.]{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	
 	log.Print("--抓取分析觀察--")
 	log.Print(reg.ReplaceAllString(text, "$1"))
