@@ -1869,22 +1869,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1288566347872400"
-							fb_q_msg := "2017/01/05 動漫通\n" +
-								"關聯：SKIP‧BEAT！─華麗的挑戰─\n" +
-								"問題：下列哪位是Love Me部的成員\n" +
-								"1.京子\n" +
-								"2.不破尚\n" +
-								"3.敦賀蓮\n" +
-								"4.社倖一\n" +
-								"小提示：本名「最上恭子」\n" +
-								"出題者：jany831027\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1288571777871857"
+							fb_q_msg := "2017/01/06 動漫通\n" +
+								"關聯：刀劍神域\n" +
+								"問題：請問，艾恩葛朗特的底部直徑約多少?\n" +
+								"1.40公里\n" +
+								"2.25公里\n" +
+								"3.30公里\n" +
+								"4.10公里\n" +
+								"小提示：約 22 棟 101 大樓的長度\n" +
+								"出題者：ss875852\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/05 動漫通", "答案請參考 FB 討論，可能是 1？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1288566347872400"),
+									imageURL, "2017/01/06 動漫通", "答案請參考 FB 討論，可能是 4？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1288571777871857"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
