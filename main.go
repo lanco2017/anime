@@ -1980,22 +1980,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1288571777871857"
-							fb_q_msg := "2017/01/06 動漫通\n" +
-								"關聯：刀劍神域\n" +
-								"問題：請問，艾恩葛朗特的底部直徑約多少?\n" +
-								"1.40公里\n" +
-								"2.25公里\n" +
-								"3.30公里\n" +
-								"4.10公里\n" +
-								"小提示：約 22 棟 101 大樓的長度\n" +
-								"出題者：ss875852\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1288575621204806"
+							fb_q_msg := "2017/01/07 動漫通\n" +
+										"關聯：火影忍者\n" +
+										"問題：自來也的通靈獸是？\n" +
+										"1.烏龜\n" +
+										"2.跳蚤\n" +
+										"3.蛤蟆\n" +
+										"4.老鷹\n" +
+										"小提示：又稱作「蟾蜍」\n" +
+										"出題者：GN01959104\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/06 動漫通", "答案請參考 FB 討論，可能是 4？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1288571777871857"),
+									imageURL, "2017/01/07 動漫通", "答案請參考 FB 討論，可能是 3？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1288575621204806"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
