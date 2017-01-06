@@ -107,7 +107,51 @@ func GetMD5Hash(text string) string {
     return hex.EncodeToString(hasher.Sum(nil))
 }
 
+// func HttpGET_(url string) string {
+// 	//https://internal-api.ifttt.com/maker
+// 	log.Print("已經進來 GET")
+// 	log.Print("url = " + url)
+
+// 	// url := "https://hooks.zapier.com/hooks/catch/132196/txma4i/"
+
+// 	req, err := http.NewRequest(
+// 		"GET",
+// 		url,
+// 		nil,
+// 	)
+// 	if err != nil {
+// 		log.Print(err)
+// 		return ""
+// 	}
+
+// 	// Content-Type 設定
+// 	//req.Header.Set("Accept", "application/vnd.tosslab.jandi-v2+json")
+// 	//req.Header.Set("Content-Type", "application/json")
+
+// 	client := &http.Client{}
+// 	resp, err := client.Do(req)
+// 	if err != nil {
+// 		log.Print(err)		
+// 		return ""
+// 	}
+// 	defer resp.Body.Close()
+
+// 	log.Print(err)
+
+// 	//http://cepave.com/http-restful-api-with-golang/
+//     log.Print("HttpGET_response Status = ")
+//     log.Print(resp.Status)
+//     log.Print("HttpGET_response Headers = ")
+//     log.Print(resp.Header)
+//     rebody, _ := ioutil.ReadAll(resp.Body)
+//     log.Print("response Body = " + string(rebody))
+// 	//http://cepave.com/http-restful-api-with-golang/
+
+// 	return string(rebody) //return err
+// }
+
 func HttpPost_Zapier(body , title_text, this_id, codename string) error {
+	body = strings.Replace(body,"\n", `\n`, -1)
 	//https://internal-api.ifttt.com/maker
 	log.Print("已經進來 Zapier POST")
 	log.Print("body = " + body)
@@ -159,6 +203,7 @@ func HttpPost_Zapier(body , title_text, this_id, codename string) error {
 }
 
 func HttpPost_IFTTT(body , title_text, this_id string) error {
+	body = strings.Replace(body,"\n", `\n`, -1)
 	//https://internal-api.ifttt.com/maker
 	log.Print("已經進來 IFTTT POST")
 	log.Print("body = " + body)
@@ -209,6 +254,7 @@ func HttpPost_IFTTT(body , title_text, this_id string) error {
 }
 
 func HttpPost_JANDI(body, connectColor, title, code string) error {
+	body = strings.Replace(body,"\n", `\n`, -1)
 	log.Print("已經進來 JANDI POST")
 	log.Print("body = " + body)
 	log.Print("connectColor = " + connectColor)
