@@ -152,6 +152,9 @@ func GetMD5Hash(text string) string {
 
 func HttpPost_Zapier(body , title_text, this_id, codename string) error {
 	body = strings.Replace(body,"\n", `\n`, -1)
+	title_text = strings.Replace(title_text,"\n", `\n`, -1)
+	this_id = strings.Replace(this_id,"\n", `\n`, -1)
+	codename = strings.Replace(codename,"\n", `\n`, -1)
 	//https://internal-api.ifttt.com/maker
 	log.Print("已經進來 Zapier POST")
 	log.Print("body = " + body)
@@ -204,6 +207,8 @@ func HttpPost_Zapier(body , title_text, this_id, codename string) error {
 
 func HttpPost_IFTTT(body , title_text, this_id string) error {
 	body = strings.Replace(body,"\n", `\n`, -1)
+	title_text = strings.Replace(title_text,"\n", `\n`, -1)
+	this_id = strings.Replace(this_id,"\n", `\n`, -1)
 	//https://internal-api.ifttt.com/maker
 	log.Print("已經進來 IFTTT POST")
 	log.Print("body = " + body)
@@ -255,6 +260,8 @@ func HttpPost_IFTTT(body , title_text, this_id string) error {
 
 func HttpPost_JANDI(body, connectColor, title, code string) error {
 	body = strings.Replace(body,"\n", `\n`, -1)
+	title = strings.Replace(title,"\n", `\n`, -1)
+	code = strings.Replace(code,"\n", `\n`, -1)
 	log.Print("已經進來 JANDI POST")
 	log.Print("body = " + body)
 	log.Print("connectColor = " + connectColor)
