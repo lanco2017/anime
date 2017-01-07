@@ -334,6 +334,52 @@ func real_num(text string) string {
 	return text
 }
 
+
+// //----javascript 代勞區	https://trello.com/c/OXnZDLzG/86-javascript-golang
+
+// 	function get_anime(ad=''){
+// 	    var output_string = "        case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n           \/\/reg.ReplaceAllString(text, \"$2\")\n            switch reg.ReplaceAllString(text, \"$4\") {\n";
+// 	    var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
+// 	    for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
+// 	        if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
+// 	            if(num>0){
+// 	                        output_string += "            case \"" + num + "\":\n" + "                    print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
+// 	            }
+// 	            num++;
+// 	        }
+// 	    }
+// 	    output_string += "            default:\n            }";
+// 	    console.log(output_string)
+// 	    //return output_string;
+// 	}
+
+// 	get_anime(0);//get_anime(); //沒廣告的時候
+// 	//get_anime(1); //有廣告的時候
+
+// 	//起始不為 1 的時候，以 13 起始為例
+// 	function get_anime(ad=''){
+// 	    var output_string = "        case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n           \/\/reg.ReplaceAllString(text, \"$2\")\n            switch reg.ReplaceAllString(text, \"$4\") {\n";
+// 	    var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
+// 	    for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
+// 	        if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
+// 	            if(num>0){
+// 	                        output_string += "            case \"" + (num+13) + "\":\n" + "                    print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
+// 	            }
+// 	            num++;
+// 	        }
+// 	    }
+// 	    output_string += "            default:\n            }";
+// 	    console.log(output_string)
+// 	    //return output_string;
+// 	}
+
+// 	//get_anime(0);//get_anime(); //沒廣告的時候
+// 	get_anime(1); //有廣告的時候
+
+
+// //----javascript 代勞區
+
+
 func anime(text string,user_msgid string,reply_mode string) string {
 	//https://gitter.im/kkdai/LineBotTemplate?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge：也可以透過 string.Contains("我要找的字", 原始字串) 來判斷
 	print_string := text
@@ -375,7 +421,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	case "test","測試":
 		print_string = "測試"
 	case "新番":
-		print_string = "最近一期是日本 2016 十月開播的動畫：\n" + 
+		print_string = "近期日本新開播的動畫（2016 十月、2017 一月）：\n" + 
 		"歌之☆王子殿下♪ 真愛 LEGEND STAR\n" +
 		"夏目友人帳 伍\n" +
 		"長騎美眉\n" +
@@ -383,7 +429,9 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"黑白來看守所\n" +
 		"我太受歡迎了該怎麼辦\n" +
 		"無畏魔女\n" + 
-		"殺老師 Q"
+		"殺老師 Q\n" + 
+		"幼女戰記\n" + 
+		"青之驅魔師 京都不淨王篇"
 	case "bot","機器人","目錄","動畫清單","清單","索引","ｉｎｄｅｘ","index","Index","介紹","動漫","動畫介紹","動漫介紹","info","Info","ｉｎｆｏ":
 		print_string = "你可以問我下面這些動畫，我會帶你去看！\n\n" +
 		"※ 想知道最近新出的動畫可以輸入：「新番」查詢 \n" +
@@ -421,7 +469,9 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"月歌\n" +
 		"藍海少女\n" + 
 		"偶像大師 灰姑娘女孩：灰姑娘、灰姑娘女孩\n" +
-		"乒乓\n\n" +
+		"乒乓\n" + 
+		"幼女戰記：幼女\n" + 
+		"青之驅魔師 京都不淨王篇：青之、不淨王\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者","admin","Admin","ａｄｍｉｎ":
 		print_string = "你找我主人？OK！\n我跟你講我的夥伴喵在哪，你去加他。\n他跟主人很親近的，跟他說的話主人都會看到。\nhttps://line.me/R/ti/p/%40uwk0684z\n\n\n你也可以從下面這個連結直接去找主人線上對話。\n\n如果他不在線上一樣可以留言給他，\n他會收到的！\n這跟手機、電腦桌面軟體都有同步連線。" +
@@ -432,6 +482,20 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+        case "青之驅魔師 京都不淨王篇","青之","不淨王":
+           //reg.ReplaceAllString(text, "$2")
+            switch reg.ReplaceAllString(text, "$4") {
+            case "1","01":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7149"
+            default:
+            }
+        case "幼女戰記","幼女":
+           //reg.ReplaceAllString(text, "$2")
+            switch reg.ReplaceAllString(text, "$4") {
+            case "1","01":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7148"
+            default:
+            }
         case "偶像大師 灰姑娘女孩","灰姑娘","灰姑娘女孩":
            //reg.ReplaceAllString(text, "$2")
             switch reg.ReplaceAllString(text, "$4") {
