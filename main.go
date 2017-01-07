@@ -431,7 +431,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"無畏魔女\n" + 
 		"殺老師 Q\n" + 
 		"幼女戰記\n" + 
-		"青之驅魔師 京都不淨王篇"
+		"青之驅魔師 京都不淨王篇\n" + 
+		"亞人醬有話要說"
 	case "bot","機器人","目錄","動畫清單","清單","索引","ｉｎｄｅｘ","index","Index","介紹","動漫","動畫介紹","動漫介紹","info","Info","ｉｎｆｏ":
 		print_string = "你可以問我下面這些動畫，我會帶你去看！\n\n" +
 		"※ 想知道最近新出的動畫可以輸入：「新番」查詢 \n" +
@@ -471,6 +472,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"偶像大師 灰姑娘女孩：灰姑娘、灰姑娘女孩\n" +
 		"乒乓\n" + 
 		"幼女戰記：幼女\n" + 
+		"亞人醬有話要說：亞人、亞人醬、有話、有話要說\n" + 
 		"青之驅魔師 京都不淨王篇：青之、不淨王\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者","admin","Admin","ａｄｍｉｎ":
@@ -482,6 +484,15 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+		//2017.01
+        case "亞人醬有話要說","亞人","亞人醬","有話","有話要說":
+           //reg.ReplaceAllString(text, "$2")
+            switch reg.ReplaceAllString(text, "$4") {
+            case "1","01":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7151"
+            default:
+            }
+		//2017.01
         case "青之驅魔師 京都不淨王篇","青之","不淨王":
            //reg.ReplaceAllString(text, "$2")
             switch reg.ReplaceAllString(text, "$4") {
@@ -489,6 +500,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7149"
             default:
             }
+        //2017.01
         case "幼女戰記","幼女":
            //reg.ReplaceAllString(text, "$2")
             switch reg.ReplaceAllString(text, "$4") {
@@ -1763,6 +1775,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6893"
 			case "11.5":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7142"
+			case "12":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7150"
 			default:
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7142"
 			}
@@ -2044,22 +2058,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1288575621204806"
-							fb_q_msg := "2017/01/07 動漫通\n" +
-										"關聯：火影忍者\n" +
-										"問題：自來也的通靈獸是？\n" +
-										"1.烏龜\n" +
-										"2.跳蚤\n" +
-										"3.蛤蟆\n" +
-										"4.老鷹\n" +
-										"小提示：又稱作「蟾蜍」\n" +
-										"出題者：GN01959104\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1290266617702373"
+							fb_q_msg := "2017/01/08 動漫通\n" +
+								"關聯：黑執事\n" +
+								"問題：請問：下列哪位死神的死神鐮刀模樣是 ── 血紅電鋸 ？\n" +
+								"1.克雷爾‧沙多克里夫 (Grell Sutcliff)\n" +
+								"2.威廉‧Ｔ‧史皮爾斯 (William T Spears)\n" +
+								"3.羅納德‧諾克斯 (Ronald Nox)\n" +
+								"4.葬儀屋 (Undertaker)\n" +
+								"小提示：紅夫人的執事\n" +
+								"出題者：BloodlineLi\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/07 動漫通", "答案請參考 FB 討論，可能是 3？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1288575621204806"),
+									imageURL, "2017/01/08 動漫通", "答案請參考 FB 討論，可能是 1？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1290266617702373"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
