@@ -2058,22 +2058,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1290266617702373"
-							fb_q_msg := "2017/01/08 動漫通\n" +
-								"關聯：黑執事\n" +
-								"問題：請問：下列哪位死神的死神鐮刀模樣是 ── 血紅電鋸 ？\n" +
-								"1.克雷爾‧沙多克里夫 (Grell Sutcliff)\n" +
-								"2.威廉‧Ｔ‧史皮爾斯 (William T Spears)\n" +
-								"3.羅納德‧諾克斯 (Ronald Nox)\n" +
-								"4.葬儀屋 (Undertaker)\n" +
-								"小提示：紅夫人的執事\n" +
-								"出題者：BloodlineLi\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1290267807702254"
+							fb_q_msg := "2017/01/09 動漫通\n" +
+								"關聯：神不在的星期天\n" +
+								"問題：神在星期幾創造了世界？\n" +
+								"1.星期天\n" +
+								"2.星期一\n" +
+								"3.星期二\n" +
+								"4.星期三\n" +
+								"小提示：月曜日\n" +
+								"出題者：yinyueing\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/08 動漫通", "答案請參考 FB 討論，可能是 1？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1290266617702373"),
+									imageURL, "2017/01/09 動漫通", "答案請參考 FB 討論，可能是 2？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1290267807702254"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
