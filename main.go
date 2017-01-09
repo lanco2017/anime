@@ -337,24 +337,48 @@ func real_num(text string) string {
 
 // //----javascript 代勞區	https://trello.com/c/OXnZDLzG/86-javascript-golang
 
-// 	function get_anime(ad=''){
-// 	    var output_string = "        case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n           \/\/reg.ReplaceAllString(text, \"$2\")\n            switch reg.ReplaceAllString(text, \"$4\") {\n";
-// 	    var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
-// 	    for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
-// 	        if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
-// 	            if(num>0){
-// 	                        output_string += "            case \"" + num + "\":\n" + "                    print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
-// 	            }
-// 	            num++;
-// 	        }
-// 	    }
-// 	    output_string += "            default:\n            }";
-// 	    console.log(output_string)
-// 	    //return output_string;
-// 	}
+	// function get_anime(ad=''){
+	//     var output_string = "        case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n           \/\/reg.ReplaceAllString(text, \"$2\")\n            switch reg.ReplaceAllString(text, \"$4\") {\n";
+	//     var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
+	//     for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
+	//         if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
+	//             if(num>0){
+	//                         output_string += "            case \"" + num + "\":\n" + "                    print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
+	//             }
+	//             num++;
+	//         }
+	//     }
+	//     output_string += "            default:\n            }";
+	//     console.log(output_string)
+	//     //return output_string;
+	// }
 
-// 	get_anime(0);//get_anime(); //沒廣告的時候
-// 	//get_anime(1); //有廣告的時候
+	// get_anime(0);//get_anime(); //沒廣告的時候
+	// //get_anime(1); //有廣告的時候
+
+	// //2017
+	// function get_anime(ad=''){
+	//     var output_string = "        case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n           \/\/reg.ReplaceAllString(text, \"$2\")\n            switch reg.ReplaceAllString(text, \"$4\") {\n";
+	//     var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
+	//     for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
+	//         if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
+	//             if(num>0){
+	//                         if(num<10){
+	//                         	output_string += "            case \"" + num + "\",\"0" + num + "\":\n" + "                    print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
+	//                         }else{
+	// 							output_string += "            case \"" + num + "\":\n" + "                    print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
+	// 						}
+	//             }
+	//             num++;
+	//         }
+	//     }
+	//     output_string += "            default:\n            }";
+	//     console.log(output_string)
+	//     //return output_string;
+	// }
+
+	// get_anime(0);//get_anime(); //沒廣告的時候
+	// //get_anime(1); //有廣告的時候
 
 // 	//起始不為 1 的時候，以 13 起始為例
 // 	function get_anime(ad=''){
@@ -472,6 +496,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"偶像大師 灰姑娘女孩：灰姑娘、灰姑娘女孩\n" +
 		"乒乓\n" + 
 		"幼女戰記：幼女\n" + 
+		"花舞少女：花舞\n" +
 		"亞人醬有話要說：亞人、亞人醬、有話、有話要說\n" + 
 		"青之驅魔師 京都不淨王篇：青之、不淨王\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
@@ -484,6 +509,35 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+        case "花舞少女","花舞":
+           //reg.ReplaceAllString(text, "$2")
+            switch reg.ReplaceAllString(text, "$4") {
+            case "1","01":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7127"
+            case "2","02":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7128"
+            case "3","03":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7129"
+            case "4","04":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7130"
+            case "5","05":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7131"
+            case "6","06":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7132"
+            case "7","07":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7133"
+            case "8","08":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7134"
+            case "9","09":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7135"
+            case "10":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7136"
+            case "11":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7137"
+            case "12":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7138"
+            default:
+            }
 		//2017.01
         case "亞人醬有話要說","亞人","亞人醬","有話","有話要說":
            //reg.ReplaceAllString(text, "$2")
@@ -2058,22 +2112,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1290267807702254"
-							fb_q_msg := "2017/01/09 動漫通\n" +
-								"關聯：神不在的星期天\n" +
-								"問題：神在星期幾創造了世界？\n" +
-								"1.星期天\n" +
-								"2.星期一\n" +
-								"3.星期二\n" +
-								"4.星期三\n" +
-								"小提示：月曜日\n" +
-								"出題者：yinyueing\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1290275114368190"
+							fb_q_msg := "2017/01/10 動漫通\n" +
+								"關聯：海綿寶寶\n" +
+								"問題：喜來登是哪個人物的本名？\n" +
+								"1.海綿寶寶\n" +
+								"2.派大星\n" +
+								"3.皮老闆\n" +
+								"4.泡芙阿姨\n" +
+								"小提示：浮游生物，蟹老闆的死對頭\n" +
+								"出題者：abigbang123\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/09 動漫通", "答案請參考 FB 討論，可能是 2？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1290267807702254"),
+									imageURL, "2017/01/09 動漫通", "答案請參考 FB 討論，可能是 3？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1290275114368190"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
