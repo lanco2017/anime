@@ -456,7 +456,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"殺老師 Q\n" + 
 		"幼女戰記\n" + 
 		"青之驅魔師 京都不淨王篇\n" + 
-		"亞人醬有話要說"
+		"亞人醬有話要說\n" +
+		"南鎌倉高校女子自行車社：女子自行車"
 	case "bot","機器人","目錄","動畫清單","清單","索引","ｉｎｄｅｘ","index","Index","介紹","動漫","動畫介紹","動漫介紹","info","Info","ｉｎｆｏ":
 		print_string = "你可以問我下面這些動畫，我會帶你去看！\n\n" +
 		"※ 想知道最近新出的動畫可以輸入：「新番」查詢 \n" +
@@ -498,6 +499,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"幼女戰記：幼女\n" + 
 		"花舞少女：花舞\n" +
 		"亞人醬有話要說：亞人、亞人醬、有話、有話要說\n" + 
+		"南鎌倉高校女子自行車社：女子自行車、南鎌倉自行車、南鎌倉高校\n" +
 		"青之驅魔師 京都不淨王篇：青之、不淨王\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者","admin","Admin","ａｄｍｉｎ":
@@ -509,6 +511,14 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+        case "南鎌倉高校女子自行車社","南鎌倉自行車","南鎌倉高校","女子自行車":
+           //reg.ReplaceAllString(text, "$2")
+            switch reg.ReplaceAllString(text, "$4") {
+            case "1","01":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7127"
+            default:
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7127"
+            }
         case "花舞少女","花舞":
            //reg.ReplaceAllString(text, "$2")
             switch reg.ReplaceAllString(text, "$4") {
