@@ -1396,6 +1396,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6834"
 			case "26":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6835"
+			case "27":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7056"
 			default:
 			}
 		case "神裝少女小纏","小纏","神裝少女","神裝":
