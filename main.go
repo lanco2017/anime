@@ -446,6 +446,9 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		print_string = "測試"
 	case "新番":
 		print_string = "近期日本新開播的動畫（2016 十月、2017 一月）：\n" + 
+		"\n" + 
+		"【2016 十月新番】\n" + 
+		"\n" + 
 		"歌之☆王子殿下♪ 真愛 LEGEND STAR\n" +
 		"夏目友人帳 伍\n" +
 		"長騎美眉\n" +
@@ -453,11 +456,15 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"黑白來看守所\n" +
 		"我太受歡迎了該怎麼辦\n" +
 		"無畏魔女\n" + 
-		"殺老師 Q\n" + 
+		"殺老師 Q（2016 11 月）\n" + 
+		"\n" + 
+		"【2017 一月新番】\n" + 
+		"\n" + 
 		"幼女戰記\n" + 
 		"青之驅魔師 京都不淨王篇\n" + 
 		"亞人醬有話要說\n" +
-		"南鎌倉高校女子自行車社：女子自行車"
+		"南鎌倉高校女子自行車社：女子自行車\n" +
+		"ACCA13 區監察課"
 	case "bot","機器人","目錄","動畫清單","清單","索引","ｉｎｄｅｘ","index","Index","介紹","動漫","動畫介紹","動漫介紹","info","Info","ｉｎｆｏ":
 		print_string = "你可以問我下面這些動畫，我會帶你去看！\n\n" +
 		"※ 想知道最近新出的動畫可以輸入：「新番」查詢 \n" +
@@ -500,7 +507,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"花舞少女：花舞\n" +
 		"亞人醬有話要說：亞人、亞人醬、有話、有話要說\n" + 
 		"南鎌倉高校女子自行車社：女子自行車、南鎌倉自行車、南鎌倉高校\n" +
-		"青之驅魔師 京都不淨王篇：青之、不淨王\n\n" +
+		"青之驅魔師 京都不淨王篇：青之、不淨王\n" +
+		"ACCA13 區監察課：監察課、ACCA13\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者","admin","Admin","ａｄｍｉｎ":
 		print_string = "你找我主人？OK！\n我跟你講我的夥伴喵在哪，你去加他。\n他跟主人很親近的，跟他說的話主人都會看到。\nhttps://line.me/R/ti/p/%40uwk0684z\n\n\n你也可以從下面這個連結直接去找主人線上對話。\n\n如果他不在線上一樣可以留言給他，\n他會收到的！\n這跟手機、電腦桌面軟體都有同步連線。" +
@@ -511,6 +519,15 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+		//2017.01
+        case "ACCA13 區監察課","監察課","ACCA13":
+           //reg.ReplaceAllString(text, "$2")
+            switch reg.ReplaceAllString(text, "$4") {
+            case "1","01":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7154"
+            default:
+            }
+		//2017.01
         case "南鎌倉高校女子自行車社","南鎌倉自行車","南鎌倉高校","女子自行車":
            //reg.ReplaceAllString(text, "$2")
             switch reg.ReplaceAllString(text, "$4") {
@@ -2126,22 +2143,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1290275114368190"
-							fb_q_msg := "2017/01/10 動漫通\n" +
-								"關聯：海綿寶寶\n" +
-								"問題：喜來登是哪個人物的本名？\n" +
-								"1.海綿寶寶\n" +
-								"2.派大星\n" +
-								"3.皮老闆\n" +
-								"4.泡芙阿姨\n" +
-								"小提示：浮游生物，蟹老闆的死對頭\n" +
-								"出題者：abigbang123\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1293627277366307"
+							fb_q_msg := "2017/01/11 動漫通\n" +
+								"關聯：惡魔謎題\n" +
+								"問題：請問，被媒體稱為新世紀的開膛手傑克的角色是誰？\n" +
+								"1.番場真夜\n" +
+								"2.犬飼伊介\n" +
+								"3.武智乙哉\n" +
+								"4.桐谷柩\n" +
+								"小提示：紫髮藍瞳，學號8號\n" +
+								"出題者：zero917556\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
 									imageURL, "2017/01/09 動漫通", "答案請參考 FB 討論，可能是 3？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1290275114368190"),
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1293627277366307"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
