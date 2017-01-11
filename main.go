@@ -506,6 +506,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"乒乓\n" + 
 		"幼女戰記：幼女\n" + 
 		"花舞少女：花舞\n" +
+		"夏雪之約：夏雪\n" +
 		"亞人醬有話要說：亞人、亞人醬、有話、有話要說\n" + 
 		"南鎌倉高校女子自行車社：女子自行車、南鎌倉自行車、南鎌倉高校\n" +
 		"青之驅魔師 京都不淨王篇：青之、不淨王\n" +
@@ -521,6 +522,33 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+        case "夏雪之約","夏雪":
+           //reg.ReplaceAllString(text, "$2")
+            switch reg.ReplaceAllString(text, "$4") {
+            case "1","01":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7116"
+            case "2","02":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7117"
+            case "3","03":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7118"
+            case "4","04":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7119"
+            case "5","05":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7120"
+            case "6","06":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7121"
+            case "7","07":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7122"
+            case "8","08":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7123"
+            case "9","09":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7124"
+            case "10":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7125"
+            case "11":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7126" + "\n\n等等！這是最後一話！？"
+            default:
+            }
 		//2017.01
         case "Hand Shakers","hand shakers","hand":
            //reg.ReplaceAllString(text, "$2")
@@ -572,7 +600,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
             case "11":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7137"
             case "12":
-                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7138"
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7138" + "\n\n等等！這是最後一話！？"
             default:
             }
 		//2017.01
@@ -651,7 +679,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
             case "24":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7114"
             case "25":
-                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7115"
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7115" + "\n\n等等！這是最後一話！？"
             default:
             }
         case "藍海少女":
@@ -1638,6 +1666,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7023"
 			case "38":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7023"
+			case "39":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7262"
 			default:
 			}
 		case "無畏魔女":
@@ -2155,22 +2185,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1293627277366307"
-							fb_q_msg := "2017/01/11 動漫通\n" +
-								"關聯：惡魔謎題\n" +
-								"問題：請問，被媒體稱為新世紀的開膛手傑克的角色是誰？\n" +
-								"1.番場真夜\n" +
-								"2.犬飼伊介\n" +
-								"3.武智乙哉\n" +
-								"4.桐谷柩\n" +
-								"小提示：紫髮藍瞳，學號8號\n" +
-								"出題者：zero917556\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1293628674032834"
+							fb_q_msg := "2017/01/12 動漫通\n" +
+								"關聯：心之谷\n" +
+								"問題：在心之谷裡，男主角天澤聖司會製作且擅長哪種樂器？\n" +
+								"1.大提琴\n" +
+								"2.中提琴\n" +
+								"3.小提琴\n" +
+								"4.雙簧管\n" +
+								"小提示：弓弦樂器，有「樂器中的女王」的稱呼\n" +
+								"出題者：itw0128\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/09 動漫通", "答案請參考 FB 討論，可能是 3？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1293627277366307"),
+									imageURL, "2017/01/12 動漫通", "答案請參考 FB 討論，可能是 3？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1293628674032834"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
