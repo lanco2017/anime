@@ -465,6 +465,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"亞人醬有話要說\n" +
 		"南鎌倉高校女子自行車社：女子自行車\n" +
 		"Hand Shakers\n" +
+		"為美好的世界獻上祝福 第二季：美好的世界、獻上祝福\n" +
 		"ACCA13 區監察課"
 	case "bot","機器人","目錄","動畫清單","清單","索引","ｉｎｄｅｘ","index","Index","介紹","動漫","動畫介紹","動漫介紹","info","Info","ｉｎｆｏ":
 		print_string = "你可以問我下面這些動畫，我會帶你去看！\n\n" +
@@ -511,6 +512,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"南鎌倉高校女子自行車社：女子自行車、南鎌倉自行車、南鎌倉高校\n" +
 		"青之驅魔師 京都不淨王篇：青之、不淨王\n" +
 		"Hand Shakers\n" +
+		"為美好的世界獻上祝福 第二季：美好的世界、獻上祝福\n" +
 		"ACCA13 區監察課：監察課、ACCA13\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者","admin","Admin","ａｄｍｉｎ":
@@ -522,6 +524,14 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+		//2017
+        case "為美好的世界獻上祝福！ 第二季","為美好的世界獻上祝福","獻上祝福！ 第二季","美好的世界":
+           //reg.ReplaceAllString(text, "$2")
+            switch reg.ReplaceAllString(text, "$4") {
+            	case "1","01":
+            		print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7157"
+            default:
+            }
         case "夏雪之約","夏雪":
            //reg.ReplaceAllString(text, "$2")
             switch reg.ReplaceAllString(text, "$4") {
