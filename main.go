@@ -464,6 +464,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"青之驅魔師 京都不淨王篇\n" + 
 		"亞人醬有話要說\n" +
 		"南鎌倉高校女子自行車社：女子自行車\n" +
+		"Hand Shakers\n" +
 		"ACCA13 區監察課"
 	case "bot","機器人","目錄","動畫清單","清單","索引","ｉｎｄｅｘ","index","Index","介紹","動漫","動畫介紹","動漫介紹","info","Info","ｉｎｆｏ":
 		print_string = "你可以問我下面這些動畫，我會帶你去看！\n\n" +
@@ -508,7 +509,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"亞人醬有話要說：亞人、亞人醬、有話、有話要說\n" + 
 		"南鎌倉高校女子自行車社：女子自行車、南鎌倉自行車、南鎌倉高校\n" +
 		"青之驅魔師 京都不淨王篇：青之、不淨王\n" +
-		"ACCA13 區監察課：監察課、ACCA\n\n" +
+		"Hand Shakers\n" +
+		"ACCA13 區監察課：監察課、ACCA13\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者","admin","Admin","ａｄｍｉｎ":
 		print_string = "你找我主人？OK！\n我跟你講我的夥伴喵在哪，你去加他。\n他跟主人很親近的，跟他說的話主人都會看到。\nhttps://line.me/R/ti/p/%40uwk0684z\n\n\n你也可以從下面這個連結直接去找主人線上對話。\n\n如果他不在線上一樣可以留言給他，\n他會收到的！\n這跟手機、電腦桌面軟體都有同步連線。" +
@@ -520,7 +522,15 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
 		//2017.01
-        case "ACCA13 區監察課","監察課","ACCA13","Acca","Ａｃｃａ","ＡＣＣＡ":
+        case "Hand Shakers","hand shakers","hand":
+           //reg.ReplaceAllString(text, "$2")
+            switch reg.ReplaceAllString(text, "$4") {
+            case "1","01":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7155"
+            default:
+            }
+		//2017.01
+        case "ACCA13 區監察課","監察課","ACCA13","Acca13","Ａｃｃａ13","ＡＣＣＡ13":
            //reg.ReplaceAllString(text, "$2")
             switch reg.ReplaceAllString(text, "$4") {
             case "1","01":
@@ -1510,6 +1520,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7055"
 			case "14":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7144"
+			case "15":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7145"
 			default:
 			}
 		case "喵阿愣！","喵阿愣","喵啊愣！","阿愣","啊愣":
