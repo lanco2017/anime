@@ -508,6 +508,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"幼女戰記：幼女\n" + 
 		"花舞少女：花舞\n" +
 		"夏雪之約：夏雪\n" +
+		"混沌之子\n" + 
 		"亞人醬有話要說：亞人、亞人醬、有話、有話要說\n" + 
 		"南鎌倉高校女子自行車社：女子自行車、南鎌倉自行車、南鎌倉高校\n" +
 		"青之驅魔師 京都不淨王篇：青之、不淨王\n" +
@@ -524,6 +525,15 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+        case "混沌之子":
+           //reg.ReplaceAllString(text, "$2")
+            switch reg.ReplaceAllString(text, "$4") {
+            case "1","01":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7156"
+            case "2","02":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7264"
+            default:
+            }
 		//2017
         case "為美好的世界獻上祝福！ 第二季","為美好的世界獻上祝福","獻上祝福！ 第二季","美好的世界":
            //reg.ReplaceAllString(text, "$2")
