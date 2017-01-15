@@ -631,6 +631,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
             switch reg.ReplaceAllString(text, "$4") {
             case "1","01":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7151"
+            case "2","02":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7260"
             default:
             }
 		//2017.01
@@ -639,6 +641,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
             switch reg.ReplaceAllString(text, "$4") {
             case "1","01":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7149"
+            case "2","02":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7258"
             default:
             }
         //2017.01
@@ -647,6 +651,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
             switch reg.ReplaceAllString(text, "$4") {
             case "1","01":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7148"
+            case "2","02":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7257"
             default:
             }
         case "偶像大師 灰姑娘女孩","灰姑娘","灰姑娘女孩":
@@ -1139,6 +1145,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7141"
 			case "3":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7152"
+			case "4":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7256"
 			default:
 			}
 		case "路人超能 100","路人","靈能":
@@ -1253,6 +1261,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3919"
 			case "25":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3920" + "\n\n等等！這是最後一話！？"
+			case "movie":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7054" //影子籃球員 冬季選拔賽總集篇 門的彼端 [電影]
 			default:
 			}
 		case "文豪野犬 第二季","文豪野犬","文豪","野犬":
@@ -1926,6 +1936,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7142"
 			case "12":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7150"
+			case "13":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7259"
 			default:
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7142"
 			}
