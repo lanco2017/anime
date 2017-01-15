@@ -542,6 +542,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"青之驅魔師 京都不淨王篇：青之、不淨王\n" +
 		"Hand Shakers\n" +
 		"MARGINAL#4\n" +
+		"終物語\n" +
 		"為美好的世界獻上祝福 第二季：美好的世界、獻上祝福\n" +
 		"ACCA13 區監察課：監察課、ACCA13\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
@@ -554,6 +555,35 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+		case "終物語":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$4") {
+			case "1","01":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7220"
+			case "2","02":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7224"
+			case "3","03":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7225"
+			case "4","04":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7226"
+			case "5","05":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7227"
+			case "6","06":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7228"
+			case "7","07":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7229"
+			case "8","08":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7230"
+			case "9","09":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7231"
+			case "10":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7221"
+			case "11":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7222"
+			case "12":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7223"
+			default:
+			}
 		case "MARGINAL#4":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
