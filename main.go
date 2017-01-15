@@ -337,48 +337,48 @@ func real_num(text string) string {
 
 // //----javascript 代勞區	https://trello.com/c/OXnZDLzG/86-javascript-golang
 
-	// function get_anime(ad=''){
-	//     var output_string = "        case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n           \/\/reg.ReplaceAllString(text, \"$2\")\n            switch reg.ReplaceAllString(text, \"$4\") {\n";
-	//     var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
-	//     for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
-	//         if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
-	//             if(num>0){
-	//                         output_string += "            case \"" + num + "\":\n" + "                    print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
-	//             }
-	//             num++;
-	//         }
-	//     }
-	//     output_string += "            default:\n            }";
-	//     console.log(output_string)
-	//     //return output_string;
-	// }
+// 	function get_anime(ad=''){
+// 	    var output_string = "        case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n           \/\/reg.ReplaceAllString(text, \"$2\")\n            switch reg.ReplaceAllString(text, \"$4\") {\n";
+// 	    var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
+// 	    for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
+// 	        if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
+// 	            if(num>0){
+// 	                        output_string += "            case \"" + num + "\":\n" + "                    print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
+// 	            }
+// 	            num++;
+// 	        }
+// 	    }
+// 	    output_string += "            default:\n            }";
+// 	    console.log(output_string)
+// 	    //return output_string;
+// 	}
 
-	// get_anime(0);//get_anime(); //沒廣告的時候
-	// //get_anime(1); //有廣告的時候
+// 	get_anime(0);//get_anime(); //沒廣告的時候
+// 	//get_anime(1); //有廣告的時候
 
-	// //2017
-	// function get_anime(ad=''){
-	//     var output_string = "        case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n           \/\/reg.ReplaceAllString(text, \"$2\")\n            switch reg.ReplaceAllString(text, \"$4\") {\n";
-	//     var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
-	//     for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
-	//         if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
-	//             if(num>0){
-	//                         if(num<10){
-	//                         	output_string += "            case \"" + num + "\",\"0" + num + "\":\n" + "                    print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
-	//                         }else{
-	// 							output_string += "            case \"" + num + "\":\n" + "                    print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
-	// 						}
-	//             }
-	//             num++;
-	//         }
-	//     }
-	//     output_string += "            default:\n            }";
-	//     console.log(output_string)
-	//     //return output_string;
-	// }
+// 	//2017
+// 	function get_anime(ad=''){
+// 	    var output_string = "        case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n           \/\/reg.ReplaceAllString(text, \"$2\")\n            switch reg.ReplaceAllString(text, \"$4\") {\n";
+// 	    var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
+// 	    for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
+// 	        if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
+// 	            if(num>0){
+// 	                        if(num<10){
+// 	                        	output_string += "            case \"" + num + "\",\"0" + num + "\":\n" + "                    print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
+// 	                        }else{
+// 								output_string += "            case \"" + num + "\":\n" + "                    print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
+// 							}
+// 	            }
+// 	            num++;
+// 	        }
+// 	    }
+// 	    output_string += "            default:\n            }";
+// 	    console.log(output_string)
+// 	    //return output_string;
+// 	}
 
-	// get_anime(0);//get_anime(); //沒廣告的時候
-	// //get_anime(1); //有廣告的時候
+// 	get_anime(0);//get_anime(); //沒廣告的時候
+// 	//get_anime(1); //有廣告的時候
 
 // 	//起始不為 1 的時候，以 13 起始為例
 // 	function get_anime(ad=''){
@@ -401,6 +401,32 @@ func real_num(text string) string {
 // 	get_anime(1); //有廣告的時候
 
 
+//new
+
+//----javascript 代勞區	https://trello.com/c/OXnZDLzG/86-javascript-golang
+	// //2017 +1
+	// function get_anime(ad=''){
+	//     var output_string = "		case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n			\/\/reg.ReplaceAllString(text, \"$2\")\n			switch reg.ReplaceAllString(text, \"$4\") {\n";
+	//     var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
+	//     for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
+	//         if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
+	//             if(num>0){
+	//                         if(num<10){
+	//                         	output_string += "			case \"" + num + "\",\"0" + num + "\":\n" + "				print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
+	//                         }else{
+	// 							output_string += "			case \"" + num + "\":\n" + "				print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
+	// 						}
+	//             }
+	//             num++;
+	//         }
+	//     }
+	//     output_string += "			default:\n			}";
+	//     console.log(output_string)
+	//     //return output_string;
+	// }
+
+	// get_anime(0);//get_anime(); //沒廣告的時候
+	// //get_anime(1); //有廣告的時候
 // //----javascript 代勞區
 
 
@@ -515,6 +541,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"南鎌倉高校女子自行車社：女子自行車、南鎌倉自行車、南鎌倉高校\n" +
 		"青之驅魔師 京都不淨王篇：青之、不淨王\n" +
 		"Hand Shakers\n" +
+		"MARGINAL#4\n" +
 		"為美好的世界獻上祝福 第二季：美好的世界、獻上祝福\n" +
 		"ACCA13 區監察課：監察課、ACCA13\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
@@ -527,6 +554,13 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+		case "MARGINAL#4":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$4") {
+            case "1","01":
+                    print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7158"
+			default:
+			}
         case "混沌之子":
            //reg.ReplaceAllString(text, "$2")
             switch reg.ReplaceAllString(text, "$4") {
@@ -2219,22 +2253,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1293628674032834"
-							fb_q_msg := "2017/01/12 動漫通\n" +
-								"關聯：心之谷\n" +
-								"問題：在心之谷裡，男主角天澤聖司會製作且擅長哪種樂器？\n" +
-								"1.大提琴\n" +
-								"2.中提琴\n" +
-								"3.小提琴\n" +
-								"4.雙簧管\n" +
-								"小提示：弓弦樂器，有「樂器中的女王」的稱呼\n" +
-								"出題者：itw0128\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1297149650347403"
+							fb_q_msg := "2017/01/15 動漫通\n" +
+										"關聯：航海王 ONE PIECE 系列（原：海賊王）\n" +
+										"問題：女帝『波雅‧漢考克』的生日為何？\n" +
+										"1.３月１日\n" +
+										"2.８月５日\n" +
+										"3.９月２日\n" +
+										"4.１２月３１日\n" +
+										"小提示：音同日文的「九蛇」\n" +
+										"出題者：tiger860301\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/12 動漫通", "答案請參考 FB 討論，可能是 3？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1293628674032834"),
+									imageURL, "2017/01/15 動漫通", "答案請參考 FB 討論，可能是 ？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1297149650347403"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
