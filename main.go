@@ -2283,22 +2283,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1297149650347403"
-							fb_q_msg := "2017/01/15 動漫通\n" +
-										"關聯：航海王 ONE PIECE 系列（原：海賊王）\n" +
-										"問題：女帝『波雅‧漢考克』的生日為何？\n" +
-										"1.３月１日\n" +
-										"2.８月５日\n" +
-										"3.９月２日\n" +
-										"4.１２月３１日\n" +
-										"小提示：音同日文的「九蛇」\n" +
-										"出題者：tiger860301\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1297154093680292"
+							fb_q_msg := "2017/01/16 動漫通]\n" +
+								"關聯：驅魔少年\n" +
+								"問題：克勞斯元帥的INNOCENCE裝備型武器-斷罪者 是什麼型態的？\n" +
+								"1.武士刀\n" +
+								"2.手槍\n" +
+								"3.鐮刀\n" +
+								"4.榔頭\n" +
+								"小提示：古時稱作「拳銃」\n" +
+								"出題者：doggsunrise6\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/15 動漫通", "答案請參考 FB 討論，可能是 ？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1297149650347403"),
+									imageURL, "2017/01/16 動漫通", "答案請參考 FB 討論，可能是 2？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1297154093680292"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
