@@ -555,6 +555,16 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+		//2016.10?
+		case "Yuri on Ice","Yuri","yuri":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$4") {
+			case "1","01":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7265"
+			case "2","02":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7266"
+			default:
+			}
 		case "終物語":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
