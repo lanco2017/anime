@@ -656,11 +656,13 @@ func anime(text string,user_msgid string,reply_mode string) string {
             default:
             }
 		//2017.01
-        case "ACCA13 區監察課","監察課","ACCA13","Acca13","Ａｃｃａ13","ＡＣＣＡ13":
+        case "ACCA13 區監察課","監察課","ACCA","ACCA13","Acca13","Ａｃｃａ13","ＡＣＣＡ13":
            //reg.ReplaceAllString(text, "$2")
             switch reg.ReplaceAllString(text, "$4") {
             case "1","01":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7154"
+            case "2","02":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7273"
             default:
             }
 		//2017.01
@@ -1565,6 +1567,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6835"
 			case "27":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7056"
+			case "28":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7271"
 			default:
 			}
 		case "神裝少女小纏","小纏","神裝少女","神裝":
@@ -1697,6 +1701,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6922"
 			case "15":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7143"
+			case "16":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7269"
 			default:
 			}
 		case "雙星之陰陽師","雙星":
@@ -2299,22 +2305,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1297155753680126"
-							fb_q_msg := "2017/01/17 動漫通\n" +
-								"關聯：KERORO 軍曹\n" +
-								"問題：下列哪個不是Keroro小隊裡的成員\n" +
-								"1.Dororo兵長\n" +
-								"2.Taruru上等兵\n" +
-								"3.Kururu曹長\n" +
-								"4.Giroro伍長\n" +
-								"小提示：Tamama的徒弟\n" +
-								"出題者：rabbitfaver\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1299913476737687"
+							fb_q_msg := "2017/01/18 動漫通\n" +
+								"關聯：名偵探柯南\n" +
+								"問題：下列哪部不是名偵探柯南的劇場版？\n" +
+								"1.迷宮的十字路\n" +
+								"2.裂空的訪問者\n" +
+								"3.第14號獵物\n" +
+								"4.異次元的狙擊手\n" +
+								"小提示：Pokémon 第七部劇場版\n" +
+								"出題者：itw0128\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/17 動漫通", "答案請參考 FB 討論，可能是 2？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1297155753680126"),
+									imageURL, "2017/01/18 動漫通", "答案請參考 FB 討論，可能是 2？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1299913476737687"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
