@@ -653,6 +653,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
             switch reg.ReplaceAllString(text, "$4") {
             case "1","01":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7155"
+            case "1","01":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7275"
             default:
             }
 		//2017.01
@@ -1666,6 +1668,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7144"
 			case "15":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7145"
+			case "16":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7146"
 			default:
 			}
 		case "喵阿愣！","喵阿愣","喵啊愣！","阿愣","啊愣":
