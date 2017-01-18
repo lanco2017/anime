@@ -608,8 +608,10 @@ func anime(text string,user_msgid string,reply_mode string) string {
             switch reg.ReplaceAllString(text, "$4") {
             case "1","01","1A":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7156"
-            case "2","02","1B":
+            case "1.5","1B":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7264"
+            case "2","02":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7278"
             default:
             }
 		//2017
@@ -618,6 +620,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
             switch reg.ReplaceAllString(text, "$4") {
             	case "1","01":
             		print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7157"
+            	case "2","02":
+            		print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7280"
             default:
             }
         case "夏雪之約","夏雪":
@@ -1790,6 +1794,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7023"
 			case "39":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7262"
+			case "40":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7262"
 			default:
 			}
 		case "無畏魔女":
@@ -2309,22 +2315,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1299913476737687"
-							fb_q_msg := "2017/01/18 動漫通\n" +
-								"關聯：名偵探柯南\n" +
-								"問題：下列哪部不是名偵探柯南的劇場版？\n" +
-								"1.迷宮的十字路\n" +
-								"2.裂空的訪問者\n" +
-								"3.第14號獵物\n" +
-								"4.異次元的狙擊手\n" +
-								"小提示：Pokémon 第七部劇場版\n" +
-								"出題者：itw0128\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1299928130069555"
+							fb_q_msg := "2017/01/19 動漫通\n" +
+									"關聯：KILL la KILL\n" +
+									"問題：本能字四天王的名字沒有哪種動物？\n" +
+									"1.猿\n" +
+									"2.狼\n" +
+									"3.蛇\n" +
+									"4.犬\n" +
+									"小提示：著名童話「小紅帽」中出現的反派\n" +
+									"出題者：lf212345\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/18 動漫通", "答案請參考 FB 討論，可能是 2？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1299913476737687"),
+									imageURL, "2017/01/19 動漫通", "答案請參考 FB 討論，可能是 2？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1299928130069555"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
