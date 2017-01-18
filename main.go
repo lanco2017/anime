@@ -1795,7 +1795,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			case "39":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7262"
 			case "40":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7262"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7289"
 			default:
 			}
 		case "無畏魔女":
