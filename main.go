@@ -653,7 +653,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
             switch reg.ReplaceAllString(text, "$4") {
             case "1","01":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7155"
-            case "1","01":
+            case "2","02":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7275"
             default:
             }
