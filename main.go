@@ -601,6 +601,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			switch reg.ReplaceAllString(text, "$4") {
             case "1","01":
                     print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7158"
+            case "2","02":
+                    print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7282"
 			default:
 			}
         case "混沌之子":
@@ -1233,6 +1235,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7152"
 			case "4":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7256"
+			case "5":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7283"
 			default:
 			}
 		case "路人超能 100","路人","靈能":
@@ -2315,22 +2319,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1299928130069555"
-							fb_q_msg := "2017/01/19 動漫通\n" +
-									"關聯：KILL la KILL\n" +
-									"問題：本能字四天王的名字沒有哪種動物？\n" +
-									"1.猿\n" +
-									"2.狼\n" +
-									"3.蛇\n" +
-									"4.犬\n" +
-									"小提示：著名童話「小紅帽」中出現的反派\n" +
-									"出題者：lf212345\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1299929580069410"
+							fb_q_msg := "2017/01/20 動漫通\n" +
+										"關聯：火影忍者\n" +
+										"問題：白的血繼限界是什麼？\n" +
+										"1.熔遁\n" +
+										"2.冰遁\n" +
+										"3.寫輪眼\n" +
+										"4.沸遁\n" +
+										"小提示：水遁+風遁\n" +
+										"出題者：banana40808\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/19 動漫通", "答案請參考 FB 討論，可能是 2？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1299928130069555"),
+									imageURL, "2017/01/20 動漫通", "答案請參考 FB 討論，可能是 2？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1299929580069410"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
