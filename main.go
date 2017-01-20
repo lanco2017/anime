@@ -741,6 +741,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7148"
             case "2","02":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7257"
+            case "3","03":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7284"
             default:
             }
         case "偶像大師 灰姑娘女孩","灰姑娘","灰姑娘女孩":
@@ -2319,22 +2321,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1299929580069410"
-							fb_q_msg := "2017/01/20 動漫通\n" +
-										"關聯：火影忍者\n" +
-										"問題：白的血繼限界是什麼？\n" +
-										"1.熔遁\n" +
-										"2.冰遁\n" +
-										"3.寫輪眼\n" +
-										"4.沸遁\n" +
-										"小提示：水遁+風遁\n" +
-										"出題者：banana40808\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1301649696564065"
+							fb_q_msg := "2017/01/21 動漫通\n" +
+								"關聯：冰菓\n" +
+								"問題：在＜古典部＞系列中，擁有「女帝」綽號的是下列哪一位？\n" +
+								"1.千反田愛瑠\n" +
+								"2.伊原摩耶花\n" +
+								"3.入須冬實\n" +
+								"4.折木供惠\n" +
+								"小提示：2年F班，家中經營醫院\n" +
+								"出題者：rhythenec\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/20 動漫通", "答案請參考 FB 討論，可能是 2？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1299929580069410"),
+									imageURL, "2017/01/21 動漫通", "答案請參考 FB 討論，可能是 3？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1301649696564065"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
