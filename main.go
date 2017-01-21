@@ -544,6 +544,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"Hand Shakers\n" +
 		"MARGINAL#4\n" +
 		"終物語\n" +
+		"BanG Dream：Bang、BanG、bang\n" + 
 		"Yuri on Ice：Yuri、yuri\n" +
 		"為美好的世界獻上祝福 第二季：美好的世界、獻上祝福\n" +
 		"ACCA13 區監察課：監察課、ACCA13\n\n" +
@@ -557,6 +558,12 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+		case "BanG Dream","Bang","BanG","bang":
+			switch reg.ReplaceAllString(text, "$4") {
+			case "1","01":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7147"
+			default:
+			}
 		//2016.10?
 		case "Yuri on Ice","Yuri","yuri":
 			//reg.ReplaceAllString(text, "$2")
@@ -721,6 +728,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7151"
             case "2","02":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7260"
+            case "3","03":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7287"
             default:
             }
 		//2017.01
@@ -2042,8 +2051,10 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7150"
 			case "13":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7259"
+			case "14":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7259"
 			default:
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7142"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7286"
 			}
 		case "美術社","美術社大有問題","這個美術社大有問題":
 			//reg.ReplaceAllString(text, "$2")
@@ -2323,22 +2334,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1301649696564065"
-							fb_q_msg := "2017/01/21 動漫通\n" +
-								"關聯：冰菓\n" +
-								"問題：在＜古典部＞系列中，擁有「女帝」綽號的是下列哪一位？\n" +
-								"1.千反田愛瑠\n" +
-								"2.伊原摩耶花\n" +
-								"3.入須冬實\n" +
-								"4.折木供惠\n" +
-								"小提示：2年F班，家中經營醫院\n" +
-								"出題者：rhythenec\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1301654439896924"
+							fb_q_msg := "2017/01/22 動漫通\n" +
+										"關聯：高校艦隊 HAIFURI\n" +
+										"問題：晴風號是大日本帝國海軍哪一艘原型船？\n" +
+										"1. 陽炎型驅逐艦\n" +
+										"2. 島風型驅逐艦\n" +
+										"3. 吹雪型驅逐艦\n" +
+										"4. 初春型驅逐艦\n" +
+										"小提示：與天津風同型\n" +
+										"出題者：z0916061110\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/21 動漫通", "答案請參考 FB 討論，可能是 3？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1301649696564065"),
+									imageURL, "2017/01/22 動漫通", "答案請參考 FB 討論，可能是 1？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1301654439896924"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
