@@ -2334,22 +2334,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1301654439896924"
-							fb_q_msg := "2017/01/22 動漫通\n" +
-										"關聯：高校艦隊 HAIFURI\n" +
-										"問題：晴風號是大日本帝國海軍哪一艘原型船？\n" +
-										"1. 陽炎型驅逐艦\n" +
-										"2. 島風型驅逐艦\n" +
-										"3. 吹雪型驅逐艦\n" +
-										"4. 初春型驅逐艦\n" +
-										"小提示：與天津風同型\n" +
-										"出題者：z0916061110\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1301662463229455"
+							fb_q_msg := "2017/01/23 動漫通\n" +
+										"關聯：JOJO的奇妙冒險系列\n" +
+										"問題：以下哪個替身不具有時間系的相關能力？\n" +
+										"1.白金之星\n" +
+										"2.克里姆王\n" +
+										"3.天堂製造\n" +
+										"4.亞空瘴氣\n" +
+										"小提示：瓦尼拉‧艾斯的替身\n" +
+										"出題者：a820714\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/22 動漫通", "答案請參考 FB 討論，可能是 1？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1301654439896924"),
+									imageURL, "2017/01/23 動漫通", "答案請參考 FB 討論，可能是 4？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1301662463229455"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
