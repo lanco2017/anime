@@ -774,6 +774,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7127"
             case "2","02":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7267"
+            case "3","03":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7268"
             default:
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7127"
             }
