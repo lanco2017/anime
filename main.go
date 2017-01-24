@@ -764,6 +764,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7154"
             case "2","02":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7273"
+            case "3","03":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7274"
             default:
             }
 		//2017.01
@@ -1818,6 +1820,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7143"
 			case "16":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7269"
+			case "17":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7270"
 			default:
 			}
 		case "雙星之陰陽師","雙星":
@@ -2424,22 +2428,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1301664359895932"
-							fb_q_msg := "2017/01/24 動漫通\n" +
-										"關聯：K-ON!\n" +
-										"問題：輕音部社團內飼養的寵物龜「小豬」，其品種是？\n" +
-										"1.豬鼻龜\n" +
-										"2.巴西龜\n" +
-										"3.箱龜\n" +
-										"4.鱷龜\n" +
-										"小提示：跟寵物龜的名字有關\n" +
-										"出題者：KANNA2010\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1301674523228249"
+							fb_q_msg := "2017/01/25 動漫通\n" +
+										"關聯：MAGI 魔奇少年\n" +
+										"問題：下列魔神和力量的屬性配對是錯的？\n" +
+										"1.派蒙--風\n" +
+										"2.撒共--生命\n" +
+										"3.亞蒙--火焰\n" +
+										"4.拜恩--雷電\n" +
+										"小提示：寄宿在練紅玉的髮簪的魔神\n" +
+										"出題者：pp931756\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/24 動漫通", "答案請參考 FB 討論，可能是 1？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1301664359895932"),
+									imageURL, "2017/01/25 動漫通", "答案請參考 FB 討論，可能是 4？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1301674523228249"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
