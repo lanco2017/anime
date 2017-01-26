@@ -2449,7 +2449,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 										"3.安西教練我好想回家\n" +
 										"4.安西教練我好後悔\n" +
 										"小提示：與本作品名有關\n" +
-										"出題者：aska101\n" +
+										"出題者test：aska101\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
