@@ -706,7 +706,9 @@ func anime(text string,user_msgid string,reply_mode string) string {
             case "1.5","1B":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7264"
             case "2","02":
-                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7278"
+                    print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7278"
+            case "3","03":
+                    print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7279"
             default:
             }
 		//2017
@@ -717,6 +719,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
             		print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7157"
             	case "2","02":
             		print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7280"
+            	case "3","03":
+            		print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7281"
             default:
             }
         case "夏雪之約","夏雪":
@@ -1785,6 +1789,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7145"
 			case "16":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7146"
+			case "17":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7277"
 			default:
 			}
 		case "喵阿愣！","喵阿愣","喵啊愣！","阿愣","啊愣":
@@ -1909,6 +1915,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7262"
 			case "40":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7289"
+			case "41":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7290"
 			default:
 			}
 		case "無畏魔女":
@@ -2430,22 +2438,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1301674523228249"
-							fb_q_msg := "2017/01/25 動漫通\n" +
-										"關聯：MAGI 魔奇少年\n" +
-										"問題：下列魔神和力量的屬性配對是錯的？\n" +
-										"1.派蒙--風\n" +
-										"2.撒共--生命\n" +
-										"3.亞蒙--火焰\n" +
-										"4.拜恩--雷電\n" +
-										"小提示：寄宿在練紅玉的髮簪的魔神\n" +
-										"出題者：pp931756\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1302883213107380"
+							fb_q_msg := "2017/01/26 動漫通\n" +
+										"關聯：灌籃高手\n" +
+										"問題：請問三井率眾大鬧湘北最後遇到安西教練說了哪一句話。\n" +
+										"1.安西教練我好想打架\n" +
+										"2.安西教練我好想打籃球\n" +
+										"3.安西教練我好想回家\n" +
+										"4.安西教練我好後悔\n" +
+										"小提示：與本作品名有關\n" +
+										"出題者：aska101\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/25 動漫通", "答案請參考 FB 討論，可能是 4？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1301674523228249"),
+									imageURL, "2017/01/26 動漫通", "答案請參考 FB 討論，可能是... 第一次眾說紛紜？",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1302883213107380"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
