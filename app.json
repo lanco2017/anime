@@ -1,7 +1,7 @@
 {
-  "name": "LineBotTemplate",
+  "name": "anime",
   "description": "Line Bot API template",
-  "repository": "https://github.com/synr/LineBotTemplate",
+  "repository": "https://github.com/lancode2017",
   "keywords": ["Line", "go", "static"],
   "buildpacks": [
     {
