@@ -1,7 +1,7 @@
 {
   "name": "anime",
   "description": "Line Bot API template",
-  "repository": "https://github.com/lancode2017",
+  "repository": "https://github.com/lanco2017",
   "keywords": ["Line", "go", "static"],
   "buildpacks": [
     {
