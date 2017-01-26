@@ -815,7 +815,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
             case "11":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7137"
             case "12":
-                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7138" + "\n\n等等！這是最後一話！？"
+                    print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7138" + "\n\n等等！這是最後一話！？"
             default:
             }
 		//2017.01
