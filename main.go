@@ -3311,10 +3311,33 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					//.NewStickerMessage 發貼貼圖成功	 //https://devdocs.line.me/files/sticker_list.pdf			
 				obj_message := linebot.NewStickerMessage("2", "514") //https://devdocs.line.me/en/?go#send-message-object
  				//if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("OU<"),linebot.NewTextMessage("0.0"),linebot.NewTextMessage("．ω．"),linebot.NewTextMessage("．ω．")).Do(); err != nil {
- 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("．ω．"),obj_message_moto,obj_message).Do(); err != nil {
- 					log.Print(1891)
- 					log.Print(err)
- 				}
+
+				PackageID_int := 0
+				StickerID_int := 0
+				if PackageID_int, err = strconv.Atoi(message.PackageID); err != nil {
+					log.Print("7793 字串轉整數失敗")
+					log.Print(PackageID_int)
+					log.Print(err.Error())
+				}
+
+				if StickerID_int, err = strconv.Atoi(message.StickerID); err != nil {
+					log.Print("7798 字串轉整數失敗")
+					log.Print(StickerID_int)
+					log.Print(err.Error())
+				}
+
+				//特別處理過貼圖範圍外的貼圖
+				if (PackageID_int!=0) && (PackageID_int<=4){
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("．ω．"),obj_message_moto,obj_message).Do(); err != nil {
+						log.Print(7806)
+						log.Print(err)
+					}
+				}else{
+					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("．ω．"),obj_message).Do(); err != nil {
+						log.Print(7811)
+						log.Print(err)
+					}					
+				}
 			}
 		}
 	}
