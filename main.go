@@ -2451,7 +2451,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1307891545939880"
 							fb_q_msg := "2017/01/27 動漫通\n" +
 										"關聯：為美好的世界獻上祝福！\n" +
-										"問題：哪個不是"和真對阿克婭"的稱號？\n" +
+										"問題：哪個不是「和真對阿克婭」的稱號？\n" +
 										"1.茶包女神\n" +
 										"2.廁所女神\n" +
 										"3.廢物女神\n" +
