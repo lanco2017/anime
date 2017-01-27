@@ -27,10 +27,11 @@ import (
 	
 	"github.com/line/line-bot-sdk-go/linebot"
 
-	"bytes"
+		//通訊
+			//"bytes"
 
 	// "io"
-	"io/ioutil"
+		//通訊//"io/ioutil"
 
 	"image/jpeg"
 	//"image/png"
