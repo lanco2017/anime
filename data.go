@@ -1,13 +1,13 @@
-// package main
+package main
 
-// import (
-// 	_ "github.com/lib/pq"
-// 	"log"
-//     "database/sql"
-// 	"os"
-////	http://l-lin.github.io/2015/01/31/Golang-Deploy_to_heroku
-////	https://godoc.org/github.com/lib/pq
-// )
+import (
+	_ "github.com/lib/pq"
+	"log"
+    "database/sql"
+	"os"
+//	http://l-lin.github.io/2015/01/31/Golang-Deploy_to_heroku
+//	https://godoc.org/github.com/lib/pq
+)
 
 // // Fetch the list of novels
 // func GetList() []*Novel {
@@ -31,15 +31,15 @@
 // 	return novels
 // }
 
-// // Connect to Heroku database using the OS env DATABASE_URL
-// func connect() *sql.DB {
-// 	dbUrl := os.Getenv("DATABASE_URL")
-// 	database, err := sql.Open("postgres", dbUrl)
-// 	if err != nil {
-// 		log.Fatalf("[x] Could not open the connection to the database. Reason: %s", err.Error())
-// 	}
-// 	return database
-// }
+// Connect to Heroku database using the OS env DATABASE_URL
+func connect() *sql.DB {
+	dbUrl := os.Getenv("DATABASE_URL")
+	database, err := sql.Open("postgres", dbUrl)
+	if err != nil {
+		log.Fatalf("[x] Could not open the connection to the database. Reason: %s", err.Error())
+	}
+	return database
+}
 
 // // Fetch the content of the rows and build a new novel
 // func toNovel(rows db.RowMapper) *Novel {
