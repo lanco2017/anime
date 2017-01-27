@@ -47,6 +47,10 @@ import (
     "crypto/md5"
     "encoding/hex"
 
+    //http://l-lin.github.io/2015/01/31/Golang-Deploy_to_heroku
+    "database/sql"
+    _ "github.com/lib/pq"
+
 )
 
 var bot *linebot.Client
@@ -698,6 +702,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
                     print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7158"
             case "2","02":
                     print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7282"
+            case "3","03":
+                    print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7313"
 			default:
 			}
         case "混沌之子":
@@ -1348,6 +1354,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7256"
 			case "5":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7283"
+			case "6":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7315"
 			default:
 			}
 		case "路人超能 100","路人","靈能":
@@ -2440,22 +2448,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1302883213107380"
-							fb_q_msg := "2017/01/26 動漫通\n" +
-										"關聯：灌籃高手\n" +
-										"問題：請問三井率眾大鬧湘北最後遇到安西教練說了哪一句話。\n" +
-										"1.安西教練我好想打架\n" +
-										"2.安西教練我好想打籃球\n" +
-										"3.安西教練我好想回家\n" +
-										"4.安西教練我好後悔\n" +
-										"小提示：與本作品名有關\n" +
-										"出題者：aska101\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1307891545939880"
+							fb_q_msg := "2017/01/27 動漫通\n" +
+										"關聯：為美好的世界獻上祝福！\n" +
+										"問題：哪個不是"和真對阿克婭"的稱號？\n" +
+										"1.茶包女神\n" +
+										"2.廁所女神\n" +
+										"3.廢物女神\n" +
+										"4.宴會女神\n" +
+										"小提示：阿克婭在湖水淨化任務中說自己像什麼？\n" +
+										"出題者：drjo1214\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/26 動漫通", "答案請參考 FB 討論，可能是... 第一次眾說紛紜？",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1302883213107380"),
+									imageURL, "2017/01/27 動漫通", "答案請參考 FB 討論，可能是 1 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1307891545939880"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
