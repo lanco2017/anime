@@ -7,6 +7,7 @@ import (
 	"os"
 //	http://l-lin.github.io/2015/01/31/Golang-Deploy_to_heroku
 //	https://godoc.org/github.com/lib/pq
+// https://www.opsdash.com/blog/postgres-full-text-search-golang.html
 )
 
 // // Fetch the list of novels
