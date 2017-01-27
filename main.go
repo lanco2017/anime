@@ -48,8 +48,8 @@ import (
     "encoding/hex"
 
     //http://l-lin.github.io/2015/01/31/Golang-Deploy_to_heroku
-    // "database/sql"
-    // _ "github.com/lib/pq"
+    "database/sql"
+    _ "github.com/lib/pq"
 
 )
 
