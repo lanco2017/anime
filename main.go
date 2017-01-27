@@ -859,6 +859,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7257"
             case "3","03":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7284"
+            case "4","04":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7317"
             default:
             }
         case "偶像大師 灰姑娘女孩","灰姑娘","灰姑娘女孩":
@@ -2453,22 +2455,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1307891545939880"
-							fb_q_msg := "2017/01/27 動漫通\n" +
-										"關聯：為美好的世界獻上祝福！\n" +
-										"問題：哪個不是「和真對阿克婭」的稱號？\n" +
-										"1.茶包女神\n" +
-										"2.廁所女神\n" +
-										"3.廢物女神\n" +
-										"4.宴會女神\n" +
-										"小提示：阿克婭在湖水淨化任務中說自己像什麼？\n" +
-										"出題者：drjo1214\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1307897652605936"
+							fb_q_msg := "2017/01/28 動漫通\n" +
+										"關聯：黑執事\n" +
+										"問題：請問黑執事漫畫中，印度王子和其執事所崇拜的掛著人頭項鍊、吐舌頭、很多手的神 是印度的哪位神明？\n" +
+										"1.密拉(米拉)女神\n" +
+										"2.浮塔(伏拓)女神\n" +
+										"3.莫托(摩多)女神\n" +
+										"4.伽梨(卡莉)女神\n" +
+										"小提示：印度教的女神之一，象徵強大和新生\n" +
+										"出題者：zoe281822191\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/27 動漫通", "答案請參考 FB 討論，可能是 1 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1307891545939880"),
+									imageURL, "2017/01/28 動漫通", "答案請參考 FB 討論，可能是 4 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1307897652605936"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
