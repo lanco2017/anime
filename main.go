@@ -1068,6 +1068,10 @@ func anime(text string,user_msgid string,reply_mode string) string {
             }
 		case "鎖鏈戰記 赫克瑟塔斯之光","鎖鏈戰記","赫克瑟塔斯之光":
 			switch reg.ReplaceAllString(text, "$4") {
+			case "1","01":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7027"
+			case "2","02":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7292"
 			default:
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7027"
 			}
