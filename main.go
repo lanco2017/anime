@@ -655,7 +655,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			default:
 			}
 		//2016.10?
-		case "Yuri on Ice","Yuri","yuri":
+		case "Yuri on Ice","Yuri","yuri","ｙｕｒｉ","Ｙｕｒｉ":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1","01":
