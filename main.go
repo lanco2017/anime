@@ -554,6 +554,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"BanG Dream：Bang、BanG、bang\n" + 
 		"Yuri on Ice：Yuri、yuri\n" +
 		"白銀的意志：白銀\n" +
+		"坂道上的阿波羅：阿波羅\n" +
 		"槍與假面舞會：假面舞會\n" +
 		"為美好的世界獻上祝福 第二季：美好的世界、獻上祝福\n" +
 		"ACCA13 區監察課：監察課、ACCA13\n\n" +
@@ -567,6 +568,35 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+		case "坂道上的阿波羅","阿波羅":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$4") {
+			case "1","01":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6948"
+			case "2","02":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6949"
+			case "3","03":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6950"
+			case "4","04":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6951"
+			case "5","05":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6952"
+			case "6","06":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6953"
+			case "7","07":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6954"
+			case "8","08":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6955"
+			case "9","09":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6956"
+			case "10":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6957"
+			case "11":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6958"
+			case "12":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6959" + "\n\n等等！這是最後一話！？"
+			default:
+			}
 		case "白銀的意志","白銀":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
@@ -847,6 +877,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7258"
             case "3","03":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7285"
+            case "4","04":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7319"
             default:
             }
         //2017.01
