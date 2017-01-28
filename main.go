@@ -683,6 +683,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1","01":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7147"
+			case "2","02":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7321"
 			default:
 			}
 		//2016.10?
@@ -2206,6 +2208,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7259"
 			case "14":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7286"
+			case "15":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7323"
 			default:
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6479"
 			}
@@ -2487,22 +2491,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1307897652605936"
-							fb_q_msg := "2017/01/28 動漫通\n" +
-										"關聯：黑執事\n" +
-										"問題：請問黑執事漫畫中，印度王子和其執事所崇拜的掛著人頭項鍊、吐舌頭、很多手的神 是印度的哪位神明？\n" +
-										"1.密拉(米拉)女神\n" +
-										"2.浮塔(伏拓)女神\n" +
-										"3.莫托(摩多)女神\n" +
-										"4.伽梨(卡莉)女神\n" +
-										"小提示：印度教的女神之一，象徵強大和新生\n" +
-										"出題者：zoe281822191\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1307900569272311"
+							fb_q_msg := "2016/01/29 動漫通\n" +
+										"關聯：加速世界\n" +
+										"問題：有田春雪校內虛擬角色為？\n" +
+										"1.早乙女沙織\n" +
+										"2.頑皮豹\n" +
+										"3.粉紅豬\n" +
+										"4.黑鳳蝶\n" +
+										"小提示：( ´(00)`)\n" +
+										"出題者：ilickyourdad\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/28 動漫通", "答案請參考 FB 討論，可能是 4 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1307897652605936"),
+									imageURL, "2017/01/29 動漫通", "答案請參考 FB 討論，可能是 3 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1307900569272311"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
