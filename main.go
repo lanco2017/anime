@@ -867,6 +867,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7260"
             case "3","03":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7287"
+            case "4","04":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7325"
             default:
             }
 		//2017.01
@@ -1651,6 +1653,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7261"
 			case "40":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7288"
+			case "41":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7327"
 			default:
 			}
 		case "星夢手記","星夢":
@@ -2491,22 +2495,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1307900569272311"
-							fb_q_msg := "2016/01/29 動漫通\n" +
-										"關聯：加速世界\n" +
-										"問題：有田春雪校內虛擬角色為？\n" +
-										"1.早乙女沙織\n" +
-										"2.頑皮豹\n" +
-										"3.粉紅豬\n" +
-										"4.黑鳳蝶\n" +
-										"小提示：( ´(00)`)\n" +
-										"出題者：ilickyourdad\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1308061822589519"
+							fb_q_msg := "2017/01/30 動漫通\n" +
+										"關聯：進擊的巨人\n" +
+										"問題：進擊的巨人動畫中，超大型巨人的身高大約是？\n" +
+										"1.100公尺\n" +
+										"2.170公分\n" +
+										"3.60公尺\n" +
+										"4.60公分\n" +
+										"小提示：約20層樓高\n" +
+										"出題者：aa47107390\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/29 動漫通", "答案請參考 FB 討論，可能是 3 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1307900569272311"),
+									imageURL, "2017/01/30 動漫通", "答案請參考 FB 討論，可能是 3 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1308061822589519"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
