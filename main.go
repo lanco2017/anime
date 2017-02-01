@@ -801,6 +801,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7275"
             case "3","03":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7276"
+            case "4","04":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7308"
             default:
             }
 		//2017.01
@@ -813,6 +815,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7273"
             case "3","03":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7274"
+            case "4","04":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7307"
             default:
             }
 		//2017.01
@@ -825,6 +829,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7267"
             case "3","03":
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7268"
+            case "4","04":
+                    print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7304"
             default:
                     print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7127"
             }
@@ -1745,6 +1751,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7056"
 			case "28":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7271"
+			case "29":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7272"
 			default:
 			}
 		case "神裝少女小纏","小纏","神裝少女","神裝":
@@ -1846,6 +1854,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7146"
 			case "17":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7277"
+			case "18":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7309"
 			default:
 			}
 		case "喵阿愣！","喵阿愣","喵啊愣！","阿愣","啊愣":
@@ -1972,6 +1982,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7289"
 			case "41":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7290"
+			case "42":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7310"
 			default:
 			}
 		case "無畏魔女":
@@ -2495,22 +2507,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1308061822589519"
-							fb_q_msg := "2017/01/30 動漫通\n" +
-										"關聯：進擊的巨人\n" +
-										"問題：進擊的巨人動畫中，超大型巨人的身高大約是？\n" +
-										"1.100公尺\n" +
-										"2.170公分\n" +
-										"3.60公尺\n" +
-										"4.60公分\n" +
-										"小提示：約20層樓高\n" +
-										"出題者：aa47107390\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1310397972355904"
+							fb_q_msg := "2017/02/01 動漫通\n" +
+										"關聯：火影忍者\n" +
+										"問題：自來也額頭上的護額寫的是什麼字？\n" +
+										"1.忍\n" +
+										"2.仙\n" +
+										"3.蝦\n" +
+										"4.油\n" +
+										"小提示：液體\n" +
+										"出題者：kenri721209\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/01/30 動漫通", "答案請參考 FB 討論，可能是 3 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1308061822589519"),
+									imageURL, "2017/02/01 動漫通", "答案請參考 FB 討論，可能是 4 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1310397972355904"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
