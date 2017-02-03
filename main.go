@@ -1413,6 +1413,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7283"
 			case "6":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7315"
+			case "7":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7316"
 			default:
 			}
 		case "路人超能 100","路人","靈能":
