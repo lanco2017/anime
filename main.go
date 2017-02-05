@@ -684,6 +684,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			case "1","01":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7147"
 			case "2","02":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7322"
+			case "3","03":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7321"
 			default:
 			}
@@ -883,6 +885,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7287"
 			case "4","04":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7325"
+			case "5","05":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7326"
 			default:
 			}
 		//2017.01
@@ -1675,6 +1679,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7288"
 			case "41":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7327"
+			case "42":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7328"
 			default:
 			}
 		case "星夢手記","星夢":
@@ -2240,6 +2246,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7286"
 			case "15":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7323"
+			case "16":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7324"
 			default:
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6479"
 			}
@@ -2521,22 +2529,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1310405939021774"
-							fb_q_msg := "2017/02/04 動漫通\n" +
-										"關聯：銀魂\n" +
-										"問題：坂田銀時的稱號是？\n" +
-										"1.小夜叉\n" +
-										"2.鳳仙\n" +
-										"3.白夜叉\n" +
-										"4.千人斬\n" +
-										"小提示：與他的髮色有關\n" +
-										"出題者：GN01959104\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1310410872354614"
+							fb_q_msg := "2017/02/06 動漫通\n" +
+										"關聯：航海王 ONE PIECE 系列（原：海賊王）\n" +
+										"問題：香吉士給羅羅亞·索隆取了什麼綽號？\n" +
+										"1.禿頭\n" +
+										"2.咩咩頭\n" +
+										"3.山本頭\n" +
+										"4.綠藻頭\n" +
+										"小提示：索隆的髮色\n" +
+										"出題者：ilickyourdad\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/02/04 動漫通", "答案請參考 FB 討論，可能是 3 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1310405939021774"),
+									imageURL, "2017/02/04 動漫通", "答案請參考 FB 討論，可能是 4 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1310410872354614"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
