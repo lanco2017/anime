@@ -1915,6 +1915,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7269"
 			case "17":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7270"
+			case "18":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7305"
 			default:
 			}
 		case "雙星之陰陽師","雙星":
@@ -2180,6 +2182,10 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6887"
 			case "10":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6888"
+			case "11":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7342"
+			case "12":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7343"
 			default:
 			}
 		case "我太受歡迎了該怎麼辦","我太受歡迎","受歡迎":
