@@ -841,6 +841,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7268"
 			case "4","04":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7304"
+			case "5","05":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7348
 			default:
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7127"
 			}
@@ -2535,22 +2537,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1310410872354614"
-							fb_q_msg := "2017/02/06 動漫通\n" +
-										"關聯：航海王 ONE PIECE 系列（原：海賊王）\n" +
-										"問題：香吉士給羅羅亞·索隆取了什麼綽號？\n" +
-										"1.禿頭\n" +
-										"2.咩咩頭\n" +
-										"3.山本頭\n" +
-										"4.綠藻頭\n" +
-										"小提示：索隆的髮色\n" +
-										"出題者：ilickyourdad\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1321383347924033"
+							fb_q_msg := "2017/02/07 動漫通\n" +
+										"關聯：少女與戰車 (女子高中生 & 重戰車)\n" +
+										"問題：誰不是烏龜隊的隊員？\n" +
+										"1.角谷杏\n" +
+										"2.小山柚子\n" +
+										"3.河嶋桃\n" +
+										"4.磯邊典子\n" +
+										"小提示：熱愛排球，名字由來為1964年東京奧運會上獲得金牌的排球選手「磯邊沙太」\n" +
+										"出題者：alex02\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/02/04 動漫通", "答案請參考 FB 討論，可能是 4 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1310410872354614"),
+									imageURL, "2017/02/07 動漫通", "答案請參考 FB 討論，可能是 4 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1321383347924033"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
