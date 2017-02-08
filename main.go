@@ -813,6 +813,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7276"
 			case "4","04":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7308"
+			case "5","05":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7359"
 			default:
 			}
 		//2017.01
@@ -827,6 +829,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7274"
 			case "4","04":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7307"
+			case "5","05":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7355"
 			default:
 			}
 		//2017.01
@@ -1775,6 +1779,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7271"
 			case "29":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7272"
+			case "30":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7306"
 			default:
 			}
 		case "神裝少女小纏","小纏","神裝少女","神裝":
@@ -1878,9 +1884,11 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7277"
 			case "18":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7309"
+			case "19":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7363"
 			default:
 			}
-		case "喵阿愣！","喵阿愣","喵啊愣！","阿愣","啊愣":
+		case "喵阿愣！","喵阿愣","喵啊愣！","阿愣","啊愣","喵阿楞！":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1":
@@ -1919,6 +1927,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7270"
 			case "18":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7305"
+			case "19":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7413"
 			default:
 			}
 		case "雙星之陰陽師","雙星":
@@ -2008,6 +2018,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7290"
 			case "42":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7310"
+			case "43":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7367"
 			default:
 			}
 		case "無畏魔女":
@@ -2537,22 +2549,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1321383347924033"
-							fb_q_msg := "2017/02/07 動漫通\n" +
-										"關聯：少女與戰車 (女子高中生 & 重戰車)\n" +
-										"問題：誰不是烏龜隊的隊員？\n" +
-										"1.角谷杏\n" +
-										"2.小山柚子\n" +
-										"3.河嶋桃\n" +
-										"4.磯邊典子\n" +
-										"小提示：熱愛排球，名字由來為1964年東京奧運會上獲得金牌的排球選手「磯邊沙太」\n" +
-										"出題者：alex02\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1323209441074757"
+							fb_q_msg := "2017/02/09 動漫通\n" +
+										"關聯：暮蟬鳴泣時\n" +
+										"問題：暗黑四天王中，前原圭一的代稱是？\n" +
+										"1.K\n" +
+										"2.L\n" +
+										"3.B\n" +
+										"4.Z\n" +
+										"小提示：英文字母第11個\n" +
+										"出題者：yhes914201\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/02/07 動漫通", "答案請參考 FB 討論，可能是 4 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1321383347924033"),
+									imageURL, "2017/02/09 動漫通", "答案請參考 FB 討論，可能是 1 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1323209441074757"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
