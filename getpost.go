@@ -164,7 +164,7 @@ func HttpPost_JANDI(body, connectColor, title, code string) error {
 		"connectColor":"` + connectColor + `",
 		"connectInfo" : [{
 				"title" : "` + title + `",
-				"description" : "這是來自 LINE BOT 的通風報信",
+				"description" : "這是來自 巴哈姆特 LINE BOT 的通風報信",
 				"imageUrl": "https://line.me/R/ti/p/@pyv6283b、@sjk2434l"
 		},{
 				"title" : "參考數據",
