@@ -765,7 +765,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			default:
 			}
 		//2017
-		case "MARGINAL":
+		case "MARGINAL","MARGINAL#":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
