@@ -2569,7 +2569,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/02/10 動漫通", "答案請參考 FB 討論，可能是 1 ",
+									imageURL, "2017/02/10 動漫通", "答案請參考 FB 討論，可能是 3 ",
 									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1323211267741241"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
