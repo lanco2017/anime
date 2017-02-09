@@ -758,6 +758,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7279"
 			case "4","04":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7311"
+			case "5","05":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7371"
 			default:
 			}
 		//2017
@@ -772,6 +774,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7281"
 				case "4","04":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7312"
+				case "5","05":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7375"
 			default:
 			}
 		case "夏雪之約","夏雪":
