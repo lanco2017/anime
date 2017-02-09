@@ -410,26 +410,26 @@ func real_num(text string) string {
 
 //new
 
-//----javascript 代勞區	https://trello.com/c/OXnZDLzG/86-javascript-golang
+// ----javascript 代勞區	https://trello.com/c/OXnZDLzG/86-javascript-golang
 	// //2017 +1
 	// function get_anime(ad=''){
-	//	 var output_string = "		case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n			\/\/reg.ReplaceAllString(text, \"$2\")\n			switch reg.ReplaceAllString(text, \"$4\") {\n";
-	//	 var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
-	//	 for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
-	//		 if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
-	//			 if(num>0){
-	//						 if(num<10){
-	//						 	output_string += "			case \"" + num + "\",\"0" + num + "\":\n" + "				print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
-	//						 }else{
+	// 	 var output_string = "		case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n			\/\/reg.ReplaceAllString(text, \"$2\")\n			switch reg.ReplaceAllString(text, \"$4\") {\n";
+	// 	 var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
+	// 	 for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
+	// 		 if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
+	// 			 if(num>0){
+	// 						 if(num<10){
+	// 						 	output_string += "			case \"" + num + "\",\"0" + num + "\":\n" + "				print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
+	// 						 }else{
 	// 							output_string += "			case \"" + num + "\":\n" + "				print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
 	// 						}
-	//			 }
-	//			 num++;
-	//		 }
-	//	 }
-	//	 output_string += "			default:\n			}";
-	//	 console.log(output_string)
-	//	 //return output_string;
+	// 			 }
+	// 			 num++;
+	// 		 }
+	// 	 }
+	// 	 output_string += "			default:\n			}";
+	// 	 console.log(output_string)
+	// 	 //return output_string;
 	// }
 
 	// get_anime(0);//get_anime(); //沒廣告的時候
@@ -559,6 +559,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"坂道上的阿波羅：阿波羅\n" +
 		"槍與假面舞會：假面舞會\n" +
 		"為美好的世界獻上祝福 第二季：美好的世界、獻上祝福\n" +
+		"魔物娘的同居日常：魔物娘\n" +
 		"ACCA13 區監察課：監察課、ACCA13\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者","admin","Admin","ａｄｍｉｎ":
@@ -570,6 +571,35 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+		case "魔物娘的同居日常","魔物娘":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$4") {
+			case "1","01":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7244"
+			case "2","02":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7245"
+			case "3","03":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7246"
+			case "4","04":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7247"
+			case "5","05":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7248"
+			case "6","06":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7249"
+			case "7","07":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7250"
+			case "8","08":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7251"
+			case "9","09":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7252"
+			case "10":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7253"
+			case "11":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7254"
+			case "12":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7255"
+			default:
+			}
 		case "坂道上的阿波羅","阿波羅":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
@@ -744,6 +774,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7313"
 			case "4","04":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7314"
+			case "5","05":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7379"
 			default:
 			}
 		//2017
