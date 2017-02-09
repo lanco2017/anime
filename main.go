@@ -413,7 +413,7 @@ func real_num(text string) string {
 // ----javascript 代勞區	https://trello.com/c/OXnZDLzG/86-javascript-golang
 	// //2017 +1
 	// function get_anime(ad=''){
-	// 	 var output_string = "		case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n			\/\/reg.ReplaceAllString(text, \"$2\")\n			switch reg.ReplaceAllString(text, \"$4\") {\n";
+	// 	 var output_string = "		case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n			\/\/reg.ReplaceAllString(text, \"$2\")\n			switch reg.ReplaceAllString(text, \"$5\") {\n";
 	// 	 var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
 	// 	 for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
 	// 		 if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
@@ -459,13 +459,15 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	//2017.01.12+ 1A 1B 這種話數
 	//reg := regexp.MustCompile("^(動畫|動畫瘋|懶|巴哈|巴哈姆特|anime|Anime|ａｎｉｍｅ|Ａｎｉｍｅ|アニメ)(\\s|　|:|;|：|；)([\u30a0-\u30ff\u3040-\u309f\u4e00-\u9fd5_a-zA-Z0-9]*)\\D*([0-9.A-Za-z]{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	//2017.02.10+ 動畫名稱+捕捉空格...(沒關係反正後面的東西不是數字就可以對到)
-	reg := regexp.MustCompile("^(動畫|動畫瘋|懶|巴哈|巴哈姆特|anime|Anime|ａｎｉｍｅ|Ａｎｉｍｅ|アニメ)(\\s|　|:|;|：|；)([\u30a0-\u30ff\u3040-\u309f\u4e00-\u9fd5_a-zA-Z0-9\\s]*)\\D*([0-9.A-Za-z]{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))	
+	//reg := regexp.MustCompile("^(動畫|動畫瘋|懶|巴哈|巴哈姆特|anime|Anime|ａｎｉｍｅ|Ａｎｉｍｅ|アニメ)(\\s|　|:|;|：|；)([\u30a0-\u30ff\u3040-\u309f\u4e00-\u9fd5_a-zA-Z0-9\\s]*)\\D*([0-9.A-Za-z]{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))	
+	reg := regexp.MustCompile("^(動畫|動畫瘋|懶|巴哈|巴哈姆特|anime|Anime|ａｎｉｍｅ|Ａｎｉｍｅ|アニメ)(\\s|　|:|;|：|；)([\u30a0-\u30ff\u3040-\u309f\u4e00-\u9fd5_a-zA-Z0-9\\s]*)(\\s|　|:|;|：|；)([0-9.A-Za-z]{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))	
 
 	log.Print("--抓取分析觀察--")
 	log.Print(reg.ReplaceAllString(text, "$1"))
 	log.Print(reg.ReplaceAllString(text, "$2"))
 	log.Print(reg.ReplaceAllString(text, "$3"))
 	log.Print(reg.ReplaceAllString(text, "$4"))
+	log.Print(reg.ReplaceAllString(text, "$5"))
 	log.Print(reg.ReplaceAllString(text, "--抓取分析結束--"))
 	
 	switch reg.ReplaceAllString(text, "$1"){
@@ -573,7 +575,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		switch reg.ReplaceAllString(text, "$3") {
 		case "魔物娘的同居日常","魔物娘":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7244"
 			case "2","02":
@@ -602,7 +604,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "坂道上的阿波羅","阿波羅":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6948"
 			case "2","02":
@@ -631,7 +633,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "白銀的意志","白銀":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7184"
 			case "2","02":
@@ -684,7 +686,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "槍與假面舞會","假面舞會":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7172"
 			case "2","02":
@@ -712,7 +714,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			default:
 			}
 		case "BanG Dream","Bang","BanG","bang":
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7147"
 			case "2","02":
@@ -724,7 +726,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		//2016.10?
 		case "Yuri on Ice","Yuri","yuri","ｙｕｒｉ","Ｙｕｒｉ":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7265"
 			case "2","02":
@@ -735,7 +737,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "終物語":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7220"
 			case "2","02":
@@ -765,7 +767,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		//2017
 		case "MARGINAL":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7158"
 			case "2","02":
@@ -781,7 +783,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		//2017
 		case "混沌之子":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01","1A":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7156"
 			case "1.5","1B":
@@ -799,7 +801,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		//2017
 		case "為美好的世界獻上祝福！ 第二季","為美好的世界獻上祝福","獻上祝福！ 第二季","美好的世界":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 				case "1","01":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7157"
 				case "2","02":
@@ -814,7 +816,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "夏雪之約","夏雪":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7116"
 			case "2","02":
@@ -842,7 +844,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		//2017.01
 		case "Hand Shakers","hand shakers","hand","Hand Shakers ":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7155"
 			case "2","02":
@@ -858,7 +860,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		//2017.01
 		case "ACCA13 區監察課","監察課","ACCA","ACCA13","Acca13","Ａｃｃａ13","ＡＣＣＡ13":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7154"
 			case "2","02":
@@ -874,7 +876,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		//2017.01
 		case "南鎌倉高校女子自行車社","南鎌倉自行車","南鎌倉高校","女子自行車":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7127"
 			case "2","02":
@@ -890,7 +892,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "花舞少女","花舞":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7127"
 			case "2","02":
@@ -920,7 +922,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		//2017.01
 		case "亞人醬有話要說","亞人","亞人醬","有話","有話要說":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7151"
 			case "2","02":
@@ -936,7 +938,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		//2017.01
 		case "青之驅魔師 京都不淨王篇","青之","不淨王":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7149"
 			case "2","02":
@@ -952,7 +954,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		//2017.01
 		case "幼女戰記","幼女":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7148"
 			case "2","02":
@@ -967,7 +969,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "偶像大師 灰姑娘女孩","灰姑娘","灰姑娘女孩":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7091"
 			case "2":
@@ -1022,7 +1024,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "藍海少女":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5867"
 			case "2":
@@ -1051,7 +1053,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "月歌。","月歌":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5792"
 			case "2":
@@ -1082,7 +1084,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "男子啦啦隊","男子啦啦","男子拉拉隊","男子拉拉":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5860"
 			case "2":
@@ -1114,7 +1116,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "發條精靈戰記 天鏡的極北之星","發條精靈","精靈戰記":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5872"
 			case "2":
@@ -1145,7 +1147,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "乒乓":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7058"
 			case "2":
@@ -1171,7 +1173,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			default:
 			}
 		case "鎖鏈戰記 赫克瑟塔斯之光","鎖鏈戰記","赫克瑟塔斯之光":
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7027"
 			case "2","02":
@@ -1181,7 +1183,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "在那個夏天等待","那個夏天":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=4196"
 			case "2":
@@ -1210,7 +1212,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "來自風平浪靜的明日","風平浪靜","風平浪靜的明日","浪靜的明日":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=196"
 			case "2":
@@ -1267,7 +1269,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "羅馬浴場 THERMAE ROMAE","羅馬浴場","浴場":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6987"
 			case "2":
@@ -1282,7 +1284,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "Thunderbolt Fantasy 東離劍遊紀","東離劍遊紀","東離","Thunderbolt Fantasy","Thunderbolt":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5884"
 			case "2":
@@ -1313,7 +1315,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "Re：從零開始的異世界生活","從零","異世界生活","re","Re":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=4996"
 			case "2":
@@ -1368,7 +1370,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "線上遊戲的老婆不可能是女生","線上遊戲的老婆不可能是女生？","老婆不可能","線上遊戲的老婆","不可能是女生":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5012"
 			case "2":
@@ -1397,7 +1399,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "進擊的巨人","進擊","巨人":
 		   //reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3499"
 			case "2":
@@ -1452,7 +1454,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "殺老師","殺老師 Q","殺老師Q":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7057"
 			case "2":
@@ -1471,7 +1473,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "路人超能 100","路人","靈能":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5863"
 			case "2":
@@ -1500,7 +1502,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "釣球":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6992"
 			case "2":
@@ -1530,7 +1532,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		//還沒跟其他部合併
 		case "影子籃球員","影子籃球","影子籃":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3896"
 			case "2":
@@ -1587,7 +1589,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "文豪野犬 第二季","文豪野犬","文豪","野犬":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6130"
 			case "2":
@@ -1640,7 +1642,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "機動戰士鋼彈 鐵血孤兒 第二季","機動戰士鋼彈 鐵血孤兒","機動戰士鋼彈","鐵血孤兒":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=2543"
 			case "2":
@@ -1729,7 +1731,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "星夢手記","星夢":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6769"
 			case "2":
@@ -1758,7 +1760,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}	
 		case "少年阿貝GO！GO！小芝麻","少年阿貝","阿貝","小芝麻","芝麻","GO！":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=4999"
 			case "2":
@@ -1823,7 +1825,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "神裝少女小纏","小纏","神裝少女","神裝":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6406"
 			case "2":
@@ -1856,7 +1858,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "夏目友人帳 伍","夏目友人帳","夏目","有人","有人帳","帳":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6425"
 			case "2":
@@ -1885,7 +1887,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "黑白來看守所","黑白來","看守所","黑白":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6473"
 			case "2":
@@ -1928,7 +1930,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "喵阿愣！","喵阿愣","喵啊愣！","阿愣","啊愣","喵阿楞！":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6850"
 			case "2":
@@ -1971,7 +1973,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "雙星之陰陽師","雙星":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=4998"
 			case "2":
@@ -2062,7 +2064,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "無畏魔女":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6419"
 			case "2":
@@ -2091,13 +2093,13 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "伯納德小姐說","小姐說","伯納德","伯納":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			default:
 				print_string = "可能不受歡迎或其他原因，\n很遺憾這部已經下架，請幫QQ"
 			}
 		case "漂流武士":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6485"
 			case "2":
@@ -2128,7 +2130,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		//還沒合其他部
 		case "JOJO 的奇妙冒險 不滅鑽石","Jojo","jojo","JOJO","JOJO的奇妙冒險","奇妙冒險":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=4994"
 			case "2":
@@ -2211,7 +2213,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "長騎美眉","長騎","單車":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6407"
 			case "2":
@@ -2242,7 +2244,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "我太受歡迎了該怎麼辦","我太受歡迎","受歡迎":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6413"
 			case "2":
@@ -2271,7 +2273,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "3月","3月的獅子","三月的獅子","三月":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6479"
 			case "2":
@@ -2311,7 +2313,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "美術社","美術社大有問題","這個美術社大有問題":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=5871"
 			case "2":
@@ -2340,7 +2342,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			}
 		case "歌之☆王子殿下♪ 真愛","歌王子","uta","哥王子":
 			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$4") {
+			switch reg.ReplaceAllString(text, "$5") {
 			case "1":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6436" +
 				"\n\n上面查到的這是第四部！日本 2016 年十月才開播。\n還是你要看其他的呢？\n\n" +
