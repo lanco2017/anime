@@ -840,7 +840,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			default:
 			}
 		//2017.01
-		case "Hand Shakers","hand shakers","hand":
+		case "Hand Shakers","hand shakers","hand","Hand Shakers ":
 		   //reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$4") {
 			case "1","01":
