@@ -457,7 +457,9 @@ func anime(text string,user_msgid string,reply_mode string) string {
 	//2017.01.05+ 日文（\u30a0-\u30ff\u3040-\u309f）   全形英文數字（\uff21-\uff3a\uff41-\uff5a\uff10-\uff19）
 	//reg := regexp.MustCompile("^(動畫|動畫瘋|懶|巴哈|巴哈姆特|anime|Anime|ａｎｉｍｅ|Ａｎｉｍｅ|アニメ)(\\s|　|:|;|：|；)([\u30a0-\u30ff\u3040-\u309f\u4e00-\u9fd5_a-zA-Z0-9]*)\\D*([0-9.]{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
 	//2017.01.12+ 1A 1B 這種話數
-	reg := regexp.MustCompile("^(動畫|動畫瘋|懶|巴哈|巴哈姆特|anime|Anime|ａｎｉｍｅ|Ａｎｉｍｅ|アニメ)(\\s|　|:|;|：|；)([\u30a0-\u30ff\u3040-\u309f\u4e00-\u9fd5_a-zA-Z0-9]*)\\D*([0-9.A-Za-z]{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
+	//reg := regexp.MustCompile("^(動畫|動畫瘋|懶|巴哈|巴哈姆特|anime|Anime|ａｎｉｍｅ|Ａｎｉｍｅ|アニメ)(\\s|　|:|;|：|；)([\u30a0-\u30ff\u3040-\u309f\u4e00-\u9fd5_a-zA-Z0-9]*)\\D*([0-9.A-Za-z]{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))
+	//2017.02.10+ 動畫名稱+捕捉空格...(沒關係反正後面的東西不是數字就可以對到)
+	reg := regexp.MustCompile("^(動畫|動畫瘋|懶|巴哈|巴哈姆特|anime|Anime|ａｎｉｍｅ|Ａｎｉｍｅ|アニメ)(\\s|　|:|;|：|；)([\u30a0-\u30ff\u3040-\u309f\u4e00-\u9fd5_a-zA-Z0-9\\s]*)\\D*([0-9.A-Za-z]{1,})") //fmt.Printf("%q\n", reg.FindAllString(text, -1))	
 
 	log.Print("--抓取分析觀察--")
 	log.Print(reg.ReplaceAllString(text, "$1"))
@@ -2553,22 +2555,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1323209441074757"
-							fb_q_msg := "2017/02/09 動漫通\n" +
-										"關聯：暮蟬鳴泣時\n" +
-										"問題：暗黑四天王中，前原圭一的代稱是？\n" +
-										"1.K\n" +
-										"2.L\n" +
-										"3.B\n" +
-										"4.Z\n" +
-										"小提示：英文字母第11個\n" +
-										"出題者：yhes914201\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1323211267741241"
+							fb_q_msg := "2017/02/10 動漫通\n" +
+										"關聯：加速世界\n" +
+										"問題：哪個對戰虛擬角色在現實世界是男性？\n" +
+										"1.Ash Roller\n" +
+										"2.Aqua Current\n" +
+										"3.Glass monarch\n" +
+										"4.Scarlet Rain\n" +
+										"小提示：玻璃君主\n" +
+										"出題者：xjohn116\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/02/09 動漫通", "答案請參考 FB 討論，可能是 1 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1323209441074757"),
+									imageURL, "2017/02/10 動漫通", "答案請參考 FB 討論，可能是 1 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1323211267741241"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
