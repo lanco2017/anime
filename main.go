@@ -949,6 +949,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7319"
 			case "5","05":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7320"
+			case "6","06":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7391"
 			default:
 			}
 		//2017.01
@@ -965,6 +967,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7317"
 			case "5","05":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7318"
+			case "6","06":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7387"
 			default:
 			}
 		case "偶像大師 灰姑娘女孩","灰姑娘","灰姑娘女孩":
@@ -2591,22 +2595,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1323211267741241"
-							fb_q_msg := "2017/02/10 動漫通\n" +
-										"關聯：加速世界\n" +
-										"問題：哪個對戰虛擬角色在現實世界是男性？\n" +
-										"1.Ash Roller\n" +
-										"2.Aqua Current\n" +
-										"3.Glass monarch\n" +
-										"4.Scarlet Rain\n" +
-										"小提示：玻璃君主\n" +
-										"出題者：xjohn116\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1323211947741173"
+							fb_q_msg := "2017/02/11 動漫通\n" +
+"關聯：航海王 ONE PIECE 系列（原：海賊王）\n" +
+"問題：以下誰的懸賞金額最低？\n" +
+"1.騙人布\n" +
+"2.娜美\n" +
+"3.布魯克\n" +
+"4.喬巴\n" +
+"小提示：船醫\n" +
+"出題者：D106\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/02/10 動漫通", "答案請參考 FB 討論，可能是 3 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1323211267741241"),
+									imageURL, "2017/02/11 動漫通", "答案請參考 FB 討論，可能是 4 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1323211947741173"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
