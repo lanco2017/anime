@@ -721,6 +721,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7321"
 			case "3","03":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7322"
+			case "4","04":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7395"
 			default:
 			}
 		//2016.10?
@@ -933,6 +935,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7325"
 			case "5","05":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7326"
+			case "6","06":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7403"
 			default:
 			}
 		//2017.01
@@ -2314,6 +2318,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7323"
 			case "16":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7324"
+			case "17":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7399"
 			default:
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6479"
 			}
@@ -2595,22 +2601,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1323211947741173"
-							fb_q_msg := "2017/02/11 動漫通\n" +
-"關聯：航海王 ONE PIECE 系列（原：海賊王）\n" +
-"問題：以下誰的懸賞金額最低？\n" +
-"1.騙人布\n" +
-"2.娜美\n" +
-"3.布魯克\n" +
-"4.喬巴\n" +
-"小提示：船醫\n" +
-"出題者：D106\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1323253147737053"
+							fb_q_msg := "2017/02/12 動漫通\n" + 
+"關聯：鬼灯的冷徹\n" + 
+"問題：在桃源鄉研究藥學，和鬼灯水火不容卻長得很相像的神獸是？\n" + 
+"1.饕餮\n" + 
+"2.畢方\n" + 
+"3.白澤\n" + 
+"4.鳳凰\n" + 
+"小提示：神話故事中崑崙山上著名、渾身雪白的神獸\n" + 
+"出題者：jeansue01\n" + 
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/02/11 動漫通", "答案請參考 FB 討論，可能是 4 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1323211947741173"),
+									imageURL, "2017/02/12 動漫通", "答案請參考 FB 討論，可能是 3 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1323253147737053"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
