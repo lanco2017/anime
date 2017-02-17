@@ -2601,22 +2601,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1323253147737053"
-							fb_q_msg := "2017/02/12 動漫通\n" + 
-"關聯：鬼灯的冷徹\n" + 
-"問題：在桃源鄉研究藥學，和鬼灯水火不容卻長得很相像的神獸是？\n" + 
-"1.饕餮\n" + 
-"2.畢方\n" + 
-"3.白澤\n" + 
-"4.鳳凰\n" + 
-"小提示：神話故事中崑崙山上著名、渾身雪白的神獸\n" + 
-"出題者：jeansue01\n" + 
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1329418080453893"
+							fb_q_msg := "2017/02/17 動漫通\n" +
+"關聯：緋彈的亞莉亞\n" +
+"問題：巴斯克維爾小隊裡請問誰是小隊隊長？\n" +
+"1.神崎‧H‧亞莉亞\n" +
+"2.星伽白雪\n" +
+"3.遠山金次\n" +
+"4.峰理子\n" +
+"小提示：本作男主角\n" +
+"出題者：gameover1996\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/02/12 動漫通", "答案請參考 FB 討論，可能是 3 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1323253147737053"),
+									imageURL, "2017/02/17 動漫通", "答案請參考 FB 討論，可能是 3 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1329418080453893"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
