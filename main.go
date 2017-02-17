@@ -563,7 +563,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"為美好的世界獻上祝福 第二季：美好的世界、獻上祝福\n" +
 		"魔物娘的同居日常：魔物娘\n" +
 		"ACCA13 區監察課：監察課、ACCA13\n" +
-		"獵人\n\n" +
+		"獵人 Hunter x Hunter：獵人、Hunter、hunter、hunter x hunter、Hunter x Hunter\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者","admin","Admin","ａｄｍｉｎ":
 		print_string = "你找我主人？OK！\n我跟你講我的夥伴喵在哪，你去加他。\n他跟主人很親近的，跟他說的話主人都會看到。\nhttps://line.me/R/ti/p/%40uwk0684z\n\n\n你也可以從下面這個連結直接去找主人線上對話。\n\n如果他不在線上一樣可以留言給他，\n他會收到的！\n這跟手機、電腦桌面軟體都有同步連線。" +
@@ -574,7 +574,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
-		case "獵人 Hunter x Hunter","獵人","Hunter","hunter","hunter x hunter":
+		case "獵人 Hunter x Hunter","獵人","Hunter","hunter","hunter x hunter","Hunter x Hunter":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
