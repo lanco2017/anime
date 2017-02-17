@@ -1258,17 +1258,17 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		   //reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7149"
+					print_string = anime_say + "\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7149"
 			case "2","02":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7258"
+					print_string = anime_say + "\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7258"
 			case "3","03":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7285"
+					print_string = anime_say + "\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7285"
 			case "4","04":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7319"
+					print_string = anime_say + "\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7319"
 			case "5","05":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7320"
+					print_string = anime_say + "\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7320"
 			case "6","06":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7391"
+					print_string = anime_say + "\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7391"
 			default:
 			}
 		//2017.01
