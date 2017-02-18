@@ -1254,21 +1254,59 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			default:
 			}
 		//2017.01
-		case "青之驅魔師 京都不淨王篇","青之","不淨王":
+		case "青之驅魔師","青之驅魔師 京都不淨王篇","青之","不淨王":
 		   //reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
-					print_string = anime_say + "\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7149"
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3524\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7149"
 			case "2","02":
-					print_string = anime_say + "\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7258"
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3525\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7258"
 			case "3","03":
-					print_string = anime_say + "\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7285"
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3526\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7285"
 			case "4","04":
-					print_string = anime_say + "\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7319"
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3527\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7319"
 			case "5","05":
-					print_string = anime_say + "\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7320"
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3528\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7320"
 			case "6","06":
-					print_string = anime_say + "\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7391"
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3529\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7391"
+			case "7","07":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3530"
+			case "8","08":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3531"
+			case "9","09":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3532"
+			case "10":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3533"
+			case "11":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3534"
+			case "12":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3535"
+			case "13":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3536"
+			case "14":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3537"
+			case "15":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3538"
+			case "16":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3539"
+			case "17":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3540"
+			case "18":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3541"
+			case "19":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3542"
+			case "20":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3543"
+			case "21":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3544"
+			case "22":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3545"
+			case "23":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3546"
+			case "24":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3547"
+			case "25":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3548"
 			default:
 			}
 		//2017.01
