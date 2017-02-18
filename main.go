@@ -1307,7 +1307,10 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3547"
 			case "25":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3548"
+			case "movie":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeRef.php?sn=52194"
 			default:
+				print_string = anime_say + "http://ani.gamer.com.tw/animeRef.php?sn=52194"
 			}
 		//2017.01
 		case "幼女戰記","幼女":
