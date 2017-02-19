@@ -1025,6 +1025,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7322"
 			case "4","04":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7395"
+			case "5","05":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7396"
 			default:
 			}
 		//2016.10?
@@ -1251,6 +1253,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7326"
 			case "6","06":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7403"
+			case "7","07":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7404"
 			default:
 			}
 		//2017.01
@@ -2096,6 +2100,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7328"
 			case "43":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7407"
+			case "44":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7408"
 			default:
 			}
 		case "星夢手記","星夢":
@@ -2648,7 +2654,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6870" + "\n\n等等！這是最後一話！？"
 			default:
 			}
-		case "3月","3月的獅子","三月的獅子","三月":
+		case "3月","3 月的獅子","3月的獅子","三月的獅子","三月":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
@@ -2687,6 +2693,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7324"
 			case "17":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7399"
+			case "18":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7400"
 			default:
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6479"
 			}
