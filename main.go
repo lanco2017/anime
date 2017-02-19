@@ -2976,22 +2976,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1329418080453893"
-							fb_q_msg := "2017/02/17 動漫通\n" +
-"關聯：緋彈的亞莉亞\n" +
-"問題：巴斯克維爾小隊裡請問誰是小隊隊長？\n" +
-"1.神崎‧H‧亞莉亞\n" +
-"2.星伽白雪\n" +
-"3.遠山金次\n" +
-"4.峰理子\n" +
-"小提示：本作男主角\n" +
-"出題者：gameover1996\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1330462430349458"
+							fb_q_msg := "2017/02/20 動漫通\n" +
+"關聯：火影忍者\n" +
+"問題：火影忍者中，底下哪個是綱手的絕招？\n" +
+"1.一搓火藥\n" +
+"2.千鳥流\n" +
+"3.痛天腳\n" +
+"4.如來神掌\n" +
+"小提示：C級體術\n" +
+"出題者：atmp7689\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/02/17 動漫通", "答案請參考 FB 討論，可能是 3 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1329418080453893"),
+									imageURL, "2017/02/20 動漫通", "答案請參考 FB 討論，可能是 3 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1330462430349458"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
