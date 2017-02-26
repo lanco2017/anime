@@ -3156,22 +3156,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1337215899674111"
-							fb_q_msg := "2017/02/26 動漫通\n" +
-"關聯：刀劍神域\n" +
-"問題：動畫「刀劍神域」裡，桐人曾經加入過哪一個公會？\n" +
-"1.沉睡騎士\n" +
-"2.聖龍聯合\n" +
-"3.風林火山\n" +
-"4.月夜黑貓團\n" +
-"小提示：ヽ(=^･ω･^=)丿\n" +
-"出題者：rose0911\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1337218343007200"
+							fb_q_msg := "2017/02/27 動漫通\n" + 
+"關聯：Fairy Tail 魔導少年\n" + 
+"問題：故事中統領整個星靈界的人叫？\n" + 
+"1.通靈王\n" + 
+"2.星靈王\n" + 
+"3.棋靈王\n" + 
+"4.精靈王\n" + 
+"小提示：題目已經說出來啦(´⊙ω⊙`)\n" + 
+"出題者：xtn19931\n" + 
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/02/26 動漫通", "答案請參考 FB 討論，可能是 4 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1337215899674111"),
+									imageURL, "2017/02/27 動漫通", "答案請參考 FB 討論，可能是 2 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1337218343007200"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
