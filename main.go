@@ -563,6 +563,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		"為美好的世界獻上祝福 第二季：美好的世界、獻上祝福\n" +
 		"魔物娘的同居日常：魔物娘\n" +
 		"ACCA13 區監察課：監察課、ACCA13\n" +
+		"史上最強弟子兼一：兼一\n" +
+		"青年黑傑克：黑傑克、BJ、少年黑傑克\n" +
 		"獵人 Hunter x Hunter：獵人、Hunter、hunter、hunter x hunter、Hunter x Hunter\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者","admin","Admin","ａｄｍｉｎ":
@@ -574,6 +576,140 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+		case "青年黑傑克","黑傑克","BJ","少年黑傑克":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$5") {
+			case "1","01":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7232"
+			case "2","02":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7233"
+			case "3","03":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7234"
+			case "4","04":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7235"
+			case "5","05":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7236"
+			case "6","06":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7237"
+			case "7","07":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7238"
+			case "8","08":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7239"
+			case "9","09":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7240"
+			case "10":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7241"
+			case "11":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7242"
+			case "12":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7243" + "\n\n等等！這是最後一話！？"
+			default:
+			}
+		case "史上最強弟子兼一","兼一":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$5") {
+			case "1","01":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1191"
+			case "2","02":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1208"
+			case "3","03":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1161"
+			case "4","04":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1162"
+			case "5","05":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1163"
+			case "6","06":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1164"
+			case "7","07":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1165"
+			case "8","08":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1166"
+			case "9","09":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1167"
+			case "10":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1168"
+			case "11":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1169"
+			case "12":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1170"
+			case "13":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1171"
+			case "14":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1172"
+			case "15":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1173"
+			case "16":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1174"
+			case "17":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1175"
+			case "18":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1209"
+			case "19":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1176"
+			case "20":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1177"
+			case "21":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1178"
+			case "22":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1179"
+			case "23":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1180"
+			case "24":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1181"
+			case "25":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1182"
+			case "26":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1183"
+			case "27":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1184"
+			case "28":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1185"
+			case "29":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1186"
+			case "30":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1187"
+			case "31":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1188"
+			case "32":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1189"
+			case "33":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1190"
+			case "34":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1210"
+			case "35":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1192"
+			case "36":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1193"
+			case "37":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1194"
+			case "38":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1195"
+			case "39":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1196"
+			case "40":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1197"
+			case "41":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1198"
+			case "42":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1199"
+			case "43":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1200"
+			case "44":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1201"
+			case "45":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1202"
+			case "46":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1203"
+			case "47":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1204"
+			case "48":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1205"
+			case "49":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1206"
+			case "50":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=1207" + "\n\n等等！這是最後一話！？"
+			default:
+			}
 		case "獵人 Hunter x Hunter","獵人","Hunter","hunter","hunter x hunter","Hunter x Hunter":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$5") {
@@ -1027,10 +1163,12 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7395"
 			case "5","05":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7396"
+			case "6","06":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7397"
 			default:
 			}
 		//2016.10?
-		case "Yuri on Ice","Yuri","yuri","ｙｕｒｉ","Ｙｕｒｉ":
+		case "Yuri on Ice","Yuri","yuri","ｙｕｒｉ","Ｙｕｒｉ","YURI!!!on ICE":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
@@ -1039,6 +1177,14 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7266"
 			case "3","03":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7293"
+			case "4","04":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7329"
+			case "5","05":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7344"
+			case "6","06":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7345"
+			case "7","07":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7346"
 			default:
 			}
 		case "終物語":
@@ -1086,6 +1232,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7379"
 			case "6","06":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7380"
+			case "7","07":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7381"
 			default:
 			}
 		//2017
@@ -1106,6 +1254,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7371"
 			case "6","06":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7372"
+			case "7","07":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7373"
 			default:
 			}
 		//2017
@@ -1124,6 +1274,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7375"
 				case "6","06":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7376"
+				case "7","07":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7377"
 			default:
 			}
 		case "夏雪之約","夏雪":
@@ -1169,6 +1321,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7359"
 			case "6","06":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7360"
+			case "7","07":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7361"
 			default:
 			}
 		//2017.01
@@ -1187,6 +1341,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7355"
 			case "6","06":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7356"
+			case "7","07":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7357"
 			default:
 			}
 		//2017.01
@@ -1205,6 +1361,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7348"
 			case "6","06":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7349"
+			case "7","07":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7350"
 			default:
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7127"
 			}
@@ -1255,6 +1413,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7403"
 			case "7","07":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7404"
+			case "8","08":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7405"
 			default:
 			}
 		//2017.01
@@ -1274,9 +1434,9 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			case "6","06":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3529\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7391"
 			case "7","07":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3530"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3530\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7392"
 			case "8","08":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3531"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3531\n\n京都不淨王篇\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7393"
 			case "9","09":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3532"
 			case "10":
@@ -1332,6 +1492,10 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7318"
 			case "6","06":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7387"
+			case "6.5","06.5":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7388"
+			case "7","07":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7389"
 			default:
 			}
 		case "偶像大師 灰姑娘女孩","灰姑娘","灰姑娘女孩":
@@ -1545,6 +1709,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7027"
 			case "2","02":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7292"
+			case "3","03":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7445"
 			default:
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7027"
 			}
@@ -1819,7 +1985,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3513" + "\n\n等等！這是最後一話！？"
 			default:
 			}
-		case "殺老師","殺老師 Q","殺老師Q":
+		case "殺老師","殺老師 Q","殺老師Q","殺老師 Q！":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
@@ -1840,6 +2006,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7383"
 			case "9","09":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7384"
+			case "10":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7385"
 			default:
 			}
 		case "路人超能 100","路人","靈能":
@@ -2102,6 +2270,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7407"
 			case "44":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7408"
+			case "45":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7409"
 			default:
 			}
 		case "星夢手記","星夢":
@@ -2198,6 +2368,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7306"
 			case "31":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7352"
+			case "32":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7353"
 			default:
 			}
 		case "神裝少女小纏","小纏","神裝少女","神裝":
@@ -2305,6 +2477,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7363"
 			case "20":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7364"
+			case "21":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7365"
 			default:
 			}
 		case "喵阿愣！","喵阿愣","喵啊愣！","阿愣","啊愣","喵阿楞！","喵阿楞":
@@ -2350,6 +2524,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7413"
 			case "20":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7414"
+			case "21":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7415"
 			default:
 			}
 		case "雙星之陰陽師","雙星":
@@ -2443,6 +2619,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7367"
 			case "44":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7368"
+			case "45":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7369"
 			default:
 			}
 		case "無畏魔女":
@@ -2695,6 +2873,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7399"
 			case "18":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7400"
+			case "19":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7401"
 			default:
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6479"
 			}
@@ -2976,22 +3156,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1330462430349458"
-							fb_q_msg := "2017/02/20 動漫通\n" +
-"關聯：火影忍者\n" +
-"問題：火影忍者中，底下哪個是綱手的絕招？\n" +
-"1.一搓火藥\n" +
-"2.千鳥流\n" +
-"3.痛天腳\n" +
-"4.如來神掌\n" +
-"小提示：C級體術\n" +
-"出題者：atmp7689\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1337215899674111"
+							fb_q_msg := "2017/02/26 動漫通\n" +
+"關聯：刀劍神域\n" +
+"問題：動畫「刀劍神域」裡，桐人曾經加入過哪一個公會？\n" +
+"1.沉睡騎士\n" +
+"2.聖龍聯合\n" +
+"3.風林火山\n" +
+"4.月夜黑貓團\n" +
+"小提示：ヽ(=^･ω･^=)丿\n" +
+"出題者：rose0911\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/02/20 動漫通", "答案請參考 FB 討論，可能是 3 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1330462430349458"),
+									imageURL, "2017/02/26 動漫通", "答案請參考 FB 討論，可能是 4 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1337215899674111"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
