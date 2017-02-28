@@ -3156,22 +3156,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1337218343007200"
-							fb_q_msg := "2017/02/27 動漫通\n" + 
-"關聯：Fairy Tail 魔導少年\n" + 
-"問題：故事中統領整個星靈界的人叫？\n" + 
-"1.通靈王\n" + 
-"2.星靈王\n" + 
-"3.棋靈王\n" + 
-"4.精靈王\n" + 
-"小提示：題目已經說出來啦(´⊙ω⊙`)\n" + 
-"出題者：xtn19931\n" + 
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1337353772993657"
+							fb_q_msg := "2017/03/01 動漫通\n" + 
+"關聯：黑執事\n" + 
+"問題：請問黑執事動畫中，葬儀社擁有的專屬於管理級別死神的終極死神道具為何？\n" + 
+"1.死神鐮刀（Death Sickle）\n" + 
+"2.死神書籤（Death Bookmark）\n" + 
+"3.死神之筆（Death Pen)\n" + 
+"4.死神筆記（Death Notebook)\n" + 
+"小提示：用來夾在走馬燈劇場的書頁中\n" + 
+"出題者：zoe281822191\n" + 
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/02/27 動漫通", "答案請參考 FB 討論，可能是 2 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1337218343007200"),
+									imageURL, "2017/03/01 動漫通", "答案請參考 FB 討論，可能是 2 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1337353772993657"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
