@@ -1276,6 +1276,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7376"
 				case "7","07":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7377"
+				case "8","08":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7378"
 			default:
 			}
 		case "夏雪之約","夏雪":
@@ -1343,6 +1345,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7356"
 			case "7","07":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7357"
+			case "8","08":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7362"
 			default:
 			}
 		//2017.01
@@ -1363,6 +1367,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7349"
 			case "7","07":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7350"
+			case "8","08":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7351"
 			default:
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7127"
 			}
@@ -2479,6 +2485,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7364"
 			case "21":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7365"
+			case "22":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7366"
 			default:
 			}
 		case "喵阿愣！","喵阿愣","喵啊愣！","阿愣","啊愣","喵阿楞！","喵阿楞":
@@ -2526,6 +2534,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7414"
 			case "21":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7415"
+			case "22":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7416"
 			default:
 			}
 		case "雙星之陰陽師","雙星":
@@ -2621,6 +2631,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7368"
 			case "45":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7369"
+			case "46":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7370"
 			default:
 			}
 		case "無畏魔女":
@@ -3156,22 +3168,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1337353772993657"
-							fb_q_msg := "2017/03/01 動漫通\n" + 
-"關聯：黑執事\n" + 
-"問題：請問黑執事動畫中，葬儀社擁有的專屬於管理級別死神的終極死神道具為何？\n" + 
-"1.死神鐮刀（Death Sickle）\n" + 
-"2.死神書籤（Death Bookmark）\n" + 
-"3.死神之筆（Death Pen)\n" + 
-"4.死神筆記（Death Notebook)\n" + 
-"小提示：用來夾在走馬燈劇場的書頁中\n" + 
-"出題者：zoe281822191\n" + 
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1337358656326502"
+							fb_q_msg := "2017/03/02 動漫通\n" +
+"關聯：K-ON!\n" +
+"問題：請問下列何人的吉他名字是小野馬？\n" +
+"1.平澤唯\n" +
+"2.山中佐和子\n" +
+"3.中野梓\n" +
+"4.秋山澪\n" +
+"小提示：雙馬尾黑髮\n" +
+"出題者：zxcv2024335\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/01 動漫通", "答案請參考 FB 討論，可能是 2 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1337353772993657"),
+									imageURL, "2017/03/02 動漫通", "答案請參考 FB 討論，可能是 2 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1337358656326502"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
