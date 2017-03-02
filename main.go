@@ -1256,6 +1256,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7372"
 			case "7","07":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7373"
+			case "8","08":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7374"
 			default:
 			}
 		//2017
