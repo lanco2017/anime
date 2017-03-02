@@ -1236,6 +1236,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7380"
 			case "7","07":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7381"
+			case "8","08":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7382"
 			default:
 			}
 		//2017
@@ -2020,6 +2022,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7384"
 			case "10":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7385"
+			case "11":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7386"
 			default:
 			}
 		case "路人超能 100","路人","靈能":
@@ -3174,22 +3178,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1337358656326502"
-							fb_q_msg := "2017/03/02 動漫通\n" +
-"關聯：K-ON!\n" +
-"問題：請問下列何人的吉他名字是小野馬？\n" +
-"1.平澤唯\n" +
-"2.山中佐和子\n" +
-"3.中野梓\n" +
-"4.秋山澪\n" +
-"小提示：雙馬尾黑髮\n" +
-"出題者：zxcv2024335\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1338068676255500"
+							fb_q_msg := "2017/03/03 動漫通\n" +
+"關聯：東京喰種\n" +
+"問題：『不殺之梟』是CCG對哪個喰種的稱號？\n" +
+"1.瀧澤政道\n" +
+"2.艾特（高槻泉）\n" +
+"3.芳村功善\n" +
+"4.金木研\n" +
+"小提示：安定區的管理人，咖啡店店長\n" +
+"出題者：qwd562\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/02 動漫通", "答案請參考 FB 討論，可能是 2 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1337358656326502"),
+									imageURL, "2017/03/03 動漫通", "答案請參考 FB 討論，可能是 3 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1338068676255500"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
