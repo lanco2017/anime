@@ -1510,6 +1510,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7388"
 			case "7","07":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7389"
+			case "8","08":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7390"
 			default:
 			}
 		case "偶像大師 灰姑娘女孩","灰姑娘","灰姑娘女孩":
