@@ -3182,22 +3182,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1343664279029273"
-							fb_q_msg := "2017/03/04 動漫通\n" +
-"關聯：學生會長是女僕！\n" +
-"問題：請問在學生會長是女僕中，鮎澤 美咲學的是下列何種武功？\n" +
-"1.合氣道\n" +
-"2.跆拳道\n" +
-"3.空手道\n" +
-"4.柔道\n" +
-"小提示：源於日本大東流合氣柔術的近代武術\n" +
-"出題者：zoe281822191\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1343665632362471"
+							fb_q_msg := "2017/03/05 動漫通\n" +
+"關聯：魔法禁書目錄\n" +
+"問題：請問 學園城市 的火車種類是什麼？\n" +
+"1.雲霄飛車\n" +
+"2.五分車\n" +
+"3.磁浮列車\n" +
+"4.懸吊列車\n" +
+"小提示：利用磁力運作的\n" +
+"出題者：AVA2011\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/04 動漫通", "答案請參考 FB 討論，可能是 1 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1343664279029273"),
+									imageURL, "2017/03/05 動漫通", "答案請參考 FB 討論，可能是 3 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1343665632362471"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
