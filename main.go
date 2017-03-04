@@ -1431,6 +1431,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7404"
 			case "8","08":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7405"
+			case "9","09":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7406"
 			default:
 			}
 		//2017.01
@@ -2901,6 +2903,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7400"
 			case "19":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7401"
+			case "20":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7402"
 			default:
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6479"
 			}
