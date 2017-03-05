@@ -2294,6 +2294,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7408"
 			case "45":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7409"
+			case "46":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7410"
 			default:
 			}
 		case "星夢手記","星夢":
