@@ -3188,22 +3188,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1343665632362471"
-							fb_q_msg := "2017/03/05 動漫通\n" +
-"關聯：魔法禁書目錄\n" +
-"問題：請問 學園城市 的火車種類是什麼？\n" +
-"1.雲霄飛車\n" +
-"2.五分車\n" +
-"3.磁浮列車\n" +
-"4.懸吊列車\n" +
-"小提示：利用磁力運作的\n" +
-"出題者：AVA2011\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1343665855695782"
+							fb_q_msg := "2017/03/06 動漫通\n" +
+"關聯：火影忍者\n" +
+"問題：火影忍者裡我愛羅的額頭上刻了什麼字？\n" +
+"1.愛\n" +
+"2.恨\n" +
+"3.修\n" +
+"4.情\n" +
+"小提示：該角色名字\n" +
+"出題者：jenj90147914\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/05 動漫通", "答案請參考 FB 討論，可能是 3 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1343665632362471"),
+									imageURL, "2017/03/06 動漫通", "答案請參考 FB 討論，可能是 愛 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1343665855695782"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
