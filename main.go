@@ -3190,22 +3190,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1343665855695782"
-							fb_q_msg := "2017/03/06 動漫通\n" +
-"關聯：火影忍者\n" +
-"問題：火影忍者裡我愛羅的額頭上刻了什麼字？\n" +
-"1.愛\n" +
-"2.恨\n" +
-"3.修\n" +
-"4.情\n" +
-"小提示：該角色名字\n" +
-"出題者：jenj90147914\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1343728699022831"
+							fb_q_msg := "2017/03/07 動漫通\n" +
+"關聯：幼女戰記\n" +
+"問題：安森上校屬於哪個國家？\n" +
+"1.聯合王國\n" +
+"2.達基亞\n" +
+"3.共合國\n" +
+"4.協約聯合\n" +
+"小提示：漫畫的木偶劇中使用馬的形象\n" +
+"出題者：uoop7788\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/06 動漫通", "答案請參考 FB 討論，可能是 愛 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1343665855695782"),
+									imageURL, "2017/03/07 動漫通", "答案請參考 FB 討論，可能是 愛 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1343728699022831"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
