@@ -1359,6 +1359,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7357"
 			case "8","08":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7362"
+			case "9","09":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7473"
 			default:
 			}
 		//2017.01
@@ -2559,6 +2561,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7415"
 			case "22":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7416"
+			case "23":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7417"
 			default:
 			}
 		case "雙星之陰陽師","雙星":
@@ -3193,22 +3197,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1343728699022831"
-							fb_q_msg := "2017/03/07 動漫通\n" +
-"關聯：幼女戰記\n" +
-"問題：安森上校屬於哪個國家？\n" +
-"1.聯合王國\n" +
-"2.達基亞\n" +
-"3.共合國\n" +
-"4.協約聯合\n" +
-"小提示：漫畫的木偶劇中使用馬的形象\n" +
-"出題者：uoop7788\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1343734065688961"
+							fb_q_msg := "2017/03/08 動漫通\n" +
+"關聯：尋找失去的未來\n" +
+"問題：主角在劇情當中因為雙親在海外工作而暫時住在哪位好友家？\n" +
+"1.古川 唯\n" +
+"2.支倉 愛理\n" +
+"3.華宮 凪沙\n" +
+"4.佐佐木 佳織\n" +
+"小提示：天文學會副會長\n" +
+"出題者：klackyhoot\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/07 動漫通", "答案請參考 FB 討論，可能是 4 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1343728699022831"),
+									imageURL, "2017/03/08 動漫通", "答案請參考 FB 討論，可能是 4 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1343734065688961"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
