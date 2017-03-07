@@ -2008,6 +2008,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			case "25":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3513" + "\n\n等等！這是最後一話！？"
 			default:
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7446" + "\n\n這是 第二季[特別篇]"
 			}
 		case "殺老師","殺老師 Q","殺老師Q","殺老師 Q！":
 			//reg.ReplaceAllString(text, "$2")
