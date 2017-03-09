@@ -1,4 +1,4 @@
-// Licensed under the Apache License, Version 2.0 (the "License");
+ // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
@@ -1266,6 +1266,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7373"
 			case "8","08":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7374"
+			case "9","09":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7455"
 			default:
 			}
 		//2017
@@ -1288,6 +1290,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7377"
 				case "8","08":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7378"
+				case "9","09":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7459"
 			default:
 			}
 		case "夏雪之約","夏雪":
@@ -1337,6 +1341,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7361"
 			case "8","08":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7362"
+			case "9","09":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7469"
 			default:
 			}
 		//2017.01
@@ -2512,6 +2518,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7365"
 			case "22":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7366"
+			case "23":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7465"
 			default:
 			}
 		case "喵阿愣！","喵阿愣","喵啊愣！","阿愣","啊愣","喵阿楞！","喵阿楞":
@@ -2660,6 +2668,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7369"
 			case "46":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7370"
+			case "47":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7461"
 			default:
 			}
 		case "無畏魔女":
@@ -3197,22 +3207,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1343734065688961"
-							fb_q_msg := "2017/03/08 動漫通\n" +
-"關聯：尋找失去的未來\n" +
-"問題：主角在劇情當中因為雙親在海外工作而暫時住在哪位好友家？\n" +
-"1.古川 唯\n" +
-"2.支倉 愛理\n" +
-"3.華宮 凪沙\n" +
-"4.佐佐木 佳織\n" +
-"小提示：天文學會副會長\n" +
-"出題者：klackyhoot\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1348432518552449"
+							fb_q_msg := "2017/03/09 動漫通\n" + 
+"關聯：銀白榮躍\n" + 
+"問題：《銀白榮躍》此部作品以何種運動作為主題展開？\n" + 
+"1.籃球\n" + 
+"2.冰上曲棍球\n" + 
+"3.溜冰\n" + 
+"4.跳台滑雪\n" + 
+"小提示：Ski jumping\n" + 
+"出題者：aaz957666\n" + 
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/08 動漫通", "答案請參考 FB 討論，可能是 4 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1343734065688961"),
+									imageURL, "2017/03/09 動漫通", "答案請參考 FB 討論，可能是 4 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1348432518552449"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
