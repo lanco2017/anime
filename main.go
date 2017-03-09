@@ -1242,6 +1242,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7381"
 			case "8","08":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7382"
+			case "9","09":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7451"
 			default:
 			}
 		//2017
@@ -3207,22 +3209,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1348432518552449"
-							fb_q_msg := "2017/03/09 動漫通\n" + 
-"關聯：銀白榮躍\n" + 
-"問題：《銀白榮躍》此部作品以何種運動作為主題展開？\n" + 
-"1.籃球\n" + 
-"2.冰上曲棍球\n" + 
-"3.溜冰\n" + 
-"4.跳台滑雪\n" + 
-"小提示：Ski jumping\n" + 
-"出題者：aaz957666\n" + 
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1348462655216102"
+							fb_q_msg := "2017/03/10 動漫通\n" +
+"關聯：暗殺教室\n" +
+"問題：《暗殺教室》中，潮田渚之所以留長髮的原因與何者有關？\n" +
+"1.父親\n" +
+"2.母親\n" +
+"3.老師\n" +
+"4.同學\n" +
+"小提示：廣海\n" +
+"出題者：xgu769521\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/09 動漫通", "答案請參考 FB 討論，可能是 4 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1348432518552449"),
+									imageURL, "2017/03/10 動漫通", "答案請參考 FB 討論，可能是 2 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1348462655216102"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
