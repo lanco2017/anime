@@ -3215,22 +3215,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1349271831801851"
-							fb_q_msg := "2017/03/11 動漫通\n" +
-"關聯：影子籃球員\n" +
-"問題：請問在第一次人氣投票中,第一名的人是？\n" +
-"1.黄瀨涼太\n" +
-"2.火神大我\n" +
-"3.黑子哲也\n" +
-"4.青峰大輝\n" +
-"小提示：夢幻的第六人\n" +
-"出題者：dgipso23\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1349274458468255"
+							fb_q_msg := "2017/03/12 動漫通\n" +
+"關聯：灌籃高手\n" +
+"問題：請問灌籃高手(SlamDunk)中，湘北隊前鋒櫻木花道比賽中的背號為幾號？\n" +
+"1.6\n" +
+"2.10\n" +
+"3.12\n" +
+"4.15\n" +
+"小提示：2和5的倍數\n" +
+"出題者：u9596g12\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
 									imageURL, "2017/03/10 動漫通", "答案請參考 FB 討論，可能是 3 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1349271831801851"),
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1349274458468255"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
