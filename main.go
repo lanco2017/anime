@@ -2319,6 +2319,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7409"
 			case "46":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7410"
+			case "47":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7488"
 			default:
 			}
 		case "星夢手記","星夢":
@@ -3219,22 +3221,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1349274458468255"
-							fb_q_msg := "2017/03/12 動漫通\n" +
-"關聯：灌籃高手\n" +
-"問題：請問灌籃高手(SlamDunk)中，湘北隊前鋒櫻木花道比賽中的背號為幾號？\n" +
-"1.6\n" +
-"2.10\n" +
-"3.12\n" +
-"4.15\n" +
-"小提示：2和5的倍數\n" +
-"出題者：u9596g12\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1349277398467961"
+							fb_q_msg := "2017/03/13 動漫通\n" +
+"關聯：Fairy Tail 魔導少年\n" +
+"問題：下列何者不屬於「巴拉姆聯盟」？\n" +
+"1.六魔將軍\n" +
+"2.大鴉尾巴\n" +
+"3.惡魔心臟\n" +
+"4.冥府之門\n" +
+"小提示：會長：伊萬\n" +
+"出題者：stvn2567\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/10 動漫通", "答案請參考 FB 討論，可能是 3 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1349274458468255"),
+									imageURL, "2017/03/13 動漫通", "答案請參考 FB 討論，可能是 2 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1349277398467961"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
