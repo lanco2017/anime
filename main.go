@@ -3236,22 +3236,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1354723534590014"
-							fb_q_msg := "2017/03/15 動漫通\n" +
-"關聯：黑白來看守所\n" +
-"問題：黑白來看守所中，哪個角色的眼睛顏色會隨著角度而改變？\n" +
-"1.Jyugo\n" +
-"2.Uno\n" +
-"3.Niko\n" +
-"4.Rock\n" +
-"小提示：15\n" +
-"出題者：kidmartian\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1354725237923177"
+							fb_q_msg := "2017/03/16 動漫通\n" +
+"關聯：魔物娘的同居日常\n" +
+"問題：墨須最愛喝的飲料是什麼？\n" +
+"1.燒酒\n" +
+"2.咖啡\n" +
+"3.茶\n" +
+"4.汽水\n" +
+"小提示：星x克\n" +
+"出題者：shyuan030\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/15 動漫通", "答案請參考 FB 討論，可能是 1 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1354723534590014"),
+									imageURL, "2017/03/16 動漫通", "答案請參考 FB 討論，可能是 2 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1354725237923177"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
