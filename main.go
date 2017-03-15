@@ -1371,6 +1371,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7362"
 			case "9","09":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7473"
+			case "10","10":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7474"
 			default:
 			}
 		//2017.01
@@ -1973,7 +1975,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=5501" + "\n\n等等！這是最後一話！？"
 			default:
 			}
-		case "進擊的巨人","進擊","巨人":
+		case "進擊的巨人","進擊","巨人","進擊的巨人 第二季":
 		   //reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
@@ -2027,7 +2029,10 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			case "25":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3513" + "\n\n等等！這是最後一話！？"
 			default:
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7446" + "\n\n這是 第二季[特別篇]"
+					print_string = anime_say +
+					"\n\n第二季[特別篇] 1\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=7446" + 
+					"\n\n第二季[特別篇] 2\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=7447" + 
+					"\n\n第二季[特別篇] 3\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=7448"
 			}
 		case "殺老師","殺老師 Q","殺老師Q","殺老師 Q！":
 			//reg.ReplaceAllString(text, "$2")
@@ -2535,6 +2540,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7366"
 			case "23":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7465"
+			case "24":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7466"
 			default:
 			}
 		case "喵阿愣！","喵阿愣","喵啊愣！","阿愣","啊愣","喵阿楞！","喵阿楞":
@@ -2586,6 +2593,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7416"
 			case "23":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7417"
+			case "24":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7477"
 			default:
 			}
 		case "雙星之陰陽師","雙星":
@@ -3224,22 +3233,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1354718181257216"
-							fb_q_msg := "2017/03/14 動漫通\n" +
-"關聯：航海王 ONE PIECE 系列（原：海賊王）\n" +
-"問題：請問有「屁股頭」稱號的是誰？\n" +
-"1.索隆\n" +
-"2.香吉士\n" +
-"3.弗克西\n" +
-"4.艾斯巴古\n" +
-"小提示：銀狐\n" +
-"出題者：klps5603\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1354723534590014"
+							fb_q_msg := "2017/03/15 動漫通\n" +
+"關聯：黑白來看守所\n" +
+"問題：黑白來看守所中，哪個角色的眼睛顏色會隨著角度而改變？\n" +
+"1.Jyugo\n" +
+"2.Uno\n" +
+"3.Niko\n" +
+"4.Rock\n" +
+"小提示：15\n" +
+"出題者：kidmartian\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/14 動漫通", "答案請參考 FB 討論，可能是 3 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1354718181257216"),
+									imageURL, "2017/03/15 動漫通", "答案請參考 FB 討論，可能是 1 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1354723534590014"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
