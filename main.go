@@ -1397,7 +1397,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7351"
 			case "9","09":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7480"
-			case "10","10":
+			case "10":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7481"
 
 			default:
