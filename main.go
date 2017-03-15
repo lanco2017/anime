@@ -1296,6 +1296,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7378"
 				case "9","09":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7459"
+				case "10":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7460"
 			default:
 			}
 		case "夏雪之約","夏雪":
