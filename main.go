@@ -1246,6 +1246,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7382"
 			case "9","09":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7451"
+			case "10":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7452"
 			default:
 			}
 		//2017
@@ -1272,6 +1274,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7374"
 			case "9","09":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7455"
+			case "10":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7456"
 			default:
 			}
 		//2017
@@ -3238,22 +3242,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1354725237923177"
-							fb_q_msg := "2017/03/16 動漫通\n" +
-"關聯：魔物娘的同居日常\n" +
-"問題：墨須最愛喝的飲料是什麼？\n" +
-"1.燒酒\n" +
-"2.咖啡\n" +
-"3.茶\n" +
-"4.汽水\n" +
-"小提示：星x克\n" +
-"出題者：shyuan030\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1354994071229627"
+							fb_q_msg := "2017/03/17 動漫通\n" +
+"關聯：惡魔謎題\n" +
+"問題：請問，身患肉體無法老化的特殊病例的角色是？\n" +
+"1.番場真晝\n" +
+"2.一之瀨晴\n" +
+"3.寒河江春紀\n" +
+"4.首藤涼\n" +
+"小提示：出席號碼7號，自稱老朽\n" +
+"出題者：zero917556\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/16 動漫通", "答案請參考 FB 討論，可能是 2 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1354725237923177"),
+									imageURL, "2017/03/17 動漫通", "答案請參考 FB 討論，可能是 4 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1354994071229627"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
