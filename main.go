@@ -3244,22 +3244,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1356718021057232"
-							fb_q_msg := "2017/03/18 動漫通\n" +
-"關聯：銀之匙\n" +
-"問題：八軒在豬舍實習的時候,幫最瘦弱的小豬取的名字是？\n" +
-"1.德國豬腳\n" +
-"2.泰式打拋豬肉\n" +
-"3.豬丼\n" +
-"4.金華火腿\n" +
-"小提示：日本料理\n" +
-"出題者：ab4u25vi\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1356726097723091"
+							fb_q_msg :=  "2017/03/19 動漫通\n" +
+"關聯：小魔女DoReMi\n" +
+"問題：DoReMi最喜歡的食物是？\n" +
+"1.草莓派\n" +
+"2.牛排\n" +
+"3.小黃瓜\n" +
+"4.章魚燒\n" +
+"小提示：哞～\n" +
+"出題者：jany831027\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/18 動漫通", "答案請參考 FB 討論，可能是 3 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1356718021057232"),
+									imageURL, "2017/03/19 動漫通", "答案請參考 FB 討論，可能是 2 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1356726097723091"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
