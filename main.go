@@ -1490,7 +1490,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			case "10":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3533\n\n京都不淨王篇\nhttps://ani.gamer.com.tw/animeVideo.php?sn=7500"
 			case "11":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3534"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3534\n\n京都不淨王篇\nhttps://ani.gamer.com.tw/animeVideo.php?sn=7501"
 			case "12":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3535"
 			case "13":
@@ -1548,6 +1548,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7390"
 			case "9","09":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7503"
+			case "10":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7504"
 			default:
 			}
 		case "偶像大師 灰姑娘女孩","灰姑娘","灰姑娘女孩":
@@ -3242,22 +3244,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1354994071229627"
-							fb_q_msg := "2017/03/17 動漫通\n" +
-"關聯：惡魔謎題\n" +
-"問題：請問，身患肉體無法老化的特殊病例的角色是？\n" +
-"1.番場真晝\n" +
-"2.一之瀨晴\n" +
-"3.寒河江春紀\n" +
-"4.首藤涼\n" +
-"小提示：出席號碼7號，自稱老朽\n" +
-"出題者：zero917556\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1356718021057232"
+							fb_q_msg := "2017/03/18 動漫通\n" +
+"關聯：銀之匙\n" +
+"問題：八軒在豬舍實習的時候,幫最瘦弱的小豬取的名字是？\n" +
+"1.德國豬腳\n" +
+"2.泰式打拋豬肉\n" +
+"3.豬丼\n" +
+"4.金華火腿\n" +
+"小提示：日本料理\n" +
+"出題者：ab4u25vi\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/17 動漫通", "答案請參考 FB 討論，可能是 4 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1354994071229627"),
+									imageURL, "2017/03/18 動漫通", "答案請參考 FB 討論，可能是 3 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1356718021057232"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
