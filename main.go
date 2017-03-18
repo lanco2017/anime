@@ -1463,6 +1463,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7406"
 			case "10":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7494"
+			case "11":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7495"
 			default:
 			}
 		//2017.01
@@ -3246,7 +3248,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1356726097723091"
 							fb_q_msg :=  "2017/03/19 動漫通\n" +
-"關聯：小魔女DoReMi\n" +
+"關聯：小魔女 DoReMi\n" +
 "問題：DoReMi最喜歡的食物是？\n" +
 "1.草莓派\n" +
 "2.牛排\n" +
