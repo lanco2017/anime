@@ -1193,6 +1193,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7347"
 			case "9","09":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7484"
+			case "10":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7485"
 			default:
 			}
 		case "終物語":
@@ -2340,6 +2342,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7410"
 			case "47":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7488"
+			case "48":
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7489"
 			default:
 			}
 		case "星夢手記","星夢":
@@ -3248,22 +3252,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1356726097723091"
-							fb_q_msg :=  "2017/03/19 動漫通\n" +
-"關聯：小魔女 DoReMi\n" +
-"問題：DoReMi最喜歡的食物是？\n" +
-"1.草莓派\n" +
-"2.牛排\n" +
-"3.小黃瓜\n" +
-"4.章魚燒\n" +
-"小提示：哞～\n" +
-"出題者：jany831027\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1356730034389364"
+							fb_q_msg := "2017/03/20 動漫通\n" +
+"關聯：Re：從零開始的異世界生活\n" +
+"問題：下列何者並非三大魔獸之一？\n" +
+"1.白鯨\n" +
+"2.灰貓\n" +
+"3.黑蛇\n" +
+"4.大兔\n" +
+"小提示：喵\n" +
+"出題者：Leonopteryx\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/19 動漫通", "答案請參考 FB 討論，可能是 2 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1356726097723091"),
+									imageURL, "2017/03/20 動漫通", "答案請參考 FB 討論，可能是 2 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1356730034389364"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
