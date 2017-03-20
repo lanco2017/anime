@@ -1409,6 +1409,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7480"
 			case "10":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7481"
+			case "11":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7482"
 			default:
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7127"
 			}
@@ -3252,22 +3254,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1356730034389364"
-							fb_q_msg := "2017/03/20 動漫通\n" +
-"關聯：Re：從零開始的異世界生活\n" +
-"問題：下列何者並非三大魔獸之一？\n" +
-"1.白鯨\n" +
-"2.灰貓\n" +
-"3.黑蛇\n" +
-"4.大兔\n" +
-"小提示：喵\n" +
-"出題者：Leonopteryx\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1357827947612906"
+							fb_q_msg := "2017/03/21 動漫通\n" +
+"關聯：學園默示錄\n" +
+"問題：孝 的青梅竹馬是誰？\n" +
+"1.宮本 麗\n" +
+"2.平野耕太\n" +
+"3.毒島冴子\n" +
+"4.愛麗絲\n" +
+"小提示：槍術社\n" +
+"出題者：bleach4045\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/20 動漫通", "答案請參考 FB 討論，可能是 2 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1356730034389364"),
+									imageURL, "2017/03/21 動漫通", "答案請參考 FB 討論，可能是 1 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1357827947612906"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
