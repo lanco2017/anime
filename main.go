@@ -1357,6 +1357,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7469"
 			case "10":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7535"
+			case "11":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7471"
 			default:
 			}
 		//2017.01
@@ -1383,6 +1385,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7473"
 			case "10":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7474"
+			case "11":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7475"
 			default:
 			}
 		//2017.01
@@ -2047,7 +2051,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say +
 					"\n\n第二季[特別篇] 1\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=7446" + 
 					"\n\n第二季[特別篇] 2\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=7447" + 
-					"\n\n第二季[特別篇] 3\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=7448"
+					"\n\n第二季[特別篇] 3\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=7448" +
+					"\n\n第二季[特別篇] 4\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=7449"
 			}
 		case "殺老師","殺老師 Q","殺老師Q","殺老師 Q！":
 			//reg.ReplaceAllString(text, "$2")
@@ -2559,6 +2564,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7465"
 			case "24":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7466"
+			case "25":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7467"
 			default:
 			}
 		case "喵阿愣！","喵阿愣","喵啊愣！","阿愣","啊愣","喵阿楞！","喵阿楞":
@@ -2612,6 +2619,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7417"
 			case "24":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7477"
+			case "25":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7478"
 			default:
 			}
 		case "雙星之陰陽師","雙星":
@@ -2713,6 +2722,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7461"
 			case "48":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7462"
+			case "49":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7463"
 			default:
 			}
 		case "無畏魔女":
@@ -3254,22 +3265,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1357827947612906"
-							fb_q_msg := "2017/03/21 動漫通\n" +
-"關聯：學園默示錄\n" +
-"問題：孝 的青梅竹馬是誰？\n" +
-"1.宮本 麗\n" +
-"2.平野耕太\n" +
-"3.毒島冴子\n" +
-"4.愛麗絲\n" +
-"小提示：槍術社\n" +
-"出題者：bleach4045\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1362347437160957"
+							fb_q_msg := "2017/03/23 動漫通\n" +
+"關聯：通靈童子（通靈王）\n" +
+"問題：全宗侍奉麻倉家約多少年？\n" +
+"1.1000年\n" +
+"2.100年\n" +
+"3.10年\n" +
+"4.1年\n" +
+"小提示：10個世紀\n" +
+"出題者：kkkkkkk24\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/21 動漫通", "答案請參考 FB 討論，可能是 1 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1357827947612906"),
+									imageURL, "2017/03/23 動漫通", "答案請參考 FB 討論，可能是 1 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1362347437160957"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
