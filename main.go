@@ -3269,22 +3269,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1362347437160957"
-							fb_q_msg := "2017/03/23 動漫通\n" +
-"關聯：通靈童子（通靈王）\n" +
-"問題：全宗侍奉麻倉家約多少年？\n" +
-"1.1000年\n" +
-"2.100年\n" +
-"3.10年\n" +
-"4.1年\n" +
-"小提示：10個世紀\n" +
-"出題者：kkkkkkk24\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1362478860481148"
+							fb_q_msg := "2017/03/25 動漫通\n" +
+"關聯：偽戀\n" +
+"問題：小野寺小咲唯一不敢吃的東西是？\n" +
+"1.起司\n" +
+"2.蒟蒻\n" +
+"3.大蒜\n" +
+"4.紅蘿蔔\n" +
+"小提示：QQ的\n" +
+"出題者：qq260729\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/23 動漫通", "答案請參考 FB 討論，可能是 1 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1362347437160957"),
+									imageURL, "2017/03/25 動漫通", "答案請參考 FB 討論，可能是 2 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1362478860481148"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
