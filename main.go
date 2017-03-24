@@ -1506,7 +1506,7 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			case "11":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3534\n\n京都不淨王篇\nhttps://ani.gamer.com.tw/animeVideo.php?sn=7501"
 			case "12":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3535"
+				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3535\n\n京都不淨王篇\nhttps://ani.gamer.com.tw/animeVideo.php?sn=7502"
 			case "13":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3536"
 			case "14":
