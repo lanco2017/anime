@@ -1543,28 +1543,30 @@ func anime(text string,user_msgid string,reply_mode string) string {
 		   //reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7148"
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7148"
 			case "2","02":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7257"
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7257"
 			case "3","03":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7284"
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7284"
 			case "4","04":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7317"
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7317"
 			case "5","05":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7318"
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7318"
 			case "6","06":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7387"
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7387"
 			case "6.5","06.5":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7388"
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7388"
 			case "7","07":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7389"
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7389"
 			case "8","08":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7390"
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7390"
 			case "9","09":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7503"
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7503"
 			case "10":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7504"
-			default:
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7504"
+			case "11":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7505"
+				default:
 			}
 		case "偶像大師 灰姑娘女孩","灰姑娘","灰姑娘女孩":
 		   //reg.ReplaceAllString(text, "$2")
