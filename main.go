@@ -1363,6 +1363,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7535"
 			case "11":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7471"
+			case "12":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7472"
 			default:
 			}
 		//2017.01
@@ -1391,6 +1393,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7474"
 			case "11":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7475"
+			case "12":
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7476" + "\n\n等等！這是最後一話！？"
 			default:
 			}
 		//2017.01
@@ -2058,7 +2062,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					"\n\n第二季[特別篇] 1\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=7446" + 
 					"\n\n第二季[特別篇] 2\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=7447" + 
 					"\n\n第二季[特別篇] 3\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=7448" +
-					"\n\n第二季[特別篇] 4\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=7449"
+					"\n\n第二季[特別篇] 4\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=7449" +
+					"\n\n第二季[特別篇] 5\n" + "https://ani.gamer.com.tw/animeVideo.php?sn=7528"
 			}
 		case "殺老師","殺老師 Q","殺老師Q","殺老師 Q！":
 			//reg.ReplaceAllString(text, "$2")
@@ -2730,6 +2735,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7462"
 			case "49":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7463"
+			case "50":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7464"
 			default:
 			}
 		case "無畏魔女":
@@ -3271,22 +3278,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1362478860481148"
-							fb_q_msg := "2017/03/25 動漫通\n" +
-"關聯：偽戀\n" +
-"問題：小野寺小咲唯一不敢吃的東西是？\n" +
-"1.起司\n" +
-"2.蒟蒻\n" +
-"3.大蒜\n" +
-"4.紅蘿蔔\n" +
-"小提示：QQ的\n" +
-"出題者：qq260729\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1362512483811119"
+							fb_q_msg := "2017/03/30 動漫通\n" +
+"關聯：COPPELION 核爆末世錄\n" +
+"問題：請問:小津歌音的弱點是？\n" +
+"1.水\n" +
+"2.火\n" +
+"3.陽光\n" +
+"4.油\n" +
+"小提示：H2O\n" +
+"出題者：a739hj\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/25 動漫通", "答案請參考 FB 討論，可能是 2 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1362478860481148"),
+									imageURL, "2017/03/30 動漫通", "答案請參考 FB 討論，可能是 1 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1362512483811119"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
