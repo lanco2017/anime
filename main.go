@@ -583,51 +583,51 @@ func anime(text string,user_msgid string,reply_mode string) string {
 			case "1","01":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=926\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=903"
 			case "2","02":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=927"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=927\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=902"
 			case "3","03":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=928"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=928\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=904"
 			case "4","04":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=929"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=929\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=905"
 			case "5","05":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=930"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=930\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=906"
 			case "6","06":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=931"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=931\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=907"
 			case "7","07":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=932"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=932\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=908"
 			case "8","08":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=933"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=933\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=909"
 			case "9","09":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=934"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=934\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=910"
 			case "10":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=935"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=935\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=911"
 			case "11":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=936"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=936\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=912"
 			case "12":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=937"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=937\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=913"
 			case "13":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=938"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=938\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=914"
 			case "14":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=939"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=939\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=915"
 			case "15":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=940"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=940\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=916"
 			case "16":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=941"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=941\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=917"
 			case "17":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=942"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=942\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=918"
 			case "18":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=943"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=943\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=919"
 			case "19":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=944"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=944\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=920"
 			case "20":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=945"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=945\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=921"
 			case "21":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=946"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=946\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=922"
 			case "22":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=947"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=947\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=923"
 			case "23":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=948"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=948\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=924"
 			case "24":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=949"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=949\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=925"
 			case "25":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=950"
 			default:
