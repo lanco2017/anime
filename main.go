@@ -1324,6 +1324,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7452"
 			case "11":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7453"
+			case "12":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7454"
 			default:
 			}
 		//2017
@@ -1354,6 +1356,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7456"
 			case "11":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7457"
+			case "12":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7458"
 			default:
 			}
 		//2017
@@ -1646,6 +1650,8 @@ func anime(text string,user_msgid string,reply_mode string) string {
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7504"
 			case "11":
 					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7505"
+			case "12":
+					print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7585"
 				default:
 			}
 		case "偶像大師 灰姑娘女孩","灰姑娘","灰姑娘女孩":
