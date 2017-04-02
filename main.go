@@ -1290,25 +1290,29 @@ ACCA13 區監察課
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7265"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7265"
 			case "2","02":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7266"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7266"
 			case "3","03":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7293"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7293"
 			case "4","04":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7329"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7329"
 			case "5","05":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7344"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7344"
 			case "6","06":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7345"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7345"
 			case "7","07":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7346"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7346"
 			case "8","08":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7347"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7347"
 			case "9","09":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7484"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7484"
 			case "10":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7485"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7485"
+			case "11":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7486"
+			case "12":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7487"
 			default:
 			}
 		case "終物語":
