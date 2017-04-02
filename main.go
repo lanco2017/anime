@@ -3412,22 +3412,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1362512483811119"
-							fb_q_msg := "2017/03/30 動漫通\n" +
-"關聯：COPPELION 核爆末世錄\n" +
-"問題：請問:小津歌音的弱點是？\n" +
-"1.水\n" +
-"2.火\n" +
-"3.陽光\n" +
-"4.油\n" +
-"小提示：H2O\n" +
-"出題者：a739hj\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1371972616198439"
+							fb_q_msg := "2017/04/03 動漫通\n" +
+"關聯：航海王 ONE PIECE 系列（原：海賊王）\n" +
+"問題：《ONE PIECE》-香吉士給羅羅亞·索隆取了「?」的綽號\n" +
+"1.禿頭\n" +
+"2.咩咩頭\n" +
+"3.山本頭\n" +
+"4.綠藻頭\n" +
+"小提示：索隆的髮色\n" +
+"出題者：ilickyourdad\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/03/30 動漫通", "答案請參考 FB 討論，可能是 1 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1362512483811119"),
+									imageURL, "2017/04/03 動漫通", "答案請參考 FB 討論，可能是 4 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1371972616198439"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
