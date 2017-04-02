@@ -602,7 +602,7 @@ ACCA13 區監察課
 		case "愛麗絲與藏六","愛麗絲","藏六":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$5") {
-			case "1A","01":
+			case "1A","01","1":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7581"
 			case "1B":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7592"
