@@ -513,7 +513,11 @@ ACCA13 區監察課
 進擊的巨人 第二部
 碧藍幻想
 愛麗絲與藏六
-怪怪守護神`
+怪怪守護神
+機甲少女 Frame Arms Girl
+王室教師海涅
+`
+
 	case "bot","機器人","目錄","動畫清單","清單","索引","ｉｎｄｅｘ","index","Index","介紹","動漫","動畫介紹","動漫介紹","info","Info","ｉｎｆｏ":
 		print_string = "你可以問我下面這些動畫，我會帶你去看！\n\n" +
 		"※ 想知道最近新出的動畫可以輸入：「新番」查詢 \n" +
@@ -578,6 +582,8 @@ ACCA13 區監察課
 		"進擊的巨人第二部：巨人、進擊\n" +
 		"愛麗絲與藏六：愛麗絲、藏六\n" +
 		"怪怪守護神：怪怪、守護神\n" +
+		"機甲少女 Frame Arms Girl：機甲少女\n" +
+		"王室教師海涅：海涅、王室教師\n" +
 		"攻殼機動隊 ARISE：ARISE、攻殼機動隊\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者","admin","Admin","ａｄｍｉｎ":
@@ -589,6 +595,24 @@ ACCA13 區監察課
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+		//2017.04
+		case "王室教師海涅","海涅","王室教師":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$5") {
+			case "1","01":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7586"
+			default:
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7586"
+			}
+		//2017.04
+		case "機甲少女 Frame Arms Girl","機甲少女":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$5") {
+			case "1","01":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7579"
+			default:
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7579"
+			}
 		//2017.04
 		case "碧藍幻想":
 			//reg.ReplaceAllString(text, "$2")
@@ -3412,22 +3436,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1371972616198439"
-							fb_q_msg := "2017/04/03 動漫通\n" +
-"關聯：航海王 ONE PIECE 系列（原：海賊王）\n" +
-"問題：《ONE PIECE》-香吉士給羅羅亞·索隆取了「?」的綽號\n" +
-"1.禿頭\n" +
-"2.咩咩頭\n" +
-"3.山本頭\n" +
-"4.綠藻頭\n" +
-"小提示：索隆的髮色\n" +
-"出題者：ilickyourdad\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1373071226088578"
+							fb_q_msg := "2017/04/05 動漫通\n" +
+"關聯：家庭教師 HITMAN REBORN！\n" +
+"問題：骸大人有幾道冥界的戰鬥能力？\n" +
+"1.六道\n" +
+"2.七道\n" +
+"3.三道\n" +
+"4.五道\n" +
+"小提示：角色全名\n" +
+"出題者：grpan168\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/04/03 動漫通", "答案請參考 FB 討論，可能是 4 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1371972616198439"),
+									imageURL, "2017/04/05 動漫通", "答案請參考 FB 討論，可能是 1 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1373071226088578"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
