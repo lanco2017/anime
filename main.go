@@ -412,28 +412,28 @@ func real_num(text string) string {
 
 // ----javascript 代勞區	https://trello.com/c/OXnZDLzG/86-javascript-golang
 	// //2017 +1
-	// function get_anime(ad=''){
-	// 	 var output_string = "		case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n			\/\/reg.ReplaceAllString(text, \"$2\")\n			switch reg.ReplaceAllString(text, \"$5\") {\n";
-	// 	 var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
-	// 	 for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
-	// 		 if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
-	// 			 if(num>0){
-	// 						 if(num<10){
-	// 						 	output_string += "			case \"" + num + "\",\"0" + num + "\":\n" + "				print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
-	// 						 }else{
-	// 							output_string += "			case \"" + num + "\":\n" + "				print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
-	// 						}
-	// 			 }
-	// 			 num++;
-	// 		 }
-	// 	 }
-	// 	 output_string += "			default:\n			}";
-	// 	 console.log(output_string)
-	// 	 //return output_string;
-	// }
+// 	function get_anime(ad=''){
+// 		 var output_string = "		case \"" + document.title.replace(/(.*)\[.*/gi,"$1") + "\":\n			\/\/reg.ReplaceAllString(text, \"$2\")\n			switch reg.ReplaceAllString(text, \"$5\") {\n";
+// 		 var num = ( ( (ad=='') || (ad==0) )   ?   1  : 0  );
+// 		 for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
+// 			 if(document.getElementsByTagName('a')[i].href.indexOf('ani.gamer.com.tw\/animeVideo') != -1){
+// 				 if(num>0){
+// 							 if(num<10){
+// 							 	output_string += "			case \"" + num + "\",\"0" + num + "\":\n" + "				print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
+// 							 }else{
+// 								output_string += "			case \"" + num + "\":\n" + "				print_string = anime_say + \"" + document.getElementsByTagName('a')[i].href + "\"\n";
+// 							}
+// 				 }
+// 				 num++;
+// 			 }
+// 		 }
+// 		 output_string += "			default:\n			}";
+// 		 console.log(output_string)
+// 		 //return output_string;
+// 	}
 
-	// get_anime(0);//get_anime(); //沒廣告的時候
-	// //get_anime(1); //有廣告的時候
+// 	get_anime(0);//get_anime(); //沒廣告的時候
+// 	//get_anime(1); //有廣告的時候
 // //----javascript 代勞區
 
 
@@ -516,6 +516,8 @@ ACCA13 區監察課
 怪怪守護神
 機甲少女 Frame Arms Girl
 王室教師海涅
+重啟咲良田
+武裝少女 Machiavellianism
 `
 
 	case "bot","機器人","目錄","動畫清單","清單","索引","ｉｎｄｅｘ","index","Index","介紹","動漫","動畫介紹","動漫介紹","info","Info","ｉｎｆｏ":
@@ -584,6 +586,8 @@ ACCA13 區監察課
 		"怪怪守護神：怪怪、守護神\n" +
 		"機甲少女 Frame Arms Girl：機甲少女\n" +
 		"王室教師海涅：海涅、王室教師\n" +
+		"武裝少女 Machiavellianism：Machiavellianism、武裝少女\n" +
+		"重啟咲良田：重啟\n" +
 		"攻殼機動隊 ARISE：ARISE、攻殼機動隊\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
 	case "開發者","admin","Admin","ａｄｍｉｎ":
@@ -595,6 +599,22 @@ ACCA13 區監察課
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+		//2017.04
+		case "武裝少女 Machiavellianism","Machiavellianism","武裝少女":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$5") {
+			case "1","01":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7580"
+			default:
+			}
+		//2017.04
+		case "重啟咲良田","重啟":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$5") {
+			case "1","01":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7590"
+			default:
+			}
 		//2017.04
 		case "王室教師海涅","海涅","王室教師":
 			//reg.ReplaceAllString(text, "$2")
@@ -3436,22 +3456,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1373071226088578"
-							fb_q_msg := "2017/04/05 動漫通\n" +
-"關聯：家庭教師 HITMAN REBORN！\n" +
-"問題：骸大人有幾道冥界的戰鬥能力？\n" +
-"1.六道\n" +
-"2.七道\n" +
-"3.三道\n" +
-"4.五道\n" +
-"小提示：角色全名\n" +
-"出題者：grpan168\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://zh-tw.facebook.com/animategamer/posts/1373075042754863"
+							fb_q_msg := "2017/04/06 動漫通\n" +
+"關聯：吹響吧！上低音號～歡迎加入北宇治高中吹奏樂部～\n" +
+"問題：下列何者不是銅管樂器？\n" +
+"1.Trumpet\n" +
+"2.Euphonium\n" +
+"3.Tuba\n" +
+"4.Clarinet\n" +
+"小提示：單簧管\n" +
+"出題者：a87020599\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/04/05 動漫通", "答案請參考 FB 討論，可能是 1 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1373071226088578"),
+									imageURL, "2017/04/06 動漫通", "答案請參考 FB 討論，可能是 4 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://zh-tw.facebook.com/animategamer/posts/1373075042754863"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
