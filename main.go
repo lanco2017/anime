@@ -620,14 +620,6 @@ ACCA13 區監察課
 			default:
 			}
 		//2017.04
-		case "戀愛暴君":
-			//reg.ReplaceAllString(text, "$2")
-			switch reg.ReplaceAllString(text, "$5") {
-			case "1","01":
-				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7589"
-			default:
-			}
-		//2017.04
 		case "武裝少女 Machiavellianism","Machiavellianism","武裝少女":
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$5") {
