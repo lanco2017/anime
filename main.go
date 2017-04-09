@@ -2721,7 +2721,7 @@ ACCA13 區監察課
 			case "11":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6839"
 			case "特別","SP","OVA":
-				print_string = anime_say + "01\nhttp://ani.gamer.com.tw/animeVideo.php?sn=6732" +
+				print_string = anime_say + "01\nhttp://ani.gamer.com.tw/animeVideo.php?sn=6732\n\n" +
 							   "02\nhttp://ani.gamer.com.tw/animeVideo.php?sn=7605"
 			default:
 			}
