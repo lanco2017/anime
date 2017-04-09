@@ -659,6 +659,8 @@ ACCA13 區監察課
 			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7584"
+			case "2","02":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7594"
 			default:
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7584"
 			}
@@ -2204,7 +2206,7 @@ ACCA13 區監察課
 			case "1","01":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3499\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=7583"
 			case "2","02":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3500"
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3500\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=7595"
 			case "3","03":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3514"
 			case "4","04":
