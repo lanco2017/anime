@@ -3540,22 +3540,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1379261372136230"
-							fb_q_msg := "2017/04/09 動漫通\n" +
-"關聯：LoveLive!\n" +
-"問題：在Lovelive!動畫中，哪位角色很喜歡羊駝？哪位角色很怕羊駝？\n" +
-"1.喜歡:希 害怕:海末\n" +
-"2.喜歡:小鳥 害怕:繪里\n" +
-"3.喜歡:妮可 害怕:真姬\n" +
-"4.喜歡:凜 害怕:花陽\n" +
-"小提示：代表色：白色＆水色\n" +
-"出題者：r7213143\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1388858821176485"
+							fb_q_msg := "2017/04/17 動漫通\n" +
+"關聯：探險活寶\n" +
+"問題：泡泡糖公主喜歡吃什麼？\n" +
+"1.泡泡糖\n" +
+"2.薄荷糖\n" +
+"3.義大利麵\n" +
+"4.人肉\n" +
+"小提示：Italy\n" +
+"出題者：coach4788\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/04/09 動漫通", "答案請參考 FB 討論，可能是 2 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1379261372136230"),
+									imageURL, "2017/04/17 動漫通", "答案請參考 FB 討論，可能是 3 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1388858821176485"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
