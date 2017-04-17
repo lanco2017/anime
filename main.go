@@ -522,6 +522,7 @@ ACCA13 區監察課
 雛子的筆記
 覆面系 NOISE
 末日時在做什麼？有沒有空？可以來拯救嗎？
+劍姬神聖譚
 `
 
 	case "bot","機器人","目錄","動畫清單","清單","索引","ｉｎｄｅｘ","index","Index","介紹","動漫","動畫介紹","動漫介紹","info","Info","ｉｎｆｏ":
@@ -595,6 +596,7 @@ ACCA13 區監察課
 		"戀愛暴君\n" +
 		"雛子的筆記：雛子\n" + 
 		"覆面系 NOISE：覆面\n" +
+		"劍姬神聖譚：劍姬、聖譚\n" +
 		"末日時在做什麼？有沒有空？可以來拯救嗎？：末日時、有沒有空、拯救嗎\n" +
 		"攻殼機動隊 ARISE：ARISE、攻殼機動隊\n\n" +
 		"搜尋方法：\n動畫 動畫名(或短名) 數字\n三個項目中間要用空白或冒號、分號隔開。\n\n例如：\n巴哈姆特　3月　１１\n動畫瘋　我太受歡迎 １\nアニメ;影子籃球員;15\n動畫 雙星 1\nanime：黑白來：5\n\n都可以"
@@ -607,6 +609,14 @@ ACCA13 區監察課
 		anime_say := "有喔！有喔！你在找這個對吧！？\n"
 		log.Print(reg.ReplaceAllString(text, "$3"))
 		switch reg.ReplaceAllString(text, "$3") {
+		//2017.04
+		case "劍姬神聖譚","劍姬","聖譚":
+			//reg.ReplaceAllString(text, "$2")
+			switch reg.ReplaceAllString(text, "$5") {
+			case "1","01":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7610"
+			default:
+			}
 		//2017.04
 		case "末日時在做什麼？有沒有空？可以來拯救嗎？","末日","末日時","有沒有空","拯救嗎":
 			//reg.ReplaceAllString(text, "$2")
