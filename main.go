@@ -661,6 +661,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7584"
 			case "2","02":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7594"
+			case "3","03":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7617"
 			default:
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7584"
 			}
@@ -674,6 +676,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7592"
 			case "02","2":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7596"
+			case "03","3":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7619"
 			default:
 			}
 		//2017.04
@@ -684,6 +688,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7582"
 			case "2","02":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7591"
+			case "3","03":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7620"
 			default:
 			}
 		case "攻殼機動隊 ARISE","ARISE","攻殼機動隊":
@@ -2210,7 +2216,7 @@ ACCA13 區監察課
 			case "2","02":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3500\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=7595"
 			case "3","03":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3514"
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3514\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=7618"
 			case "4","04":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3515"
 			case "5","05":
