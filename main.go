@@ -623,6 +623,8 @@ ACCA13 區監察課
 			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7606"
+			case "2","02":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7633"
 			default:
 			}
 		//2017.04
@@ -631,6 +633,8 @@ ACCA13 區監察課
 			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7598"
+			case "2","02":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7631"
 			default:
 			}
 		//2017.04
@@ -681,6 +685,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7586"
 			case "2","02":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7599"
+			case "3","03":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7639"
 			default:
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7586"
 			}
@@ -2759,7 +2765,9 @@ ACCA13 區監察課
 			//reg.ReplaceAllString(text, "$2")
 			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7612"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7612"
+			case "2","02":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7635"
 			default:
 			}
 		case "夏目友人帳 伍","夏目友人帳","夏目","有人","有人帳","帳":
