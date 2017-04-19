@@ -2693,27 +2693,33 @@ ACCA13 區監察課
 			case "21":
 				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6725"
 			case "22":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6726"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6726"
 			case "23":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6727"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6727"
 			case "24":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6728"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6728"
 			case "25":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6834"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6834"
 			case "26":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=6835"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=6835"
 			case "27":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7056"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7056"
 			case "28":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7271"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7271"
 			case "29":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7272"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7272"
 			case "30":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7306"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7306"
 			case "31":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7352"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7352"
 			case "32":
-				print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=7353"
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7353"
+			case "33":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7613"
+			case "34":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7614"
+			case "35":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7615"
 			default:
 			}
 		case "神裝少女小纏","小纏","神裝少女","神裝":
@@ -3542,22 +3548,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1388858821176485"
-							fb_q_msg := "2017/04/17 動漫通\n" +
-"關聯：探險活寶\n" +
-"問題：泡泡糖公主喜歡吃什麼？\n" +
-"1.泡泡糖\n" +
-"2.薄荷糖\n" +
-"3.義大利麵\n" +
-"4.人肉\n" +
-"小提示：Italy\n" +
-"出題者：coach4788\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1393879350674432"
+							fb_q_msg := "2017/04/19 動漫通\n" +
+"關聯：Angel Beats！\n" +
+"問題：請問天使最喜歡吃的食物是什麼？\n" +
+"1.甜甜圈\n" +
+"2.麻婆豆腐\n" +
+"3.牛丼\n" +
+"4.巧克力\n" +
+"小提示：川菜\n" +
+"出題者：zxcv72134\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/04/17 動漫通", "答案請參考 FB 討論，可能是 3 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1388858821176485"),
+									imageURL, "2017/04/19 動漫通", "答案請參考 FB 討論，可能是 2 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1393879350674432"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
