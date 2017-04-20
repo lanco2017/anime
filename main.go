@@ -3560,22 +3560,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1393879350674432"
-							fb_q_msg := "2017/04/19 動漫通\n" +
-"關聯：Angel Beats！\n" +
-"問題：請問天使最喜歡吃的食物是什麼？\n" +
-"1.甜甜圈\n" +
-"2.麻婆豆腐\n" +
-"3.牛丼\n" +
-"4.巧克力\n" +
-"小提示：川菜\n" +
-"出題者：zxcv72134\n" +
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1393880967340937"
+							fb_q_msg := "2017/04/20 動漫通\n" + 
+"關聯：BLEACH 死神系列\n" + 
+"問題：女性死神協會會長為何人？\n" + 
+"1.虎徹勇音\n" + 
+"2.草鹿八千流\n" + 
+"3.卯之花烈\n" + 
+"4.伊勢七緒\n" + 
+"小提示：十一番隊副隊長\n" + 
+"出題者：i82520\n" + 
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/04/19 動漫通", "答案請參考 FB 討論，可能是 2 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1393879350674432"),
+									imageURL, "2017/04/ 動漫通", "答案請參考 FB 討論，可能是 2 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1393880967340937"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
