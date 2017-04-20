@@ -665,6 +665,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7580"
 			case "2","02":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7604"
+			case "3","03":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7637"
 			default:
 			}
 		//2017.04
@@ -675,6 +677,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7590"
 			case "2","02":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7607"
+			case "3","03":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7641"
 			default:
 			}
 		//2017.04
