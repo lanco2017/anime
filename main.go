@@ -3562,22 +3562,22 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			LineTemplate_feedback,
 		)
 
-							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1393880967340937"
-							fb_q_msg := "2017/04/20 動漫通\n" + 
-"關聯：BLEACH 死神系列\n" + 
-"問題：女性死神協會會長為何人？\n" + 
-"1.虎徹勇音\n" + 
-"2.草鹿八千流\n" + 
-"3.卯之花烈\n" + 
-"4.伊勢七緒\n" + 
-"小提示：十一番隊副隊長\n" + 
-"出題者：i82520\n" + 
+							fb_msg := "\n\n答案請上 FB 查詢大家意見。\n" + "巴哈姆特動畫瘋 FB：\nhttps://www.facebook.com/animategamer/posts/1396042083791492"
+							fb_q_msg := "2017/4/21 動漫通\n" +
+"關聯：棒球大聯盟\n" +
+"問題：下列哪一位人物是捕手？\n" +
+"1.佐藤壽也\n" +
+"2.喬．吉普森\n" +
+"3.喬．吉普森二世\n" +
+"4.瓦倫茲艾拉\n" +
+"小提示：黃蜂隊，背號14\n" +
+"出題者：zxc0721win\n" +
 								fb_msg
 
 							LineTemplate_today_q := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "2017/04/ 動漫通", "答案請參考 FB 討論，可能是 2 ",
-									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1393880967340937"),
+									imageURL, "2017/04/21 動漫通", "答案請參考 FB 討論，可能是 1 ",
+									linebot.NewURITemplateAction("來看 FB 上的答案！","https://www.facebook.com/animategamer/posts/1396042083791492"),
 									linebot.NewURITemplateAction("巴哈姆特動畫瘋 官網","http://ani.gamer.com.tw"),
 									LineTemplate_download_app,
 								),
