@@ -625,6 +625,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7606"
 			case "2","02":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7633"
+			case "3","03":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7634"
 			default:
 			}
 		//2017.04
@@ -635,6 +637,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7598"
 			case "2","02":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7631"
+			case "3","03":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7632"
 			default:
 			}
 		//2017.04
@@ -693,6 +697,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7599"
 			case "3","03":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7639"
+			case "4","04":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7640"
 			default:
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7586"
 			}
@@ -2774,6 +2780,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7612"
 			case "2","02":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7635"
+			case "3","03":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7636"
 			default:
 			}
 		case "夏目友人帳 伍","夏目友人帳","夏目","有人","有人帳","帳":
