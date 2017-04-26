@@ -615,6 +615,8 @@ ACCA13 區監察課
 			switch reg.ReplaceAllString(text, "$5") {
 			case "1","01":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7610"
+			case "2","02":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7647"
 			default:
 			}
 		//2017.04
@@ -649,6 +651,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7593"
 			case "2","02":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7609"
+			case "3","03":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7645"
 			default:
 			}
 		//2017.04
@@ -712,6 +716,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7597"
 			case "3","03":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7629"
+			case "4","04":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7630"
 			default:
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7579"
 			}
@@ -725,6 +731,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7594"
 			case "3","03":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7617"
+			case "4","04":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7649"
 			default:
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7584"
 			}
@@ -740,6 +748,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7596"
 			case "03","3":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7619"
+			case "04","4":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7651"
 			default:
 			}
 		//2017.04
@@ -752,6 +762,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7591"
 			case "3","03":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7620"
+			case "4","04":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7653"
 			default:
 			}
 		case "攻殼機動隊 ARISE","ARISE","攻殼機動隊":
@@ -1423,6 +1435,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7602"
 			case "12":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7603"
+			case "13":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7687"
 			default:
 			}
 		//2016.10?
@@ -2282,7 +2296,7 @@ ACCA13 區監察課
 			case "3","03":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3514\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=7618"
 			case "4","04":
-					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3515"
+					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3515\n\n第二部\nhttps://ani.gamer.com.tw/animeVideo.php?sn=7650"
 			case "5","05":
 					print_string = anime_say + "http://ani.gamer.com.tw/animeVideo.php?sn=3501"
 			case "6","06":
@@ -2738,6 +2752,8 @@ ACCA13 區監察課
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7614"
 			case "35":
 				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7615"
+			case "36":
+				print_string = anime_say + "https://ani.gamer.com.tw/animeVideo.php?sn=7717"
 			default:
 			}
 		case "神裝少女小纏","小纏","神裝少女","神裝":
